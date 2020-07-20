@@ -2,7 +2,7 @@ import React from "react";
 
 
 const CallToAction = () => {
-    return ();
+    // return ();
 }
 
 export default CallToAction;

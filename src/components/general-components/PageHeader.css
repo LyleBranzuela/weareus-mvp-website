@@ -1,0 +1,43 @@
+.pageHeader {
+  max-height: 100%;
+  background-image: linear-gradient(
+    rgba(211, 173, 194, 1),
+    rgba(211, 173, 194, 1)
+  );
+  text-align: center;
+  display: inline-block;
+  margin: auto;
+  top: 0;
+}
+
+.pageHeader img {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 78%;
+  height: auto;
+}
+
+.pageHeader-text {
+  text-align: left;
+  color: white;
+  transform: translate(16%, -150%);
+}
+
+#headerTitle {
+  font-size: 2.2vw;
+}
+
+#headerDesc {
+  margin-top: 1%;
+  font-size: 1.4vw;
+  font-weight: 200;
+}
+
+#headerButton {
+  margin-top: 2%;
+  background-color: #79158f;
+  padding: 20px 75px 20px 75px;
+  font-size: 1vw;
+  font-weight: 600;
+}

@@ -1,0 +1,23 @@
+.navBar {
+  margin-top: 0.85%;
+  margin-bottom: 0.6%;
+  margin-left: 13.9%;
+  margin-right: 14.6%;
+}
+
+.navbar .nav-link {
+  /* color: #79158f !important; */
+  color: white !important;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 992px) {
+  .navbar .nav-link {
+    margin-left: 18px !important;
+  }
+  .highlightNav {
+    /* border: 2px solid #79158f; */
+    border: 2px solid white;
+    padding: 10px 40px 10px 40px !important;
+  }
+}
