@@ -1,12 +1,13 @@
+import "./MessageOfTheDay.css";
 import React from "react";
 import { Container } from "react-bootstrap";
 
 const MessageOfTheDay = () => {
   return (
     <Container fluid>
-      <p>
+      <p className="motdStyle">
         <strong>We are Us</strong> connects you with health, wellness, and
-        self-improvement <br /> self-improvement practicioners throughout New
+        self-improvement <br /> practicioners throughout New
         Zealand.
       </p>
     </Container>

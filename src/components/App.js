@@ -1,6 +1,6 @@
 import React from "react";
 import NavigationBar from "./general-components/NavigationBar";
-// import Footer from "./general-components/Footer";
+import Footer from "./general-components/Footer";
 import CallToAction from "./general-components/CallToAction";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
@@ -24,8 +24,8 @@ class App extends React.Component {
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
           </Switch>
-          {/*  <CallToAction /> 
-        <Footer /> */}
+          {/* <CallToAction /> */}
+          <Footer />
         </div>
       </Router>
     );
