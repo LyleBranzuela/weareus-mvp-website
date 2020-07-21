@@ -1,0 +1,48 @@
+.pageHeader {
+  background-image: linear-gradient(
+    rgba(211, 173, 194, 1),
+    rgba(211, 173, 194, 1)
+  );
+  text-align: center;
+  position: relative;
+  margin: auto;
+  top: 0;
+  font-family: "AvenirLTStd-Book";
+}
+
+.pageHeader img {
+  width: 75%;
+  height: auto;
+}
+
+.pageHeader-text {
+  text-align: left;
+  margin: 0;
+  color: white;
+  position: absolute;
+  transform: translate(28%, -145%);
+}
+
+#headerTitle {
+  font-size: 2.2vw;
+  font-weight: 500;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#headerDesc {
+  margin-top: 2%;
+  font-size: 1.4vw;
+  font-weight: 200;
+}
+
+#headerButton {
+  margin-top: 2%;
+  background-color: #79158f;
+  padding: 20px 75px 20px 75px;
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+.break-word {
+  word-wrap: break-word;
+}
