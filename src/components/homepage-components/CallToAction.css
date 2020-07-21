@@ -1,21 +1,19 @@
-.pageHeader {
+.ctaStyle {
   background-image: linear-gradient(
     rgba(211, 173, 194, 1),
     rgba(211, 173, 194, 1)
   );
   text-align: center;
   position: relative;
-  margin: auto;
-  top: 0;
   font-family: "AvenirLTStd-Book";
 }
 
-.pageHeader img {
-  width: 75%;
+.ctaStyle img {
+  width: 77%;
   height: auto;
 }
 
-.pageHeader-text {
+.ctaStyle-text {
   text-align: left;
   margin: 0;
   color: white;
@@ -23,24 +21,39 @@
   transform: translate(28%, -145%);
 }
 
-#headerTitle {
-  font-size: 2.2vw;
-  font-weight: 500;
-  font-family: "AvenirLTPro-Heavy";
+#ctaTitle {
+  font-size: 1.6vw;
+  font-weight: 600;
+  font-family: "AvenirLTStd-Book";
 }
 
-#headerDesc {
+#ctaDesc {
   margin-top: 1%;
-  font-size: 1.4vw;
+  font-size: 1vw;
   font-weight: 200;
 }
 
-#headerButton {
+#ctaButton {
   margin-top: 2%;
   background-color: #79158f;
   padding: 20px 75px 20px 75px;
   font-size: 1vw;
   font-weight: 500;
+}
+
+#ctaSignUp {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin: 0;
+  color: #79158f;
+  font-size: 1.3em;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#ctaSearchForm {
+  margin-top: 100px;
+  text-align: center;
 }
 
 .break-word {

@@ -22,7 +22,7 @@ class NavigationBar extends React.Component {
           className="justify-content-end"
           id="responsive-navbar-nav"
         >
-          <Nav>
+          <Nav className="navBar-links">
             {/* Search Page Link */}
             <LinkContainer to="/search">
               <Nav.Link href="/search">Search</Nav.Link>
