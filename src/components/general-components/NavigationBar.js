@@ -1,31 +1,48 @@
 import "./NavigationBar.css";
 import React from "react";
-import { Container, Row, Col, Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 class NavigationBar extends React.Component {
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" className="navBar" fixed="top">
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src={require("../../assets/icons/we_are_us_logo_white.svg")}
-            className="d-inline-block align-top"
-          />
-        </Navbar.Brand>
+      <Navbar collapseOnSelect expand="lg" className="navBar">
+        {/*fixed="top"*/}
+        <LinkContainer to="/">
+          <Navbar.Brand>
+            <img
+              alt="we are us logo"
+              src={require("../../assets/icons/we_are_us_logo.svg")}
+              className="d-inline-block align-top"
+            />
+          </Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           className="justify-content-end"
           id="responsive-navbar-nav"
         >
           <Nav>
-            <Nav.Link href="/search">Search</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/practitioners">For Practitioners</Nav.Link>
-            <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link className="highlightNav" href="/register">
-              Register
-            </Nav.Link>
+            {/* Search Page Link */}
+            <LinkContainer to="/search">
+              <Nav.Link href="/search">Search</Nav.Link>
+            </LinkContainer>
+            {/* About Page Link */}
+            <LinkContainer to="/about">
+              <Nav.Link>About</Nav.Link>
+            </LinkContainer>
+            {/* Practitioner Page Link */}
+            <LinkContainer to="/practitioner">
+              <Nav.Link>For Practitioners</Nav.Link>
+            </LinkContainer>
+            {/* Login Page Link */}
+            <LinkContainer to="/login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+            {/* Register Page Link */}
+            <LinkContainer to="/register" className="highlightNav">
+              <Nav.Link>Register</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

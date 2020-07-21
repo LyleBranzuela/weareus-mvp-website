@@ -1,0 +1,35 @@
+import "./PageHeader.css";
+import React from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+
+class PageHeader extends React.Component {
+  render() {
+    return (
+      <div className="pageHeader">
+        <img
+          src={require("../../assets/images/for_practitioners_header.jpg")}
+          alt="practicioners-header"
+        />
+        <Container className="pageHeader-text">
+          <Row>
+            <h1 id="headerTitle">
+              Discover a refreshing new <br />
+              way to attract more clients.
+            </h1>
+          </Row>
+          <Row>
+            <p id="headerDesc">
+              We Are Us. An exciting new platform to grow your <br />
+              health, wellness and self-improvement business.
+            </p>
+          </Row>
+          <Row>
+            <Button id="headerButton">Learn More</Button>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
+}
+
+export default PageHeader;
