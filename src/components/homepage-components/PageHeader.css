@@ -7,6 +7,7 @@
   position: relative;
   margin: auto;
   top: 0;
+  font-family: "AvenirLTStd-Book";
 }
 
 .pageHeader img {
@@ -24,6 +25,8 @@
 
 #headerTitle {
   font-size: 2.2vw;
+  font-weight: 500;
+  font-family: "AvenirLTPro-Heavy";
 }
 
 #headerDesc {
@@ -37,7 +40,7 @@
   background-color: #79158f;
   padding: 20px 75px 20px 75px;
   font-size: 1vw;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .break-word {

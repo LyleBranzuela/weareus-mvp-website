@@ -7,7 +7,7 @@ const MessageOfTheDay = () => {
     <Container fluid>
       <p className="motdStyle">
         <strong>We are Us</strong> connects you with health, wellness, and
-        self-improvement <br /> practicioners throughout New
+        self-improvement <br /> practitioners throughout New
         Zealand.
       </p>
     </Container>
