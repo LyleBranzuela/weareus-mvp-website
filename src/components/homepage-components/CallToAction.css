@@ -52,10 +52,24 @@
 }
 
 #ctaSearchForm {
-  margin-top: 100px;
-  text-align: center;
+  margin-top: 85px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  font-weight: 100;
+  font-family: "AvenirLTStd-Book";
 }
 
-.break-word {
-  word-wrap: break-word;
+#ctaSearchFormSubmit {
+  margin-top: 85px;
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  padding: 0px 30px 0px 30px;
+}
+
+#ctaSearchFormSubmit:hover {
+  border: 1px solid #79158f;
+  background-color: lavender;
 }

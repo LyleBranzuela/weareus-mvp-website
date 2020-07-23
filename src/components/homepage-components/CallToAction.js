@@ -1,6 +1,6 @@
 import "./CallToAction.css";
 import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
 
 class CallToAction extends React.Component {
   render() {
@@ -37,13 +37,25 @@ class CallToAction extends React.Component {
           <Row>
             <Col sm={6}>
               <p id="ctaSignUp">
-                Sign up for We are Us news and special offers.{" "}
+                Sign up for We are Us news and special offers.
               </p>
             </Col>
             <Col sm={6}>
-              <Form.Group>
-                <Form.Control id="ctaSearchForm" type="text" placeholder="Normal text" />
-              </Form.Group>
+              <InputGroup className="mb-3">
+                <Form.Control
+                  id="ctaSearchForm"
+                  type="text"
+                  placeholder="Enter your email"
+                />
+                <InputGroup.Append>
+                  <Button variant="light" id="ctaSearchFormSubmit">
+                    <img
+                      alt="Submit Button"
+                      src={require("../../assets/icons/subscribe_enter_arrow.svg")}
+                    />
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup>
             </Col>
           </Row>
         </Container>
