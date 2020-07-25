@@ -1,8 +1,8 @@
-import "./NewPractitionerCard.css";
+import "./PractitionerCard.css";
 import React from "react";
 import { Card } from "react-bootstrap";
 
-class NewPractitionerCard extends React.Component {
+class PractitionerCard extends React.Component {
   render() {
     return (
       <Card className="practitionerCardStyle">
@@ -12,21 +12,15 @@ class NewPractitionerCard extends React.Component {
           src={require("../../assets/images/placeholders/" +
             this.props.practitionerImage)}
         />
-        <Card.ImgOverlay>
-          <span id="practitionerCardType">
-            {this.props.practitionerCardType}
-          </span>
-        </Card.ImgOverlay>
         <Card.Body>
           <Card.Title>{this.props.practitionerName}</Card.Title>
           <Card.Subtitle className="mb-4 text-muted">
             {this.props.practitionerLocation}
           </Card.Subtitle>
-          <Card.Text>{this.props.practitionerDesc}</Card.Text>
         </Card.Body>
       </Card>
     );
   }
 }
 
-export default NewPractitionerCard;
+export default PractitionerCard;

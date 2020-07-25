@@ -1,6 +1,6 @@
 import "./Footer.css";
 import React from "react";
-import { Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 class Footer extends React.Component {
@@ -10,9 +10,8 @@ class Footer extends React.Component {
         <Navbar
           collapseOnSelect
           expand="lg"
-          className="footer"
           variant="light"
-          className="footerStyle"
+          className="footer footerStyle"
         >
           <LinkContainer to="/">
             <Navbar.Brand>
@@ -20,6 +19,7 @@ class Footer extends React.Component {
                 alt="we are us logo"
                 src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
                 className="d-inline-block align-top"
+                alt="footer symbol"
               />
             </Navbar.Brand>
           </LinkContainer>
@@ -39,10 +39,16 @@ class Footer extends React.Component {
           </Nav>
           <Navbar.Collapse className="justify-content-end">
             <Nav.Link>
-              <img src={require("../../assets/icons/icon_fb.svg")}></img>
+              <img
+                src={require("../../assets/icons/icon_fb.svg")}
+                alt="facebook icon"
+              ></img>
             </Nav.Link>
             <Nav.Link>
-              <img src={require("../../assets/icons/icon_insta.svg")}></img>
+              <img
+                src={require("../../assets/icons/icon_insta.svg")}
+                alt="instagram icon"
+              ></img>
             </Nav.Link>
           </Navbar.Collapse>
         </Navbar>

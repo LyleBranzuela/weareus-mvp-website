@@ -6,29 +6,32 @@ import { Container, CardDeck } from "react-bootstrap";
 class NewPractitionerList extends React.Component {
   render() {
     return (
-      <Container fluid>
+      <Container fluid className="practitionerContainerStyle">
         <Container className="practitionerListStyle">
           <h4>New Listed Practicioners</h4>
           <CardDeck>
             <NewPractitionerCard
+              practitionerCardType="Massage, Reiki"
               practitionerImage="listing_placeholder_1.jpg"
-              practitionerCompany="Walk In Light"
+              practitionerName="Walk In Light"
               practitionerLocation="Albany, Auckland"
               practitionerDesc="
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
             <NewPractitionerCard
+              practitionerCardType="Massage, Reiki"
               practitionerImage="listing_placeholder_2.jpg"
-              practitionerCompany="Walk In Light"
+              practitionerName="Infinite Well Being"
               practitionerLocation="Albany, Auckland"
               practitionerDesc="
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
             <NewPractitionerCard
+              practitionerCardType="Herbal Medicine, Massage, Reiki"
               practitionerImage="listing_placeholder_3.jpg"
-              practitionerCompany="Walk In Light"
+              practitionerName="Judith Yasnik"
               practitionerLocation="Albany, Auckland"
               practitionerDesc="
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

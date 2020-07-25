@@ -1,12 +1,12 @@
-.practitionerListStyle {
+.practitionerContainerStyle {
+  padding-top: 4%;
+  padding-bottom: 4%;
   background-color: lavender;
-  margin: 0.5% 15% 0.5% 15%;
-  font-family: "AvenirLTPro-Heavy";
-  font-size: 1em;
 }
 
 .practitionerListStyle h4 {
   margin-bottom: 4%;
   font-family: "AvenirLTPro-Heavy";
   font-size: 1.3vw;
+  font-weight: 500;
 }
