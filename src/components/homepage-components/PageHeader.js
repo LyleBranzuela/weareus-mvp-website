@@ -1,6 +1,6 @@
 import "./PageHeader.css";
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Button } from "react-bootstrap";
 
 class PageHeader extends React.Component {
   render() {
