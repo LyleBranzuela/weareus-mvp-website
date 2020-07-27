@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 class NewPractitionerCard extends React.Component {
   render() {
     return (
-      <Card className="practitionerCardStyle">
+      <Card className="newPracCardStyle">
         <Card.Img
           alt={this.props.practitionerCompany}
           variant="top"
@@ -13,9 +13,7 @@ class NewPractitionerCard extends React.Component {
             this.props.practitionerImage)}
         />
         <Card.ImgOverlay>
-          <span id="practitionerCardType">
-            {this.props.practitionerCardType}
-          </span>
+          <span id="newPracCardType">{this.props.practitionerCardType}</span>
         </Card.ImgOverlay>
         <Card.Body>
           <Card.Title>{this.props.practitionerName}</Card.Title>

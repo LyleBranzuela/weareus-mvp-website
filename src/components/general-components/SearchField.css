@@ -1,0 +1,31 @@
+.searchFieldStyle {
+  margin: 0.5% 15% 0.5% 15%;
+  font-family: "AvenirLTStd-Book";
+  font-size: 1em;
+}
+
+.dropdown-toggle {
+  background-color: #79158f;
+  width: 100%;
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-toggle img {
+}
+
+#searchFieldButton {
+  background-color: #79158f;
+  border-color: rgba(0, 0, 0, 0);
+  width: 100%;
+}
+
+#searchFieldIcon {
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}

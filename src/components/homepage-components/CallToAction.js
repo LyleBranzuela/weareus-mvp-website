@@ -8,7 +8,7 @@ class CallToAction extends React.Component {
       <div>
         <div className="ctaStyle">
           <img
-            src={require("../../assets/images/promotion_bg.jpg")}
+            src={require("../../assets/images/promotion_bg_cropped.jpg")}
             alt="practicioners-header"
           />
           <Container className="ctaStyle-text">
