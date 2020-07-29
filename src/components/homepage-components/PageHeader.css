@@ -21,6 +21,7 @@
   color: white;
   position: absolute;
   transform: translate(28%, -145%);
+  width:100%;
 }
 
 #headerTitle {

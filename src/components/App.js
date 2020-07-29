@@ -4,6 +4,7 @@ import Footer from "./general-components/Footer";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import AboutPage from "./pages/AboutPage";
+import ForPractitionersPage from "./pages/ForPractitionersPage";
 import PractitionerListPage from "./pages/PractitionerListPage";
 import LoginPage from "./pages/LoginPage";
 import UserRegisterPage from "./pages/UserRegisterPage";
@@ -20,9 +21,11 @@ class App extends React.Component {
           <NavigationBar />
           <Switch>
             <Route path="/" exact component={HomePage} />
+            <Route path="/index" component={HomePage} />
             <Route path="/search" component={SearchPage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/practitioner" component={PractitionerListPage} />
+            <Route path="/for-practitioner" component={ForPractitionersPage} /> 
+            <Route path="/practitioner-list" component={PractitionerListPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register-practitioner" component={PractitionerRegisterPage} />
             <Route path="/register-user" component={UserRegisterPage} />

@@ -59,12 +59,14 @@ class PractitionerList extends React.Component {
                 practitionerImage="listing_placeholder_3.jpg"
               />
               <PractitionerCard
-                practitionerName="Escape Away Massage"
+                practitionerName="Escape Away Massage   "
                 practitionerLocation="Albany, Auckland"
                 practitionerImage="listing_placeholder_1.jpg"
               />
             </Row>
           </CardDeck>
+          <br />
+          <a href="./practitioner-list">Show All (12)</a>
         </Container>
       </Container>
     );

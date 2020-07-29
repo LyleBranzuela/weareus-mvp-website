@@ -12,8 +12,8 @@ class HomePage extends React.Component {
       <div className="homePage">
         <PageHeader />
         <MessageOfTheDay />
-        <SearchField />
         <NewPractitionerList />
+        <SearchField />
         <PractitionerList />
         <CallToAction />
       </div>

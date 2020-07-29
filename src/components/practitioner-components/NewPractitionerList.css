@@ -10,3 +10,10 @@
   font-size: 1.3vw;
   font-weight: 500;
 }
+
+.newPracListStyle a {
+  font-family: "AvenirLTPro-Heavy";
+  font-weight: 500;
+  font-size: 0.9vw;
+  color: #79158f;
+}

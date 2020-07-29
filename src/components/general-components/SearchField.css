@@ -1,13 +1,21 @@
 .searchFieldStyle {
-  margin: 0.5% 15% 0.5% 15%;
   font-family: "AvenirLTStd-Book";
   font-size: 1em;
+  padding-top: 140px;
+  padding-bottom: 140px;
 }
+
 
 .dropdown-toggle {
   background-color: #79158f;
   width: 100%;
   position: relative;
+  text-align: left;
+  padding: 8px 10px 8px 10px;
+}
+
+.dropdown-toggle h6 {
+  margin: 5px 0px 0px 10px;
 }
 
 .dropdown-toggle::after {
@@ -15,6 +23,19 @@
 }
 
 .dropdown-toggle img {
+  float: right;
+  margin: 7px;
+}
+
+
+.dropdown-menu.show {
+  background-color: #79158f;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.dropdown-item {
+  color: white;
 }
 
 #searchFieldButton {

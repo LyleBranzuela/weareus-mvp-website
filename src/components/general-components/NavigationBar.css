@@ -1,6 +1,7 @@
 .navBar {
-  margin: 0.5% 15% 0.5% 15%;
+  padding: 1% 15% 1% 15%;
   font-family: "AvenirLTPro-Heavy";
+  background-color: white;
 }
 
 .navBar-links .nav-link {
