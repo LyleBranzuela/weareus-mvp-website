@@ -16,24 +16,25 @@ class Footer extends React.Component {
           <LinkContainer to="/">
             <Navbar.Brand>
               <img
-                alt="we are us logo"
                 src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
                 className="d-inline-block align-top"
-                alt="footer symbol"
+                alt="we are us logo"
               />
             </Navbar.Brand>
           </LinkContainer>
           <Nav>
             {/* Register Page Link */}
             <LinkContainer to="/search">
-              <Nav.Link href="/register">Register As Practicioner</Nav.Link>
+              <Nav.Link href="/register-practitioner">
+                Register As Practicioner
+              </Nav.Link>
             </LinkContainer>
             {/* Contact Us Page Link */}
-            <LinkContainer to="/about">
+            <LinkContainer to="/contact-us">
               <Nav.Link>Contact Us</Nav.Link>
             </LinkContainer>
             {/* Terms and Conditions Page Link */}
-            <LinkContainer to="/practitioner">
+            <LinkContainer to="/terms-and-conditions">
               <Nav.Link>Terms And Conditions</Nav.Link>
             </LinkContainer>
           </Nav>

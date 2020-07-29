@@ -21,6 +21,7 @@
   color: white;
   position: absolute;
   transform: translate(28%, -145%);
+  width:100%;
 }
 
 #headerTitle {
@@ -37,7 +38,7 @@
 
 #headerButton {
   margin-top: 2%;
-  background-color: #79158f;
+  background-color: #79158F;
   padding: 20px 75px 20px 75px;
   font-size: 1vw;
   font-weight: 500;

@@ -1,0 +1,52 @@
+.searchFieldStyle {
+  font-family: "AvenirLTStd-Book";
+  font-size: 1em;
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+
+.dropdown-toggle {
+  background-color: #79158f;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  padding: 8px 10px 8px 10px;
+}
+
+.dropdown-toggle h6 {
+  margin: 5px 0px 0px 10px;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-toggle img {
+  float: right;
+  margin: 7px;
+}
+
+
+.dropdown-menu.show {
+  background-color: #79158f;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+#searchFieldButton {
+  background-color: #79158f;
+  border-color: rgba(0, 0, 0, 0);
+  width: 100%;
+}
+
+#searchFieldIcon {
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}
