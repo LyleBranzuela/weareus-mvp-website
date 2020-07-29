@@ -1,0 +1,50 @@
+#lightHeader {
+    font-family: "AvenirLTStd-Book";
+    color: #79158f;
+    text-align: center;
+    font-size: 21px;
+    padding-left: 350px;
+    padding-right: 350px;
+    padding-bottom: 30px;
+  }
+
+ 
+
+  #heavyHeader {
+    font-family: "AvenirLTPro-Heavy";
+    color: #79158f;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 22px;
+  }
+
+  #big-description{
+    font-family: "AvenirLTStd-Book";
+    font-size: 21px;
+    text-align: left;
+    padding-left: 230px;
+    padding-right: 230px;
+  }
+
+  blockquote{
+    font-family: Georgia, serif;
+    text-align: center;
+    font-size: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 40px;
+    color: #79158f;
+  }
+  
+  blockquote::before{
+    content: "\201C";
+    position: absolute;
+  }
+
+  #message {
+    font-size: 27px;
+    font-family: "AvenirLTStd-Book";
+    color: #79158f;
+    text-align: center;
+    
+  }

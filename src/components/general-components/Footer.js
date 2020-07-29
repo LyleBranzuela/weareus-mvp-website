@@ -1,6 +1,6 @@
 import "./Footer.css";
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 class Footer extends React.Component {
