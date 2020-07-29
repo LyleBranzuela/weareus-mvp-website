@@ -6,7 +6,7 @@ import { LinkContainer } from "react-router-bootstrap";
 class NavigationBar extends React.Component {
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" className="navBar">
+      <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
         {/*fixed="top"*/}
         <LinkContainer to="/">
           <Navbar.Brand>
@@ -32,7 +32,7 @@ class NavigationBar extends React.Component {
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
             {/* Practitioner Page Link */}
-            <LinkContainer to="/practitioner">
+            <LinkContainer to="/for-practitioner">
               <Nav.Link>For Practitioners</Nav.Link>
             </LinkContainer>
             {/* Login Page Link */}
@@ -40,7 +40,7 @@ class NavigationBar extends React.Component {
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
             {/* Register Page Link */}
-            <LinkContainer to="/register" className="highlightNav">
+            <LinkContainer to="/register-user" className="highlightNav">
               <Nav.Link>Register</Nav.Link>
             </LinkContainer>
           </Nav>

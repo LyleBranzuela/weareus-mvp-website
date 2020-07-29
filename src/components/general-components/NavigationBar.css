@@ -1,11 +1,12 @@
 .navBar {
-  margin: 0.5% 15% 0.5% 15%;
+  padding: 1% 15% 1% 15%;
   font-family: "AvenirLTPro-Heavy";
+  background-color: white;
 }
 
 .navBar-links .nav-link {
   display: flex;
-  color: #79158f !important;
+  color: #79158F !important;
   /* color: white !important; */
   justify-content: center;
   align-items: center;
@@ -18,7 +19,7 @@
     margin-left: 16px !important;
   }
   .highlightNav {
-    border: 2px solid #79158f;
+    border: 2px solid #79158F;
     /* border: 2px solid white; */
     padding: 10px 40px 10px 40px !important;
   }
