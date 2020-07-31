@@ -1,0 +1,43 @@
+#emp-frame {
+  display: block;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: lightgrey;
+}
+
+.bottom-padding {
+  padding-bottom: 150px;
+}
+
+#name {
+  padding-top: 35px;
+  font-family: "AvenirLTPro-Heavy";
+  color: #79158f;
+  text-align: center;
+  font-size: 23px;
+}
+#role {
+  font-family: "AvenirLTStd-Book";
+  color: #79158f;
+  text-align: center;
+  font-size: 22px;
+}
+
+#team-description {
+  font-family: "AvenirLTStd-Book";
+  font-size: 17.8px;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+a {
+  font-family: "AvenirLTStd-Book";
+  color: #79158f;
+  padding-left: 50px;
+  font-size: 17.8px;
+}
