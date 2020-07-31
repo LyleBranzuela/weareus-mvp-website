@@ -9,6 +9,10 @@
   background-color: lightgrey;
 }
 
+.bottom-padding {
+  padding-bottom: 150px;
+}
+
 #name {
   padding-top: 35px;
   font-family: "AvenirLTPro-Heavy";

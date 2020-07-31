@@ -3,7 +3,7 @@ import "./TeamSection.css";
 function TeamSection() {
   return (
     <div>
-      <div class="container-fluid">
+      <div class="container-fluid bottom-padding">
         <div class="row">
           <div class="col">
             <img

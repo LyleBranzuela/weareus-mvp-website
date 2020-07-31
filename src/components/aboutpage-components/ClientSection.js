@@ -1,8 +1,9 @@
 import React from "react";
 import "./ClientSection.css";
+
 function ClientSection() {
   return (
-    <div class="container-fluid">
+    <div class="container-fluid" >
       <img
         src={require("../../assets/images/weareus_team/team_charis_robinson.jpg")}
         alt="charis-image"
