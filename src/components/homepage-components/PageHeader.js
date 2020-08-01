@@ -8,7 +8,7 @@ class PageHeader extends React.Component {
       <div className="pageHeader">
         <img
           src={require("../../assets/images/for_practitioners_header.jpg")}
-          alt="practicioners-header"
+          alt="practitioners-header"
         />
         <Container className="pageHeader-text">
           <Row>
