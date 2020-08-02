@@ -9,7 +9,7 @@ class PractitionerList extends React.Component {
       <Container fluid className="pracContainerStyle">
         <Container className="pracListStyle">
           <h4>Practitioners</h4>
-          <CardDeck>
+          <CardDeck className="pracListDeckStyle">
             <Row>
               <PractitionerCard
                 practitionerName="Body Mechanics Orthopedic Massage"

@@ -4,7 +4,7 @@ import MessageOfTheDay from "../homepage-components/MessageOfTheDay";
 import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
-import SearchField from "../general-components/SearchField";
+import SearchField from "../search-components/SearchField";
 
 class HomePage extends React.Component {
   render() {
