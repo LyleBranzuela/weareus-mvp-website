@@ -1,5 +1,6 @@
 import React from "react";
-import SearchField from "../general-components/SearchField";
+import SearchField from "../search-components/SearchField";
+import TherapyList from "../search-components/TherapyList";
 import CallToAction from "../homepage-components/CallToAction";
 
 class SearchPage extends React.Component {
@@ -7,6 +8,7 @@ class SearchPage extends React.Component {
     return (
       <div className="searchPage">
         <SearchField />
+        <TherapyList />
         <CallToAction />
       </div>
     );

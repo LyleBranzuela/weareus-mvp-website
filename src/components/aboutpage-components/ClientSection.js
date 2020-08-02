@@ -3,7 +3,7 @@ import "./ClientSection.css";
 
 function ClientSection() {
   return (
-    <div class="container-fluid" >
+    <div className="container-fluid aboutFluidContainer">
       <img
         src={require("../../assets/images/weareus_team/team_charis_robinson.jpg")}
         alt="charis-image"
@@ -53,11 +53,11 @@ function ClientSection() {
         <strong>
           <blockquote></blockquote>
         </strong>
-        <p id="message">
+        <span id="clientMessage">
           What we do matters to help people grow. For us to move forward as a
           society, individually and collectively, must always be growing and
           learning. This is how progress is made.
-        </p>
+        </span>
         <br />
         I've build a team around me to make sure that We are Us becomes the most
         reliable, professional place for clients and health and wellness
