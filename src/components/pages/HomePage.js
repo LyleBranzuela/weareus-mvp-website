@@ -11,7 +11,14 @@ class HomePage extends React.Component {
     return (
       <div className="homePage">
         <PageHeader />
-        <MessageOfTheDay />
+        <MessageOfTheDay
+          motd={
+            <React.Fragment>
+              <strong>We are Us</strong> connects you with health, wellness, and
+              self-improvement <br /> practitioners throughout New Zealand.
+            </React.Fragment>
+          }
+        />
         <NewPractitionerList />
         <SearchField />
         <PractitionerList />
