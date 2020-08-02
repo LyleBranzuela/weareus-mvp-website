@@ -3,9 +3,9 @@ import "./TeamSection.css";
 function TeamSection() {
   return (
     <div>
-      <div class="container-fluid bottom-padding">
-        <div class="row">
-          <div class="col">
+      <div className="container-fluid bottom-padding teamSectionStyle aboutFluidContainer">
+        <div className="row">
+          <div className="col">
             <img
               src={require("../../assets/images/weareus_team/team_dan_matthews.jpg")}
               alt="dan-image"
@@ -31,7 +31,7 @@ function TeamSection() {
             </p>
             <a href="https://designcabin.co.nz">designcabin.co.nz</a>
           </div>
-          <div class="col">
+          <div className="col">
             <img
               src={require("../../assets/images/weareus_team/team_walter_rumbsy.jpg")}
               alt="walter-image"
@@ -56,8 +56,8 @@ function TeamSection() {
           </div>
         </div>
         {/* Row 2 */}
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
             {/* Uncomment code below with appropriate jpg file name to produce circular employee image */}
 
             {/* <img
@@ -88,7 +88,7 @@ function TeamSection() {
             </p>
             <a href="https://wordsforwellness.com">wordsforwellness.com</a>
           </div>
-          <div class="col">
+          <div className="col">
             {/* Uncomment code below with appropriate jpg file name to produce circular employee image */}
 
             {/* <img 
@@ -117,8 +117,8 @@ function TeamSection() {
         </div>
 
         {/* Row 3 */}
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
             {/* Uncomment code below with appropriate jpg file name to produce circular employee image  */}
 
             {/* <img
@@ -143,7 +143,7 @@ function TeamSection() {
             <a href="https://silverlane.agency">silverlane.agency</a>
           </div>
           {/* Empty column to Silverlane column to the left and for additional person */}
-          <div class="col"></div>
+          <div className="col"></div>
         </div>
       </div>
     </div>

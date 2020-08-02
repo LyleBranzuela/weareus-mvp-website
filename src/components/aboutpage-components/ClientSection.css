@@ -46,7 +46,7 @@ blockquote:before {
   font-size: 2em;
 }
 
-#message {
+#clientMessage {
   font-size: 27px;
   font-family: "AvenirLTStd-Book";
   color: #79158f;
