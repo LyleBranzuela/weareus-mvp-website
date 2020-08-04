@@ -8,7 +8,7 @@ class NavigationBar extends React.Component {
     return (
       <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
         {/*fixed="top"*/}
-        <LinkContainer to="/">
+        <LinkContainer to="/home">
           <Navbar.Brand>
             <img
               alt="we are us logo"

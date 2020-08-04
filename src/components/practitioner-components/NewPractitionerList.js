@@ -39,7 +39,7 @@ class NewPractitionerList extends React.Component {
             />
           </CardDeck>
           <br />
-          <a href="./new-practitioner-list">Show All (5)</a>
+          <a href="">Show All (5)</a>
         </Container>
       </Container>
     );
