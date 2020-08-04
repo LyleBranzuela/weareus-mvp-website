@@ -5,12 +5,19 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
+import {Button} from "react-bootstrap";
 
 class HomePage extends React.Component {
   render() {
     return (
       <div className="homePage">
-        <PageHeader />
+        <PageHeader
+          learnMoreButton={
+            <React.Fragment>
+              <Button id="headerButton">Learn More</Button>
+            </React.Fragment>
+          }
+        />
         <MessageOfTheDay
           motd={
             <React.Fragment>

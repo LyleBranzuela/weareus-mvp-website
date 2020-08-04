@@ -1,6 +1,8 @@
 import React from "react";
 import PageHeader from "../homepage-components/PageHeader";
 import FeaturesList from "../for-practitioner-components/FeaturesList";
+import FeatureCarousel from "../for-practitioner-components/FeatureCarousel";
+import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
 import MessageOfTheDay from "../homepage-components/MessageOfTheDay";
 import CallToAction from "../homepage-components/CallToAction";
 
@@ -25,6 +27,8 @@ class ForPractitionersPage extends React.Component {
           }
         />
         <FeaturesList />
+        <FeatureCarousel />
+        <PractitionerCTA />
         <CallToAction />
       </div>
     );

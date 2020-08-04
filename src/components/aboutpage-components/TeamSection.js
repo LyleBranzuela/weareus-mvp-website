@@ -8,7 +8,7 @@ function TeamSection() {
           <div className="col">
             <img
               src={require("../../assets/images/weareus_team/team_dan_matthews.jpg")}
-              alt="dan-image"
+              alt="about dan"
               id="emp-frame"
             />
             <h4 id="name">Dan Matthews</h4>
@@ -34,7 +34,7 @@ function TeamSection() {
           <div className="col">
             <img
               src={require("../../assets/images/weareus_team/team_walter_rumbsy.jpg")}
-              alt="walter-image"
+              alt="about walter"
               id="emp-frame"
             />
             <h4 id="name">Walter Rumbsy</h4>

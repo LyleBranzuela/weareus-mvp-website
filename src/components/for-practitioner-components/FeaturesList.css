@@ -1,25 +1,7 @@
-.featuresListStyle span {
-  display: block;
-  text-align: center;
+.featuresListStyle  {
+  padding-bottom: 50px;
 }
 
-.featuresListStyle img {
-  height: 250px;
-  width: 250px;
-}
-
-.featuresListStyle h5 {
-  font-family: "AvenirLTPro-Heavy";
-  color: #79158f;
-  text-align: center;
-  margin: 40px;
-}
-
-.featuresListStyle p {
-  font-family: "AvenirLTStd-Book";
-  color: #5b5b5b;
-  text-align: justify;
-}
 
 .featuresListStyle hr {
   border: none;

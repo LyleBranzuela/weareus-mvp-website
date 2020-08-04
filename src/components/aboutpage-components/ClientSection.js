@@ -6,7 +6,7 @@ function ClientSection() {
     <div className="container-fluid aboutFluidContainer">
       <img
         src={require("../../assets/images/weareus_team/team_charis_robinson.jpg")}
-        alt="charis-image"
+        alt="about charis"
         id="mainFrame"
       />
 
