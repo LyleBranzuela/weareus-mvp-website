@@ -2,12 +2,11 @@
   padding: 1% 15% 1% 15%;
   font-family: "AvenirLTPro-Heavy";
   background-color: white;
-  border-bottom: 2px #79158f;
 }
 
 .navBar-links .nav-link {
   display: flex;
-  position:relative;
+  position: relative;
   color: #79158f !important;
   /* color: white !important; */
   justify-content: center;
@@ -16,20 +15,33 @@
   font-size: 1em;
 }
 
-.navBar-links a.nav-link:after {
+.navBar-links a.nav-link:hover {
+  color: #b823dad3 !important;
+}
+
+.navBar-links a.nav-link:active {
+  color: #79158f !important;
+}
+
+.navBar-links .navBarEffect:after {
   bottom: 0;
   content: "";
   height: 2px;
   left: 50%;
   position: absolute;
   background: #79158f;
-  transition: width 0.4s ease 0s, left 0.4s ease 0s;
+  transition: width 0.5s ease 0s, left 0.5s ease 0s;
   width: 0;
 }
 
-.navBar-links a.nav-link:hover:after {
+.navBar-links .navBarEffect:hover:after {
   width: 100%;
   left: 0;
+}
+
+.highlightNav:hover {
+  font-size: 1.1em;
+  transition: font-size 0.4s;
 }
 
 @media screen and (min-width: 992px) {
