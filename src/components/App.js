@@ -12,6 +12,7 @@ import PractitionerRegisterPage from "./pages/PractitionerRegisterPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PractitionerProfile from "./pages/PractitionerProfile";
 
 class App extends React.Component {
   render() {
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route path="/register-practitioner" component={PractitionerRegisterPage} />
             <Route path="/register-user" component={UserRegisterPage} />
             <Route path="/contact-us" component={ContactUsPage} />
+            <Route path="/practitioner-profile" component={PractitionerProfile}/>
             <Route
               path="/terms-and-conditions"
               component={TermsAndConditionsPage}

@@ -1,0 +1,12 @@
+.carousel{
+    width: 1440px;
+    height: 490px;
+    margin: auto;
+}
+
+.carousel-item > img{
+    width: 1440px;
+    max-height: 538px;
+    object-fit: cover;
+    z-index: 1;
+}

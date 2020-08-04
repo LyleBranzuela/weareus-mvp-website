@@ -1,0 +1,14 @@
+#profile-image-frame {
+  border-radius: 50%;
+  width: 250px;
+  z-index: 2;
+  position: absolute;
+  position: relative;
+  /* Image frame will be moved vertically upwards */
+  /* bottom: 210px; */
+}
+
+.container-dimensions {
+  margin: auto;
+  
+}
