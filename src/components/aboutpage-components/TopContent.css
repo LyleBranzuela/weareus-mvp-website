@@ -1,4 +1,4 @@
-.container-fluid{
+.aboutFluidContainer {
   width: 1300px;
   padding-top: 60px;
 }
@@ -11,12 +11,12 @@
 }
 
 .about-paragraph {
-  color: black;
   text-align: center;
   font-size: 22px;
   margin-left: 15%;
   margin-right: 15%;
   font-family: "AvenirLTStd-Book";
+  color: #5B5B5B; 
 }
 
 .aboutContainer {

@@ -33,9 +33,10 @@
   padding-right: 50px;
   padding-left: 50px;
   padding-top: 10px;
+  color: #5B5B5B; 
 }
 
-a {
+.teamSectionStyle a {
   font-family: "AvenirLTStd-Book";
   color: #79158f;
   padding-left: 50px;

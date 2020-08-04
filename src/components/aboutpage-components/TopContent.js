@@ -5,10 +5,9 @@ function TopContent() {
   return (
     <div>
       <hr></hr>
-
-      <div class="container-fluid">
+      <div className="container-fluid aboutFluidContainer">
         <h2 id="aboutTitle">About us</h2>
-        <p class="about-paragraph">
+        <p className="about-paragraph">
           We're all on a journey. Having the right people with us on our journey
           can ground <br />
           us, grow us and help us be of service to others on their journey.
