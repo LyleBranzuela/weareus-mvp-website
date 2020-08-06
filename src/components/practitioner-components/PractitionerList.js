@@ -2,6 +2,7 @@ import "./PractitionerList.css";
 import React from "react";
 import PractitionerCard from "./PractitionerCard";
 import { Container, CardDeck, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class PractitionerList extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class PractitionerList extends React.Component {
       <Container fluid className="pracContainerStyle">
         <Container className="pracListStyle">
           <h4>Practitioners</h4>
-          <CardDeck>
+          <CardDeck className="pracListDeckStyle">
             <Row>
               <PractitionerCard
                 practitionerName="Body Mechanics Orthopedic Massage"
@@ -66,7 +67,9 @@ class PractitionerList extends React.Component {
             </Row>
           </CardDeck>
           <br />
-          <a href="./practitioner-list">Show All (12)</a>
+          <Link to="practitioner-list">
+            Show All (12)
+          </Link>
         </Container>
       </Container>
     );
