@@ -1,14 +1,54 @@
 #profile-image-frame {
   border-radius: 50%;
-  width: 250px;
+  width: 240px;
   z-index: 2;
   position: absolute;
   position: relative;
-  /* Image frame will be moved vertically upwards */
-  /* bottom: 210px; */
+  
 }
 
 .container-dimensions {
-  margin: auto;
-  
+  padding-left: 19%;
+  padding-right: 17%;
+  margin-top: -140px;
+  background-color: darkgreen;
+  top: 140px;
+}
+
+.contact-details-card {
+  margin-top: 233px;
+  width: 370px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: left;
+  float: right;
+  background-color: white;
+  margin-right: 0px;
+}
+
+.contact-card-body {
+  color: grey;
+  padding: 10px;
+}
+
+.main-col{
+  width: 10000px;
+  background-color: darkgreen;
+}
+
+.practitioner-logo{
+  vertical-align: text-top;
+  float: right;
+  margin-top: -35px;
+}
+
+.no-paddingPINK{
+  background-color: pink;
+  padding: 0 !important;
+  margin: 0 !important;
+
+}
+.no-padding{
+  background-color: blue;
+  margin-right: 0 !important;
+  padding-right: 0 !important;
 }

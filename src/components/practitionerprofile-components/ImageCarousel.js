@@ -10,7 +10,7 @@ class ImageCarousel extends React.Component {
           <Carousel.Item>
             <h3>1</h3>
             <img
-              className="d-block w-100"
+              // className="d-block w-100"
               src={require("../../assets/images/placeholders/prac_image_carousel_placeholder.jpg")}
               alt="First slide"
             />
@@ -18,7 +18,7 @@ class ImageCarousel extends React.Component {
           <Carousel.Item>
             <h3>1</h3>
             <img
-              className="d-block w-100"
+              // className="d-block w-100"
               src={require("../../assets/images/placeholders/prac_image_carousel_placeholder.jpg")}
               alt="First slide"
             />
@@ -26,7 +26,7 @@ class ImageCarousel extends React.Component {
           <Carousel.Item>
             <h3>1</h3>
             <img
-              className="d-block w-100"
+              // className="d-block w-100"
               src={require("../../assets/images/placeholders/prac_image_carousel_placeholder.jpg")}
               alt="First slide"
             />
