@@ -9,7 +9,7 @@ import CallToAction from "../homepage-components/CallToAction";
 class ForPractitionersPage extends React.Component {
   render() {
     return (
-      <div className="forPractitionersStyle">
+      <div>
         <PageHeader />
         <MessageOfTheDay
           motd={
