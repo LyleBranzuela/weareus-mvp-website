@@ -1,12 +1,13 @@
 import React from "react";
 import "./ClientSection.css";
+// import { render } from "@testing-library/react";
 
 function ClientSection() {
   return (
-    <div className="container-fluid aboutFluidContainer">
+    <div class="container-fluid">
       <img
         src={require("../../assets/images/weareus_team/team_charis_robinson.jpg")}
-        alt="about charis"
+        alt="charis-image"
         id="mainFrame"
       />
 
@@ -53,11 +54,11 @@ function ClientSection() {
         <strong>
           <blockquote></blockquote>
         </strong>
-        <span id="clientMessage">
+        <p id="message">
           What we do matters to help people grow. For us to move forward as a
           society, individually and collectively, must always be growing and
           learning. This is how progress is made.
-        </span>
+        </p>
         <br />
         I've build a team around me to make sure that We are Us becomes the most
         reliable, professional place for clients and health and wellness
