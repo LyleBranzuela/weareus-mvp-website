@@ -25,6 +25,8 @@ class NavigationBar extends React.Component {
           <Nav className="navBar-links">
             {/* Search Page Link */}
             <LinkContainer to="/search">
+
+              <Nav.Link className="navBarEffect" href="/search">Search</Nav.Link>
               <Nav.Link className="navBarEffect" href="/search">
                 Search
               </Nav.Link>

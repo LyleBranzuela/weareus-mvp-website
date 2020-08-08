@@ -12,6 +12,10 @@ import UserRegisterPage from "./pages/UserRegisterPage";
 import PractitionerRegisterPage from "./pages/PractitionerRegisterPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PractitionerProfile from "./pages/PractitionerProfile";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,10 +30,8 @@ class App extends React.Component {
         <div className="App">
           <NavigationBar />
           <Switch>
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-            <Route path="/home" component={HomePage} />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/index" component={HomePage} />
             <Route path="/search" component={SearchPage} />
             <Route path="/about" component={AboutPage} />
             <Route path="/for-practitioner" component={ForPractitionersPage} />
@@ -42,6 +44,10 @@ class App extends React.Component {
             />
             <Route path="/register-user" component={UserRegisterPage} />
             <Route path="/contact-us" component={ContactUsPage} />
+            <Route
+              path="/practitioner-profile"
+              component={PractitionerProfile}
+            />
             <Route
               path="/terms-and-conditions"
               component={TermsAndConditionsPage}
