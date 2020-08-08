@@ -53,4 +53,8 @@
     /* border: 2px solid white; */
     padding: 10px 40px 10px 40px !important;
   }
+  .highlightNav:hover {
+    font-size: 1.1em;
+    transition: font-size 0.4s;
+  }
 }
