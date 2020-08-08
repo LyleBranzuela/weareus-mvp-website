@@ -1,8 +1,13 @@
 import React from "react";
+import ChooseRegister from "../register-login-components/ChooseRegister";
 
 class RegisterPage extends React.Component {
   render() {
-    return <div>Register</div>;
+    return (
+      <div>
+        <ChooseRegister />
+      </div>
+    );
   }
 }
 
