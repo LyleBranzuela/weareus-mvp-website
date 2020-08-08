@@ -2,6 +2,9 @@
   padding: 1% 15% 1% 15%;
   font-family: "AvenirLTPro-Heavy";
   background-color: white;
+  outline: solid;
+  outline-color: gray;
+  outline-width: thin;
 }
 
 .navBar-links .nav-link {
@@ -37,7 +40,7 @@
 .navBar-links .navBarEffect:hover:after {
   width: 100%;
   left: 0;
-}
+} 
 
 @media screen and (min-width: 992px) {
   .navBar-links .nav-link {

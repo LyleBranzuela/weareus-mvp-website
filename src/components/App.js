@@ -26,7 +26,7 @@ class App extends React.Component {
         <div className="App">
           <NavigationBar />
           <Switch>
-            <Route exact path="/">
+            <Route exact path={["/index.html", "/"]}>
               <Redirect to="/home" />
             </Route>
             <Route path="/home" component={HomePage} />

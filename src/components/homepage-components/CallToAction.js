@@ -14,7 +14,7 @@ class CallToAction extends React.Component {
           <Container className="ctaStyle-text">
             <Row>
               <h1 id="ctaTitle">
-                Practitioners, discover a refreshing new  <br />
+                Practitioners, discover a refreshing new <br />
                 way to meet more clients.
               </h1>
             </Row>
@@ -29,7 +29,13 @@ class CallToAction extends React.Component {
               </p>
             </Row>
             <Row>
-              <Button id="ctaButton">Join Us Now</Button>
+              <Button
+                className="primaryCustomButtonStyle"
+                variant="primary"
+                id="ctaButton"
+              >
+                Join Us Now
+              </Button>
             </Row>
           </Container>
         </div>

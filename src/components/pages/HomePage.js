@@ -5,7 +5,7 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 class HomePage extends React.Component {
   render() {
@@ -14,7 +14,9 @@ class HomePage extends React.Component {
         <PageHeader
           learnMoreButton={
             <React.Fragment>
-              <Button id="headerButton">Learn More</Button>
+              <Button className="primaryCustomButtonStyle" id="headerButton">
+                Learn More
+              </Button>
             </React.Fragment>
           }
         />

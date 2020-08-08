@@ -11,7 +11,7 @@ class Footer extends React.Component {
           collapseOnSelect
           expand="lg"
           variant="light"
-          className="footer footerStyle"
+          className="footer footerStyle siteDefaultMargin"
         >
           <LinkContainer to="/">
             <Navbar.Brand>

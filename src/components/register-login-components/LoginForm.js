@@ -35,7 +35,12 @@ class LoginForm extends React.Component {
               </Link>
             </Col>
           </Row>
-          <Button id="loginFormButton" variant="primary" type="submit">
+          <Button
+            className="primaryCustomButtonStyle"
+            id="loginFormButton"
+            variant="primary"
+            type="submit"
+          >
             Log In
           </Button>
         </Form>

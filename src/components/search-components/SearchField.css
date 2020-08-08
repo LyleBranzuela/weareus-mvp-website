@@ -1,3 +1,6 @@
+.searchFieldContainer {
+  background-color: lavender;
+}
 .searchFieldStyle {
   font-family: "AvenirLTStd-Book";
   font-size: 1em;
@@ -11,10 +14,6 @@
   color: #79158f !important;
   margin-bottom: 60px;
   font-size: 2em;
-}
-
-.searchFieldContainer {
-  background-color: lavender;
 }
 
 .searchFieldStyle .form-control {
@@ -81,8 +80,6 @@
 }
 
 #searchFieldButton {
-  background-color: #79158f;
-  border-color: rgba(0, 0, 0, 0);
   width: 100%;
   padding: 10px 10px 10px 10px;
 }
