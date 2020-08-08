@@ -25,13 +25,19 @@ class App extends React.Component {
             <Route path="/index" component={HomePage} />
             <Route path="/search" component={SearchPage} />
             <Route path="/about" component={AboutPage} />
-            <Route path="/for-practitioner" component={ForPractitionersPage} /> 
+            <Route path="/for-practitioner" component={ForPractitionersPage} />
             <Route path="/practitioner-list" component={PractitionerListPage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/register-practitioner" component={PractitionerRegisterPage} />
+            <Route
+              path="/register-practitioner"
+              component={PractitionerRegisterPage}
+            />
             <Route path="/register-user" component={UserRegisterPage} />
             <Route path="/contact-us" component={ContactUsPage} />
-            <Route path="/practitioner-profile" component={PractitionerProfile}/>
+            <Route
+              path="/practitioner-profile"
+              component={PractitionerProfile}
+            />
             <Route
               path="/terms-and-conditions"
               component={TermsAndConditionsPage}

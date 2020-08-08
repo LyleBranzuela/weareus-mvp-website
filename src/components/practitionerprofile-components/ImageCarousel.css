@@ -1,12 +1,22 @@
-.carousel{
-    width: 1440px;
-    height: 490px;
-    margin: auto;
+.carousel {
+  /* Adjust the Carousel dimensions and positioning */
+  width: 1440px;
+  height: 550px;
+  margin: 0 auto;
 }
 
-.carousel-item > img{
-    width: 1440px;
-    max-height: 538px;
-    object-fit: cover;
-    z-index: 1;
+.carousel-item > img {
+  width: 1440px;
+  max-height: 499px;
+  object-fit: cover;
+  z-index: 1;
+  display: inline-block !important;
+}
+
+.carousel-inner > .item > img {
+  margin: 0 auto;
+}
+
+.carousel-img-margin{
+    margin-top: 80px !important;
 }

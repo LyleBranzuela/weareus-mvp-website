@@ -8,32 +8,27 @@ class ImageCarousel extends React.Component {
       <div>
         <Carousel autoplay>
           <Carousel.Item>
-            <h3>1</h3>
             <img
-              // className="d-block w-100"
+              className="carousel-img-margin"
               src={require("../../assets/images/placeholders/prac_image_carousel_placeholder.jpg")}
               alt="First slide"
             />
           </Carousel.Item>
           <Carousel.Item>
-            <h3>1</h3>
             <img
-              // className="d-block w-100"
+              className="carousel-img-margin"
               src={require("../../assets/images/placeholders/prac_image_carousel_placeholder.jpg")}
-              alt="First slide"
+              alt="second slide"
             />
           </Carousel.Item>
           <Carousel.Item>
-            <h3>1</h3>
             <img
-              // className="d-block w-100"
+              className="carousel-img-margin"
               src={require("../../assets/images/placeholders/prac_image_carousel_placeholder.jpg")}
-              alt="First slide"
+              alt="third slide"
             />
           </Carousel.Item>
-          
         </Carousel>
-        
       </div>
     );
   }
