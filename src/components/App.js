@@ -7,17 +7,12 @@ import AboutPage from "./pages/AboutPage";
 import ForPractitionersPage from "./pages/ForPractitionersPage";
 import PractitionerListPage from "./pages/PractitionerListPage";
 import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
 import UserRegisterPage from "./pages/UserRegisterPage";
 import PractitionerRegisterPage from "./pages/PractitionerRegisterPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PractitionerProfile from "./pages/PractitionerProfile";
 
 class App extends React.Component {
   render() {
@@ -35,7 +30,6 @@ class App extends React.Component {
             <Route path="/for-practitioner" component={ForPractitionersPage} />
             <Route path="/practitioner-list" component={PractitionerListPage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
             <Route
               path="/register-practitioner"
               component={PractitionerRegisterPage}

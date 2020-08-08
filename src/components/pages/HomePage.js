@@ -10,7 +10,7 @@ import { Button } from "react-bootstrap";
 class HomePage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="homePage">
         <PageHeader
           learnMoreButton={
             <React.Fragment>
