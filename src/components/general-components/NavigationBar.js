@@ -25,11 +25,7 @@ class NavigationBar extends React.Component {
           <Nav className="navBar-links">
             {/* Search Page Link */}
             <LinkContainer to="/search">
-
               <Nav.Link className="navBarEffect" href="/search">Search</Nav.Link>
-              <Nav.Link className="navBarEffect" href="/search">
-                Search
-              </Nav.Link>
             </LinkContainer>
             {/* About Page Link */}
             <LinkContainer className="navBarEffect" to="/about">
@@ -44,7 +40,7 @@ class NavigationBar extends React.Component {
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
             {/* Register Page Link */}
-            <LinkContainer to="/register" className="highlightNav">
+            <LinkContainer to="/register-user" className="highlightNav">
               <Nav.Link>Register</Nav.Link>
             </LinkContainer>
           </Nav>
