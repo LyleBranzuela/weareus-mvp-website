@@ -1,6 +1,5 @@
 import "./ContactInfo.css";
 import React from "react";
-import { Container } from "react-bootstrap";
 
 class ContactInfo extends React.Component {
   render() {
