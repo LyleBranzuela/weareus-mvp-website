@@ -2,7 +2,6 @@ import React from "react";
 import ChooseRegister from "../register-login-components/ChooseRegister";
 import PractitionerRegister from "../register-login-components/PractitionerRegister";
 import UserRegister from "../register-login-components/UserRegister";
-import MembershipForm from "../register-login-components/MembershipForm";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 
 const RegisterPage = () => {
