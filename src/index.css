@@ -15,8 +15,26 @@ hr {
   border: none;
   height: 1px;
   /* Set the hr color */
-  color: #cacaca; /* old IE */
-  background-color: #cacaca; /* Modern Browsers */
+  color: #afafaf; /* old IE */
+  background-color: #afafaf; /* Modern Browsers */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control:focus {
+  border-color: #b823dad3;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(121, 21, 143, 0.6);
 }
 
 .primaryCustomButtonStyle {
@@ -46,9 +64,6 @@ hr {
   box-shadow: none;
 }
 
-
 .siteDefaultMargin {
   margin: 0.5% 15% 0.5% 15%;
 }
-
-
