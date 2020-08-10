@@ -32,9 +32,9 @@
   height: 1px;
   left: 50%;
   position: absolute;
-  background: #b823dad3;
+  background-color: #b823dad3;
   width: 0;
-  transition: width 0.6s ease 0s, left 0.6s ease 0s, height 0.5s,
+  transition: width 0.6s ease 0s, left 0.6s ease 0s, height 0.6s,
     background-color 0.6s linear;
 }
 

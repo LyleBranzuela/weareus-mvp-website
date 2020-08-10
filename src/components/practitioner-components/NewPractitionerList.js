@@ -2,6 +2,7 @@ import "./NewPractitionerList.css";
 import React from "react";
 import NewPractitionerCard from "./NewPractitionerCard";
 import { Container, CardDeck } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class NewPractitionerList extends React.Component {
   render() {
@@ -39,7 +40,7 @@ class NewPractitionerList extends React.Component {
             />
           </CardDeck>
           <br />
-          <a href="">Show All (5)</a>
+          <Link to="practitioner-list">Show All (5)</Link>
         </Container>
       </Container>
     );
