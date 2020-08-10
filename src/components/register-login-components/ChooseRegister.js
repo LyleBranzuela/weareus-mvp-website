@@ -1,6 +1,6 @@
 import "./ChooseRegister.css";
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
 
 const ChooseRegister = () => {

@@ -6,17 +6,20 @@ import NewPractitionerList from "../practitioner-components/NewPractitionerList"
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class HomePage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="homePage">
         <PageHeader
           learnMoreButton={
             <React.Fragment>
-              <Button className="primaryCustomButtonStyle" id="headerButton">
-                Learn More
-              </Button>
+              <Link to="/for-practitioner">
+                <Button className="primaryCustomButtonStyle" id="headerButton">
+                  Learn More
+                </Button>
+              </Link>
             </React.Fragment>
           }
         />

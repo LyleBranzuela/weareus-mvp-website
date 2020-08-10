@@ -1,10 +1,9 @@
 import "./SubscriptionPlan.css";
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SubscriptionPlan = (props) => {
-  let { url } = useRouteMatch();
   const features = props.features.map((feature, index) => {
     return <li key={props.name + " Plan Feature " + index}>{feature}</li>;
   });
@@ -13,7 +12,7 @@ const SubscriptionPlan = (props) => {
     <Card className="subscriptionCard">
       <Card.Header>
         <span id={props.id} className="planTypeStyle">
-            {props.name}
+          {props.name}
         </span>
         <br />
         <span className="planTypeDescStyle">{props.description}</span>
@@ -22,21 +21,22 @@ const SubscriptionPlan = (props) => {
         <br />
         <span className="planTypeDescStyle">NZD/month</span>
         <br />
-        <Button
-          className="primaryCustomButtonStyle"
-          id="getStartedRegisterButton"
-          variant="primary"
-          type="submit"
-        >
-          Get Started
-        </Button>
+        <Link to={`/membership-form`}>
+          <Button
+            className="primaryCustomButtonStyle"
+            id="getStartedRegisterButton"
+            variant="primary"
+            type="submit"
+          >
+            Get Started
+          </Button>
+        </Link>
       </Card.Header>
       <Card.Body>
         <Card.Title>
           <strong>Features</strong>
         </Card.Title>
         <ul id={props.id.concat("Features")}>{features}</ul>
-        <Link to={`${url}/get-started`}></Link>
       </Card.Body>
     </Card>
   );

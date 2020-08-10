@@ -8,6 +8,7 @@ import ForPractitionersPage from "./pages/ForPractitionersPage";
 import PractitionerListPage from "./pages/PractitionerListPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import MembershipForm from "./register-login-components/MembershipForm";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import {
@@ -34,6 +35,7 @@ class App extends React.Component {
             <Route path="/practitioner-list" component={PractitionerListPage} />
             <Route path="/login" component={LoginPage} />
             <Route path="/register" component={RegisterPage} />
+            <Route path="/membership-form" component={MembershipForm} />
             <Route path="/contact-us" component={ContactUsPage} />
             <Route
               path="/terms-and-conditions"

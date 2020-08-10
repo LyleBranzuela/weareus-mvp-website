@@ -7,7 +7,7 @@ import CallToAction from "../homepage-components/CallToAction";
 class AboutPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="aboutPage">
         <TopContent />
         <ClientSection />
         <TeamSection />

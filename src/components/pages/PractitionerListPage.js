@@ -4,7 +4,7 @@ import CallToAction from "../homepage-components/CallToAction";
 class PractitionerListPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="practitionerList">
         <CallToAction />
       </div>
     );

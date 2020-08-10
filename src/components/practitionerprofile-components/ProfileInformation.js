@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProfileInformation.css";
-import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGraduationCap,
@@ -20,6 +19,7 @@ class ProfileInformation extends React.Component {
               <img
                 src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
                 id="profile-image-frame"
+                alt="profile image"
               />
 
               {/* Practitioner Business Name */}
@@ -28,7 +28,7 @@ class ProfileInformation extends React.Component {
                 {/* Practitioner Business Logo Image */}
                 <img
                   src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
-                  id=""
+                  alt="logo"
                   class="practitioner-logo"
                 />
               </h2>
