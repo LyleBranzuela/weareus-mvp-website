@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 class HomePage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="homePage">
         <PageHeader
           learnMoreButton={
             <React.Fragment>
