@@ -42,7 +42,7 @@ class NavigationBar extends React.Component {
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
             {/* Register Page Link */}
-            <LinkContainer to="/register-user" className="highlightNav">
+            <LinkContainer to="/register" className="highlightNav">
               <Nav.Link>Register</Nav.Link>
             </LinkContainer>
           </Nav>
