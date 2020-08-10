@@ -6,7 +6,7 @@ import CallToAction from "../homepage-components/CallToAction";
 class SearchPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="searchPage">
         <SearchField />
         <TherapyList />
         <CallToAction />
