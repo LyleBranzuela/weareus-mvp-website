@@ -13,7 +13,7 @@ class Footer extends React.Component {
           variant="light"
           className="footer footerStyle siteDefaultMargin"
         >
-          <LinkContainer to="/">
+          <LinkContainer to="/for-practitioner">
             <Navbar.Brand>
               <img
                 src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
