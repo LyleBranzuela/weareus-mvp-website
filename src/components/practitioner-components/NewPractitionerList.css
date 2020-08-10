@@ -1,0 +1,20 @@
+.newPracContainerStyle {
+  padding-top: 4%;
+  padding-bottom: 4%;
+  background-color: #F3F1F3;
+}
+
+.newPracListStyle h4 {
+  margin-bottom: 4%;
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 1.3vw;
+  font-weight: 500;
+  color: #5B5B5B;
+}
+
+.newPracListStyle a {
+  font-family: "AvenirLTPro-Heavy";
+  font-weight: 500;
+  font-size: 0.9vw;
+  color: #79158f;
+}

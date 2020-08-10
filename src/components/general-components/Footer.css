@@ -1,0 +1,14 @@
+.footerStyle {
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 1em;
+}
+
+.iconStyles {
+    float: right;
+}
+
+@media screen and (min-width: 992px) {
+    .footerStyle .nav-link  {
+      margin-left: 16px !important;
+    }
+}

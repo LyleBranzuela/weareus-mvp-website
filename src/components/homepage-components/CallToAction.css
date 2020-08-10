@@ -1,0 +1,73 @@
+.ctaStyle {
+  background-image: linear-gradient(
+    rgba(211, 173, 194, 1),
+    rgba(211, 173, 194, 1)
+  );
+  text-align: center;
+  position: relative;
+  font-family: "AvenirLTStd-Book";
+}
+
+.ctaStyle img {
+  width: 77%;
+  height: auto;
+}
+
+.ctaStyle-text {
+  text-align: left;
+  margin: 0;
+  color: white;
+  position: absolute;
+  transform: translate(30%, -135%);
+}
+
+#ctaTitle {
+  font-size: 1.6vw;
+  font-weight: 600;
+  font-family: "AvenirLTStd-Book";
+}
+
+#ctaDesc {
+  margin-top: 2%;
+  font-size: 1vw;
+  font-weight: 200;
+}
+
+#ctaButton {
+  margin-top: 2%;
+  padding: 20px 75px 20px 75px;
+  font-size: 1vw;
+}
+
+#ctaSignUp {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin: 0;
+  color: #79158F;
+  font-size: 1.3em;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#ctaSearchForm {
+  margin-top: 85px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  font-weight: 100;
+  font-family: "AvenirLTStd-Book";
+}
+
+#ctaSearchFormSubmit {
+  margin-top: 85px;
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  padding: 0px 30px 0px 30px;
+}
+
+#ctaSearchFormSubmit:hover {
+  border: 1px solid #79158F;
+  background-color: lavender;
+}

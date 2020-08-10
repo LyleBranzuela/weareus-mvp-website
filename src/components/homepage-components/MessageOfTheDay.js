@@ -1,16 +1,17 @@
+import "./MessageOfTheDay.css";
 import React from "react";
 import { Container } from "react-bootstrap";
 
-const MessageOfTheDay = () => {
-  return (
-    <Container fluid>
-      <p>
-        <strong>We are Us</strong> connects you with health, wellness, and
-        self-improvement <br /> self-improvement practicioners throughout New
-        Zealand.
-      </p>
-    </Container>
-  );
-};
+class MessageOfTheDay extends React.Component {
+  render() {
+    return (
+      <Container fluid>
+        <p className="motdStyle">
+          {this.props.motd}
+        </p>
+      </Container>
+    );
+  }
+}
 
 export default MessageOfTheDay;
