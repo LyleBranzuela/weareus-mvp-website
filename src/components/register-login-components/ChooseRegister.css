@@ -19,15 +19,6 @@
   margin-right: 10px;
 }
 
-.chooseRegisterStyle span {
-  display: block;
-  text-align: left;
-  margin-bottom: 1px;
-  margin-left: 30px;
-  margin-right: 30px;
-  font-size: 1.1em;
-}
-
 .chooseRegisterStyle button {
   margin-top: 75px;
   padding: 20px 60px 20px 60px;
@@ -35,9 +26,19 @@
   position: relative;
 }
 
-#userRegisterCol {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
+.chooseRegisterStyle ul {
+  text-align: left;
+  margin-left: 5px;
+  list-style: none;
+}
+
+.chooseRegisterStyle li {
+  font-size: 1.1em;
+  padding: 0.1em 0 1.1em 35px;
+  background: url("../../assets/icons/check_circle.svg") no-repeat;
+}
+
+.chooseRegisterStyle .col {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -45,12 +46,12 @@
   padding: 10% 5% 15% 5%;
 }
 
+#userRegisterCol {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
+}
+
 #practitionerRegisterCol {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../../assets/images/placeholders/listing_placeholder_1.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-  padding: 10% 5% 15% 5%;
 }

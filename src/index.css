@@ -11,6 +11,14 @@ button:focus {
   outline: none;
 }
 
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #cacaca; /* old IE */
+  background-color: #cacaca; /* Modern Browsers */
+}
+
 .primaryCustomButtonStyle {
   font-family: "AvenirLTPro-Heavy";
   background-color: #79158f;
@@ -42,3 +50,5 @@ button:focus {
 .siteDefaultMargin {
   margin: 0.5% 15% 0.5% 15%;
 }
+
+
