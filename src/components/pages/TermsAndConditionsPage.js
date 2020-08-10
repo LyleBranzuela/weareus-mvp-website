@@ -1,8 +1,20 @@
 import React from "react";
+import { pageTransition } from "../App";
+import { motion } from "framer-motion";
 
 class TermsAndConditionsPage extends React.Component {
   render() {
-    return <div className="tacPageStyle">Terms and Condition</div>;
+    return (
+      <motion.div
+        intial="out"
+        animate="in"
+        exit="out"
+        variants={pageTransition}
+        className="tacPageStyle"
+      >
+        Terms and Condition
+      </motion.div>
+    );
   }
 }
 

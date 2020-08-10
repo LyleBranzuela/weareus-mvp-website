@@ -5,11 +5,19 @@ import FeatureCarousel from "../for-practitioner-components/FeatureCarousel";
 import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
 import MessageOfTheDay from "../homepage-components/MessageOfTheDay";
 import CallToAction from "../homepage-components/CallToAction";
+import { pageTransition } from "../App";
+import { motion } from "framer-motion";
 
 class ForPractitionersPage extends React.Component {
   render() {
     return (
-      <div className="forPractitionersStyle">
+      <motion.div
+        intial="out"
+        animate="in"
+        exit="out"
+        variants={pageTransition}
+        className="forPractitionersStyle"
+      >
         <PageHeader />
         <MessageOfTheDay
           motd={
@@ -30,7 +38,7 @@ class ForPractitionersPage extends React.Component {
         <FeatureCarousel />
         <PractitionerCTA />
         <CallToAction />
-      </div>
+      </motion.div>
     );
   }
 }
