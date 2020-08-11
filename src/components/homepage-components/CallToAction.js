@@ -1,6 +1,7 @@
 import "./CallToAction.css";
 import React from "react";
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class CallToAction extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class CallToAction extends React.Component {
           <Container className="ctaStyle-text">
             <Row>
               <h1 id="ctaTitle">
-                Practitioners, discover a refreshing new  <br />
+                Practitioners, discover a refreshing new <br />
                 way to meet more clients.
               </h1>
             </Row>
@@ -29,7 +30,15 @@ class CallToAction extends React.Component {
               </p>
             </Row>
             <Row>
-              <Button id="ctaButton">Join Us Now</Button>
+              <Link to="/register">
+                <Button
+                  className="primaryCustomButtonStyle"
+                  variant="primary"
+                  id="ctaButton"
+                >
+                  Join Us Now
+                </Button>
+              </Link>
             </Row>
           </Container>
         </div>

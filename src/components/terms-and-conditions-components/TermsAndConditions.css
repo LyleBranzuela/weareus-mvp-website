@@ -1,0 +1,25 @@
+.tacPage {
+ margin-left:15%;
+ margin-right:15%;
+ margin-top: 8%;
+ margin-bottom: 8%;
+}
+
+.tacHeader{
+  font-size: 1.6vw;
+  font-weight: 300;
+  font-family: "AvenirLTPro-Heavy";
+  text-align: center;
+  color: #79158f;
+  padding-bottom: 5%;
+}
+
+.tacText{
+  font-size: 0.9vw;
+  font-weight: 500;
+  font-family: "AvenirLTStd-Book";
+  text-align: left;
+  color: gray;
+  padding-left: 10%;
+  padding-right: 10%;
+}

@@ -11,7 +11,7 @@ class Footer extends React.Component {
           collapseOnSelect
           expand="lg"
           variant="light"
-          className="footer footerStyle"
+          className="footer footerStyle siteDefaultMargin"
         >
           <LinkContainer to="/">
             <Navbar.Brand>
@@ -24,17 +24,17 @@ class Footer extends React.Component {
           </LinkContainer>
           <Nav>
             {/* Register Page Link */}
-            <LinkContainer to="/search">
+            <LinkContainer className="navBarEffect" to="/for-practitioner">
               <Nav.Link href="/register-practitioner">
                 Register As Practicioner
               </Nav.Link>
-            </LinkContainer>
+            </LinkContainer >
             {/* Contact Us Page Link */}
-            <LinkContainer to="/contact-us">
+            <LinkContainer className="navBarEffect" to="/contact-us">
               <Nav.Link>Contact Us</Nav.Link>
-            </LinkContainer>
+            </LinkContainer >
             {/* Terms and Conditions Page Link */}
-            <LinkContainer to="/terms-and-conditions">
+            <LinkContainer className="navBarEffect" to="/terms-and-conditions">
               <Nav.Link>Terms And Conditions</Nav.Link>
             </LinkContainer>
           </Nav>

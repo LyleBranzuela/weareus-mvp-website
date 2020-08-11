@@ -88,7 +88,12 @@ class SearchField extends React.Component {
                 </Dropdown>
               </Col>
               <Col>
-                <Button id="searchFieldButton" variant="primary" type="submit">
+                <Button
+                  className="primaryCustomButtonStyle"
+                  id="searchFieldButton"
+                  variant="primary"
+                  type="submit"
+                >
                   Search
                 </Button>
               </Col>

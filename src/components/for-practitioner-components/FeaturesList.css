@@ -1,12 +1,3 @@
 .featuresListStyle  {
   padding-bottom: 50px;
 }
-
-
-.featuresListStyle hr {
-  border: none;
-  height: 1px;
-  /* Set the hr color */
-  color: #cacaca; /* old IE */
-  background-color: #cacaca; /* Modern Browsers */
-}

@@ -5,16 +5,29 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
-import {Button} from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { pageTransition } from "../App";
+import { motion } from "framer-motion";
 
 class HomePage extends React.Component {
   render() {
     return (
-      <div className="homePage">
+      <motion.div
+        intial="out"
+        animate="in"
+        exit="out"
+        variants={pageTransition}
+        className="homePage"
+      >
         <PageHeader
           learnMoreButton={
             <React.Fragment>
-              <Button id="headerButton">Learn More</Button>
+              <Link to="/for-practitioner">
+                <Button className="primaryCustomButtonStyle" id="headerButton">
+                  Learn More
+                </Button>
+              </Link>
             </React.Fragment>
           }
         />
@@ -30,7 +43,7 @@ class HomePage extends React.Component {
         <SearchField />
         <PractitionerList />
         <CallToAction />
-      </div>
+      </motion.div>
     );
   }
 }

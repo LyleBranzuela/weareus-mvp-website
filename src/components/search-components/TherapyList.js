@@ -16,7 +16,7 @@ class TherapyList extends React.Component {
       "Bioptron Light Therapy",
     ];
     const searchKeywords = placeholderList.map((searchKeyword) => (
-      <li>{searchKeyword}</li>
+      <li key={searchKeyword}>{searchKeyword}</li>
     ));
 
     return (
