@@ -1,10 +1,11 @@
 import React from "react";
 import { pageTransition } from "../App";
 import { motion } from "framer-motion";
+import TermsAndConditions from "../terms-and-conditions-components/TermsAndConditions";
 
 class TermsAndConditionsPage extends React.Component {
   render() {
-    return (
+    return 
       <motion.div
         intial="out"
         animate="in"
@@ -12,7 +13,7 @@ class TermsAndConditionsPage extends React.Component {
         variants={pageTransition}
         className="tacPageStyle"
       >
-        Terms and Condition
+        <TermsAndConditions />
       </motion.div>
     );
   }
