@@ -1,7 +1,7 @@
 .contactUsPage {
   display: block;
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
     url("../../assets/images/contact_us_placeholder_bg.jpg");
   background-position: center center;
   background-size: cover;

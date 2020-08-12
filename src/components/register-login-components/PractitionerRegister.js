@@ -1,7 +1,8 @@
 import "./PractitionerRegister.css";
 import React from "react";
-import { Container, CardGroup } from "react-bootstrap";
+import { Container, Card, CardGroup, Accordion } from "react-bootstrap";
 import SubscriptionPlan from "./SubscriptionPlan";
+import { Link } from "react-router-dom";
 
 class PractitionerRegister extends React.Component {
   render() {
@@ -25,7 +26,7 @@ class PractitionerRegister extends React.Component {
     ];
 
     return (
-      <Container>
+      <Container fluid>
         {/** Register As Practitioner Details */}
         <Container className="practitionerRegisterStyle">
           <h2>Become one of Us</h2>
@@ -73,6 +74,67 @@ class PractitionerRegister extends React.Component {
               features={businessPlanFeatures}
             />
           </CardGroup>
+          <p>
+            *
+            <br />
+            The team behind We are Us are experts in visual communication and
+            how best to market your business through our site. As such, we
+            review the copy and images that you upload before it is published to
+            the site. We will provide you with feedback on how to improve the
+            copy and images should if it isneeded to enhance the impact of your
+            listing.
+          </p>
+        </Container>
+
+        {/** FAQ Section for The Subscription Plans*/}
+        <Container fluid className="faqSection">
+          <Container>
+            <h2>FAQ</h2>
+            <Accordion defaultActiveKey="0">
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="0">
+                  Help. How do I know what to write?
+                  <img
+                    src={require("../../assets/icons/accordion_arrow.svg")}
+                    alt="accordion_arrow"
+                  />
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec commodo eget justo id volutpat. Praesent faucibus
+                    vestibulum odio. Nullam lacinia rutrum velit scelerisque
+                    rutrum.
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="1">
+                  How does this 12 month 50% off deal work?
+                  <img
+                    src={require("../../assets/icons/accordion_arrow.svg")}
+                    alt="accordion_arrow"
+                  />
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="1">
+                  <Card.Body>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec commodo eget justo id volutpat. Praesent faucibus
+                    vestibulum odio. Nullam lacinia rutrum velit scelerisque
+                    rutrum.
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <br />
+              <Link to={`/membership-form`}>
+                <u>Join We are Us now</u>
+              </Link>
+              <br />
+              <Link to="practitioner-list">
+                <u>Want to talk it over? Drop us a line</u>
+              </Link>
+            </Accordion>
+          </Container>
         </Container>
       </Container>
     );
