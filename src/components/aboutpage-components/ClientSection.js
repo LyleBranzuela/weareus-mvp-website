@@ -4,13 +4,12 @@ import "./ClientSection.css";
 
 function ClientSection() {
   return (
-    <div classname="container-fluid aboutFluidContainer">
+    <div className="container-fluid aboutFluidContainer">
       <img
         src={require("../../assets/images/weareus_team/team_charis_robinson.jpg")}
         alt="charis"
         id="mainFrame"
       />
-
       <h5 id="heavyHeader">Hi, I'm Charis.</h5>
       <p id="lightHeader">
         Let me tell you why I know how powerful client reviews can be to

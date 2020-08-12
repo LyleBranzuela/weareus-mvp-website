@@ -25,9 +25,9 @@
 }
 
 .totalCostContainer {
-    padding-top: 75px;
-    padding-bottom: 75px;
-    width: 45%;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  width: 45%;
 }
 
 .totalCostContainer h2 {
@@ -43,6 +43,11 @@
 }
 
 .orderDataSection {
-    font-family: "AvenirLTStd-Book";
-    color: #79158f;
+  font-family: "AvenirLTStd-Book";
+  color: #79158f;
+}
+
+#paymentFormButton {
+  margin-top: 50px;
+  padding: 15px 85px 15px 85px;
 }

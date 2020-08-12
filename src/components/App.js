@@ -45,6 +45,7 @@ function App() {
 }
 export default App;
 
+// Animation Variantions
 export const pageTransition = {
   in: {
     opacity: 1,
