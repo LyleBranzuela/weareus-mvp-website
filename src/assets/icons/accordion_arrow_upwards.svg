@@ -9,14 +9,14 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="icon_certificate.svg"
-   viewBox="0 0 17 24"
-   height="24"
-   width="17"
-   id="svg92"
+   sodipodi:docname="accordion_arrow_upwards.svg"
+   viewBox="0 0 19.200001 10.666667"
+   height="10.666667"
+   width="19.200001"
+   id="svg22"
    version="1.1">
   <metadata
-     id="metadata98">
+     id="metadata28">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -28,19 +28,19 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs96" />
+     id="defs26" />
   <sodipodi:namedview
-     inkscape:current-layer="g100"
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="0"
-     inkscape:cy="12"
-     inkscape:cx="8.5"
-     inkscape:zoom="35.416667"
+     inkscape:current-layer="g30"
+     inkscape:window-maximized="1"
+     inkscape:window-y="-8"
+     inkscape:window-x="-8"
+     inkscape:cy="5.3333335"
+     inkscape:cx="9.6000004"
+     inkscape:zoom="55.156248"
      showgrid="false"
-     id="namedview94"
-     inkscape:window-height="480"
-     inkscape:window-width="697"
+     id="namedview24"
+     inkscape:window-height="1017"
+     inkscape:window-width="1920"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      guidetolerance="10"
@@ -50,12 +50,15 @@
      bordercolor="#666666"
      pagecolor="#ffffff" />
   <g
-     id="g100"
+     id="g30"
      inkscape:label="Image"
      inkscape:groupmode="layer">
     <image
-       id="image102"
-       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAYCAYAAAAcYhYyAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9
+       transform="scale(1,-1)"
+       y="-10.666667"
+       x="0"
+       id="image32"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAKCAYAAAC5Sw6hAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9
 kT1Iw1AUhU9TpUUqDnaQ4pChOlkQFXGUViyChdJWaNXB5KV/0KQhSXFxFFwLDv4sVh1cnHV1cBUE
 wR8QJ0cnRRcp8b6k0CLGB5f3cd47h/vuA4RWjalm3ySgapaRScbFfGFVDLwiiBBVBILETD2VXczB
 c33dw8f3uxjP8r735xpUiiYDfCLxPNMNi3iDeHbT0jnvE4dZRVKIz4knDGqQ+JHrsstvnMsOCzwz
@@ -63,23 +66,16 @@ bOQyCeIwsVjuYbmHWcVQiWeIo4qqUb6Qd1nhvMVZrTVYp0/+wlBRW8lynWoUSSwhhTREyGigihos
 xGjXSDGRofO4hz/i+NPkkslVBSPHAupQITl+8D/4PVuzND3lJoXiQP+LbX+MAYFdoN207e9j226f
 AP5n4Err+ustYO6T9GZXix4BQ9vAxXVXk/eAyx1g5EmXDMmR/FRCqQS8n9E3FYDhW2BgzZ1b5xyn
 D0COZrV8AxwcAuNlyl73eHewd27/3unM7wcWZHKC8NCwNgAAAAZiS0dEAP8A/wD/oL2nkwAAAAlw
-SFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB+QIDAglAjNJ5z4AAAK8SURBVDjLlZQ9SCNdFIafTGQY
-iKAkAY0GLNSg4E9lIQhKGhsNWgS0VewsLIKI1XZiYStWFhZaWEYhpDBEJEEF0UIRRxibESY/IKJg
-Jpm52+zmy8Rsvt23u+855+FwDuci6lQul8Xn56cQQoizszOxsrIiDg8PhW3bolQqia+vr/oS4RJC
-CH7Jtm02NjYwDAO/308ul+N32O/38/7+jizLbG9v09bW9rsMiRrd39/z+vqKZVkYhkENn0KhgGma
-fHx8cHl5WVuGSwghNE3j6OiIp6cnKpUK/ydJkujt7WVubo7R0VFaAFKpFA8PD9UkWZaJRCKMj4/j
-8/koFotkMhni8TimaWLbNqqqcnp6+h+kvb3dAdjc3KSvr6/qdXR0MD8/z9DQEFtbW5imCVCdi6Sq
-Kul0uloQiUQcgFr19/czMzNTfd/e3vL4+Ii7XC7/eHt7qwaWl5dpbW394zy8Xi/JZBKASqXC3d0d
-UigUciT5fL6mQ/V6vY53KBRCWlxcdJjFYrEppD4ejUaRNE1zmJlMpimkPv7y8oKk67rDjMfjqKra
-EKCqKicnJw6vUCjgPjg4+OF2u3l+fsa2bSzLIpvNYlkWXq8XRVHI5/Mkk0n29/er65VlmYWFBaan
-p6nezt7eHhcXF/ytwuEwS0tLztvp6uriXxQMBp23A2BZFldXVwAcHx+Ty+W+FXZ2dhKNRlEUhZGR
-EVwulxNSK03T2NnZIRgMMjExwfn5Obqus76+Tk9Pzzf4N4iu66RSKaampiiVSlxfXzM2NoaiKKTT
-aSYnJ+nu7nZAWuqphmGQSCRIJBJVr3atg4OD3yBSPSSfzzcdaKNZSc2SAoEAsViMQCDQFNLyp06G
-h4dZXV3F4/EwMDDA7u4uNzc3DTtt2Ek4HCYWi+HxeABQFIW1tTVmZ2cbdkL995/NZkUzNYr/BAYM
-puGV+GwYAAAAAElFTkSuQmCC
+SFlzAAAN1wAADdcBQiibeAAAAAd0SU1FB+QIDAglGbksLtIAAAEzSURBVCjPnZExSkNREEXv5Ito
+K+IK0v55rWtwCf99LMUiEhCFkIT4BUGCCAGxUbB6kw0EIU0qSSUKvimTVkjhAiyEsQoETSJx2nvv
+mcsM5Xn+ZmY9EWniH+O9vySivZKZPQJoeO/PV4VkWXYNoGZmvURVB8y8AaDBzF+q+rRCk1MiaotI
+PQEAVR045zYBtNI0/VTV4V8QADUiaocQagCQTMUY44CZt4iozswfqvo8h0FZlnWI6ISIWiGE1lRI
+Zl2q2k/TdJuIzpxzkxjjyyzEe98hoiqApohczGaTnytVtc/MOwAK59x7jPF1CgFwBOBYRK5+VV1w
+Bsrz/NbMDgDsA9gFUAFQFZGbeYG1BSArl8uV8Xi8bmYBgJnZYbfbvVv0AFr2naIoSqPR6B7AUEQe
+lnm/AYW0e6UATN+1AAAAAElFTkSuQmCC
 "
        preserveAspectRatio="none"
-       height="24"
-       width="17" />
+       height="10.666667"
+       width="19.200001" />
   </g>
 </svg>

@@ -1,12 +1,12 @@
 import React from "react";
 import "./ProfileInformation.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGraduationCap,
-  faAward,
-  faUserFriends,
-} from "@fortawesome/free-solid-svg-icons";
-import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import icon_diploma from "../../assets/icons/icon_diploma.svg";
+import icon_certificate from "../../assets/icons/icon_certificate.svg";
+import icon_memberships from "../../assets/icons/icon_memberships.svg";
+import icon_accordion_arrow from "../../assets/icons/accordion_arrow.svg";
+import icon_accordion_arrow_upwards from "../../assets/icons/accordion_arrow_upwards.svg";
+import icon_accordion_arrow_purple from "../../assets/icons/accordion_arrow_purple.svg";
+import icon_accordion_arrow_upwards_purple from "../../assets/icons/accordion_arrow_upwards_purple.svg";
 
 class ProfileInformation extends React.Component {
   render() {
@@ -23,7 +23,7 @@ class ProfileInformation extends React.Component {
               />
 
               {/* Practitioner Business Name */}
-              <h2 className="practitioner-title">
+              <h2 className="practitioner-title" id="practitioner-name">
                 Atma Studio Yoga
                 {/* Practitioner Business Logo Image */}
                 <img
@@ -33,18 +33,32 @@ class ProfileInformation extends React.Component {
                 />
               </h2>
               {/* Practitioner Specialty Category/ies */}
-              <span className="font-body" style={{ color: "#79158f" }}>
+              <span
+                className="font-body"
+                style={{ color: "#79158f" }}
+                id="category"
+              >
                 Herval Medicine, Massage, Reiki
               </span>
               <br />
               {/* Location */}
-              <span className="font-body">Albany, Auckland</span>
+              <span className="font-body" id="suburb">
+                Albany,{" "}
+              </span>
+              <span className="font-body" id="city">
+                {" "}
+                Auckland
+              </span>
+
               <br />
               <br />
               <p className="font-body box">Covered by ACC</p>
-              <h5 className="practitioner-name">Name</h5>
+              <h5 className="practitioner-name" id="person-name">
+                Name
+              </h5>
+
               <h5 className="title-header">About</h5>
-              <p className="font-body">
+              <p className="font-body" id="about">
                 Understanding your body's responses and tension patterns can
                 help you understand the conscious choices you make and puts you
                 back in charge of your own well-being. Experience day-to-day
@@ -57,21 +71,33 @@ class ProfileInformation extends React.Component {
 
               <div className="read-more-button">
                 <span>
-                  Read More <BsChevronDown />
+                  Read More{" "}
+                  <img
+                    src={icon_accordion_arrow_purple}
+                    className="read-more-arrow"
+                  ></img>
                 </span>
               </div>
               <hr />
               <h5 className="title-header">
-                Specialties <BsChevronDown className="arrow-style" />
+                Specialties
+                <img
+                  src={icon_accordion_arrow}
+                  className="arrow-position"
+                ></img>
               </h5>
 
               {/* Services Section */}
               <hr />
               <h5 className="title-header">
-                Services <BsChevronDown className="arrow-style" />
+                Services
+                <img
+                  src={icon_accordion_arrow}
+                  className="arrow-position"
+                ></img>
               </h5>
 
-              <ul className="service-list-style">
+              <ul className="service-list-style" id="services">
                 <li>
                   <h5>Reflexology</h5>
                 </li>
@@ -87,20 +113,20 @@ class ProfileInformation extends React.Component {
               </ul>
               <hr />
               <h5 className="title-header">
-                Training, Qualifications & Memberships{" "}
-                <BsChevronDown className="arrow-style" />
+                Training, Qualifications & Memberships
+                <img
+                  src={icon_accordion_arrow_upwards}
+                  className="arrow-position"
+                ></img>
               </h5>
               {/* End of Services Section */}
 
               {/* Education section */}
               <h6 className="title-header">
-                <FontAwesomeIcon
-                  icon={faGraduationCap}
-                  style={{ marginRight: "10px" }}
-                />
+                <img src={icon_diploma} style={{ paddingRight: "5px" }}></img>
                 Diplomas
               </h6>
-              <div className="font-body">
+              <div className="font-body" id="education">
                 <span>International Institute of Reflexology</span>
                 <br />
                 <span>Level 4 Anatomy & Physiology/Pathology (3 yrs)</span>
@@ -111,13 +137,13 @@ class ProfileInformation extends React.Component {
 
               {/* Certifications/Qualifications Section */}
               <h6 className="title-header">
-                <FontAwesomeIcon
-                  icon={faAward}
-                  style={{ marginRight: "10px" }}
-                />
+                <img
+                  src={icon_certificate}
+                  style={{ paddingRight: "5px" }}
+                ></img>
                 Certificates
               </h6>
-              <div className="font-body">
+              <div className="font-body" id="certificates">
                 <span>
                   How Reflexology Helps with Conception, Pregnancy & Childbirth
                   (3 yrs)
@@ -136,18 +162,18 @@ class ProfileInformation extends React.Component {
 
               {/* Organisation memberships */}
               <h6 className="title-header">
-                <FontAwesomeIcon
-                  icon={faUserFriends}
-                  style={{ marginRight: "10px" }}
-                />
+                <img
+                  src={icon_memberships}
+                  style={{ paddingRight: "5px" }}
+                ></img>
                 Memberships
               </h6>
-              <div className="font-body">
+              <div className="font-body" id="memberships">
                 {/* Show regular text IF link is NOT given */}
-                <a>Reflexology Institute New Zealand</a>
+                <a id="membership-no-link">Reflexology Institute New Zealand</a>
                 <br />
                 {/* Show link if the IF the website is given */}
-                <a href="" style={{ color: "#79158f" }}>
+                <a href="" style={{ color: "#79158f" }} id="membership-link">
                   <u>National Health Practitioners of New Zealand</u>
                 </a>
               </div>
@@ -160,15 +186,22 @@ class ProfileInformation extends React.Component {
                   <div className="contact-card-body">
                     <h5 className="contact-card-title">Contact Details</h5>
                     <div style={{ fontSize: "18px" }}>
-                      <span className="contact-card-practitioner-name">
+                      <span
+                        className="contact-card-practitioner-name"
+                        id="practitioner-name"
+                      >
                         Atma Studio Yoga
                       </span>
                       <br />
-                      <span>Name</span>
+                      <span id="person-name">Name</span>
                       <br />
-                      <span>184 Beech Road, Dairy Flat,</span>
+                      <span id="str-no">184 </span>
+                      <span id="str-name">Beech Road,</span>
+                      <span id="region">Dairy Flat,</span>
                       <br />
-                      <span>RD4 Albany, Auckland 0794</span>
+                      <span id="suburb">RD4 Albany,</span>
+                      <span id="city"> Auckland </span>
+                      <span id="postcode">0794</span>
                     </div>
                     <hr />
                     {/* Phone Number */}
@@ -177,7 +210,6 @@ class ProfileInformation extends React.Component {
                     <hr />
                     {/* Email */}
                     <h5 className="contact-card-personal">gill@sbsltd.co.nz</h5>
-                    
                   </div>
                 </div>
               </div>
