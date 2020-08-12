@@ -6,6 +6,7 @@ import SearchPage from "./pages/SearchPage";
 import AboutPage from "./pages/AboutPage";
 import ForPractitionersPage from "./pages/ForPractitionersPage";
 import PractitionerListPage from "./pages/PractitionerListPage";
+import PractitionerProfile from "./pages/PractitionerProfile";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import MembershipForm from "./register-login-components/MembershipForm";
@@ -33,6 +34,11 @@ function App() {
           <Route path="/register" component={RegisterPage} />
           <Route path="/membership-form" component={MembershipForm} />
           <Route path="/contact-us" component={ContactUsPage} />
+          {/* Practitioner Profile page */}
+          <Route
+            path="/practitioner-profile"
+            component={PractitionerProfile}
+          ></Route>
           <Route
             path="/terms-and-conditions"
             component={TermsAndConditionsPage}
