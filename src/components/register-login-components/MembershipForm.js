@@ -18,14 +18,14 @@ class MembershipForm extends React.Component {
             <h2>Membership Details</h2>
             <Form>
               <Row>
-                {/* First Name Form Group */}
+                {/** First Name Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupFirstName">
                     <Form.Label>First Name*</Form.Label>
                     <Form.Control type="text" placeholder="First Name" />
                   </Form.Group>
                 </Col>
-                {/* Last Name Form Group */}
+                {/** Last Name Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupLastName">
                     <Form.Label>Last Name*</Form.Label>
@@ -34,14 +34,14 @@ class MembershipForm extends React.Component {
                 </Col>
               </Row>
               <Row>
-                {/* Email Address Form Group */}
+                {/** Email Address Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupEmail">
                     <Form.Label>Email Address*</Form.Label>
                     <Form.Control type="text" placeholder="Email" />
                   </Form.Group>
                 </Col>
-                {/* Phone Number Form Group */}
+                {/** Phone Number Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupPhone">
                     <Form.Label>Phone Number*</Form.Label>
@@ -50,7 +50,7 @@ class MembershipForm extends React.Component {
                 </Col>
               </Row>
               <Row>
-                {/* Account Username Form Group */}
+                {/** Account Username Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupUsername">
                     <Form.Label>Account Username*</Form.Label>
@@ -59,7 +59,7 @@ class MembershipForm extends React.Component {
                 </Col>
               </Row>
               <Row>
-                {/* Account Password Form Group */}
+                {/** Account Password Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupPassword">
                     <Form.Label>Create Account Password*</Form.Label>
@@ -68,7 +68,7 @@ class MembershipForm extends React.Component {
                 </Col>
               </Row>
               <Row>
-                {/* Confirm Password Form Group */}
+                {/** Confirm Password Form Group */}
                 <Col>
                   <Form.Group controlId="memberFormGroupConfirmPassword">
                     <Form.Label>Confirm Password*</Form.Label>
@@ -81,11 +81,13 @@ class MembershipForm extends React.Component {
               </Row>
             </Form>
           </Container>
+          {/** Total Cost Calculator Section */}
           <Container className="totalCostContainer">
             <Row>
               <Col>
                 <h2>Your Order</h2>
                 <hr size="50" />
+                {/** Section: Membership Type */}
                 <Row>
                   <Col sm={3}>
                     <span className="orderFormSection">Membership</span>
@@ -97,6 +99,7 @@ class MembershipForm extends React.Component {
                   </Col>
                 </Row>
                 <hr size="50" />
+                {/** Section: Total Amount */}
                 <Row>
                   <Col sm={3}>
                     <span className="orderFormSection">Total</span>
@@ -108,6 +111,7 @@ class MembershipForm extends React.Component {
                   </Col>
                 </Row>
                 <hr size="50" />
+                {/** Section: Recurring Totals Amount */}
                 <Row>
                   <Col sm={3}>
                     <span className="orderFormSection">Recurring Totals</span>
@@ -119,6 +123,7 @@ class MembershipForm extends React.Component {
                   </Col>
                 </Row>
                 <hr size="50" />
+                {/** Section: Pay Button */}
                 <Button
                   className="primaryCustomButtonStyle"
                   id="paymentFormButton"

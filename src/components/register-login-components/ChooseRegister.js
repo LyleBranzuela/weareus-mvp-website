@@ -7,6 +7,7 @@ const ChooseRegister = () => {
   let { url } = useRouteMatch();
   return (
     <Row className="chooseRegisterStyle siteDefaultMargin">
+      {/** Register as User Section */}
       <Col id="userRegisterCol">
         <h2>Register as a User</h2>
         <ul>
@@ -25,6 +26,7 @@ const ChooseRegister = () => {
           </Button>
         </Link>
       </Col>
+      {/** Register as Practitioner Section */}
       <Col id="practitionerRegisterCol">
         <h2>Register as a Practitioner</h2>
         <ul>

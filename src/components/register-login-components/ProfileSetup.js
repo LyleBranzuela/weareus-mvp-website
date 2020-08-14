@@ -5,6 +5,7 @@ import { Container, Form, Row, Col } from "react-bootstrap";
 const ProfileSetup = () => {
   return (
     <Container className="profileSetupStyle">
+      {/** Profile Setup Header  */}
       <h2>Profile Set-up</h2>
       <h5>
         Great, now that you are one of Us, we want to get you started in the
@@ -25,7 +26,7 @@ const ProfileSetup = () => {
       <hr size="50" />
       <Form>
         <h5>Your Profile Name</h5>
-        {/* Profile Name Form Group */}
+        {/** Profile Name Form Group */}
         <Form.Group controlId="profileSetupProfileName">
           <Form.Label>
             This is the name that gets highlighted on your We are Us page.
@@ -34,21 +35,21 @@ const ProfileSetup = () => {
         </Form.Group>
         <hr size="50" />
         <h5>Your Contact Details</h5>
-        {/* User Name Form Group */}
+        {/** User Name Form Group */}
         <Form.Group controlId="profileSetupUserName">
           <Form.Label>Your Name:</Form.Label>
           <Form.Control type="text" placeholder="Enter Name" />
         </Form.Group>
         <Row>
           <Col>
-            {/* Contact Number Form Group */}
+            {/** Contact Number Form Group */}
             <Form.Group controlId="profileSetupContactNo">
               <Form.Label>Your Contact Phone Number:</Form.Label>
               <Form.Control type="number" placeholder="Enter Contact Number" />
             </Form.Group>
           </Col>
           <Col>
-            {/* Contact Email Form Group */}
+            {/** Contact Email Form Group */}
             <Form.Group controlId="profileSetupEmail">
               <Form.Label>Your Contact Email:</Form.Label>
               <Form.Control type="email" placeholder="Enter Email" />
@@ -57,7 +58,7 @@ const ProfileSetup = () => {
         </Row>
         <Row>
           <Col>
-            {/* Building Name/Number Form Group */}
+            {/** Building Name/Number Form Group */}
             <Form.Group controlId="profileSetupBuilding">
               <Form.Label>Building Name/Number:</Form.Label>
               <Form.Control
@@ -67,7 +68,7 @@ const ProfileSetup = () => {
             </Form.Group>
           </Col>
           <Col>
-            {/* Contact Email Form Group */}
+            {/** Contact Email Form Group */}
             <Form.Group controlId="profileSetupStreet">
               <Form.Label>Street:</Form.Label>
               <Form.Control type="text" placeholder="Enter Street" />
@@ -76,14 +77,14 @@ const ProfileSetup = () => {
         </Row>
         <Row>
           <Col>
-            {/* Town/Suburb Form Group */}
+            {/** Town/Suburb Form Group */}
             <Form.Group controlId="profileSetupSuburb">
               <Form.Label>Town/Suburb:</Form.Label>
               <Form.Control type="text" placeholder="Enter Town/Suburb" />
             </Form.Group>
           </Col>
           <Col>
-            {/* Postcode Form Group */}
+            {/** Postcode Form Group */}
             <Form.Group controlId="profileSetupPostcode">
               <Form.Label>Postcode:</Form.Label>
               <Form.Control type="number" placeholder="Enter Postcode" />
@@ -92,7 +93,7 @@ const ProfileSetup = () => {
         </Row>
         <Row>
           <Col sm={6}>
-            {/* City Form Group */}
+            {/** City Form Group */}
             <Form.Group controlId="profileSetupCity">
               <Form.Label>City:</Form.Label>
               <Form.Control type="text" placeholder="Enter City" />
@@ -101,8 +102,22 @@ const ProfileSetup = () => {
         </Row>
         <hr size="50" />
         <h5>Your Logo</h5>
+        {/** Logo Form Group */}
+        <Form.Group>
+          <Form.Label>Size: 720px wide by 720px high</Form.Label>
+          <Form.File id="profileSetupLogo" />
+        </Form.Group>
         <hr size="50" />
         <h5>Your Profile Image</h5>
+        {/** Profile Image Form Group */}
+        <Form.Group>
+          <Form.Label>
+            This is where you put your headshot so people can put a face to a
+            name. <br />
+            Size: 720px wide by 720px high
+          </Form.Label>
+          <Form.File id="profileSetupLogo" />
+        </Form.Group>
         <hr size="50" />
         <h5>Your Cover Image</h5>
         <hr size="50" />

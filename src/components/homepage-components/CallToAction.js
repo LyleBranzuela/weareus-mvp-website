@@ -7,6 +7,7 @@ class CallToAction extends React.Component {
   render() {
     return (
       <div>
+        {/* Call To Action Banner Section */}
         <div className="ctaStyle">
           <img
             src={require("../../assets/images/promotion_bg_cropped.jpg")}
@@ -42,6 +43,7 @@ class CallToAction extends React.Component {
             </Row>
           </Container>
         </div>
+        {/* Call To Action Email Signup Section */}
         <Container>
           <Row>
             <Col sm={6}>

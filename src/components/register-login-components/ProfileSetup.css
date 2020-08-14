@@ -7,3 +7,22 @@
   color: #79158f;
   margin-bottom: 80px;
 }
+
+.profileSetupStyle form {
+  font-family: "AvenirLTStd-Book";
+}
+
+.profileSetupStyle .form-group {
+  margin-bottom: 30px;
+}
+
+.profileSetupStyle form h5 {
+  color: #79158f;
+  font-family: "AvenirLTPro-Heavy";
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.profileSetupStyle .form-label {
+  font-size: 1em;
+}

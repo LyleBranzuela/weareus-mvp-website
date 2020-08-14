@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavigationBar />
+      {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
           <Route exact path={["/index.html", "/"]}>
@@ -45,7 +46,7 @@ function App() {
 }
 export default App;
 
-// Animation Variantions
+// Animation Variantions 
 export const pageTransition = {
   in: {
     opacity: 1,

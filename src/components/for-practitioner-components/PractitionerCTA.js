@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const PractitionerCTA = () => {
   return (
     <Container fluid className="practitionerCTAStyle">
+      {/** Mini CTAs for Practitioners */}
       <Container>
         <Row>
           <Col sm={6} id="prac-CTA-1">

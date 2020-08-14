@@ -4,12 +4,14 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const SubscriptionPlan = (props) => {
+  // Loop Through the Features each Subscription plan from the prop has
   const features = props.features.map((feature, index) => {
     return <li key={props.name + " Plan Feature " + index}>{feature}</li>;
   });
 
   return (
     <Card className="subscriptionCard">
+      {/** Subscription Card Layout */}
       <Card.Header>
         <span id={props.id} className="planTypeStyle">
           {props.name}
