@@ -1,5 +1,5 @@
 import React from "react";
-import { pageTransition } from "../App";
+import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
 
 class TermsAndConditionsPage extends React.Component {

@@ -7,7 +7,7 @@ class CallToAction extends React.Component {
   render() {
     return (
       <div>
-        {/* Call To Action Banner Section */}
+        {/** Call To Action Banner Section */}
         <div className="ctaStyle">
           <img
             src={require("../../assets/images/promotion_bg_cropped.jpg")}
@@ -43,7 +43,7 @@ class CallToAction extends React.Component {
             </Row>
           </Container>
         </div>
-        {/* Call To Action Email Signup Section */}
+        {/** Call To Action Email Signup Section */}
         <Container>
           <Row>
             <Col sm={6}>
@@ -54,12 +54,12 @@ class CallToAction extends React.Component {
             <Col sm={6}>
               <InputGroup className="mb-3">
                 <Form.Control
-                  id="ctaSearchForm"
+                  id="ctaSignUpForm"
                   type="text"
                   placeholder="Enter your email"
                 />
                 <InputGroup.Append>
-                  <Button variant="light" id="ctaSearchFormSubmit">
+                  <Button variant="light" id="ctaSignUpFormSubmit">
                     <img
                       alt="Submit Button"
                       src={require("../../assets/icons/subscribe_enter_arrow.svg")}

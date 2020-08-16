@@ -1,6 +1,6 @@
 import React from "react";
 import CallToAction from "../homepage-components/CallToAction";
-import { pageTransition } from "../App";
+import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
 
 class PractitionerListPage extends React.Component {

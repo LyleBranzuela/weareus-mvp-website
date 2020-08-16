@@ -2,7 +2,7 @@ import "./MembershipForm.css";
 import React from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
-import { pageTransition } from "../App";
+import { pageTransition } from "../../transitions/Transitions";
 
 class MembershipForm extends React.Component {
   render() {

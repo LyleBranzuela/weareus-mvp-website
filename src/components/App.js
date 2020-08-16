@@ -23,27 +23,31 @@ function App() {
       {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>
+          {/* General Pages */}
           <Route exact path={["/index.html", "/"]}>
             <Redirect to="/home" />
           </Route>
           <Route path="/home" component={HomePage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/about" component={AboutPage} />
-          <Route path="/for-practitioner" component={ForPractitionersPage} />
-          <Route path="/practitioner-list" component={PractitionerListPage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/membership-form" component={MembershipForm} />
-          <Route path="/contact-us" component={ContactUsPage} />
-          {/* Practitioner Profile page */}
-          <Route
-            path="/practitioner-profile"
-            component={PractitionerProfile}
-          ></Route>
           <Route
             path="/terms-and-conditions"
             component={TermsAndConditionsPage}
           />
+          <Route path="/contact-us" component={ContactUsPage} />
+
+          {/* Register-Login Pages */}
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/membership-form" component={MembershipForm} />
+
+          {/* Practitioner Related Pages */}
+          <Route path="/for-practitioner" component={ForPractitionersPage} />
+          <Route path="/practitioner-list" component={PractitionerListPage} />
+          <Route
+            path="/practitioner-profile"
+            component={PractitionerProfile}
+          ></Route>
         </Switch>
       </AnimatePresence>
       <Footer />
@@ -52,12 +56,37 @@ function App() {
 }
 export default App;
 
-// Animation Variantions 
-export const pageTransition = {
-  in: {
-    opacity: 1,
-  },
-  out: {
-    opacity: 0,
-  },
+// Temporary Services List
+export const servicesList = {
+  placeholderList: [
+    "Acupressure",
+    "Acupuncture",
+    "Access Bars",
+    "Alternative therapies",
+    "Alexander technique",
+    "Aqua healing / Aquarian Healing",
+    "Aromatherapy",
+    "Art Therapy",
+    "Astrology",
+    "Aura-soma",
+    "Aura readers",
+    "Ayurveda",
+    "Bach flower therapy",
+    "Biofeedback Analysis",
+    "Biochemistry",
+    "Bodywork",
+    "Body Talk System",
+    "Bowan Therapy",
+    "Brennan Healing Science Breathwork",
+    "Brain Gym",
+    "Clean Eating",
+    "Bio-Energetic Therapy",
+    "Chakra Rebalancing",
+    "Channelling",
+    "Chiropractor",
+    "Clairvoyance",
+    "Crystal Healing",
+    "Colon Hydrotherapy",
+    "Colour Healing",
+  ],
 };

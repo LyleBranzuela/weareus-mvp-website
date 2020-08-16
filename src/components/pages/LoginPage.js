@@ -1,6 +1,6 @@
 import React from "react";
 import LoginForm from "../register-login-components/LoginForm";
-import { pageTransition } from "../App";
+import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
 
 class LoginPage extends React.Component {

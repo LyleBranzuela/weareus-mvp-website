@@ -1,45 +1,15 @@
 import "./TherapyList.css";
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { servicesList } from "../App";
 
 class TherapyList extends React.Component {
   render() {
-    let placeholderList = [
-      "Acupressure",
-      "Acupuncture",
-      "Access Bars",
-      "Alternative therapies",
-      "Alexander technique",
-      "Aqua healing / Aquarian Healing",
-      "Aromatherapy",
-      "Art Therapy",
-      "Astrology",
-      "Aura-soma",
-      "Aura readers",
-      "Ayurveda",
-      "Bach flower therapy",
-      "Biofeedback Analysis",
-      "Biochemistry",
-      "Bodywork",
-      "Body Talk System",
-      "Bowan Therapy",
-      "Brennan Healing Science Breathwork",
-      "Brain Gym",
-      "Clean Eating",
-      "Bio-Energetic Therapy",
-      "Chakra Rebalancing",
-      "Channelling",
-      "Chiropractor",
-      "Clairvoyance",
-      "Crystal Healing",
-      "Colon Hydrotherapy",
-      "Colour Healing",
-    ];
-
     /** Calculate how many items each of the 4 columns should have */
-    let printColItemAmount = Math.ceil(placeholderList.length / 4);
+    let therapyList = servicesList.placeholderList;
+    let printColItemAmount = Math.ceil(therapyList.length / 4);
     // Map a list element with each item in the placeholder list
-    const searchKeywords = placeholderList.map((searchKeyword) => {
+    const searchKeywords = therapyList.map((searchKeyword) => {
       return <li key={searchKeyword}>{searchKeyword}</li>;
     });
 
@@ -68,10 +38,7 @@ class TherapyList extends React.Component {
           </Col>
           <Col sm={3}>
             <ul>
-              {searchKeywords.slice(
-                printColItemAmount * 3,
-                placeholderList.length
-              )}
+              {searchKeywords.slice(printColItemAmount * 3, therapyList.length)}
             </ul>
           </Col>
         </Row>
