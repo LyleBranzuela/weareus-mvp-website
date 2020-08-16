@@ -6,7 +6,7 @@ class ImageCarousel extends React.Component {
   render() {
     return (
       <div>
-        <Carousel autoplay>
+        <Carousel autoplay className="profileCarousel">
           <Carousel.Item>
             <img
               className="carousel-img-margin"

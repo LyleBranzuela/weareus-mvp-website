@@ -8,6 +8,7 @@ class NavigationBar extends React.Component {
     return (
       <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
         {/*fixed="top"*/}
+        {/* Navigation Bar Logo */}
         <LinkContainer to="/home">
           <Navbar.Brand>
             <img
@@ -17,6 +18,7 @@ class NavigationBar extends React.Component {
             />
           </Navbar.Brand>
         </LinkContainer>
+        {/* Navigation Bar Links Section */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           className="justify-content-end"

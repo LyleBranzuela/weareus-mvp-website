@@ -14,14 +14,17 @@ const LoginForm = () => {
             <u>Register</u>
           </Link>
         </span>
+        {/** Login Username Form Section */}
         <Form.Group controlId="loginUsername">
           <Form.Label>Username or Email</Form.Label>
           <Form.Control type="email" placeholder="Your Username" />
         </Form.Group>
+        {/** Password Form Section */}
         <Form.Group controlId="loginPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Your Password" />
         </Form.Group>
+        {/** Remember Me and Forget Password Form Section */}
         <Row>
           <Col sm={6}>
             <Form.Group controlId="rememberMeCheckBox">

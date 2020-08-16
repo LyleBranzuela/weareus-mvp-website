@@ -8,6 +8,7 @@ class PractitionerList extends React.Component {
   render() {
     return (
       <Container fluid className="pracContainerStyle">
+        {/** Card Deck for all Practitioner Cards */}
         <Container className="pracListStyle">
           <h4>Practitioners</h4>
           <CardDeck className="pracListDeckStyle">
@@ -67,9 +68,8 @@ class PractitionerList extends React.Component {
             </Row>
           </CardDeck>
           <br />
-          <Link to="practitioner-list">
-            Show All (12)
-          </Link>
+          {/** Show all New Practitioners */}
+          <Link to="practitioner-list">Show All (12)</Link>
         </Container>
       </Container>
     );

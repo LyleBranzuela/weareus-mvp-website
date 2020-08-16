@@ -2,7 +2,7 @@ import React from "react";
 import SearchField from "../search-components/SearchField";
 import TherapyList from "../search-components/TherapyList";
 import CallToAction from "../homepage-components/CallToAction";
-import { pageTransition } from "../App";
+import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
 
 class SearchPage extends React.Component {
