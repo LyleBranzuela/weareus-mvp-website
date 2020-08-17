@@ -1,7 +1,8 @@
 import "./LoginForm.css";
 import React from "react";
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Container, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CustomButton from "../general-components/CustomButton";
 
 const LoginForm = () => {
   return (
@@ -37,14 +38,7 @@ const LoginForm = () => {
             </Link>
           </Col>
         </Row>
-        <Button
-          className="primaryCustomButtonStyle"
-          id="loginFormButton"
-          variant="primary"
-          type="submit"
-        >
-          Log In
-        </Button>
+        <CustomButton id="loginFormButton" type="submit" text="Log In" />
       </Form>
     </Container>
   );

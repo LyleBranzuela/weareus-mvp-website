@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../transitions/Transitions";
+import CustomButton from "../general-components/CustomButton";
 
 class MembershipForm extends React.Component {
   render() {
@@ -124,14 +125,11 @@ class MembershipForm extends React.Component {
                 </Row>
                 <hr size="50" />
                 {/** Section: Pay Button */}
-                <Button
-                  className="primaryCustomButtonStyle"
+                <CustomButton
                   id="paymentFormButton"
-                  variant="primary"
                   type="submit"
-                >
-                  Payment
-                </Button>
+                  text="Payment"
+                />
               </Col>
             </Row>
           </Container>
