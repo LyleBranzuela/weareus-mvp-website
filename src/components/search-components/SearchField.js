@@ -6,9 +6,9 @@ import {
   Dropdown,
   Row,
   Col,
-  Button,
   Form,
 } from "react-bootstrap";
+import CustomButton from "../general-components/CustomButton";
 
 class SearchField extends React.Component {
   render() {
@@ -92,14 +92,11 @@ class SearchField extends React.Component {
               </Col>
               <Col sm={2}>
                 {/** Search Button */}
-                <Button
-                  className="primaryCustomButtonStyle"
+                <CustomButton
                   id="searchFieldButton"
-                  variant="primary"
                   type="submit"
-                >
-                  Search
-                </Button>
+                  text="Search"
+                />
               </Col>
             </Row>
           </Form>

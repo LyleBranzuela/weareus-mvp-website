@@ -9,6 +9,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
+import CustomButton from "../general-components/CustomButton";
 
 class HomePage extends React.Component {
   render() {
@@ -24,9 +25,7 @@ class HomePage extends React.Component {
           learnMoreButton={
             <React.Fragment>
               <Link to="/for-practitioner">
-                <Button className="primaryCustomButtonStyle" id="headerButton">
-                  Learn More
-                </Button>
+                <CustomButton id="headerButton" text="Learn More" />
               </Link>
             </React.Fragment>
           }

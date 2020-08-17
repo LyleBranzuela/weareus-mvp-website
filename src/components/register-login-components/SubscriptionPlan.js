@@ -1,7 +1,8 @@
 import "./SubscriptionPlan.css";
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CustomButton from "../general-components/CustomButton";
 
 const SubscriptionPlan = (props) => {
   // Loop Through the Features each Subscription plan from the prop has
@@ -24,14 +25,11 @@ const SubscriptionPlan = (props) => {
         <span className="planTypeDescStyle">NZD/month</span>
         <br />
         <Link to={`/membership-form`}>
-          <Button
-            className="primaryCustomButtonStyle"
+          <CustomButton
             id="getStartedRegisterButton"
-            variant="primary"
             type="submit"
-          >
-            Get Started
-          </Button>
+            text="Get Started"
+          />
         </Link>
       </Card.Header>
       <Card.Body>
