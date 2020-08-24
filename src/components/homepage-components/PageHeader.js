@@ -1,14 +1,15 @@
 import "./PageHeader.css";
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 class PageHeader extends React.Component {
   render() {
     return (
       <div className="pageHeader">
+        {/** Adjustable Page Header for Practitioner and Homepage */}
         <img
           src={require("../../assets/images/for_practitioners_header.jpg")}
-          alt="practicioners-header"
+          alt="practitioners-header"
         />
         <Container className="pageHeader-text">
           <Row>
@@ -24,7 +25,7 @@ class PageHeader extends React.Component {
             </p>
           </Row>
           <Row>
-            <Button id="headerButton">Learn More</Button>
+            {this.props.learnMoreButton}
           </Row>
         </Container>
       </div>

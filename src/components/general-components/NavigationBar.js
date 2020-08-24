@@ -6,9 +6,10 @@ import { LinkContainer } from "react-router-bootstrap";
 class NavigationBar extends React.Component {
   render() {
     return (
-      <Navbar collapseOnSelect expand="lg" className="navBar">
+      <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
         {/*fixed="top"*/}
-        <LinkContainer to="/">
+        {/* Navigation Bar Logo */}
+        <LinkContainer to="/home">
           <Navbar.Brand>
             <img
               alt="we are us logo"
@@ -17,26 +18,29 @@ class NavigationBar extends React.Component {
             />
           </Navbar.Brand>
         </LinkContainer>
+        {/* Navigation Bar Links Section */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           className="justify-content-end"
           id="responsive-navbar-nav"
         >
-          <Nav>
+          <Nav className="navBar-links">
             {/* Search Page Link */}
             <LinkContainer to="/search">
-              <Nav.Link href="/search">Search</Nav.Link>
+              <Nav.Link className="navBarEffect" href="/search">
+                Search
+              </Nav.Link>
             </LinkContainer>
             {/* About Page Link */}
-            <LinkContainer to="/about">
+            <LinkContainer className="navBarEffect" to="/about">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
             {/* Practitioner Page Link */}
-            <LinkContainer to="/practitioner">
+            <LinkContainer className="navBarEffect" to="/for-practitioner">
               <Nav.Link>For Practitioners</Nav.Link>
             </LinkContainer>
             {/* Login Page Link */}
-            <LinkContainer to="/login">
+            <LinkContainer className="navBarEffect" to="/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
             {/* Register Page Link */}

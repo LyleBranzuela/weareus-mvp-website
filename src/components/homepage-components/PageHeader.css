@@ -21,6 +21,7 @@
   color: white;
   position: absolute;
   transform: translate(28%, -145%);
+  width: 100%;
 }
 
 #headerTitle {
@@ -30,17 +31,15 @@
 }
 
 #headerDesc {
-  margin-top: 2%;
+  margin-top: 1%;
+  margin-bottom: 5%;
   font-size: 1.4vw;
   font-weight: 200;
 }
 
 #headerButton {
-  margin-top: 2%;
-  background-color: #79158f;
   padding: 20px 75px 20px 75px;
   font-size: 1vw;
-  font-weight: 500;
 }
 
 .break-word {

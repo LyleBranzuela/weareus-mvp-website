@@ -1,0 +1,25 @@
+.pracCardStyle {
+  font-size: 1em;
+  font-family: "AvenirLTStd-Book";
+  position: relative;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+.pracCardStyle .card-title {
+  color: #79158F !important;
+  font-size: 1vw;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+.pracCardStyle .card-body {
+  padding: 10px 0px 0px;
+  margin-bottom: 40px;
+}
+
+.pracCardStyle .card-subtitle {
+  color: gray !important;
+  font-size: 0.8vw;
+  margin-bottom: 15px !important;
+}
