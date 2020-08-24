@@ -14,7 +14,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <motion.div
-        intial="out"
+        intial="in"
         animate="in"
         exit="out"
         variants={pageTransition}
