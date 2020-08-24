@@ -5,7 +5,6 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
@@ -15,7 +14,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <motion.div
-        intial="in"
+        intial="out"
         animate="in"
         exit="out"
         variants={pageTransition}

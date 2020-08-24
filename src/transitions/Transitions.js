@@ -1,6 +1,3 @@
-import React from "react";
-import { withRouter } from "react-router";
-
 // Animation Variantions
 export const pageTransition = {
   in: {

@@ -9,6 +9,7 @@ const CustomButton = (props) => (
     id={props.id}
     variant="primary"
     type={props.type}
+    onClick={props.onClick}
   >
     {props.text}
   </Button>

@@ -8,7 +8,8 @@ class PractitionerRegister extends React.Component {
   render() {
     const basicPlanFeatures = [
       "1 Mini website - listing on We are Us",
-      "3-5 Main Pictures",
+      "1 Profile Picture",
+      "1 Main Picture",
       "1 Business Logo",
       "About",
       "Services",
@@ -17,7 +18,8 @@ class PractitionerRegister extends React.Component {
     ];
     const businessPlanFeatures = [
       "1 Mini website - listing on We are Us",
-      "1 Main Picture",
+      "1 Profile Picture",
+      "3-5 Main Pictures",
       "1 Business Logo",
       "About",
       "Services",
