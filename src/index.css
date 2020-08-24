@@ -29,7 +29,6 @@ input[type="number"] {
 
 input[type="checkbox"]:checked + label {
   cursor: pointer;
- color: #79158f;
 }
 
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
@@ -53,39 +52,6 @@ input[type="checkbox"]:checked + label {
 }
 
 /* End of General Form Styles */
-
-/* General Button Styles */
-button:focus {
-  outline: none;
-}
-
-.primaryCustomButtonStyle {
-  font-family: "AvenirLTPro-Heavy";
-  background-color: #79158f;
-  border-color: rgba(0, 0, 0, 0);
-  font-weight: 400;
-}
-
-.primaryCustomButtonStyle:hover {
-  background-color: lavender;
-  color: #79158f;
-  border-color: #79158f;
-}
-
-.primaryCustomButtonStyle:focus {
-  color: lavender;
-  background-color: #b823dad3;
-  outline: none !important;
-  box-shadow: none;
-}
-
-.primaryCustomButtonStyle:active {
-  color: lavender;
-  background-color: #79158f !important;
-  outline: none !important;
-  box-shadow: none;
-}
-/* End of General Button Styles */
 
 .siteDefaultMargin {
   margin: 0.5% 15% 0.5% 15%;

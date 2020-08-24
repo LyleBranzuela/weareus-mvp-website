@@ -6,10 +6,11 @@
   text-align: center;
   color: #79158f;
   font-family: "AvenirLTPro-Heavy";
+  margin-bottom: 30px;
 }
 
 .membershipFormStyle form {
-  margin: 30px 15% 0.5% 15%;
+  margin: 0.5% 15% 0.5% 15%;
 }
 
 .membershipFormStyle .form-label {
@@ -25,7 +26,6 @@
 .totalCostContainer {
   padding-top: 75px;
   padding-bottom: 75px;
-  width: 45%;
 }
 
 .totalCostContainer h2 {

@@ -1,7 +1,8 @@
 import "./ProfileSetup.css";
 import React from "react";
-import { Button, Container, Form, Row, Col } from "react-bootstrap";
+import { Container, Form, Row, Col } from "react-bootstrap";
 import { servicesList } from "../App";
+import CustomButton from "../general-components/CustomButton";
 
 const ProfileSetup = () => {
   return (
@@ -257,14 +258,7 @@ const ProfileSetup = () => {
           <Form.Control type="text" placeholder="http://" />
         </Form.Group>
         {/** Save Profile Button */}
-        <Button
-          className="primaryCustomButtonStyle"
-          id="saveProfileButton"
-          variant="primary"
-          type="submit"
-        >
-          Save
-        </Button>
+        <CustomButton id="saveProfileButton" type="submit" text="Save" />
       </Form>
     </Container>
   );

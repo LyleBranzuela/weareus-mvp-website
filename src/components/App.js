@@ -14,11 +14,13 @@ import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import { AnimatePresence } from "framer-motion";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { Account } from "../manage-accounts/Accounts";
 
 function App() {
+  // Returns the location object that represents the current URL
   const location = useLocation();
   return (
-    <div className="App">
+    <Account>
       <NavigationBar />
       {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
       <AnimatePresence exitBeforeEnter>
@@ -51,7 +53,7 @@ function App() {
         </Switch>
       </AnimatePresence>
       <Footer />
-    </div>
+    </Account>
   );
 }
 export default App;
