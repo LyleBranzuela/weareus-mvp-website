@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 import UserPool from "./UserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import AWS from "aws-sdk";
 
 const AccountContext = createContext();
 const Account = (props) => {
@@ -54,8 +55,60 @@ const Account = (props) => {
     }
   };
 
+  // Google Sign-in button's callback when pressed
+  function googleSignInCallBack(authResult) {
+    if (authResult["status"]["signed_in"]) {
+      // Add the Google access token to the Amazon Cognito credentials login map.
+      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: "ap-southeast-2_70XMXEzjd",
+        Logins: {
+          "accounts.google.com": authResult["id_token"],
+        },
+      });
+
+      // Obtain AWS credentials
+      AWS.config.credentials.get(function () {
+        // Access AWS resources here.
+      });
+    }
+  }
+
+  // Facebook Sign-in button's callback when pressed
+  function facebookSignInCallBack() {
+    const FB = window.FB;
+    FB.login(function (response) {
+      // Check if the user logged in successfully.
+      if (response.authResponse) {
+        console.log("You are now logged in.");
+
+        // Add the Facebook access token to the Amazon Cognito credentials login map.
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: "ap-southeast-2_70XMXEzjd",
+          Logins: {
+            "graph.facebook.com": response.authResponse.accessToken,
+          },
+        });
+
+        // Obtain AWS credentials
+        AWS.config.credentials.get(function () {
+          // Access AWS resources here.
+        });
+      } else {
+        console.log("There was a problem logging you in.");
+      }
+    });
+  }
+
   return (
-    <AccountContext.Provider value={{ authenticate, getSession, logout }}>
+    <AccountContext.Provider
+      value={{
+        authenticate,
+        getSession,
+        logout,
+        googleSignInCallBack,
+        facebookSignInCallBack,
+      }}
+    >
       {props.children}
     </AccountContext.Provider>
   );

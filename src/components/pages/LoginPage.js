@@ -5,7 +5,12 @@ import { motion } from "framer-motion";
 
 const LoginPage = () => {
   return (
-    <motion.div intial="out" animate="in" exit="out" variants={pageTransition}>
+    <motion.div
+      intial="out"
+      animate="in"
+      exit="out"
+      variants={pageTransition}
+    >
       <LoginForm />
     </motion.div>
   );

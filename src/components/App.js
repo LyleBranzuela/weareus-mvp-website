@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
 import HomePage from "./pages/HomePage";
@@ -9,10 +10,12 @@ import PractitionerListPage from "./pages/PractitionerListPage";
 import PractitionerProfile from "./pages/PractitionerProfile";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import PractitionerRegister from "./register-login-components/PractitionerRegister";
+import UserRegister from "./register-login-components/UserRegister";
+import ProfileSetup from "./register-login-components/ProfileSetup";
 import MembershipForm from "./register-login-components/MembershipForm";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import { AnimatePresence } from "framer-motion";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import { Account } from "../manage-accounts/Accounts";
 
@@ -33,6 +36,7 @@ function App() {
           <Route path="/search" component={SearchPage} />
           <Route path="/about" component={AboutPage} />
           <Route
+            exact
             path="/terms-and-conditions"
             component={TermsAndConditionsPage}
           />
@@ -40,8 +44,8 @@ function App() {
 
           {/* Register-Login Pages */}
           <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
           <Route path="/membership-form" component={MembershipForm} />
+          <Route path="/register" component={RegisterPage} />
 
           {/* Practitioner Related Pages */}
           <Route path="/for-practitioner" component={ForPractitionersPage} />

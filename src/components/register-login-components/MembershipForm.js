@@ -17,6 +17,10 @@ const MembershipForm = () => {
   const [username, setUsername] = useState(""); // Shown as preferred_username for AWS Cognito
   const [password, setPassword] = useState("");
 
+  const { facebookSignInCallBack, googleSignInCallBack } = useContext(
+    AccountContext
+  );
+
   // Create Data Variables with key-value pairing
   var dataFirstName = {
     Name: "given_name",
@@ -70,6 +74,17 @@ const MembershipForm = () => {
     <motion.div intial="out" animate="in" exit="out" variants={pageTransition}>
       <Container fluid>
         <Container className="membershipFormStyle">
+          <div class="g-signin2" data-onsuccess={googleSignInCallBack}></div>
+          <div
+            class="fb-login-button"
+            data-size="large"
+            data-button-type="continue_with"
+            data-layout="default"
+            data-auto-logout-link="false"
+            data-use-continue-as="false"
+            data-width=""
+            data-onsuccess={facebookSignInCallBack}
+          ></div>
           <Form id="membershipForm" onSubmit={onSubmit}>
             <h2>Membership Details</h2>
             <Row>

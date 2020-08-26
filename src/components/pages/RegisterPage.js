@@ -12,8 +12,7 @@ const RegisterPage = () => {
   return (
     <motion.div intial="out" animate="in" exit="out" variants={pageTransition}>
       <Switch>
-        <Route exact path={path}>
-          <ChooseRegister />
+        <Route exact path={path} component={ChooseRegister}>
         </Route>
         {/* Temporary Profile Setup Location */}
         <Route path={`${path}/register-user`} component={ProfileSetup} />
