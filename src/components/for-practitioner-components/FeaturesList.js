@@ -7,9 +7,11 @@ class FeaturesList extends React.Component {
   render() {
     return (
       <Container className="featuresListStyle">
+        {/** Website's Features Section (FeatureItems can be edited through sending down React Fragments */}
         <hr size="50" />
         <Row>
           <Col sm={6}>
+            {/** Word of Mouth Feature Section */}
             <FeatureItem
               id="site-feature-1"
               image="icon_word_of_mouth.png"
@@ -35,6 +37,7 @@ class FeaturesList extends React.Component {
             />
           </Col>
           <Col sm={6}>
+            {/** Connections Feature Section */}
             <FeatureItem
               id="site-feature-2"
               image="icon_connections.png"

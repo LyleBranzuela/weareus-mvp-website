@@ -7,10 +7,6 @@ body {
   overflow-x: hidden;
 }
 
-button:focus {
-  outline: none;
-}
-
 hr {
   border: none;
   height: 1px;
@@ -31,38 +27,31 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+input[type="checkbox"]:checked + label {
+  cursor: pointer;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* General Form Styles */
 .form-control:focus {
   border-color: #b823dad3;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
     0 0 8px rgba(121, 21, 143, 0.6);
-}
-
-.primaryCustomButtonStyle {
-  font-family: "AvenirLTPro-Heavy";
-  background-color: #79158f;
-  border-color: rgba(0, 0, 0, 0);
-  font-weight: 400;
-}
-
-.primaryCustomButtonStyle:hover {
-  background-color: lavender;
   color: #79158f;
-  border-color: #79158f;
+  background-color: #f3f1f3;
 }
 
-.primaryCustomButtonStyle:focus {
-  color: lavender;
-  background-color: #b823dad3;
-  outline: none !important;
-  box-shadow: none;
+.form-control {
+  color: #79158f;
+  font-family: "AvenirLTStd-Book";
+  background-color: #f3f1f3;
 }
 
-.primaryCustomButtonStyle:active {
-  color: lavender;
-  background-color: #79158f !important;
-  outline: none !important;
-  box-shadow: none;
-}
+/* End of General Form Styles */
 
 .siteDefaultMargin {
   margin: 0.5% 15% 0.5% 15%;

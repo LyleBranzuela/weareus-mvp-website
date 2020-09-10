@@ -6,6 +6,7 @@ class PageHeader extends React.Component {
   render() {
     return (
       <div className="pageHeader">
+        {/** Adjustable Page Header for Practitioner and Homepage */}
         <img
           src={require("../../assets/images/for_practitioners_header.jpg")}
           alt="practitioners-header"

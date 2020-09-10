@@ -27,6 +27,7 @@
 .searchFieldStyle .form-control {
   padding-top: 24px;
   padding-bottom: 24px;
+  background-color: white;
 }
 
 .searchFieldStyle .dropdown-toggle {

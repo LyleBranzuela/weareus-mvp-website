@@ -1,12 +1,14 @@
 import "./ChooseRegister.css";
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { Link, useRouteMatch } from "react-router-dom";
+import CustomButton from "../general-components/CustomButton";
 
 const ChooseRegister = () => {
   let { url } = useRouteMatch();
   return (
     <Row className="chooseRegisterStyle siteDefaultMargin">
+      {/** Register as User Section */}
       <Col id="userRegisterCol">
         <h2>Register as a User</h2>
         <ul>
@@ -15,16 +17,14 @@ const ChooseRegister = () => {
           <li>Integer quis auctor elit sed vulputate mi sit amet mauris</li>
         </ul>
         <Link to={`${url}/register-user`}>
-          <Button
-            className="primaryCustomButtonStyle"
+          <CustomButton
             id="registerAsUserButton"
-            variant="primary"
             type="submit"
-          >
-            Register as User
-          </Button>
+            text="Register as User"
+          />
         </Link>
       </Col>
+      {/** Register as Practitioner Section */}
       <Col id="practitionerRegisterCol">
         <h2>Register as a Practitioner</h2>
         <ul>
@@ -33,14 +33,11 @@ const ChooseRegister = () => {
           <li>Integer quis auctor elit sed vulputate mi sit amet mauris</li>
         </ul>
         <Link to={`${url}/register-practitioner`}>
-          <Button
-            className="primaryCustomButtonStyle"
+          <CustomButton
             id="registerAsPractitionerButton"
-            variant="primary"
             type="submit"
-          >
-            Register as Practitioner
-          </Button>
+            text="Register as Practitioner"
+          />
         </Link>
       </Col>
     </Row>

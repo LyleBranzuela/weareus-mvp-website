@@ -1,4 +1,4 @@
-.carousel {
+.profileCarousel .carousel {
   /* Adjust the Carousel dimensions and positioning */
   width: 1440px;
   height: 550px;
@@ -13,11 +13,11 @@
   display: inline-block !important;
 }
 
-.carousel-inner > .item > img {
+.profileCarousel .carousel-inner > .item > img {
   margin: 0 auto;
 }
 
-.carousel-img-margin{
+.profileCarousel .carousel-img-margin{
     margin-top: 80px !important;
 }
 

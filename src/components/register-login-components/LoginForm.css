@@ -38,6 +38,11 @@
 
 #forgetPassword {
   float: right;
+  cursor: pointer;
+}
+
+#forgetPassword:hover {
+  color: #b823dad3;
 }
 
 #loginFormButton {

@@ -1,54 +1,15 @@
 import "./TherapyList.css";
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { servicesList } from "../App";
 
 class TherapyList extends React.Component {
   render() {
-    let placeholderList = [
-      "Abdominal Massage",
-      "Acupressure",
-      "Access Bars",
-      "Alternative therapies",
-      "Alexander technique",
-      "Aqua healing / Aquarian Healing",
-      "Aromatherapy",
-      "Art Therapy",
-      "Abdominal Massage",
-      "Acupressure",
-      "Access Bars",
-      "Alternative therapies",
-      "Alexander technique",
-      "Aqua healing / Aquarian Healing",
-      "Aromatherapy",
-      "Art Therapy",
-      "Abdominal Massage",
-      "Acupressure",
-      "Access Bars",
-      "Alternative therapies",
-      "Alexander technique",
-      "Aqua healing / Aquarian Healing",
-      "Aromatherapy",
-      "Art Therapy",
-      "Abdominal Massage",
-      "Acupressure",
-      "Access Bars",
-      "Alternative therapies",
-      "Alexander technique",
-      "Aqua healing / Aquarian Healing",
-      "Aromatherapy",
-      "Art Therapy",
-      "Abdominal Massage",
-      "Acupressure",
-      "Access Bars",
-      "Alternative therapies",
-      "Alexander technique",
-      "Aqua healing / Aquarian Healing",
-      "Aromatherapy",
-      "Art Therapy",
-    ];
-
-    let printColItemAmount = Math.ceil(placeholderList.length / 4);
-    const searchKeywords = placeholderList.map((searchKeyword) => {
+    /** Calculate how many items each of the 4 columns should have */
+    let therapyList = servicesList.placeholderList;
+    let printColItemAmount = Math.ceil(therapyList.length / 4);
+    // Map a list element with each item in the placeholder list
+    const searchKeywords = therapyList.map((searchKeyword) => {
       return <li key={searchKeyword}>{searchKeyword}</li>;
     });
 
@@ -58,7 +19,7 @@ class TherapyList extends React.Component {
           <h4>Find a practitioner by therapy type</h4>
         </Row>
         <Row>
-          {/* Loop Through Each Column's Modality */}
+          {/* Loop Through Each Column's Modality, Slice is used so that portions that doesn't exist does not return an error */}
           <Col sm={3}>
             <ul>{searchKeywords.slice(0, printColItemAmount)}</ul>
           </Col>
@@ -77,10 +38,7 @@ class TherapyList extends React.Component {
           </Col>
           <Col sm={3}>
             <ul>
-              {searchKeywords.slice(
-                printColItemAmount * 3,
-                placeholderList.length
-              )}
+              {searchKeywords.slice(printColItemAmount * 3, therapyList.length)}
             </ul>
           </Col>
         </Row>

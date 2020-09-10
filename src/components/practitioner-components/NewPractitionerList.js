@@ -10,6 +10,7 @@ class NewPractitionerList extends React.Component {
       <Container fluid className="newPracContainerStyle">
         <Container className="newPracListStyle">
           <h4>New Listed Practicioners</h4>
+          {/** Card Deck for all New Practitioner Cards */}
           <CardDeck>
             <NewPractitionerCard
               practitionerImage="listing_placeholder_1.jpg"
@@ -40,6 +41,7 @@ class NewPractitionerList extends React.Component {
             />
           </CardDeck>
           <br />
+          {/** Show all New Practitioners */}
           <Link to="practitioner-list">Show All (5)</Link>
         </Container>
       </Container>

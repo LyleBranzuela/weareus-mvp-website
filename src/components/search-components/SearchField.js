@@ -6,9 +6,9 @@ import {
   Dropdown,
   Row,
   Col,
-  Button,
   Form,
 } from "react-bootstrap";
+import CustomButton from "../general-components/CustomButton";
 
 class SearchField extends React.Component {
   render() {
@@ -23,6 +23,7 @@ class SearchField extends React.Component {
             </Row>
             <Row className="rowSearchFieldStyle">
               <Col sm={4}>
+                {/** Search Practitioners Through Text Section */}
                 <InputGroup>
                   <InputGroup.Prepend>
                     <InputGroup.Text id="searchFieldIcon">
@@ -36,6 +37,7 @@ class SearchField extends React.Component {
                 </InputGroup>
               </Col>
               <Col sm={3}>
+                {/** Dropdown Search by Therapy Type */}
                 <Dropdown>
                   <Dropdown.Toggle id="therapyTypeButton">
                     <h6>
@@ -71,6 +73,7 @@ class SearchField extends React.Component {
                 </Dropdown>
               </Col>
               <Col sm={3}>
+                {/** Dropdown Search by Region */}
                 <Dropdown>
                   <Dropdown.Toggle id="regionButton">
                     <h6>
@@ -88,14 +91,12 @@ class SearchField extends React.Component {
                 </Dropdown>
               </Col>
               <Col sm={2}>
-                <Button
-                  className="primaryCustomButtonStyle"
+                {/** Search Button */}
+                <CustomButton
                   id="searchFieldButton"
-                  variant="primary"
                   type="submit"
-                >
-                  Search
-                </Button>
+                  text="Search"
+                />
               </Col>
             </Row>
           </Form>

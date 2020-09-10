@@ -2,7 +2,7 @@ import React from "react";
 import CallToAction from "../homepage-components/CallToAction";
 import ImageCarousel from "../practitionerprofile-components/ImageCarousel";
 import ProfileInformation from "../practitionerprofile-components/ProfileInformation";
-import { pageTransition } from "../App";
+import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
 
 class PractitionerProfile extends React.Component {
