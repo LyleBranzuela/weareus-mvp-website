@@ -32,27 +32,22 @@ class ProfileInformation extends React.Component {
                   class="practitioner-logo"
                 />
               </h2>
+
               {/* Practitioner Specialty Category/ies */}
-              <span
-                className="font-body"
-                style={{ color: "#79158f" }}
-                id="category"
-              >
-                Herval Medicine, Massage, Reiki
-              </span>
-              <br />
+
+              <div id="category">
+                <span id="category-text">Herbal Medicine, Massage, Reiki</span>
+              </div>
+              
               {/* Location */}
-              <span className="font-body" id="suburb">
-                Albany,{" "}
-              </span>
-              <span className="font-body" id="city">
-                {" "}
-                Auckland
-              </span>
+              <div id="location">
+                <span id="suburb">Albany, </span>
+                <span id="city"> Auckland</span>
+              </div>
 
               <br />
               <br />
-              <p className="font-body box">Covered by ACC</p>
+              <p className="box">Covered by ACC</p>
               <h5 className="practitioner-name" id="person-name">
                 Name
               </h5>
