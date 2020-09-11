@@ -1,6 +1,7 @@
 import React from "react";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
+import ScrollToTop from "./general-components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import AboutPage from "./pages/AboutPage";
@@ -12,6 +13,7 @@ import UserRegisterPage from "./pages/UserRegisterPage";
 import PractitionerRegisterPage from "./pages/PractitionerRegisterPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
+        <ScrollToTop>
         <div className="App">
           <NavigationBar />
           <Switch>
@@ -49,6 +52,7 @@ class App extends React.Component {
           </Switch>
           <Footer />
         </div>
+        </ScrollToTop>
       </Router>
     );
   }

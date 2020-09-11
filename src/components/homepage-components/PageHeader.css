@@ -1,8 +1,7 @@
 .pageHeader {
-  background-image: linear-gradient(
-    rgba(211, 173, 194, 1),
-    rgba(211, 173, 194, 1)
-  );
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
   position: relative;
   margin: auto;
@@ -11,7 +10,7 @@
 }
 
 .pageHeader img {
-  width: 75%;
+  width: 100%;
   height: auto;
 }
 
