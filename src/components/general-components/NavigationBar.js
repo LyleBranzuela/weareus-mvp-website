@@ -4,51 +4,124 @@ import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 class NavigationBar extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      width: window.innerWidth,
+    };
+  }
+
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
+
   render() {
-    return (
-      <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
+    const { width } = this.state;
+    const isMobile = width <= 600;
+
+    if (isMobile) {
+      // Mobile version
+      return (
+        <Navbar collapseOnSelect fixed="top" variant="dark" expand="lg" className="navBarMobile">
         {/*fixed="top"*/}
         <LinkContainer to="/home">
           <Navbar.Brand>
             <img
               alt="we are us logo"
-              src={require("../../assets/icons/we_are_us_logo.svg")}
+              src={require("../../assets/icons/we_are_us_logo_white.svg")}
               className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
+              id ="mobile_logo"
+           />
+           </Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle image="" aria-controls="responsive-navbar-nav"/>
+        <Navbar.Collapse
+        className="justify-content-end"
+        id="responsive-navbarMobile-nav"
+        >
+        <Nav className="navBarMobile-links">
+        {/* Search Page Link */}
+        <LinkContainer to="/search">
+        <Nav.Link className="navBarEffect" href="/search">
+        Search
+        </Nav.Link>
+        </LinkContainer>
+        {/* About Page Link */}
+        <LinkContainer className="navBarEffect" to="/about">
+        <Nav.Link>About</Nav.Link>
+        </LinkContainer>
+        {/* Practitioner Page Link */}
+        <LinkContainer className="navBarEffect" to="/for-practitioner">
+        <Nav.Link>For Practitioners</Nav.Link>
+        </LinkContainer>
+        {/* Login Page Link */}
+        <LinkContainer className="navBarEffect" to="/login">
+        <Nav.Link>Login</Nav.Link>
+        </LinkContainer>
+        {/* Register Page Link */}
+        <LinkContainer to="/register" className="highlightNav">
+        <Nav.Link>Register</Nav.Link>
+        </LinkContainer>
+        </Nav>
+        </Navbar.Collapse>
+        </Navbar>
+      );
+    } else {
+      // Desktop version
+      return(
+        <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
+        {/*fixed="top"*/}
+        <LinkContainer to="/home">
+        <Navbar.Brand>
+        <img
+        alt="we are us logo"
+        src={require("../../assets/icons/we_are_us_logo.svg")}
+        className="d-inline-block align-top"
+        />
+        </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
-          className="justify-content-end"
-          id="responsive-navbar-nav"
+        className="justify-content-end"
+        id="responsive-navbar-nav"
         >
-          <Nav className="navBar-links">
-            {/* Search Page Link */}
-            <LinkContainer to="/search">
-              <Nav.Link className="navBarEffect" href="/search">
-                Search
-              </Nav.Link>
-            </LinkContainer>
-            {/* About Page Link */}
-            <LinkContainer className="navBarEffect" to="/about">
-              <Nav.Link>About</Nav.Link>
-            </LinkContainer>
-            {/* Practitioner Page Link */}
-            <LinkContainer className="navBarEffect" to="/for-practitioner">
-              <Nav.Link>For Practitioners</Nav.Link>
-            </LinkContainer>
-            {/* Login Page Link */}
-            <LinkContainer className="navBarEffect" to="/login">
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
-            {/* Register Page Link */}
-            <LinkContainer to="/register" className="highlightNav">
-              <Nav.Link>Register</Nav.Link>
-            </LinkContainer>
-          </Nav>
+        <Nav className="navBar-links">
+        {/* Search Page Link */}
+        <LinkContainer to="/search">
+        <Nav.Link className="navBarEffect" href="/search">
+        Search
+        </Nav.Link>
+        </LinkContainer>
+        {/* About Page Link */}
+        <LinkContainer className="navBarEffect" to="/about">
+        <Nav.Link>About</Nav.Link>
+        </LinkContainer>
+        {/* Practitioner Page Link */}
+        <LinkContainer className="navBarEffect" to="/for-practitioner">
+        <Nav.Link>For Practitioners</Nav.Link>
+        </LinkContainer>
+        {/* Login Page Link */}
+        <LinkContainer className="navBarEffect" to="/login">
+        <Nav.Link>Login</Nav.Link>
+        </LinkContainer>
+        {/* Register Page Link */}
+        <LinkContainer to="/register" className="highlightNav">
+        <Nav.Link>Register</Nav.Link>
+        </LinkContainer>
+        </Nav>
         </Navbar.Collapse>
-      </Navbar>
-    );
+        </Navbar>
+      );
+    }
   }
 }
 

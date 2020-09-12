@@ -1,3 +1,4 @@
+/* DESKTOP STYLES */
 .pageHeader {
   background-position: center center;
   background-size: cover;
@@ -45,4 +46,61 @@
 
 .break-word {
   word-wrap: break-word;
+}
+
+
+/* MOBILE STYLES */
+.pageHeaderMobile {
+  background-image: url("../../assets/images/placeholders/mobile_home_page_placeholder.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  top: 0;
+  font-family: "AvenirLTStd-Book";
+
+  width: 100%;
+  height: auto;
+  padding-top: 70%;
+  padding-bottom: 50%;
+}
+
+
+.pageHeaderMobile-text {
+  text-align: center;
+  color: white;
+}
+
+#headerTitleMobile {
+  font-size: 4vh;
+  font-weight: 500;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#headerDescMobile {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 2vh;
+  font-weight: 200;
+}
+
+#headerButtonMobile {
+  background-color: #79158f;
+  padding: 20px 75px 20px 75px;
+  font-size: 2vh;
+  font-weight: 500;
+}
+
+.break-wordMobile {
+  word-wrap: break-word;
+}
+
+#scrollDownButton {
+  align-self: center;
+  width: 5vh;
+  height:auto;
 }
