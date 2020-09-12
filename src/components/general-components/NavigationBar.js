@@ -1,13 +1,12 @@
 import "./NavigationBar.css";
-import React, { useState, useContext, useEffect } from "react";
-import { AccountContext } from "../../manage-accounts/Accounts";
+import React, { useState, useEffect } from "react";
+import { getSession, logout } from "../../manage-accounts/Accounts";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const NavigationBar = () => {
   // By Default The user is not logged in
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const { getSession, logout } = useContext(AccountContext);
 
   // Check If User Has Logged in
   useEffect(() => {

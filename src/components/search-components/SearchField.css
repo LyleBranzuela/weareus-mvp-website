@@ -73,20 +73,22 @@
   max-height: 0;
   width: 100%;
   display: block;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   opacity: 0;
 }
 
 .searchFieldStyle .dropdown.show .dropdown-menu {
-  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
-  max-height: 500px;
+  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */ 
+  max-width: 300px;
+  max-height: 300px;
+  white-space: normal;
+  word-break: break-all;
   opacity: 1;
 }
 
 .searchFieldStyle .dropdown-menu.show {
   background-color: #79158f;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 .searchFieldStyle .dropdown-item {
@@ -102,6 +104,26 @@
   color: white;
   background-color: #79158f;
 }
+
+/* Custom Scroll CSS Design */
+.searchFieldStyle .dropdown-menu::-webkit-scrollbar-track {
+  border: 1px solid #f3f1f3;
+  padding: 1px 0;
+  background-color: #f3f1f3;
+}
+
+.searchFieldStyle .dropdown-menu::-webkit-scrollbar {
+  width: 15px;
+  background-color: #f3f1f3
+}
+
+.searchFieldStyle .dropdown-menu::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  background-color: #f3f1f3;
+  border: 1px solid #79158f;
+}
+
 
 #searchFieldButton {
   width: 100%;

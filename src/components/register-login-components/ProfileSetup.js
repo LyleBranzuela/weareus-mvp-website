@@ -1,7 +1,6 @@
 import "./ProfileSetup.css";
 import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
-import { servicesList } from "../App";
 import CustomButton from "../general-components/CustomButton";
 
 const ProfileSetup = () => {
@@ -193,7 +192,7 @@ const ProfileSetup = () => {
             placeholder="Begin typing your service eg. Acupuncture..."
           />
           <Form.Label>Or select from the following list:</Form.Label>
-          <Container className="checkboxContainerList">
+          {/* <Container className="checkboxContainerList">
             {servicesList.placeholderList.map((service) => (
               <label
                 id={`service-${service}`}
@@ -204,7 +203,7 @@ const ProfileSetup = () => {
                 <span className="checkBoxFill"></span>
               </label>
             ))}
-          </Container>
+          </Container> */}
         </Form.Group>
         {/** Other Practitioner's Services Form Group */}
         <Form.Group controlId="profileSetupOtherServices">

@@ -12,6 +12,18 @@ import CustomButton from "../general-components/CustomButton";
 
 class SearchField extends React.Component {
   render() {
+    // Map the dropdown items of Region
+    let regions = this.props.regions;
+    const regionKeywords = regions.map((region) => {
+      return <Dropdown.Item key={region}>{region}</Dropdown.Item>;
+    });
+
+    // Map the dropdown items of Services
+    let services = this.props.services;
+    const serviceKeywords = services.map((service) => {
+      return <Dropdown.Item key={service}>{service}</Dropdown.Item>;
+    });
+
     return (
       <Container fluid className="searchFieldContainer">
         <Container>
@@ -48,28 +60,7 @@ class SearchField extends React.Component {
                       />
                     </h6>
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
-                      Abdominal Massage
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Acupressure</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Acupuncture</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">
-                      Allergy Intolerance
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-5">
-                      Ayurvedic Massage Therapy
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-6">
-                      Ayurvedic Medicine
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-7">Biodynamic</Dropdown.Item>
-                    <Dropdown.Item href="#/action-8">Biofeedback</Dropdown.Item>
-                    <Dropdown.Item href="#/action-9">Biomagnetic</Dropdown.Item>
-                    <Dropdown.Item href="#/action-10">
-                      Bioptron Light Therapy
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
+                  <Dropdown.Menu>{serviceKeywords}</Dropdown.Menu>
                 </Dropdown>
               </Col>
               <Col sm={3}>
@@ -84,10 +75,7 @@ class SearchField extends React.Component {
                       />
                     </h6>
                   </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">Auckland</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Wellington</Dropdown.Item>
-                  </Dropdown.Menu>
+                  <Dropdown.Menu>{regionKeywords}</Dropdown.Menu>
                 </Dropdown>
               </Col>
               <Col sm={2}>

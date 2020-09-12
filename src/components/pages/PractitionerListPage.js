@@ -1,5 +1,6 @@
 import React from "react";
 import CallToAction from "../homepage-components/CallToAction";
+import PractitionerList from "../practitioner-components/PractitionerList";
 import { pageTransition } from "../../transitions/Transitions";
 import { motion } from "framer-motion";
 
@@ -11,8 +12,9 @@ class PractitionerListPage extends React.Component {
         animate="in"
         exit="out"
         variants={pageTransition}
-        className="practitionerList"
+        className="practitionerList mt-5"
       >
+        <PractitionerList />
         <CallToAction />
       </motion.div>
     );

@@ -1,12 +1,11 @@
 import "./TherapyList.css";
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { servicesList } from "../App";
 
 class TherapyList extends React.Component {
   render() {
     /** Calculate how many items each of the 4 columns should have */
-    let therapyList = servicesList.placeholderList;
+    let therapyList = this.props.services;
     let printColItemAmount = Math.ceil(therapyList.length / 4);
     // Map a list element with each item in the placeholder list
     const searchKeywords = therapyList.map((searchKeyword) => {

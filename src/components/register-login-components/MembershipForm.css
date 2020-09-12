@@ -49,3 +49,8 @@
   margin-top: 50px;
   padding: 15px 85px 15px 85px;
 }
+
+.my-facebook-button-class {
+  background-color: blue;
+  color: white;
+}

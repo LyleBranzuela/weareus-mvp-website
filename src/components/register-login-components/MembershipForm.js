@@ -1,244 +1,277 @@
 import "./MembershipForm.css";
-import React, { useContext, useState } from "react";
+import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { pageTransition } from "../../transitions/Transitions";
 import CustomButton from "../general-components/CustomButton";
 import UserPool from "../../manage-accounts/UserPool";
-import { AccountContext } from "../../manage-accounts/Accounts";
+import {
+  googleSignInCallBack,
+  facebookSignInCallBack,
+} from "../../manage-accounts/Accounts";
+import GoogleLogin from "react-google-login";
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
 
-const MembershipForm = () => {
-  // Set User Account's Attributes' States
-  const [firstName, setFirstName] = useState(""); // Shown as given_name for AWS Cognito
-  const [lastName, setLastName] = useState(""); // Shown as family_name for AWS Cognito
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [username, setUsername] = useState(""); // Shown as preferred_username for AWS Cognito
-  const [password, setPassword] = useState("");
-
-  const { facebookSignInCallBack, googleSignInCallBack } = useContext(
-    AccountContext
-  );
-
-  // Create Data Variables with key-value pairing
-  var dataFirstName = {
-    Name: "given_name",
-    Value: firstName,
-  };
-  var dataLastName = {
-    Name: "family_name",
-    Value: lastName,
-  };
-  var dataEmail = {
-    Name: "email",
-    Value: email,
-  };
-  var dataPhoneNumber = {
-    Name: "phone_number",
-    Value: "+64" + phoneNumber,
-  };
-  var dataUsername = {
-    Name: "preferred_username",
-    Value: username,
+class MembershipForm extends React.Component {
+  state = {
+    firstName: "", // Shown as given_name for AWS Cognito
+    lastName: "", // Shown as family_name for AWS Cognito
+    email: "",
+    phoneNumber: "",
+    username: "", // Shown as preferred_username for AWS Cognito
+    password: "",
   };
 
-  // Create the Attributes List of CognitoUserAttributes
-  var attributeList = [];
-  var attributeGivenName = new CognitoUserAttribute(dataFirstName);
-  var attributeFamilyName = new CognitoUserAttribute(dataLastName);
-  var attributeEmail = new CognitoUserAttribute(dataEmail);
-  var attributePhoneNumber = new CognitoUserAttribute(dataPhoneNumber);
-  var attributePreferredUsername = new CognitoUserAttribute(dataUsername);
+  componentDidMount() {}
 
-  // Push the new CognitoUserAttributes to the Attributes List
-  attributeList.push(attributeGivenName);
-  attributeList.push(attributeFamilyName);
-  attributeList.push(attributeEmail);
-  attributeList.push(attributePhoneNumber);
-  attributeList.push(attributePreferredUsername);
-
-  // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
-  const onSubmit = (event) => {
-    event.preventDefault();
-    UserPool.signUp(email, password, attributeList, null, (err, data) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(data);
-      }
+  
+  formOnChangeHandler = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
     });
   };
 
-  return (
-    <motion.div intial="out" animate="in" exit="out" variants={pageTransition}>
-      <Container fluid>
-        <Container className="membershipFormStyle">
-          <div class="g-signin2" data-onsuccess={googleSignInCallBack}></div>
-          <div
-            class="fb-login-button"
-            data-size="large"
-            data-button-type="continue_with"
-            data-layout="default"
-            data-auto-logout-link="false"
-            data-use-continue-as="false"
-            data-width=""
-            data-onsuccess={facebookSignInCallBack}
-          ></div>
-          <Form id="membershipForm" onSubmit={onSubmit}>
-            <h2>Membership Details</h2>
-            <Row>
-              {/** First Name Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupFirstName">
-                  <Form.Label>First Name*</Form.Label>
-                  <Form.Control
-                    value={firstName}
-                    onChange={(event) => setFirstName(event.target.value)}
-                    type="text"
-                    placeholder="First Name"
-                  />
-                </Form.Group>
-              </Col>
-              {/** Last Name Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupLastName">
-                  <Form.Label>Last Name*</Form.Label>
-                  <Form.Control
-                    value={lastName}
-                    onChange={(event) => setLastName(event.target.value)}
-                    type="text"
-                    placeholder="Last Name"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              {/** Email Address Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupEmail">
-                  <Form.Label>Email Address*</Form.Label>
-                  <Form.Control
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    type="text"
-                    placeholder="Email"
-                  />
-                </Form.Group>
-              </Col>
-              {/** Phone Number Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupPhone">
-                  <Form.Label>Phone Number*</Form.Label>
-                  <Form.Control
-                    value={phoneNumber}
-                    onChange={(event) => setPhoneNumber(event.target.value)}
-                    type="number"
-                    placeholder="Phone"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              {/** Account Username Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupUsername">
-                  <Form.Label>Account Username*</Form.Label>
-                  <Form.Control
-                    value={username}
-                    onChange={(event) => setUsername(event.target.value)}
-                    type="text"
-                    placeholder="Your Username"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              {/** Account Password Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupPassword">
-                  <Form.Label>Create Account Password*</Form.Label>
-                  <Form.Control
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    type="password"
-                    placeholder="Password"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              {/** Confirm Password Form Group */}
-              <Col>
-                <Form.Group controlId="memberFormGroupConfirmPassword">
-                  <Form.Label>Confirm Password*</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Confirm Password"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            {/** Total Cost Calculator Section */}
-            <Container className="totalCostContainer">
+  // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
+  onSubmit = (event) => {
+    // Create Data Variables with key-value pairing
+    var dataFirstName = {
+      Name: "given_name",
+      Value: this.state.firstName,
+    };
+    var dataLastName = {
+      Name: "family_name",
+      Value: this.state.lastName,
+    };
+    var dataEmail = {
+      Name: "email",
+      Value: this.state.email,
+    };
+    var dataPhoneNumber = {
+      Name: "phone_number",
+      Value: "+64" + this.state.phoneNumber,
+    };
+    var dataUsername = {
+      Name: "preferred_username",
+      Value: this.state.username,
+    };
+
+    // Create the Attributes List of CognitoUserAttributes
+    var attributeGivenName = new CognitoUserAttribute(dataFirstName);
+    var attributeFamilyName = new CognitoUserAttribute(dataLastName);
+    var attributeEmail = new CognitoUserAttribute(dataEmail);
+    var attributePhoneNumber = new CognitoUserAttribute(dataPhoneNumber);
+    var attributePreferredUsername = new CognitoUserAttribute(dataUsername);
+
+    // Push the new CognitoUserAttributes to the Attributes List
+    var attributeList = [];
+    attributeList.push(attributeGivenName);
+    attributeList.push(attributeFamilyName);
+    attributeList.push(attributeEmail);
+    attributeList.push(attributePhoneNumber);
+    attributeList.push(attributePreferredUsername);
+    event.preventDefault();
+
+    // Signup the Account
+    UserPool.signUp(
+      this.state.email,
+      this.state.password,
+      attributeList,
+      null,
+      (err, data) => {
+        if (err) {
+          console.error(err); // Error with Signing up
+        } else {
+          console.log(data); // Successful Sign up
+        }
+      }
+    );
+  };
+
+  render() {
+    return (
+      <motion.div
+        intial="out"
+        animate="in"
+        exit="out"
+        variants={pageTransition}
+      >
+        <Container fluid>
+          <Container className="membershipFormStyle">
+            <Form id="membershipForm" onSubmit={this.onSubmit}>
+              <Row className="mb-5">
+                <div
+                  className="fb-login-button"
+                  data-size="large"
+                  data-button-type="continue_with"
+                  data-layout="default"
+                  data-auto-logout-link="true"
+                  data-use-continue-as="false"
+                  data-width=""
+                  data-onsuccess={facebookSignInCallBack}
+                ></div>
+                <GoogleLogin
+                  clientId="423149440415-l1v06tlarr297mkbv1oh5g2jv0pgdrv3.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={googleSignInCallBack}
+                  cookiePolicy={"single_host_origin"}
+                />
+              </Row>
+              <h2>Membership Details</h2>
               <Row>
+                {/** First Name Form Group */}
                 <Col>
-                  <h2>Your Order</h2>
-                  <hr size="50" />
-                  {/** Section: Membership Type */}
-                  <Row>
-                    <Col sm={3}>
-                      <span className="orderFormSection">Membership</span>
-                    </Col>
-                    <Col sm={9}>
-                      <span className="orderDataSection" id="orderMembership">
-                        Standard Membership
-                      </span>
-                    </Col>
-                  </Row>
-                  <hr size="50" />
-                  {/** Section: Total Amount */}
-                  <Row>
-                    <Col sm={3}>
-                      <span className="orderFormSection">Total</span>
-                    </Col>
-                    <Col sm={9}>
-                      <span className="orderDataSection" id="orderTotal">
-                        $0000 / year
-                      </span>
-                    </Col>
-                  </Row>
-                  <hr size="50" />
-                  {/** Section: Recurring Totals Amount */}
-                  <Row>
-                    <Col sm={3}>
-                      <span className="orderFormSection">Recurring Totals</span>
-                    </Col>
-                    <Col sm={9}>
-                      <span
-                        className="orderDataSection"
-                        id="orderRecurringTotal"
-                      >
-                        $0000 (Includes $22.35 GST)/year (renewal: July 23,
-                        2019)
-                      </span>
-                    </Col>
-                  </Row>
-                  <hr size="50" />
-                  {/** Section: Pay Button */}
-                  <CustomButton
-                    id="paymentFormButton"
-                    type="submit"
-                    text="Payment"
-                  />
+                  <Form.Group controlId="firstName">
+                    <Form.Label>First Name*</Form.Label>
+                    <Form.Control
+                      value={this.state.firstName}
+                      onChange={this.formOnChangeHandler}
+                      type="text"
+                      placeholder="First Name"
+                    />
+                  </Form.Group>
+                </Col>
+                {/** Last Name Form Group */}
+                <Col>
+                  <Form.Group controlId="lastName">
+                    <Form.Label>Last Name*</Form.Label>
+                    <Form.Control
+                      value={this.state.lastName}
+                      onChange={this.formOnChangeHandler}
+                      type="text"
+                      placeholder="Last Name"
+                    />
+                  </Form.Group>
                 </Col>
               </Row>
-            </Container>
-          </Form>
+              <Row>
+                {/** Email Address Form Group */}
+                <Col>
+                  <Form.Group controlId="email">
+                    <Form.Label>Email Address*</Form.Label>
+                    <Form.Control
+                      value={this.state.email}
+                      onChange={this.formOnChangeHandler}
+                      type="text"
+                      placeholder="Email"
+                    />
+                  </Form.Group>
+                </Col>
+                {/** Phone Number Form Group */}
+                <Col>
+                  <Form.Group controlId="phoneNumber">
+                    <Form.Label>Phone Number*</Form.Label>
+                    <Form.Control
+                      value={this.state.phoneNumber}
+                      onChange={this.formOnChangeHandler}
+                      type="number"
+                      placeholder="Phone"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                {/** Account Username Form Group */}
+                <Col>
+                  <Form.Group controlId="username">
+                    <Form.Label>Account Username*</Form.Label>
+                    <Form.Control
+                      value={this.state.username}
+                      onChange={this.formOnChangeHandler}
+                      type="text"
+                      placeholder="Your Username"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                {/** Account Password Form Group */}
+                <Col>
+                  <Form.Group controlId="password">
+                    <Form.Label>Create Account Password*</Form.Label>
+                    <Form.Control
+                      value={this.state.password}
+                      onChange={this.formOnChangeHandler}
+                      type="password"
+                      placeholder="Password"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                {/** Confirm Password Form Group */}
+                <Col>
+                  <Form.Group controlId="confirmPassword">
+                    <Form.Label>Confirm Password*</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Confirm Password"
+                    />
+                  </Form.Group>
+                </Col>
+              </Row>
+              {/** Total Cost Calculator Section */}
+              <Container className="totalCostContainer">
+                <Row>
+                  <Col>
+                    <h2>Your Order</h2>
+                    <hr size="50" />
+                    {/** Section: Membership Type */}
+                    <Row>
+                      <Col sm={3}>
+                        <span className="orderFormSection">Membership</span>
+                      </Col>
+                      <Col sm={9}>
+                        <span className="orderDataSection" id="orderMembership">
+                          Standard Membership
+                        </span>
+                      </Col>
+                    </Row>
+                    <hr size="50" />
+                    {/** Section: Total Amount */}
+                    <Row>
+                      <Col sm={3}>
+                        <span className="orderFormSection">Total</span>
+                      </Col>
+                      <Col sm={9}>
+                        <span className="orderDataSection" id="orderTotal">
+                          $0000 / year
+                        </span>
+                      </Col>
+                    </Row>
+                    <hr size="50" />
+                    {/** Section: Recurring Totals Amount */}
+                    <Row>
+                      <Col sm={3}>
+                        <span className="orderFormSection">
+                          Recurring Totals
+                        </span>
+                      </Col>
+                      <Col sm={9}>
+                        <span
+                          className="orderDataSection"
+                          id="orderRecurringTotal"
+                        >
+                          $0000 (Includes $22.35 GST)/year (renewal: July 23,
+                          2019)
+                        </span>
+                      </Col>
+                    </Row>
+                    <hr size="50" />
+                    {/** Section: Pay Button */}
+                    <CustomButton
+                      id="paymentFormButton"
+                      type="submit"
+                      text="Payment"
+                    />
+                  </Col>
+                </Row>
+              </Container>
+            </Form>
+          </Container>
         </Container>
-      </Container>
-    </motion.div>
-  );
-};
+      </motion.div>
+    );
+  }
+}
 
 export default MembershipForm;
