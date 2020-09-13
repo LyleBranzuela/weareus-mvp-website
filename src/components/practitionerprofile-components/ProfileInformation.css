@@ -20,11 +20,9 @@
 .container-dimensions {
   padding-left: 19%;
   padding-right: 17%;
-  margin-top: -200px;
+  margin-top: -280px;
   padding-bottom: 80px;
 }
-
-
 
 .main-col {
   width: 10000px;
@@ -35,9 +33,10 @@
   vertical-align: text-top;
   float: right;
   margin-top: -35px;
+  /* margin-right: -60px; */
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   .practitioner-logo {
     display: none;
   }

@@ -5,8 +5,8 @@ class ContactCard extends React.Component {
   render() {
     return (
       /* Contact Card Column*/
-      <div>
-        <div className="col-sm-4 no-padding" style={{float: "right"}}>
+      <div className="container-fluid contact-card-container-dimensions">
+        <div className="col-sm-4 no-padding position-right">
           {/* <div style={{ width: "390px" }}> */}
             <div className="contact-details-card">
               <div className="contact-card-body">

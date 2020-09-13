@@ -1,35 +1,58 @@
 .contact-details-card {
-    margin-top: 5px;
-    margin-right: 0px;
-    width: 375px;
-    height: 330px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: left;
-    float: right;
-    background-color: white;
+  margin-top: 35px;
+  width: 375px;
+  height: 330px;
+  /* width: 20vw;
+  height: 18vw; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: left;
+  float: right;
+  background-color: white;
+  position: relative;
+}
+
+.position-right {
+  float: right;
+  margin-left: none;
+}
+
+.contact-details-card:after {
+  position: absolute;
+}
+
+.contact-card-body {
+  color: "#5B5B5B";
+  font-family: "AvenirLTStd-Book";
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 33px;
+}
+.contact-card-practitioner-name {
+  color: #5b5b5b;
+  font-family: "AvenirLTPro-Heavy";
+  margin-bottom: "0px";
+  font-size: "17.5px";
+}
+
+.contact-card-title {
+  color: #5b5b5b;
+  font-family: "AvenirLTPro-Heavy";
+  padding-bottom: 20px;
+}
+
+.contact-card-personal {
+  color: #79158f;
+  font-family: "AvenirLTPro-Heavy";
+}
+.contact-card-container-dimensions {
+  padding-left: 40%;
+  padding-right: 17%;
+  margin-top: 0px;
+  padding-bottom: 80px;
+}
+
+@media (max-width: 1280px) {
+  .contact-card-container-dimensions {
+    padding-right: 4%;
   }
-  
-  .contact-card-body {
-    color: "#5B5B5B";
-    font-family: "AvenirLTStd-Book";
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 33px;
-  }
-  .contact-card-practitioner-name {
-    color: #5b5b5b;
-    font-family: "AvenirLTPro-Heavy";
-    margin-bottom: "0px";
-    font-size: "17.5px";
-  }
-  
-  .contact-card-title {
-    color: #5b5b5b;
-    font-family: "AvenirLTPro-Heavy";
-    padding-bottom: 20px;
-  }
-  
-  .contact-card-personal {
-    color: #79158f;
-    font-family: "AvenirLTPro-Heavy";
-  }
+}

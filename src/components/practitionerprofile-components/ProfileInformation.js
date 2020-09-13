@@ -14,7 +14,7 @@ class ProfileInformation extends React.Component {
       <div>
         <div className="container-fluid container-dimensions">
           <div className="row">
-            <div className="col-lg-8 no-padding">
+            <div className="col-lg-10 no-padding">
               {/* Practitioner Profile Image */}
               <img
                 src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
