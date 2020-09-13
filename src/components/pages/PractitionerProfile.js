@@ -4,8 +4,12 @@ import ImageCarousel from "../practitionerprofile-components/ImageCarousel";
 import ProfileInformation from "../practitionerprofile-components/ProfileInformation";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ContactCard from "../practitionerprofile-components/ContactCard";
 import { pageTransition } from "../../transitions/Transitions";
+=======
+import { pageTransition } from "../App";
+>>>>>>> parent of c592f96... Merge branch 'develop' into practitioner-profile
 =======
 import { pageTransition } from "../App";
 >>>>>>> parent of c592f96... Merge branch 'develop' into practitioner-profile
