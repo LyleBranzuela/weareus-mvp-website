@@ -1,4 +1,4 @@
-.profileCarousel .carousel {
+.carousel {
   /* Adjust the Carousel dimensions and positioning */
   width: 1440px;
   height: 550px;
@@ -13,12 +13,17 @@
   display: inline-block !important;
 }
 
-.profileCarousel .carousel-inner > .item > img {
+.carousel-inner > .item > img {
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
 .profileCarousel .carousel-img-margin {
   margin-top: 80px !important;
+=======
+.carousel-img-margin{
+    margin-top: 80px !important;
+>>>>>>> parent of c592f96... Merge branch 'develop' into practitioner-profile
 }
 
 @media (max-width: 1280px) {

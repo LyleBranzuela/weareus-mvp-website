@@ -3,7 +3,7 @@ import TopContent from "../aboutpage-components/TopContent";
 import ClientSection from "../aboutpage-components/ClientSection";
 import TeamSection from "../aboutpage-components/TeamSection";
 import CallToAction from "../homepage-components/CallToAction";
-import { pageTransition } from "../../transitions/Transitions";
+import { pageTransition } from "../App";
 import { motion } from "framer-motion";
 
 class AboutPage extends React.Component {

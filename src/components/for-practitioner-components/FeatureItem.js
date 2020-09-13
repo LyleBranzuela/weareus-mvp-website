@@ -4,7 +4,6 @@ import React from "react";
 class FeatureItem extends React.Component {
   render() {
     return (
-      /** Component that generates a feature list item (Image, Title, Description) */
       <div className="featureListItem" id={this.props.id}>
         <span>
           <img

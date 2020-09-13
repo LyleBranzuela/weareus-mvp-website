@@ -5,7 +5,6 @@ import { Card } from "react-bootstrap";
 class PractitionerCard extends React.Component {
   render() {
     return (
-      /** Component that generates a Practitioner Card */
       <Card border="light" className="pracCardStyle">
         <Card.Img
           alt={this.props.practitionerCompany}

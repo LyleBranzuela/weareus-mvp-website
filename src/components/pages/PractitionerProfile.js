@@ -2,8 +2,12 @@ import React from "react";
 import CallToAction from "../homepage-components/CallToAction";
 import ImageCarousel from "../practitionerprofile-components/ImageCarousel";
 import ProfileInformation from "../practitionerprofile-components/ProfileInformation";
+<<<<<<< HEAD
 import ContactCard from "../practitionerprofile-components/ContactCard";
 import { pageTransition } from "../../transitions/Transitions";
+=======
+import { pageTransition } from "../App";
+>>>>>>> parent of c592f96... Merge branch 'develop' into practitioner-profile
 import { motion } from "framer-motion";
 
 class PractitionerProfile extends React.Component {
