@@ -13,16 +13,22 @@ import CustomButton from "../general-components/CustomButton";
 class SearchField extends React.Component {
   render() {
     // Map the dropdown items of Region
+    let regionKeywords = [];
     let regions = this.props.regions;
-    const regionKeywords = regions.map((region) => {
-      return <Dropdown.Item key={region}>{region}</Dropdown.Item>;
-    });
+    if (regions) {
+      regionKeywords = regions.map((region) => {
+        return <Dropdown.Item key={region}>{region}</Dropdown.Item>;
+      });
+    }
 
     // Map the dropdown items of Services
+    let serviceKeywords = [];
     let services = this.props.services;
-    const serviceKeywords = services.map((service) => {
-      return <Dropdown.Item key={service}>{service}</Dropdown.Item>;
-    });
+    if (services) {
+      serviceKeywords = services.map((service) => {
+        return <Dropdown.Item key={service}>{service}</Dropdown.Item>;
+      });
+    }
 
     return (
       <Container fluid className="searchFieldContainer">

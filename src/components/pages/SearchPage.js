@@ -7,7 +7,13 @@ import { motion } from "framer-motion";
 import api from "../../api/api";
 
 class SearchPage extends React.Component {
-  state = { services: [], regions: [] };
+  constructor(props) {
+    super(props);
+    this.state = { services: [], regions: [] };
+    
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
 
   // Function to Set the Search Keywords or Terms
   setSearchKeywords = async () => {
@@ -16,16 +22,22 @@ class SearchPage extends React.Component {
     const regionResponse = await api.get("/regions");
 
     // Setting the Services and Regions States
-    this.setState({
-      services: serviceResponse.data.rows.map(
-        (service) => service.service_name
-      ),
-      regions: regionResponse.data.rows.map((region) => region.region_name),
-    });
+    this._isMounted &&
+      this.setState({
+        services: serviceResponse.data.rows.map(
+          (service) => service.service_name
+        ),
+        regions: regionResponse.data.rows.map((region) => region.region_name),
+      });
   };
 
   componentDidMount() {
-    this.setSearchKeywords();
+    this._isMounted = true;
+    this._isMounted && this.setSearchKeywords();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
