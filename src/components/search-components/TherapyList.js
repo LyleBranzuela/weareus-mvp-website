@@ -6,12 +6,15 @@ class TherapyList extends React.Component {
   render() {
     /** Calculate how many items each of the 4 columns should have */
     let therapyList = this.props.services;
-    let printColItemAmount = Math.ceil(therapyList.length / 4);
+    let printColItemAmount = 0;
     // Map a list element with each item in the placeholder list
-    const searchKeywords = therapyList.map((searchKeyword) => {
-      return <li key={searchKeyword}>{searchKeyword}</li>;
-    });
-
+    let searchKeywords = [];
+    if (therapyList) {
+      printColItemAmount = Math.ceil(therapyList.length / 4);
+      searchKeywords = therapyList.map((searchKeyword) => {
+        return <li key={searchKeyword}>{searchKeyword}</li>;
+      });
+    }
     return (
       <Container className="therapyListStyle">
         <Row>

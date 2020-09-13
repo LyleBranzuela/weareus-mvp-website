@@ -12,7 +12,13 @@ import CustomButton from "../general-components/CustomButton";
 import api from "../../api/api";
 
 class HomePage extends React.Component {
-  state = { services: [], regions: [] };
+  constructor(props) {
+    super(props);
+    this.state = { services: [], regions: [], practitioners: [] };
+    
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
 
   // Function to Set the Search Keywords or Terms
   setSearchKeywords = async () => {
@@ -21,16 +27,33 @@ class HomePage extends React.Component {
     const regionResponse = await api.get("/regions");
 
     // Setting the Services and Regions States
-    this.setState({
-      services: serviceResponse.data.rows.map(
-        (service) => service.service_name
-      ),
-      regions: regionResponse.data.rows.map((region) => region.region_name),
-    });
+    this._isMounted &&
+      this.setState({
+        services: serviceResponse.data.rows.map(
+          (service) => service.service_name
+        ),
+        regions: regionResponse.data.rows.map((region) => region.region_name),
+      });
+  };
+
+  // Function to Get All The Practitioners from the Server
+  getAllPractitioners = async () => {
+    const practitionerResponse = await api.get("/companies");
+    // Setting the Services and Regions States
+    this._isMounted &&
+      this.setState({
+        practitioners: practitionerResponse.data.rows,
+      });
   };
 
   componentDidMount() {
-    this.setSearchKeywords();
+    this._isMounted = true;
+    this._isMounted && this.setSearchKeywords();
+    this._isMounted && this.getAllPractitioners();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
@@ -64,7 +87,7 @@ class HomePage extends React.Component {
           services={this.state.services}
           regions={this.state.regions}
         />
-        <PractitionerList />
+        <PractitionerList practitioners={this.state.practitioners} />
         <CallToAction />
       </motion.div>
     );
