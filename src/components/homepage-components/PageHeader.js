@@ -19,6 +19,13 @@ class PageHeader extends React.Component {
     window.removeEventListener('resize', this.handleWindowSizeChange);
   }
 
+  scrollDown = () => {
+    document.body.scrollBy({
+                top: window.innerHeight - (window.innerHeight * 0.05),
+                left: 0,
+                behavior: 'smooth'});
+  }
+
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });
   };
@@ -45,16 +52,17 @@ class PageHeader extends React.Component {
               to grow your health, wellness and <br />
               self-improvement business.
             </p>
-            </div>
-          </Container>
-          <div>
             <img
-            src={require("../../assets/images/white_down_arrow.png")}
+            src={require("../../assets/icons/menu_arrow_white.svg")}
             alt="practitioners-header"
             id="scrollDownButton"
+            onClick={this.scrollDown}
             />
-          </div>
+            </div>
+          </Container>
+          <p id="scroll-ref"> </p>
         </div>
+
       );
     } else {
       return (
