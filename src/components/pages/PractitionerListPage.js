@@ -9,7 +9,7 @@ class PractitionerListPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { practitioners: [] };
-    
+
     // Prevents Memory Leaks
     this._isMounted = false;
   }
@@ -42,7 +42,10 @@ class PractitionerListPage extends React.Component {
         variants={pageTransition}
         className="practitionerList mt-5"
       >
-        <PractitionerList />
+        <PractitionerList
+          practitioners={this.state.practitioners}
+          showAll={true}
+        />
         <CallToAction />
       </motion.div>
     );

@@ -11,20 +11,25 @@ import {
 } from "../../manage-accounts/Accounts";
 import GoogleLogin from "react-google-login";
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
+import api from "../../api/api";
 
 class MembershipForm extends React.Component {
-  state = {
-    firstName: "", // Shown as given_name for AWS Cognito
-    lastName: "", // Shown as family_name for AWS Cognito
-    email: "",
-    phoneNumber: "",
-    username: "", // Shown as preferred_username for AWS Cognito
-    password: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: "", // Shown as given_name for AWS Cognito
+      lastName: "", // Shown as family_name for AWS Cognito
+      email: "",
+      phoneNumber: "",
+      username: "", // Shown as preferred_username for AWS Cognito
+      password: "",
+    };
 
-  componentDidMount() {}
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
 
-  
+  // Handles Any Active Changes on the Form
   formOnChangeHandler = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
@@ -33,24 +38,34 @@ class MembershipForm extends React.Component {
 
   // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
   onSubmit = (event) => {
+    event.preventDefault();
+    let userObject = {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      user_name: this.state.username,
+      email: this.state.email,
+      phone: "+64" + this.state.phoneNumber,
+      user_type: "customer",
+    };
+
     // Create Data Variables with key-value pairing
-    var dataFirstName = {
+    let dataFirstName = {
       Name: "given_name",
       Value: this.state.firstName,
     };
-    var dataLastName = {
+    let dataLastName = {
       Name: "family_name",
       Value: this.state.lastName,
     };
-    var dataEmail = {
+    let dataEmail = {
       Name: "email",
       Value: this.state.email,
     };
-    var dataPhoneNumber = {
+    let dataPhoneNumber = {
       Name: "phone_number",
       Value: "+64" + this.state.phoneNumber,
     };
-    var dataUsername = {
+    let dataUsername = {
       Name: "preferred_username",
       Value: this.state.username,
     };
@@ -69,7 +84,6 @@ class MembershipForm extends React.Component {
     attributeList.push(attributeEmail);
     attributeList.push(attributePhoneNumber);
     attributeList.push(attributePreferredUsername);
-    event.preventDefault();
 
     // Signup the Account
     UserPool.signUp(
@@ -77,15 +91,25 @@ class MembershipForm extends React.Component {
       this.state.password,
       attributeList,
       null,
-      (err, data) => {
+      async (err, data) => {
         if (err) {
           console.error(err); // Error with Signing up
         } else {
           console.log(data); // Successful Sign up
+          userObject.reference_id = data.userSub;
+          await api.post("/user", userObject);
         }
       }
     );
   };
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     return (

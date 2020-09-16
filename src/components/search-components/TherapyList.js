@@ -1,11 +1,45 @@
 import "./TherapyList.css";
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import api from "../../api/api";
 
 class TherapyList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      services: [],
+    };
+
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
+
+  // Function to Set the Search Service Keywords
+  setServiceKeywords = async () => {
+    // Getting the Services JSON From the Server
+    const serviceResponse = await api.get("/lookup_services");
+
+    // Setting the Services State
+    this._isMounted &&
+      this.setState({
+        services: serviceResponse.data.rows.map(
+          (service) => service.service_name
+        ),
+      });
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+    this._isMounted && this.setServiceKeywords();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     /** Calculate how many items each of the 4 columns should have */
-    let therapyList = this.props.services;
+    let therapyList = this.state.services;
     let printColItemAmount = 0;
     // Map a list element with each item in the placeholder list
     let searchKeywords = [];

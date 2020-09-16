@@ -1,6 +1,5 @@
 import "./LoginForm.css";
 import React from "react";
-import ReactDOM from "react-dom";
 import { Modal, Container, Form, Row, Col, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CustomButton from "../general-components/CustomButton";

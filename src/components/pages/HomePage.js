@@ -14,27 +14,11 @@ import api from "../../api/api";
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { services: [], regions: [], practitioners: [] };
-    
+    this.state = { practitioners: [] };
+
     // Prevents Memory Leaks
     this._isMounted = false;
   }
-
-  // Function to Set the Search Keywords or Terms
-  setSearchKeywords = async () => {
-    // Getting the Services and Regions JSON From the Server
-    const serviceResponse = await api.get("/lookup_services");
-    const regionResponse = await api.get("/regions");
-
-    // Setting the Services and Regions States
-    this._isMounted &&
-      this.setState({
-        services: serviceResponse.data.rows.map(
-          (service) => service.service_name
-        ),
-        regions: regionResponse.data.rows.map((region) => region.region_name),
-      });
-  };
 
   // Function to Get All The Practitioners from the Server
   getAllPractitioners = async () => {
@@ -48,7 +32,6 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this._isMounted && this.setSearchKeywords();
     this._isMounted && this.getAllPractitioners();
   }
 
@@ -83,11 +66,11 @@ class HomePage extends React.Component {
           }
         />
         <NewPractitionerList />
-        <SearchField
-          services={this.state.services}
-          regions={this.state.regions}
+        <SearchField />
+        <PractitionerList
+          practitioners={this.state.practitioners}
+          showAll={false}
         />
-        <PractitionerList practitioners={this.state.practitioners} />
         <CallToAction />
       </motion.div>
     );

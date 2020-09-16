@@ -41,6 +41,17 @@
 
 .searchFieldStyle .dropdown-toggle h6 {
   margin: 5px 0px 0px 10px;
+  max-width: 180px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.searchFieldStyle .dropdown-toggle img {
+  float: right;
+  margin: 10px;
+  display: inline-flex;
 }
 
 .searchFieldStyle .dropdown-toggle:active {
@@ -62,12 +73,6 @@
 .searchFieldStyle .dropdown-toggle::after {
   display: none !important;
 }
-
-.searchFieldStyle .dropdown-toggle img {
-  float: right;
-  margin: 7px;
-}
-
 .searchFieldStyle .dropdown .dropdown-menu {
   transition: all 0.5s;
   max-height: 0;
@@ -79,7 +84,7 @@
 }
 
 .searchFieldStyle .dropdown.show .dropdown-menu {
-  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */ 
+  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
   max-width: 300px;
   max-height: 300px;
   white-space: normal;
@@ -92,8 +97,11 @@
 }
 
 .searchFieldStyle .dropdown-item {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: white;
-  width: 100%;
 }
 
 .searchFieldStyle .dropdown-item:hover {
@@ -108,13 +116,12 @@
 /* Custom Scroll CSS Design */
 .searchFieldStyle .dropdown-menu::-webkit-scrollbar-track {
   border: 1px solid #f3f1f3;
-  padding: 1px 0;
   background-color: #f3f1f3;
 }
 
 .searchFieldStyle .dropdown-menu::-webkit-scrollbar {
   width: 15px;
-  background-color: #f3f1f3
+  background-color: #f3f1f3;
 }
 
 .searchFieldStyle .dropdown-menu::-webkit-scrollbar-thumb {
@@ -123,7 +130,6 @@
   background-color: #f3f1f3;
   border: 1px solid #79158f;
 }
-
 
 #searchFieldButton {
   width: 100%;

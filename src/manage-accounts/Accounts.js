@@ -1,4 +1,3 @@
-import React from "react";
 import UserPool from "./UserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import AWS from "aws-sdk";
@@ -58,7 +57,7 @@ function googleSignInCallBack(authResult) {
   if (!authResult.error) {
     // Add the Google access token to the Amazon Cognito credentials login map.
     AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: "ap-southeast-2_70XMXEzjd",
+      IdentityPoolId: UserPool.UserPoolId,
       Logins: {
         "accounts.google.com": authResult["id_token"],
       },
@@ -81,7 +80,7 @@ function facebookSignInCallBack() {
 
       // Add the Facebook access token to the Amazon Cognito credentials login map.
       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: "ap-southeast-2_70XMXEzjd",
+        IdentityPoolId: UserPool.UserPoolId,
         Logins: {
           "graph.facebook.com": response.authResponse.accessToken,
         },

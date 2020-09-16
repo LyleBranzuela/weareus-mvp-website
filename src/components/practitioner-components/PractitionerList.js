@@ -18,6 +18,7 @@ class PractitionerList extends React.Component {
         }
         return (
           <PractitionerCard
+            key={practitioner.company_name}
             practitionerName={practitioner.company_name}
             practitionerImage={image_url}
             practitionerLocation={`${practitioner.suburb}, ${practitioner.region_name}`}
@@ -25,18 +26,40 @@ class PractitionerList extends React.Component {
         );
       });
     }
+
+    // Show All Practitioners Button
+    let showAllButton;
+    if (!this.props.showAll) {
+      showAllButton = (
+        <Link to="practitioner-list">Show All ({practitionerList.length})</Link>
+      );
+    }
     return (
-      <Container fluid className="pracContainerStyle">
+      <Container
+        fluid
+        className="pracContainerStyle"
+        style={{ backgroundColor: this.props.showAll ? "white" : "#F3F1F3" }}
+      >
         {/** Card Deck for all Practitioner Cards */}
         <Container className="pracListStyle">
           <h4>Practitioners</h4>
           <CardDeck className="pracListDeckStyle">
-            <Row>{practitionerList.slice(0, 5)}</Row>
-            <Row>{practitionerList.slice(5, 10)}</Row>
+            {/* Render all Practitioners based if it should be showing all or not */}
+            {this.props.showAll ? (
+              <Row>
+                {practitionerList.map((practitioner) => {
+                  return <Col sm={3}>{practitioner}</Col>;
+                })}
+              </Row>
+            ) : (
+              <div>
+                <Row>{practitionerList.slice(0, 5)}</Row>
+                <Row>{practitionerList.slice(5, 10)}</Row>
+              </div>
+            )}
           </CardDeck>
           <br />
-          {/** Show all New Practitioners */}
-          <Link to="practitioner-list">Show All ({practitionerList.length})</Link>
+          {showAllButton}
         </Container>
       </Container>
     );
