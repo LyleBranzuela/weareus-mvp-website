@@ -1,5 +1,5 @@
 import "./NavigationBar.css";
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -8,16 +8,30 @@ class NavigationBar extends React.Component {
     super();
     this.state = {
       width: window.innerWidth,
+      scrolled: false,
     };
+
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
+    window.addEventListener('scroll', this.handleScroll, true);
   }
 
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener('scroll', this.handleScroll, true);
+  }
+
+  handleScroll(event){
+    if (window.pageYOffset > 0) {
+        this.setState({ scrolled: false });
+    }
+    else{
+        this.setState({ scrolled: true });
+    }
   }
 
   handleWindowSizeChange = () => {
@@ -26,12 +40,13 @@ class NavigationBar extends React.Component {
 
   render() {
     const { width } = this.state;
-    const isMobile = width <= 600;
+    const isMobile = width <= 600
+
 
     if (isMobile) {
       // Mobile version
       return (
-        <Navbar collapseOnSelect fixed="top" variant="dark" expand="lg" className="navBarMobile">
+        <Navbar collapseOnSelect fixed="top" variant="dark" expand="lg" className="navBarMobile" style={{backgroundColor: this.state.scrolled ? "#79158f" : "transparent"}}>
         {/*fixed="top"*/}
         <LinkContainer to="/home">
           <Navbar.Brand>

@@ -62,6 +62,12 @@
   font-family: "AvenirLTPro-Heavy";
 }
 
+.navBarMobile2 {
+  padding: 5% 10% 5% 10%;
+  font-family: "AvenirLTPro-Heavy";
+  background-color: purple;
+}
+
 #mobile_logo {
   height: 5vh;
 }

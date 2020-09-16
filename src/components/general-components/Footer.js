@@ -1,6 +1,6 @@
 import "./Footer.css";
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 class Footer extends React.Component {
@@ -32,26 +32,28 @@ class Footer extends React.Component {
       // Mobile version
       return (
         <div>
+        <Row className="justify-content-center">
+        <LinkContainer to="/">
+          <Navbar.Brand className="justify-content-center">
+            <img
+              src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
+              alt="we are us logo"
+            />
+          </Navbar.Brand>
+        </LinkContainer>
+        </Row>
+        <Row className="justify-content-center">
           <Navbar
             collapseOnSelect
             expand="lg"
             variant="light"
-            className="footer footerStyle"
+            className="footerStyleMobile justify-content-center"
           >
-            <LinkContainer to="/">
-              <Navbar.Brand>
-                <img
-                  src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
-                  className="d-inline-block align-top"
-                  alt="we are us logo"
-                />
-              </Navbar.Brand>
-            </LinkContainer>
             <Nav>
               {/* Register Page Link */}
               <LinkContainer to="/search">
                 <Nav.Link href="/register-practitioner">
-                  Register As Practicioner
+                  Register as a Practicioner
                 </Nav.Link>
               </LinkContainer>
               {/* Contact Us Page Link */}
@@ -63,24 +65,27 @@ class Footer extends React.Component {
                 <Nav.Link>Terms And Conditions</Nav.Link>
               </LinkContainer>
             </Nav>
-            <LinkContainer to="">
-              <Nav.Link>
-                <img
-                  src={require("../../assets/icons/icon_fb.svg")}
-                  alt="facebook icon"
-                ></img>
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="">
-              <Nav.Link>
-                <img
-                  src={require("../../assets/icons/icon_insta.svg")}
-                  alt="instagram icon"
-                ></img>
-              </Nav.Link>
-            </LinkContainer>
           </Navbar>
-        </div>
+          </Row>
+          <Row className="justify-content-center">
+          <LinkContainer to="" className="footerSocialMedia">
+            <Nav.Link>
+              <img
+                src={require("../../assets/icons/icon_fb.svg")}
+                alt="facebook icon"
+              ></img>
+            </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="" className="footerSocialMedia">
+            <Nav.Link>
+              <img
+                src={require("../../assets/icons/icon_insta.svg")}
+                alt="instagram icon"
+              ></img>
+            </Nav.Link>
+          </LinkContainer>
+          </Row>
+          </div>
       );
     } else {
       return (
