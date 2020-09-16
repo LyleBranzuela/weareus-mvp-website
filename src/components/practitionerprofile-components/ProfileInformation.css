@@ -20,13 +20,22 @@
 .container-dimensions {
   padding-left: 19%;
   padding-right: 17%;
-  margin-top: -280px;
+  margin-top: -200px;
   padding-bottom: 80px;
 }
 
-.main-col {
-  width: 10000px;
-  background-color: darkgreen;
+/* @media (max-width: 1440px) and (min-width: 1280px) {
+  .container-dimensions {
+    padding-left: 10%;
+    margin-top: -230px;
+  }
+} */
+
+@media (max-width: 900px) {
+  .container-dimensions {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 .practitioner-logo {
@@ -42,6 +51,9 @@
   }
 }
 
+.testing {
+  padding-right: 50px;
+}
 .no-padding {
   margin-right: 0 !important;
   padding-right: 0 !important;
@@ -58,32 +70,26 @@
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
 }
-
 #suburb,
 #city {
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
 }
+
 #location,
 #category {
   text-align: left;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #category,
   #practitioner-name,
-  #location {
+  #location,
+  .practitioner-title,
+  .practitioner-name {
     text-align: center;
   }
-}
-
-.title-header {
-  font-family: "AvenirLTPro-Heavy";
-  color: #5b5b5b;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-left: 0px;
 }
 
 .service-list-style {
@@ -124,23 +130,11 @@
   font-family: "AvenirLTPro-Heavy";
 }
 
-@media (max-width: 900px) {
-  .practitioner-title {
-    text-align: center;
-  }
-}
-
 .practitioner-name {
   color: #79158f;
   font-family: "AvenirLTPro-Heavy";
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-@media (max-width: 900px){
-  .practitioner-name{
-    text-align: center;
-  }
 }
 
 .read-more-button {
@@ -158,4 +152,48 @@
   display: flex;
   flex-direction: column;
   height: auto;
+}
+
+.accordion-section {
+  font-family: "AvenirLTStd-Book";
+  margin: none;
+}
+
+.accordion-section .card {
+  border-right: 0px solid rgba(0, 0, 0, 0);
+  border-left: 0px solid rgba(0, 0, 0, 0);
+  width: 100%;
+}
+
+.accordion-section .card-header {
+  background-color: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.accordion-section .accordion {
+  margin-left: -3%;
+  margin-right: -3%;
+}
+
+.accordion-section .card-body {
+  margin-left: -2.5%;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+}
+
+.accordion-section .card-header {
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+  font-size: 1.3em;
+}
+
+@media (max-width: 560px) {
+  .contact-card-column {
+    padding-right: 60%;
+  }
 }
