@@ -29,3 +29,37 @@
   color: white;
   padding-bottom: 10%;
 }
+
+
+/* Mobile Styles */
+.contactUsPageMobile {
+  display: block;
+
+  background-image: url("../../assets/images/contact_us_placeholder_vertical.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  height: 100vh;
+  width: auto;
+
+}
+
+.contactCTAMobile{
+  font-size: 4vh;
+  font-weight: 800;
+  font-family: "AvenirLTStd-Book";
+  text-align: center;
+  color: white;
+  padding-bottom: 15%;
+  padding-top: 55%;
+}
+
+.contactTextMobile{
+  font-size: 3vh;
+  font-weight: 500;
+  font-family: "AvenirLTStd-Book";
+  text-align: center;
+  color: white;
+  padding-bottom: 10%;
+}

@@ -26,11 +26,12 @@ class NavigationBar extends React.Component {
   }
 
   handleScroll(event){
-    if (window.pageYOffset > 0) {
-        this.setState({ scrolled: false });
+    const scroll_pos = document.body.scrollTop;
+    if (scroll_pos > 0) {
+        this.setState({ scrolled: true });
     }
     else{
-        this.setState({ scrolled: true });
+        this.setState({ scrolled: false });
     }
   }
 
