@@ -1,12 +1,12 @@
 .searchFieldContainer {
   background-color: lavender;
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
-    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
+  background-image: url("../../assets/images/we_are_us_yoga.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .searchFieldStyle {

@@ -76,6 +76,7 @@ class SearchResults extends React.Component {
     this._isMounted && this.displayResults();
   }
 
+  // Update Search whenever the URL is changed
   componentDidUpdate(prevProps) {
     if (this.props.location.search !== prevProps.location.search) {
       this.displayResults();
@@ -152,7 +153,7 @@ class SearchResults extends React.Component {
     }
     // console.log(this.props.location.state.regions);
     return (
-      <Container fluid>
+      <div>
         <SearchField />
         <Container className="searchResultsStyle">
           <span id="searchKeyTerms">
@@ -165,7 +166,7 @@ class SearchResults extends React.Component {
           {searchResultsList}
         </Container>
         <CallToAction />
-      </Container>
+      </div>
     );
   }
 }

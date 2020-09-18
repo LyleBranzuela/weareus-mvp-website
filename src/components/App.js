@@ -42,6 +42,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/membership-form" component={MembershipForm} />
         <Route path="/register" component={RegisterPage} />
+        <Route path="/register-user" component={MembershipForm} />
 
         {/* Practitioner Related Pages */}
         <Route path="/for-practitioner" component={ForPractitionersPage} />

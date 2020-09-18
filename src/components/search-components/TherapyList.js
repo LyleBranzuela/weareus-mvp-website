@@ -1,6 +1,7 @@
 import "./TherapyList.css";
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import api from "../../api/api";
 
 class TherapyList extends React.Component {
@@ -46,7 +47,17 @@ class TherapyList extends React.Component {
     if (therapyList) {
       printColItemAmount = Math.ceil(therapyList.length / 4);
       searchKeywords = therapyList.map((searchKeyword) => {
-        return <li key={searchKeyword}>{searchKeyword}</li>;
+        return (
+          <Link
+            key={searchKeyword}
+            to={{
+              pathname: "/results",
+              search: `?company_name=&service_name=${searchKeyword}&region_name=`,
+            }}
+          >
+            <li>{searchKeyword}</li>
+          </Link>
+        );
       });
     }
     return (
