@@ -1,29 +1,23 @@
+.aboutFluidContainer {
+  width: 1300px;
+  padding-top: 60px;
+}
+
 #aboutTitle {
-<<<<<<< Updated upstream
-=======
-  padding-top: 180px;
->>>>>>> Stashed changes
+  padding-top: 70px;
   color: #79158f;
   text-align: center;
   margin-bottom: 70px;
   font-family: "AvenirLTPro-Heavy";
 }
 
-<<<<<<< Updated upstream
 .about-paragraph {
-  color: black;
-=======
-#about-paragraph {
->>>>>>> Stashed changes
   text-align: center;
   font-size: 22px;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
   font-family: "AvenirLTStd-Book";
-<<<<<<< Updated upstream
-=======
-  color: #5b5b5b;
->>>>>>> Stashed changes
+  color: #5B5B5B; 
 }
 
 .aboutContainer {
@@ -36,8 +30,32 @@
   width: 5000px;
 }
 
+.peopleContainer {
+  padding-top: 30px;
+  margin-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 170px;
+  padding-right: 170px;
+  position: relative;
+  border-style: solid;
+  justify-content: center;
+}
+
+#mainFrame {
+  display: block;
+  border-radius: 50%;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#linePadding {
+  margin-top: 100px;
+}
+
 #bigParagraph {
   font-family: "AvenirLTStd-Book";
   font-size: 21px;
   text-align: left;
 }
+
