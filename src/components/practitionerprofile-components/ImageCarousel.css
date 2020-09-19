@@ -17,13 +17,16 @@
   margin: 0 auto;
 }
 
+.profileCarousel .carousel-img-margin {
+  margin-top: 80px !important;
+}
 
 .profileCarousel .carousel-img-margin {
   margin-top: 80px !important;
 }
 
-.carousel-img-margin{
-    margin-top: 80px !important;
+.carousel-img-margin {
+  margin-top: 80px !important;
 }
 
 @media (max-width: 1280px) {

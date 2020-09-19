@@ -2,7 +2,7 @@ import React from "react";
 import CallToAction from "../homepage-components/CallToAction";
 import ImageCarousel from "../practitionerprofile-components/ImageCarousel";
 import ProfileInformation from "../practitionerprofile-components/ProfileInformation";
-// import ContactCard from "../practitionerprofile-components/ContactCard";
+import ContactCard from "../practitionerprofile-components/ContactCard";
 import { pageTransition } from "../App";
 import { motion } from "framer-motion";
 
@@ -17,7 +17,7 @@ class PractitionerProfile extends React.Component {
         className="practitionerPage"
       >
         <ImageCarousel />
-        {/* <ContactCard /> */}
+        <ContactCard />
         <ProfileInformation />
         <CallToAction />
       </motion.div>
