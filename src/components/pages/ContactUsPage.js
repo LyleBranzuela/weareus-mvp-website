@@ -1,6 +1,6 @@
 import React from "react";
 import ContactInfo from "../contactpage-components/ContactInfo";
-import { pageTransition } from "../../transitions/Transitions";
+import { pageTransition } from "../App";
 import { motion } from "framer-motion";
 
 class ContactUs extends React.Component {

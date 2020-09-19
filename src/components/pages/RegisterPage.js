@@ -3,7 +3,7 @@ import ChooseRegister from "../register-login-components/ChooseRegister";
 import PractitionerRegister from "../register-login-components/PractitionerRegister";
 import UserRegister from "../register-login-components/UserRegister";
 import ProfileSetup from "../register-login-components/ProfileSetup";
-import { pageTransition } from "../../transitions/Transitions";
+import { pageTransition } from "../App";
 import { Route, Switch, useRouteMatch } from "react-router-dom";
 import { motion } from "framer-motion";
 

@@ -5,7 +5,7 @@ import FeatureCarousel from "../for-practitioner-components/FeatureCarousel";
 import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
 import MessageOfTheDay from "../homepage-components/MessageOfTheDay";
 import CallToAction from "../homepage-components/CallToAction";
-import { pageTransition } from "../../transitions/Transitions";
+import { pageTransition } from "../App";
 import { motion } from "framer-motion";
 
 class ForPractitionersPage extends React.Component {

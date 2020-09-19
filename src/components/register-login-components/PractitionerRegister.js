@@ -8,8 +8,7 @@ class PractitionerRegister extends React.Component {
   render() {
     const basicPlanFeatures = [
       "1 Mini website - listing on We are Us",
-      "1 Profile Picture",
-      "1 Main Picture",
+      "3-5 Main Pictures",
       "1 Business Logo",
       "About",
       "Services",
@@ -18,8 +17,7 @@ class PractitionerRegister extends React.Component {
     ];
     const businessPlanFeatures = [
       "1 Mini website - listing on We are Us",
-      "1 Profile Picture",
-      "3-5 Main Pictures",
+      "1 Main Picture",
       "1 Business Logo",
       "About",
       "Services",
@@ -29,7 +27,7 @@ class PractitionerRegister extends React.Component {
 
     return (
       <Container fluid>
-        {/* Register As Practitioner Details */}
+        {/** Register As Practitioner Details */}
         <Container className="practitionerRegisterStyle">
           <h2>Become one of Us</h2>
           <h4 id="pracRegisterHeader">
@@ -61,7 +59,6 @@ class PractitionerRegister extends React.Component {
             How would you like to join Us?
           </span>
           <CardGroup>
-            {/** Card For the Basic Plan */}
             <SubscriptionPlan
               id="basicPlan"
               name="Basic"
@@ -69,7 +66,6 @@ class PractitionerRegister extends React.Component {
               price="30"
               features={basicPlanFeatures}
             />
-            {/** Card For the Business Plan */}
             <SubscriptionPlan
               id="businessPlan"
               name="Business"
@@ -78,7 +74,6 @@ class PractitionerRegister extends React.Component {
               features={businessPlanFeatures}
             />
           </CardGroup>
-          {/** Additional Information Section*/}
           <p>
             *
             <br />
@@ -86,7 +81,7 @@ class PractitionerRegister extends React.Component {
             how best to market your business through our site. As such, we
             review the copy and images that you upload before it is published to
             the site. We will provide you with feedback on how to improve the
-            copy and images should if it is needed to enhance the impact of your
+            copy and images should if it isneeded to enhance the impact of your
             listing.
           </p>
         </Container>
