@@ -1,3 +1,22 @@
+#team-column-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 50px;
+}
+
+.container-margin-position {
+  /* margin-right: 20%; */
+  margin-left: 15%;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .container-margin-position {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 #emp-frame {
   display: block;
   border-radius: 50%;
@@ -33,6 +52,10 @@
   padding-right: 50px;
   padding-left: 50px;
   padding-top: 10px;
+<<<<<<< Updated upstream
+=======
+  color: #5b5b5b;
+>>>>>>> Stashed changes
 }
 
 .teamSectionStyle a {
