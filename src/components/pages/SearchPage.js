@@ -2,15 +2,23 @@ import React from "react";
 import SearchField from "../search-components/SearchField";
 import TherapyList from "../search-components/TherapyList";
 import CallToAction from "../homepage-components/CallToAction";
+import { pageTransition } from "../App";
+import { motion } from "framer-motion";
 
 class SearchPage extends React.Component {
   render() {
     return (
-      <div className="searchPage">
+      <motion.div
+        intial="out"
+        animate="in"
+        exit="out"
+        variants={pageTransition}
+        className="searchPage"
+      >
         <SearchField />
         <TherapyList />
         <CallToAction />
-      </div>
+      </motion.div>
     );
   }
 }

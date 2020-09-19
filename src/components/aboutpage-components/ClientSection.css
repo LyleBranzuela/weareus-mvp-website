@@ -1,5 +1,8 @@
-<<<<<<< Updated upstream
-=======
+.aboutFluidContainer {
+  width: 1300px;
+  padding-top: 60px;
+}
+
 #mainFrame {
   display: block;
   border-radius: 50%;
@@ -8,8 +11,6 @@
   margin-right: auto;
   margin-top: 50px;
 }
-
->>>>>>> Stashed changes
 #lightHeader {
   font-family: "AvenirLTStd-Book";
   color: #79158f;
@@ -32,14 +33,9 @@
   font-family: "AvenirLTStd-Book";
   font-size: 22px;
   text-align: left;
-<<<<<<< Updated upstream
-  padding-left: 230px;
-  padding-right: 230px;
-=======
   padding-left:27%;
   padding-right: 27%;
   color: #5b5b5b;
->>>>>>> Stashed changes
 }
 
 blockquote {

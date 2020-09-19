@@ -8,7 +8,7 @@ class NavigationBar extends React.Component {
     return (
       <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
         {/*fixed="top"*/}
-        <LinkContainer to="/">
+        <LinkContainer to="/home">
           <Navbar.Brand>
             <img
               alt="we are us logo"
@@ -25,22 +25,24 @@ class NavigationBar extends React.Component {
           <Nav className="navBar-links">
             {/* Search Page Link */}
             <LinkContainer to="/search">
-              <Nav.Link href="/search">Search</Nav.Link>
+              <Nav.Link className="navBarEffect" href="/search">
+                Search
+              </Nav.Link>
             </LinkContainer>
             {/* About Page Link */}
-            <LinkContainer to="/about">
+            <LinkContainer className="navBarEffect" to="/about">
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
             {/* Practitioner Page Link */}
-            <LinkContainer to="/for-practitioner">
+            <LinkContainer className="navBarEffect" to="/for-practitioner">
               <Nav.Link>For Practitioners</Nav.Link>
             </LinkContainer>
             {/* Login Page Link */}
-            <LinkContainer to="/login">
+            <LinkContainer className="navBarEffect" to="/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
             {/* Register Page Link */}
-            <LinkContainer to="/register-user" className="highlightNav">
+            <LinkContainer to="/register" className="highlightNav">
               <Nav.Link>Register</Nav.Link>
             </LinkContainer>
           </Nav>

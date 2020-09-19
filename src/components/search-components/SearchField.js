@@ -22,7 +22,7 @@ class SearchField extends React.Component {
               </Col>
             </Row>
             <Row className="rowSearchFieldStyle">
-              <Col>
+              <Col sm={4}>
                 <InputGroup>
                   <InputGroup.Prepend>
                     <InputGroup.Text id="searchFieldIcon">
@@ -35,7 +35,7 @@ class SearchField extends React.Component {
                   <Form.Control placeholder="Search Practitioners"></Form.Control>
                 </InputGroup>
               </Col>
-              <Col>
+              <Col sm={3}>
                 <Dropdown>
                   <Dropdown.Toggle id="therapyTypeButton">
                     <h6>
@@ -70,7 +70,7 @@ class SearchField extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
-              <Col>
+              <Col sm={3}>
                 <Dropdown>
                   <Dropdown.Toggle id="regionButton">
                     <h6>
@@ -87,8 +87,13 @@ class SearchField extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
               </Col>
-              <Col>
-                <Button id="searchFieldButton" variant="primary" type="submit">
+              <Col sm={2}>
+                <Button
+                  className="primaryCustomButtonStyle"
+                  id="searchFieldButton"
+                  variant="primary"
+                  type="submit"
+                >
                   Search
                 </Button>
               </Col>

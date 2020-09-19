@@ -1,3 +1,14 @@
+.searchFieldContainer {
+  background-color: lavender;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
+    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  */
+}
+
 .searchFieldStyle {
   font-family: "AvenirLTStd-Book";
   font-size: 1em;
@@ -11,10 +22,6 @@
   color: #79158f !important;
   margin-bottom: 60px;
   font-size: 2em;
-}
-
-.searchFieldContainer {
-  background-color: lavender;
 }
 
 .searchFieldStyle .form-control {
@@ -60,6 +67,21 @@
   margin: 7px;
 }
 
+.searchFieldStyle .dropdown .dropdown-menu {
+  transition: all 0.5s;
+  max-height: 0;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.searchFieldStyle .dropdown.show .dropdown-menu {
+  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
+  max-height: 500px;
+  opacity: 1;
+}
+
 .searchFieldStyle .dropdown-menu.show {
   background-color: #79158f;
   padding-top: 20px;
@@ -81,8 +103,6 @@
 }
 
 #searchFieldButton {
-  background-color: #79158f;
-  border-color: rgba(0, 0, 0, 0);
   width: 100%;
   padding: 10px 10px 10px 10px;
 }

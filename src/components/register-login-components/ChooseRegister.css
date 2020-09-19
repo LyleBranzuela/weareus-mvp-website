@@ -1,0 +1,57 @@
+.chooseRegisterStyle {
+  margin-top: 80px;
+  font-family: "AvenirLTStd-Book";
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.chooseRegisterStyle h2 {
+  font-family: "AvenirLTPro-Heavy";
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.chooseRegisterStyle img {
+  margin-right: 10px;
+}
+
+.chooseRegisterStyle button {
+  margin-top: 75px;
+  padding: 20px 60px 20px 60px;
+  font-size: 0.9vw;
+  position: relative;
+}
+
+.chooseRegisterStyle ul {
+  text-align: left;
+  margin-left: 5px;
+  list-style: none;
+}
+
+.chooseRegisterStyle li {
+  font-size: 1.1em;
+  padding: 0.1em 0 1.1em 35px;
+  background: url("../../assets/icons/check_circle.svg") no-repeat;
+}
+
+.chooseRegisterStyle .col {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  padding: 10% 5% 10% 5%;
+}
+
+#userRegisterCol {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
+}
+
+#practitionerRegisterCol {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/placeholders/listing_placeholder_1.jpg");
+}

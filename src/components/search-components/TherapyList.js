@@ -7,17 +7,50 @@ class TherapyList extends React.Component {
     let placeholderList = [
       "Abdominal Massage",
       "Acupressure",
-      "Allergy Intolerance",
-      "Ayurvedic Massage Therapy",
-      "Ayurvedic Medicine",
-      "Biodynamic",
-      "Biofeedback",
-      "Biomagnetic",
-      "Bioptron Light Therapy",
+      "Access Bars",
+      "Alternative therapies",
+      "Alexander technique",
+      "Aqua healing / Aquarian Healing",
+      "Aromatherapy",
+      "Art Therapy",
+      "Abdominal Massage",
+      "Acupressure",
+      "Access Bars",
+      "Alternative therapies",
+      "Alexander technique",
+      "Aqua healing / Aquarian Healing",
+      "Aromatherapy",
+      "Art Therapy",
+      "Abdominal Massage",
+      "Acupressure",
+      "Access Bars",
+      "Alternative therapies",
+      "Alexander technique",
+      "Aqua healing / Aquarian Healing",
+      "Aromatherapy",
+      "Art Therapy",
+      "Abdominal Massage",
+      "Acupressure",
+      "Access Bars",
+      "Alternative therapies",
+      "Alexander technique",
+      "Aqua healing / Aquarian Healing",
+      "Aromatherapy",
+      "Art Therapy",
+      "Abdominal Massage",
+      "Acupressure",
+      "Access Bars",
+      "Alternative therapies",
+      "Alexander technique",
+      "Aqua healing / Aquarian Healing",
+      "Aromatherapy",
+      "Art Therapy",
     ];
-    const searchKeywords = placeholderList.map((searchKeyword) => (
-      <li>{searchKeyword}</li>
-    ));
+
+    let printColItemAmount = Math.ceil(placeholderList.length / 4);
+    const searchKeywords = placeholderList.map((searchKeyword) => {
+      return <li key={searchKeyword}>{searchKeyword}</li>;
+    });
 
     return (
       <Container className="therapyListStyle">
@@ -25,17 +58,30 @@ class TherapyList extends React.Component {
           <h4>Find a practitioner by therapy type</h4>
         </Row>
         <Row>
+          {/* Loop Through Each Column's Modality */}
           <Col sm={3}>
-            <ul>{searchKeywords}</ul>
+            <ul>{searchKeywords.slice(0, printColItemAmount)}</ul>
           </Col>
           <Col sm={3}>
-            <ul>{searchKeywords}</ul>
+            <ul>
+              {searchKeywords.slice(printColItemAmount, printColItemAmount * 2)}
+            </ul>
           </Col>
           <Col sm={3}>
-            <ul>{searchKeywords}</ul>
+            <ul>
+              {searchKeywords.slice(
+                printColItemAmount * 2,
+                printColItemAmount * 3
+              )}
+            </ul>
           </Col>
           <Col sm={3}>
-            <ul>{searchKeywords}</ul>
+            <ul>
+              {searchKeywords.slice(
+                printColItemAmount * 3,
+                placeholderList.length
+              )}
+            </ul>
           </Col>
         </Row>
       </Container>

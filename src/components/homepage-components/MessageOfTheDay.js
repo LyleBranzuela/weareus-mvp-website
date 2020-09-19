@@ -7,8 +7,7 @@ class MessageOfTheDay extends React.Component {
     return (
       <Container fluid>
         <p className="motdStyle">
-          <strong>We are Us</strong> connects you with health, wellness, and
-          self-improvement <br /> practitioners throughout New Zealand.
+          {this.props.motd}
         </p>
       </Container>
     );
