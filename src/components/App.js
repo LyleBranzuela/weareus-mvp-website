@@ -11,8 +11,10 @@ import PractitionerListPage from "./pages/PractitionerListPage";
 import PractitionerProfile from "./pages/PractitionerProfile";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import UserRegister from "./register-login-components/UserRegister";
 import PractitionerRegister from "./register-login-components/PractitionerRegister";
 import MembershipForm from "./register-login-components/MembershipForm";
+import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
@@ -42,7 +44,12 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/membership-form" component={MembershipForm} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/register-user" component={MembershipForm} />
+        <Route path="/register-user" component={UserRegister} />
+        <Route
+          path={`/register-practitioner`}
+          component={PractitionerRegister}
+        />
+        <Route path={`/profile-setup`} component={ProfileSetup} />
 
         {/* Practitioner Related Pages */}
         <Route path="/for-practitioner" component={ForPractitionersPage} />

@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import UserPool from "../../manage-accounts/UserPool";
 import { CognitoUser } from "amazon-cognito-identity-js";
 import swal from "@sweetalert/with-react";
+import GoogleLogin from "react-google-login";
+import {
+  googleSignInCallBack,
+  facebookSignInCallBack,
+} from "../../manage-accounts/Accounts";
 import CustomButton from "../general-components/CustomButton";
 import { authenticate } from "../../manage-accounts/Accounts";
 
@@ -243,7 +248,31 @@ class LoginForm extends React.Component {
               </u>
             </Col>
           </Row>
-          <CustomButton id="loginFormButton" type="submit" text="Log In" />
+          <Row>
+            <Col sm={5}>
+              <CustomButton id="loginFormButton" type="submit" text="Log In" />
+            </Col>
+            <Col>
+              <div
+                className="fb-login-button"
+                data-size="large"
+                data-button-type="continue_with"
+                data-layout="default"
+                data-auto-logout-link="true"
+                data-use-continue-as="false"
+                data-width=""
+                data-onsuccess={facebookSignInCallBack}
+              ></div>
+            </Col>
+            <Col>
+              <GoogleLogin
+                clientId="423149440415-l1v06tlarr297mkbv1oh5g2jv0pgdrv3.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={googleSignInCallBack}
+                cookiePolicy={"single_host_origin"}
+              />
+            </Col>
+          </Row>
         </Form>
       </Container>
     );

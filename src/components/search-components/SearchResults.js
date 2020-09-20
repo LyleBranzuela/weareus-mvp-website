@@ -128,7 +128,7 @@ class SearchResults extends React.Component {
                 {/* <p>{practitioner.about}</p> */}
                 <p className="pracResultAbout">
                   {testString.slice(0, 190)}
-                  <a>...More</a>
+                  <span>...More</span>
                 </p>
               </Col>
               <Col className="pracResultMoreDetails" sm={3}>

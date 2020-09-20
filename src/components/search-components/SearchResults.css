@@ -61,7 +61,7 @@
   max-width: 500px;
 }
 
-.pracResultAbout a {
+.pracResultAbout span {
   color: #79158f;
   cursor: pointer;
 }
