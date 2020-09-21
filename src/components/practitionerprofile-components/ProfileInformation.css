@@ -9,6 +9,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
 @media (max-width: 900px) {
   #profile-image-frame {
     display: block;
@@ -17,19 +18,24 @@
   }
 }
 
+.practitioner-description-card{
+  outline: none;
+  border: none;
+}
+
+.practitioner-description-card .card-title{
+  margin-top: -40px;
+  margin-left: -20px;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+}
+
 .container-dimensions {
   padding-left: 19%;
   padding-right: 17%;
   margin-top: -200px;
   padding-bottom: 80px;
 }
-
-/* @media (max-width: 1440px) and (min-width: 1280px) {
-  .container-dimensions {
-    padding-left: 10%;
-    margin-top: -230px;
-  }
-} */
 
 @media (max-width: 900px) {
   .container-dimensions {
@@ -42,7 +48,6 @@
   vertical-align: text-top;
   float: right;
   margin-top: -35px;
-  /* margin-right: -60px; */
 }
 
 @media (max-width: 1280px) {
@@ -51,9 +56,6 @@
   }
 }
 
-.testing {
-  padding-right: 50px;
-}
 .no-padding {
   margin-right: 0 !important;
   padding-right: 0 !important;
@@ -92,7 +94,7 @@
   }
 }
 
-.service-list-style {
+.accordion-content-list-style {
   font-family: "AvenirLTPro-Heavy";
   list-style-type: none;
   padding-top: 10px;
@@ -135,17 +137,6 @@
   font-family: "AvenirLTPro-Heavy";
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.read-more-button {
-  color: #79158f;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-family: "AvenirLTPro-Heavy";
-}
-
-.read-more-arrow {
-  height: 8px;
 }
 
 #container.one-column {
@@ -196,4 +187,15 @@
   .contact-card-column {
     padding-right: 60%;
   }
+}
+
+.training-accordion-body-font {
+  font-size: 19px;
+  font-family: "AvenirLTStd-Book";
+  color: #5b5b5b;
+  list-style-type: none;
+  padding-top: 10px;
+  padding-left: 0;
+  padding-bottom: 15px;
+  margin: 0;
 }
