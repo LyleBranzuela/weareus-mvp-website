@@ -1,6 +1,6 @@
 import "./Footer.css";
 import React from "react";
-import { Navbar, Nav, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 class Footer extends React.Component {
@@ -11,13 +11,12 @@ class Footer extends React.Component {
     };
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
-
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
   handleWindowSizeChange = () => {
@@ -32,60 +31,60 @@ class Footer extends React.Component {
       // Mobile version
       return (
         <div>
-        <Row className="justify-content-center">
-        <LinkContainer to="/">
-          <Navbar.Brand className="justify-content-center">
-            <img
-              src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
-              alt="we are us logo"
-            />
-          </Navbar.Brand>
-        </LinkContainer>
-        </Row>
-        <Row className="justify-content-center">
-          <Navbar
-            collapseOnSelect
-            expand="lg"
-            variant="light"
-            className="footerStyleMobile justify-content-center"
-          >
-            <Nav>
-              {/* Register Page Link */}
-              <LinkContainer to="/search">
-                <Nav.Link href="/register-practitioner">
-                  Register as a Practicioner
-                </Nav.Link>
-              </LinkContainer>
-              {/* Contact Us Page Link */}
-              <LinkContainer to="/contact-us">
-                <Nav.Link>Contact Us</Nav.Link>
-              </LinkContainer>
-              {/* Terms and Conditions Page Link */}
-              <LinkContainer to="/terms-and-conditions">
-                <Nav.Link>Terms And Conditions</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar>
+          <Row className="justify-content-center">
+            <LinkContainer to="/">
+              <Navbar.Brand className="justify-content-center">
+                <img
+                  src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
+                  alt="we are us logo"
+                />
+              </Navbar.Brand>
+            </LinkContainer>
           </Row>
           <Row className="justify-content-center">
-          <LinkContainer to="" className="footerSocialMedia">
-            <Nav.Link>
-              <img
-                src={require("../../assets/icons/icon_fb.svg")}
-                alt="facebook icon"
-              ></img>
-            </Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="" className="footerSocialMedia">
-            <Nav.Link>
-              <img
-                src={require("../../assets/icons/icon_insta.svg")}
-                alt="instagram icon"
-              ></img>
-            </Nav.Link>
-          </LinkContainer>
+            <Navbar
+              collapseOnSelect
+              expand="lg"
+              variant="light"
+              className="footerStyleMobile justify-content-center"
+            >
+              <Nav>
+                {/* Register Page Link */}
+                <LinkContainer to="/search">
+                  <Nav.Link href="/register-practitioner">
+                    Register as a Practicioner
+                  </Nav.Link>
+                </LinkContainer>
+                {/* Contact Us Page Link */}
+                <LinkContainer to="/contact-us">
+                  <Nav.Link>Contact Us</Nav.Link>
+                </LinkContainer>
+                {/* Terms and Conditions Page Link */}
+                <LinkContainer to="/terms-and-conditions">
+                  <Nav.Link>Terms And Conditions</Nav.Link>
+                </LinkContainer>
+              </Nav>
+            </Navbar>
           </Row>
-          </div>
+          <Row className="justify-content-center">
+            <LinkContainer to="" className="footerSocialMedia">
+              <Nav.Link>
+                <img
+                  src={require("../../assets/icons/icon_fb.svg")}
+                  alt="facebook icon"
+                ></img>
+              </Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="" className="footerSocialMedia">
+              <Nav.Link>
+                <img
+                  src={require("../../assets/icons/icon_insta.svg")}
+                  alt="instagram icon"
+                ></img>
+              </Nav.Link>
+            </LinkContainer>
+          </Row>
+        </div>
       );
     } else {
       return (
@@ -94,9 +93,10 @@ class Footer extends React.Component {
             collapseOnSelect
             expand="lg"
             variant="light"
-            className="footer footerStyle"
+            className="footer footerStyle siteDefaultMargin"
           >
             <LinkContainer to="/">
+              {/* Footer Logo */}
               <Navbar.Brand>
                 <img
                   src={require("../../assets/icons/we_are_us_footer_symbol.svg")}
@@ -107,17 +107,20 @@ class Footer extends React.Component {
             </LinkContainer>
             <Nav>
               {/* Register Page Link */}
-              <LinkContainer to="">
+              <LinkContainer className="navBarEffect" to="/for-practitioner">
                 <Nav.Link href="/register-practitioner">
                   Register As Practicioner
                 </Nav.Link>
               </LinkContainer>
               {/* Contact Us Page Link */}
-              <LinkContainer to="/contact-us">
+              <LinkContainer className="navBarEffect" to="/contact-us">
                 <Nav.Link>Contact Us</Nav.Link>
               </LinkContainer>
               {/* Terms and Conditions Page Link */}
-              <LinkContainer to="/terms-and-conditions">
+              <LinkContainer
+                className="navBarEffect"
+                to="/terms-and-conditions"
+              >
                 <Nav.Link>Terms And Conditions</Nav.Link>
               </LinkContainer>
             </Nav>

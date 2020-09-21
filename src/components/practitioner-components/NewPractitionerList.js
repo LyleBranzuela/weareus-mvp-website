@@ -1,7 +1,8 @@
 import "./NewPractitionerList.css";
 import React from "react";
 import NewPractitionerCard from "./NewPractitionerCard";
-import { Container, CardDeck, Carousel, Row } from "react-bootstrap";
+import { Container, CardDeck, Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class NewPractitionerList extends React.Component {
   constructor() {
@@ -11,13 +12,12 @@ class NewPractitionerList extends React.Component {
     };
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
-
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
   handleWindowSizeChange = () => {
@@ -33,40 +33,40 @@ class NewPractitionerList extends React.Component {
       return (
         <Container fluid className="newPracContainerStyle">
           <Container className="newPracListStyle">
-          <p id="pracListHeader">New Listed Practicioners</p>
-            <Carousel className="newPracCarouselStyle">  
-            <Carousel.Item>
-              <NewPractitionerCard
-                practitionerImage="listing_placeholder_1.jpg"
-                practitionerName="Walk In Light"
-                practitionerCardType="Massage, Reiki"
-                practitionerLocation="Albany, Auckland"
-                practitionerDesc="
+            <p id="pracListHeader">New Listed Practicioners</p>
+            <Carousel className="newPracCarouselStyle">
+              <Carousel.Item>
+                <NewPractitionerCard
+                  practitionerImage="listing_placeholder_1.jpg"
+                  practitionerName="Walk In Light"
+                  practitionerCardType="Massage, Reiki"
+                  practitionerLocation="Albany, Auckland"
+                  practitionerDesc="
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                 do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              />
+                />
               </Carousel.Item>
               <Carousel.Item>
-              <NewPractitionerCard
-                practitionerImage="listing_placeholder_2.jpg"
-                practitionerName="Infinite Well Being"
-                practitionerCardType="Massage, Reiki"
-                practitionerLocation="Albany, Auckland"
-                practitionerDesc="
+                <NewPractitionerCard
+                  practitionerImage="listing_placeholder_2.jpg"
+                  practitionerName="Infinite Well Being"
+                  practitionerCardType="Massage, Reiki"
+                  practitionerLocation="Albany, Auckland"
+                  practitionerDesc="
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                 do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              />
+                />
               </Carousel.Item>
               <Carousel.Item>
-              <NewPractitionerCard
-                practitionerImage="listing_placeholder_3.jpg"
-                practitionerName="Judith Yasnik"
-                practitionerCardType="Herbal Medicine, Massage, Reiki"
-                practitionerLocation="Albany, Auckland"
-                practitionerDesc="
+                <NewPractitionerCard
+                  practitionerImage="listing_placeholder_3.jpg"
+                  practitionerName="Judith Yasnik"
+                  practitionerCardType="Herbal Medicine, Massage, Reiki"
+                  practitionerLocation="Albany, Auckland"
+                  practitionerDesc="
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                 do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              />
+                />
               </Carousel.Item>
             </Carousel>
           </Container>
@@ -77,6 +77,7 @@ class NewPractitionerList extends React.Component {
         <Container fluid className="newPracContainerStyle">
           <Container className="newPracListStyle">
             <h4>New Listed Practicioners</h4>
+            {/** Card Deck for all New Practitioner Cards */}
             <CardDeck>
               <NewPractitionerCard
                 practitionerImage="listing_placeholder_1.jpg"
@@ -107,7 +108,8 @@ class NewPractitionerList extends React.Component {
               />
             </CardDeck>
             <br />
-            <a href="">Show All (5)</a>
+            {/** Show all New Practitioners */}
+            <Link to="practitioner-list">Show All (5)</Link>
           </Container>
         </Container>
       );

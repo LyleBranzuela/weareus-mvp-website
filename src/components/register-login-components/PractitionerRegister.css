@@ -1,0 +1,91 @@
+.practitionerRegisterStyle {
+  margin-top: 160px;
+  text-align: center;
+  margin-bottom: 75px;
+}
+
+.practitionerRegisterStyle h2 {
+  margin-bottom: 50px;
+  color: #79158f;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#pracRegisterHeader {
+  margin-bottom: 30px;
+  color: #5b5b5b;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#pracRegisterDesc {
+  margin-bottom: 75px;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-family: "AvenirLTStd-Book";
+  color: #5b5b5b;
+  font-size: 1.3em;
+}
+
+#subscriptionCardsHeader {
+  font-size: 1.8em;
+  display: inline-block;
+  color: #79158f;
+  font-family: "AvenirLTStd-Book";
+  margin-bottom: 75px;
+}
+
+.subscriptionGroup {
+  font-family: "AvenirLTStd-Book";
+  text-align: center;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  color: #5b5b5b;
+}
+
+.subscriptionGroup p {
+  margin-top: 50px;
+  text-align: left;
+}
+
+.faqSection {
+  font-family: "AvenirLTStd-Book";
+  background-color: #f3f1f3;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.faqSection h2 {
+  color: #79158f;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.faqSection .card-header {
+  color: #5b5b5b;
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 1.3em;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.faqSection img {
+  padding-top: 10px;
+  float: right;
+}
+
+.faqSection .card {
+  border-right: 0px solid rgba(0, 0, 0, 0);
+  border-left: 0px solid rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.faqSection .accordion {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.faqSection u {
+  color: #79158f;
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 1.3em;
+}

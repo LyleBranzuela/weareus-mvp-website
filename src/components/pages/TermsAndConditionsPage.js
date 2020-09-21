@@ -4,7 +4,9 @@ import TermsAndConditions from "../terms-and-conditions-components/TermsAndCondi
 class TermsAndConditionsPage extends React.Component {
   render() {
     return (
-      <TermsAndConditions />
+      <div className="tacPageStyle">
+        <TermsAndConditions />
+      </div>
     );
   }
 }

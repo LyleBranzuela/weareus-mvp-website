@@ -10,13 +10,12 @@ class MessageOfTheDay extends React.Component {
     };
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
-
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
   handleWindowSizeChange = () => {
@@ -31,17 +30,11 @@ class MessageOfTheDay extends React.Component {
       // Mobile version
       return (
         <Container fluid>
-          <p className="motdStyleMobile">
-            {this.props.motd}
-            </p>
+          <p className="motdStyleMobile">{this.props.motd}</p>
         </Container>
       );
     } else {
-      return (
-        <p className="motdStyle">
-          {this.props.motd}
-        </p>
-      );
+      return <p className="motdStyle">{this.props.motd}</p>;
     }
   }
 }

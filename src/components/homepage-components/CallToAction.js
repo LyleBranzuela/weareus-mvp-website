@@ -1,6 +1,7 @@
 import "./CallToAction.css";
 import React from "react";
 import { Container, Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class CallToAction extends React.Component {
   constructor() {
@@ -10,13 +11,12 @@ class CallToAction extends React.Component {
     };
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
-
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
   handleWindowSizeChange = () => {
@@ -42,9 +42,9 @@ class CallToAction extends React.Component {
               </div>
               <div id="ctaMobileTextRow">
                 <p id="ctaDescMobile">
-                  Register with We are Us before 31 Dec  <br />
-                  2020 and we'll give you your second   <br />
-                  year free to say a big, massive thank  <br />
+                  Register with We are Us before 31 Dec <br />
+                  2020 and we'll give you your second <br />
+                  year free to say a big, massive thank <br />
                   you for supporting us right at the <br />
                   beginning of our journey.
                 </p>
@@ -95,7 +95,7 @@ class CallToAction extends React.Component {
             <Container className="ctaStyle-text">
               <Row>
                 <h1 id="ctaTitle">
-                  Practitioners, discover a refreshing new  <br />
+                  Practitioners, discover a refreshing new <br />
                   way to meet more clients.
                 </h1>
               </Row>
@@ -110,10 +110,19 @@ class CallToAction extends React.Component {
                 </p>
               </Row>
               <Row>
-                <Button id="ctaButton">Join Us Now</Button>
+                <Link to="/register">
+                  <Button
+                    className="primaryCustomButtonStyle"
+                    variant="primary"
+                    id="ctaButton"
+                  >
+                    Join Us Now
+                  </Button>
+                </Link>
               </Row>
             </Container>
           </div>
+          {/** Call To Action Email Signup Section */}
           <Container>
             <Row>
               <Col sm={6}>
@@ -124,12 +133,12 @@ class CallToAction extends React.Component {
               <Col sm={6}>
                 <InputGroup className="mb-3">
                   <Form.Control
-                    id="ctaSearchForm"
+                    id="ctaSignUpForm"
                     type="text"
                     placeholder="Enter your email"
                   />
                   <InputGroup.Append>
-                    <Button variant="light" id="ctaSearchFormSubmit">
+                    <Button variant="light" id="ctaSignUpFormSubmit">
                       <img
                         alt="Submit Button"
                         src={require("../../assets/icons/subscribe_enter_arrow.svg")}
@@ -143,7 +152,6 @@ class CallToAction extends React.Component {
         </div>
       );
     }
-
   }
 }
 

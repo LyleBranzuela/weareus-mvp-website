@@ -4,7 +4,9 @@ import ContactInfo from "../contactpage-components/ContactInfo";
 class ContactUs extends React.Component {
   render() {
     return (
-      <ContactInfo />
+      <div>
+        <ContactInfo />
+      </div>
     );
   }
 }

@@ -10,13 +10,12 @@ class NewPractitionerCard extends React.Component {
     };
   }
 
-  componentWillMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
-
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
   handleWindowSizeChange = () => {
@@ -30,6 +29,7 @@ class NewPractitionerCard extends React.Component {
     if (isMobile) {
       // Mobile version
       return (
+        /** Component that generates a New Practitioner Card */
         <Card className="newPracCardStyleMobile">
           <Card.Img
             alt={this.props.practitionerCompany}
@@ -38,7 +38,9 @@ class NewPractitionerCard extends React.Component {
               this.props.practitionerImage)}
           />
           <Card.ImgOverlay>
-            <span id="newPracCardTypeMobile">{this.props.practitionerCardType}</span>
+            <span id="newPracCardTypeMobile">
+              {this.props.practitionerCardType}
+            </span>
           </Card.ImgOverlay>
           <Card.Body>
             <Card.Title>{this.props.practitionerName}</Card.Title>
@@ -51,6 +53,7 @@ class NewPractitionerCard extends React.Component {
       );
     } else {
       return (
+        /** Component that generates a New Practitioner Card */
         <Card className="newPracCardStyle">
           <Card.Img
             alt={this.props.practitionerCompany}

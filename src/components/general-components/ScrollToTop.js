@@ -1,15 +1,15 @@
-import React, { useEffect, Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect, Fragment } from "react";
+import { withRouter } from "react-router-dom";
 
 function ScrollToTop({ history, children }) {
   useEffect(() => {
     const unlisten = history.listen(() => {
-      document.body.scrollTop = 0;  // Scrolls to the top of the page.
+      document.body.scrollTop = 0; // Scrolls to the top of the page.
     });
     return () => {
       unlisten();
-    }
-  }, []);
+    };
+  }, [history]);
 
   return <Fragment>{children}</Fragment>;
 }

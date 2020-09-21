@@ -1,11 +1,14 @@
 /* DESKTOP STYLES */
 .navBar {
-  padding: 1% 15% 1% 15%;
+  padding: 20px 15% 20px 15%;
   font-family: "AvenirLTPro-Heavy";
   background-color: white;
+  outline: solid;
+  outline-color: gray;
+  outline-width: thin;
 }
 
-.navBar-links .nav-link {
+.navBar .navBar-links .nav-link {
   display: flex;
   position: relative;
   color: #79158f !important;
@@ -16,32 +19,33 @@
   font-size: 1em;
 }
 
-.navBar-links a.nav-link:hover {
+.navBar .navBar-links a.nav-link:hover {
   color: #b823dad3 !important;
 }
 
-.navBar-links a.nav-link:active {
+.navBar .navBar-links a.nav-link:active {
   color: #79158f !important;
 }
 
-.navBar-links .navBarEffect:after {
+.navBar .navBarEffect:after {
   bottom: 0;
   content: "";
   height: 2px;
   left: 50%;
   position: absolute;
-  background: #79158f;
-  transition: width 0.5s ease 0s, left 0.5s ease 0s;
+  background-color: #b823dad3;
   width: 0;
+  transition: width 0.5s ease 0s, left 0.5s ease 0s;
 }
 
-.navBar-links .navBarEffect:hover:after {
+.navBar .navBarEffect:hover:after {
+  background-color: #79158f;
   width: 100%;
   left: 0;
 }
 
 @media screen and (min-width: 992px) {
-  .navBar-links .nav-link {
+  .navBar .navBar-links .nav-link {
     margin-left: 16px !important;
   }
   .highlightNav {
@@ -49,12 +53,7 @@
     /* border: 2px solid white; */
     padding: 10px 40px 10px 40px !important;
   }
-  .highlightNav:hover {
-    font-size: 1.1em;
-    transition: font-size 0.4s;
-  }
 }
-
 
 /* MOBILE STYLES */
 .navBarMobile {
@@ -68,57 +67,13 @@
   background-color: purple;
 }
 
+
 #mobile_logo {
   height: 5vh;
 }
 
-
-.navBar-links .nav-link {
-  display: flex;
-  position: relative;
-  color: #79158f !important;
-  /* color: white !important; */
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  font-size: 1em;
-}
-
-.navBar-links a.nav-link:hover {
-  color: #b823dad3 !important;
-}
-
-.navBar-links a.nav-link:active {
-  color: #79158f !important;
-}
-
-.navBar-links .navBarEffect:after {
-  bottom: 0;
-  content: "";
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: #79158f;
-  transition: width 0.5s ease 0s, left 0.5s ease 0s;
-  width: 0;
-}
-
-.navBar-links .navBarEffect:hover:after {
-  width: 100%;
-  left: 0;
-}
-
-@media screen and (min-width: 992px) {
-  .navBar-links .nav-link {
-    margin-left: 16px !important;
-  }
-  .highlightNav {
-    border: 2px solid #79158f;
-    /* border: 2px solid white; */
-    padding: 10px 40px 10px 40px !important;
-  }
-  .highlightNav:hover {
-    font-size: 1.1em;
-    transition: font-size 0.4s;
+@media screen and (max-width: 992px) {
+  .navbar-nav .nav-link {
+    margin-top: 8px !important;
   }
 }

@@ -9,7 +9,7 @@ class ContactInfo extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 

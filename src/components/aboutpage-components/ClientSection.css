@@ -11,6 +11,7 @@
   margin-right: auto;
   margin-top: 50px;
 }
+
 #lightHeader {
   font-family: "AvenirLTStd-Book";
   color: #79158f;
@@ -33,7 +34,7 @@
   font-family: "AvenirLTStd-Book";
   font-size: 22px;
   text-align: left;
-  padding-left:27%;
+  padding-left: 27%;
   padding-right: 27%;
   color: #5b5b5b;
 }

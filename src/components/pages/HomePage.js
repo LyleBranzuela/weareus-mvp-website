@@ -6,23 +6,41 @@ import NewPractitionerList from "../practitioner-components/NewPractitionerList"
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
 import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
-import { Button } from "react-bootstrap";
+import CustomButton from "../general-components/CustomButton";
+import { Link } from "react-router-dom";
+import api from "../../api/api";
 
 class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
       width: window.innerWidth,
+      practitioners: []
     };
-  }
 
-  componentWillMount() {
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
+  
+  // Function to Get All The Practitioners from the Server
+  getAllPractitioners = async () => {
+    const practitionerResponse = await api.get("/companies");
+    // Setting the Services and Regions States
+    this._isMounted &&
+      this.setState({
+        practitioners: practitionerResponse.data.rows,
+      });
+  };
+
+  componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
+    this._isMounted = true;
+    this._isMounted && this.getAllPractitioners();
   }
-
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
+    this._isMounted = false;
   }
 
   handleWindowSizeChange = () => {
@@ -38,10 +56,14 @@ class HomePage extends React.Component {
       return (
         <div>
           <PageHeader
-            learnMoreButton={
-              <Button id="headerButtonMobile">Learn More</Button>
-            }
-          />
+          learnMoreButton={
+            <React.Fragment>
+              <Link to="/for-practitioner">
+                <CustomButton id="headerButtonMobile" text="Learn More" />
+              </Link>
+            </React.Fragment>
+          }
+        />
           <MessageOfTheDay
             motd={
               <React.Fragment>
@@ -67,11 +89,15 @@ class HomePage extends React.Component {
       // Desktop version
       return (
         <div>
-          <PageHeader
-            learnMoreButton={
-              <Button id="headerButton">Learn More</Button>
-            }
-          />
+        <PageHeader
+        learnMoreButton={
+          <React.Fragment>
+            <Link to="/for-practitioner">
+              <CustomButton id="headerButton" text="Learn More" />
+            </Link>
+          </React.Fragment>
+        }
+      />
           <MessageOfTheDay
             motd={
               <React.Fragment>
@@ -82,7 +108,9 @@ class HomePage extends React.Component {
           />
           <NewPractitionerList />
           <SearchField />
-          <PractitionerList />
+          <PractitionerList 
+          practitioners={this.state.practitioners}
+          showAll={false} />
           <CallToAction />
         </div>
       );
