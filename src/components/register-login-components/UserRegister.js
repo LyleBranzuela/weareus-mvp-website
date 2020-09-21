@@ -1,8 +1,6 @@
 import "./UserRegister.css";
 import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { pageTransition } from "../../transitions/Transitions";
 import CustomButton from "../general-components/CustomButton";
 import UserPool from "../../manage-accounts/UserPool";
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
@@ -125,128 +123,121 @@ class UserRegister extends React.Component {
 
   render() {
     return (
-      <motion.div
-        intial="out"
-        animate="in"
-        exit="out"
-        variants={pageTransition}
-      >
-        <Container fluid>
-          <Container className="userRegisterFormStyle">
-            <Form id="userRegisterForm" onSubmit={this.onSubmit}>
-              <h2>Register as User</h2>
-              <Row>
-                {/** First Name Form Group */}
-                <Col>
-                  <Form.Group controlId="firstName">
-                    <Form.Label>First Name*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.firstName}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="First Name"
-                    />
-                  </Form.Group>
-                </Col>
-                {/** Last Name Form Group */}
-                <Col>
-                  <Form.Group controlId="lastName">
-                    <Form.Label>Last Name*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.lastName}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="Last Name"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Email Address Form Group */}
-                <Col>
-                  <Form.Group controlId="email">
-                    <Form.Label>Email Address*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.email}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="Email"
-                    />
-                  </Form.Group>
-                </Col>
-                {/** Phone Number Form Group */}
-                <Col>
-                  <Form.Group controlId="phoneNumber">
-                    <Form.Label>Phone Number*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.phoneNumber}
-                      onChange={this.formOnChangeHandler}
-                      type="number"
-                      placeholder="Phone"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Account Username Form Group */}
-                <Col>
-                  <Form.Group controlId="username">
-                    <Form.Label>Account Username*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.username}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="Your Username"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Account Password Form Group */}
-                <Col>
-                  <Form.Group controlId="password">
-                    <Form.Label>Create Account Password*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.password}
-                      onChange={this.formOnChangeHandler}
-                      type="password"
-                      placeholder="Password"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Confirm Password Form Group */}
-                <Col>
-                  <Form.Group controlId="confirmPassword">
-                    <Form.Label>Confirm Password*</Form.Label>
-                    <Form.Control
-                      required
-                      onChange={this.formOnChangeHandler}
-                      type="password"
-                      placeholder="Confirm Password"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Section: Register Button */}
-                <CustomButton
-                  id="registerUserButton"
-                  type="submit"
-                  text="Register"
-                />
-              </Row>
-            </Form>
-          </Container>
+      <Container fluid>
+        <Container className="userRegisterFormStyle">
+          <Form id="userRegisterForm" onSubmit={this.onSubmit}>
+            <h2>Register as User</h2>
+            <Row>
+              {/** First Name Form Group */}
+              <Col>
+                <Form.Group controlId="firstName">
+                  <Form.Label>First Name*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.firstName}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="First Name"
+                  />
+                </Form.Group>
+              </Col>
+              {/** Last Name Form Group */}
+              <Col>
+                <Form.Group controlId="lastName">
+                  <Form.Label>Last Name*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.lastName}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Email Address Form Group */}
+              <Col>
+                <Form.Group controlId="email">
+                  <Form.Label>Email Address*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.email}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="Email"
+                  />
+                </Form.Group>
+              </Col>
+              {/** Phone Number Form Group */}
+              <Col>
+                <Form.Group controlId="phoneNumber">
+                  <Form.Label>Phone Number*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.phoneNumber}
+                    onChange={this.formOnChangeHandler}
+                    type="number"
+                    placeholder="Phone"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Account Username Form Group */}
+              <Col>
+                <Form.Group controlId="username">
+                  <Form.Label>Account Username*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.username}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="Your Username"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Account Password Form Group */}
+              <Col>
+                <Form.Group controlId="password">
+                  <Form.Label>Create Account Password*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.password}
+                    onChange={this.formOnChangeHandler}
+                    type="password"
+                    placeholder="Password"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Confirm Password Form Group */}
+              <Col>
+                <Form.Group controlId="confirmPassword">
+                  <Form.Label>Confirm Password*</Form.Label>
+                  <Form.Control
+                    required
+                    onChange={this.formOnChangeHandler}
+                    type="password"
+                    placeholder="Confirm Password"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Section: Register Button */}
+              <CustomButton
+                id="registerUserButton"
+                type="submit"
+                text="Register"
+              />
+            </Row>
+          </Form>
         </Container>
-      </motion.div>
+      </Container>
     );
   }
 }

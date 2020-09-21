@@ -46,3 +46,53 @@
   font-size: 0.8vw;
   height: 0;
 }
+
+/* Mobile Styles */
+.newPracCardStyleMobile {
+  font-size: 2vh;
+  font-family: "AvenirLTStd-Book";
+  position: relative;
+  display: inline-block;
+  margin-bottom: 5vh;
+}
+
+.newPracCardStyleMobile .card-title {
+  color: #79158F !important;
+  font-size: 2.5vh;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+.newPracCardStyleMobile .card-subtitle {
+  color: gray !important;
+  font-size: 2vh;
+  margin-bottom: 15px !important;
+}
+
+.newPracCardStyleMobile .card-text {
+  color: gray !important;
+  font-size: 1.8vh;
+}
+
+.newPracCardStyleMobile:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent 320px, white);
+}
+
+.card-img-overlay {
+  right: 0;
+  padding: 0;
+  top: 50%;
+  position: absolute;
+}
+
+#newPracCardTypeMobile {
+  color: white;
+  background-color: #79158F;
+  padding: 5px 15px 5px 15px;
+  font-size: 2vh;
+}

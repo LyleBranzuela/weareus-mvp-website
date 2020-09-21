@@ -1,7 +1,7 @@
 import React from "react";
-import { AnimatePresence } from "framer-motion";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
+import ScrollToTop from "./general-components/ScrollToTop";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import SearchResults from "./search-components/SearchResults";
@@ -24,43 +24,45 @@ function App() {
   const location = useLocation();
   return (
     <div>
-      <NavigationBar />
-      {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
-      {/* <AnimatePresence exitBeforeEnter> */}
-      <Switch location={location} key={location.pathname}>
-        {/* General Pages */}
-        <Route path="/home" component={HomePage} />
-        <Route path="/search" component={SearchPage} />
-        <Route path="/results" component={SearchResults} />
-        <Route path="/about" component={AboutPage} />
-        <Route
-          exact
-          path="/terms-and-conditions"
-          component={TermsAndConditionsPage}
-        />
-        <Route path="/contact-us" component={ContactUsPage} />
+      {/* Scrolls To The Top Everytime they navigate through the routes */}
+      <ScrollToTop>
+        <NavigationBar />
+        {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
+        <Switch location={location} key={location.pathname}>
+          {/* General Pages */}
+          <Route path="/home" component={HomePage} />
+          <Route path="/search" component={SearchPage} />
+          <Route path="/results" component={SearchResults} />
+          <Route path="/about" component={AboutPage} />
+          <Route
+            exact
+            path="/terms-and-conditions"
+            component={TermsAndConditionsPage}
+          />
+          <Route path="/contact-us" component={ContactUsPage} />
 
-        {/* Register-Login Pages */}
-        <Route path="/login" component={LoginPage} />
-        <Route path="/membership-form" component={MembershipForm} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/register-user" component={UserRegister} />
-        <Route
-          path={`/register-practitioner`}
-          component={PractitionerRegister}
-        />
-        <Route path={`/profile-setup`} component={ProfileSetup} />
+          {/* Register-Login Pages */}
+          <Route path="/login" component={LoginPage} />
+          <Route path="/membership-form" component={MembershipForm} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/register-user" component={UserRegister} />
+          <Route
+            path={`/register-practitioner`}
+            component={PractitionerRegister}
+          />
+          <Route path={`/profile-setup`} component={ProfileSetup} />
 
-        {/* Practitioner Related Pages */}
-        <Route path="/for-practitioner" component={ForPractitionersPage} />
-        <Route path="/practitioner-list" component={PractitionerListPage} />
-        <Route path="/practitioner-profile" component={PractitionerProfile} />
-        <Route exact path={["/index.html", "/"]}>
-          <Redirect to="/home" />
-        </Route>
-      </Switch>
-      {/* </AnimatePresence> */}
-      <Footer />
+          {/* Practitioner Related Pages */}
+          <Route path="/for-practitioner" component={ForPractitionersPage} />
+          <Route path="/practitioner-list" component={PractitionerListPage} />
+          <Route path="/practitioner-profile" component={PractitionerProfile} />
+          <Route exact path={["/index.html", "/"]}>
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
+        {/* </AnimatePresence> */}
+        <Footer />
+      </ScrollToTop>
     </div>
   );
 }

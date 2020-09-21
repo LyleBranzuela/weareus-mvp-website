@@ -142,3 +142,108 @@
   border-right: 0px solid #ced4da;
   border-bottom: 1px solid #ced4da;
 }
+
+/* Mobile Styles */
+.searchFieldDropMobile {
+  width: 100%;
+  padding-top: 1.5vh;
+}
+
+.searchFieldStyleMobile {
+  font-family: "AvenirLTStd-Book";
+  font-size: 2vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.searchFieldStyleMobile h3 {
+  text-align: center !important;
+  font-family: "AvenirLTPro-Heavy";
+  color: #79158f !important;
+  margin-bottom: 60px;
+  font-size: 2em;
+}
+
+.searchFieldContainerMobile {
+  background-color: #f0d9f7;
+}
+
+.searchFieldStyleMobile .form-control {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.searchFieldStyleMobile .dropdown-toggle {
+  background-color: #79158f !important;
+  border-color: #79158f !important;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  padding: 8px 10px 8px 10px;
+}
+
+.searchFieldStyleMobile .dropdown-toggle h6 {
+  margin: 5px 0px 0px 10px;
+  display: inline-block;
+}
+
+.searchFieldStyleMobile .dropdown-toggle:active {
+  background-color: #79158f;
+  border-color: white;
+}
+
+.searchFieldStyleMobile .dropdown-toggle:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0 white !important;
+}
+
+.searchFieldStyleMobile .dropdown-toggle:active {
+  background-color: #f3f1f3;
+  border-color: #79158f;
+  color: #79158f;
+}
+
+.searchFieldStyleMobile .dropdown-toggle::after {
+  display: none !important;
+}
+
+.searchFieldStyleMobile .dropdown-toggle img {
+  float: right;
+  margin: 7px;
+  display: inline-flex;
+}
+
+.searchFieldStyleMobile .dropdown-menu.show {
+  background-color: #79158f;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.searchFieldStyleMobile .dropdown-item {
+  color: white;
+  width: 100%;
+}
+
+.searchFieldStyleMobile .dropdown-item:hover {
+  color: #79158f;
+}
+
+.searchFieldStyleMobile .dropdown-item:focus {
+  color: white;
+  background-color: #79158f;
+}
+
+#searchFieldButtonMobile {
+  background-color: #79158f;
+  border-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  margin-top: 3vh;
+}
+
+#searchFieldIconMobile {
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}

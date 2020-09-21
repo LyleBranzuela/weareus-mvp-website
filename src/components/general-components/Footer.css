@@ -1,9 +1,9 @@
+/* Deskotp Styles */
 .footerStyle {
+  margin: 0.5% 15% 0.5% 15%;
   font-family: "AvenirLTStd-Book";
   font-size: 1em;
   color: #5b5b5b;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 .iconStyles {
@@ -47,4 +47,25 @@
   .footerStyle .nav-link {
     margin-left: 16px !important;
   }
+}
+
+/* Mobile Styles */
+
+.footerStyleMobile {
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 2vh;
+}
+
+.justify-content-center {
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+}
+
+.footerStyleMobile {
+  text-align: center;
+}
+
+.footerSocialMedia {
+  margin-bottom: 5%;
 }

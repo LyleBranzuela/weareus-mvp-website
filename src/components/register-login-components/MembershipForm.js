@@ -1,8 +1,6 @@
 import "./MembershipForm.css";
 import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { pageTransition } from "../../transitions/Transitions";
 import CustomButton from "../general-components/CustomButton";
 import UserPool from "../../manage-accounts/UserPool";
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
@@ -111,177 +109,168 @@ class MembershipForm extends React.Component {
 
   render() {
     return (
-      <motion.div
-        intial="out"
-        animate="in"
-        exit="out"
-        variants={pageTransition}
-      >
-        <Container fluid>
-          <Container className="membershipFormStyle">
-            <Form id="membershipForm" onSubmit={this.onSubmit}>
-              <h2>Membership Details</h2>
+      <Container fluid>
+        <Container className="membershipFormStyle">
+          <Form id="membershipForm" onSubmit={this.onSubmit}>
+            <h2>Membership Details</h2>
+            <Row>
+              {/** First Name Form Group */}
+              <Col>
+                <Form.Group controlId="firstName">
+                  <Form.Label>First Name*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.firstName}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="First Name"
+                  />
+                </Form.Group>
+              </Col>
+              {/** Last Name Form Group */}
+              <Col>
+                <Form.Group controlId="lastName">
+                  <Form.Label>Last Name*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.lastName}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="Last Name"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Email Address Form Group */}
+              <Col>
+                <Form.Group controlId="email">
+                  <Form.Label>Email Address*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.email}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="Email"
+                  />
+                </Form.Group>
+              </Col>
+              {/** Phone Number Form Group */}
+              <Col>
+                <Form.Group controlId="phoneNumber">
+                  <Form.Label>Phone Number*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.phoneNumber}
+                    onChange={this.formOnChangeHandler}
+                    type="number"
+                    placeholder="Phone"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Account Username Form Group */}
+              <Col>
+                <Form.Group controlId="username">
+                  <Form.Label>Account Username*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.username}
+                    onChange={this.formOnChangeHandler}
+                    type="text"
+                    placeholder="Your Username"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Account Password Form Group */}
+              <Col>
+                <Form.Group controlId="password">
+                  <Form.Label>Create Account Password*</Form.Label>
+                  <Form.Control
+                    required
+                    value={this.state.password}
+                    onChange={this.formOnChangeHandler}
+                    type="password"
+                    placeholder="Password"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              {/** Confirm Password Form Group */}
+              <Col>
+                <Form.Group controlId="confirmPassword">
+                  <Form.Label>Confirm Password*</Form.Label>
+                  <Form.Control
+                    required
+                    onChange={this.formOnChangeHandler}
+                    type="password"
+                    placeholder="Confirm Password"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            {/** Total Cost Calculator Section */}
+            <Container className="totalCostContainer">
               <Row>
-                {/** First Name Form Group */}
                 <Col>
-                  <Form.Group controlId="firstName">
-                    <Form.Label>First Name*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.firstName}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="First Name"
-                    />
-                  </Form.Group>
-                </Col>
-                {/** Last Name Form Group */}
-                <Col>
-                  <Form.Group controlId="lastName">
-                    <Form.Label>Last Name*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.lastName}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="Last Name"
-                    />
-                  </Form.Group>
+                  <h2>Your Order</h2>
+                  <hr size="50" />
+                  {/** Section: Membership Type */}
+                  <Row>
+                    <Col sm={3}>
+                      <span className="orderFormSection">Membership</span>
+                    </Col>
+                    <Col sm={9}>
+                      <span className="orderDataSection" id="orderMembership">
+                        {`${this.props.location.state.subscriptionType} plan`}
+                      </span>
+                    </Col>
+                  </Row>
+                  <hr size="50" />
+                  {/** Section: Total Amount */}
+                  <Row>
+                    <Col sm={3}>
+                      <span className="orderFormSection">Total</span>
+                    </Col>
+                    <Col sm={9}>
+                      <span className="orderDataSection" id="orderTotal">
+                        {`$${this.props.location.state.price * 12} / year`}
+                      </span>
+                    </Col>
+                  </Row>
+                  <hr size="50" />
+                  {/** Section: Recurring Totals Amount */}
+                  <Row>
+                    <Col sm={3}>
+                      <span className="orderFormSection">Recurring Totals</span>
+                    </Col>
+                    <Col sm={9}>
+                      <span
+                        className="orderDataSection"
+                        id="orderRecurringTotal"
+                      >
+                        $0000 (Includes $22.35 GST)/year (renewal: July 23,
+                        2019)
+                      </span>
+                    </Col>
+                  </Row>
+                  <hr size="50" />
+                  {/** Section: Pay Button */}
+                  <CustomButton
+                    id="paymentFormButton"
+                    type="submit"
+                    text="Payment"
+                  />
                 </Col>
               </Row>
-              <Row>
-                {/** Email Address Form Group */}
-                <Col>
-                  <Form.Group controlId="email">
-                    <Form.Label>Email Address*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.email}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="Email"
-                    />
-                  </Form.Group>
-                </Col>
-                {/** Phone Number Form Group */}
-                <Col>
-                  <Form.Group controlId="phoneNumber">
-                    <Form.Label>Phone Number*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.phoneNumber}
-                      onChange={this.formOnChangeHandler}
-                      type="number"
-                      placeholder="Phone"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Account Username Form Group */}
-                <Col>
-                  <Form.Group controlId="username">
-                    <Form.Label>Account Username*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.username}
-                      onChange={this.formOnChangeHandler}
-                      type="text"
-                      placeholder="Your Username"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Account Password Form Group */}
-                <Col>
-                  <Form.Group controlId="password">
-                    <Form.Label>Create Account Password*</Form.Label>
-                    <Form.Control
-                      required
-                      value={this.state.password}
-                      onChange={this.formOnChangeHandler}
-                      type="password"
-                      placeholder="Password"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                {/** Confirm Password Form Group */}
-                <Col>
-                  <Form.Group controlId="confirmPassword">
-                    <Form.Label>Confirm Password*</Form.Label>
-                    <Form.Control
-                      required
-                      onChange={this.formOnChangeHandler}
-                      type="password"
-                      placeholder="Confirm Password"
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              {/** Total Cost Calculator Section */}
-              <Container className="totalCostContainer">
-                <Row>
-                  <Col>
-                    <h2>Your Order</h2>
-                    <hr size="50" />
-                    {/** Section: Membership Type */}
-                    <Row>
-                      <Col sm={3}>
-                        <span className="orderFormSection">Membership</span>
-                      </Col>
-                      <Col sm={9}>
-                        <span className="orderDataSection" id="orderMembership">
-                          {`${this.props.location.state.subscriptionType} plan`}
-                        </span>
-                      </Col>
-                    </Row>
-                    <hr size="50" />
-                    {/** Section: Total Amount */}
-                    <Row>
-                      <Col sm={3}>
-                        <span className="orderFormSection">Total</span>
-                      </Col>
-                      <Col sm={9}>
-                        <span className="orderDataSection" id="orderTotal">
-                          {`$${this.props.location.state.price * 12} / year`}
-                        </span>
-                      </Col>
-                    </Row>
-                    <hr size="50" />
-                    {/** Section: Recurring Totals Amount */}
-                    <Row>
-                      <Col sm={3}>
-                        <span className="orderFormSection">
-                          Recurring Totals
-                        </span>
-                      </Col>
-                      <Col sm={9}>
-                        <span
-                          className="orderDataSection"
-                          id="orderRecurringTotal"
-                        >
-                          $0000 (Includes $22.35 GST)/year (renewal: July 23,
-                          2019)
-                        </span>
-                      </Col>
-                    </Row>
-                    <hr size="50" />
-                    {/** Section: Pay Button */}
-                    <CustomButton
-                      id="paymentFormButton"
-                      type="submit"
-                      text="Payment"
-                    />
-                  </Col>
-                </Row>
-              </Container>
-            </Form>
-          </Container>
+            </Container>
+          </Form>
         </Container>
-      </motion.div>
+      </Container>
     );
   }
 }
