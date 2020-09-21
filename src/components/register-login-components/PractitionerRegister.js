@@ -3,31 +3,63 @@ import React from "react";
 import { Container, Card, CardGroup, Accordion } from "react-bootstrap";
 import SubscriptionPlan from "./SubscriptionPlan";
 import { Link } from "react-router-dom";
+import api from "../../api/api";
 
 class PractitionerRegister extends React.Component {
-  render() {
-    const basicPlanFeatures = [
-      "1 Mini website - listing on We are Us",
-      "3-5 Main Pictures",
-      "1 Business Logo",
-      "About",
-      "Services",
-      "Qualifications",
-      "Contact Details",
-    ];
-    const businessPlanFeatures = [
-      "1 Mini website - listing on We are Us",
-      "1 Main Picture",
-      "1 Business Logo",
-      "About",
-      "Services",
-      "Qualifications",
-      "Contact Details",
-    ];
+  constructor(props) {
+    super(props);
+    this.state = {
+      subscriptions: [],
+    };
 
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
+
+  // Function to Get All The Subscription Plans from the Server
+  getAllSubscriptions = async () => {
+    const subscriptionResponse = await api.get("/subscriptions");
+    // Setting the Subscriptions State
+    this._isMounted &&
+      this.setState({
+        subscriptions: subscriptionResponse.data,
+      });
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+    this._isMounted && this.getAllSubscriptions();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  render() {
+    // Map a list element with each item in the subscription plan
+    let planList = [];
+    if (this.state.subscriptions) {
+      planList = this.state.subscriptions.map((subscription) => {
+        // Loop Through The Features of the Subscription Plan
+        let featureList = subscription.features.map((feature) => {
+          return feature.feature_name;
+        });
+        return (
+          <SubscriptionPlan
+            key={`${subscription.subscription_id}Plan_Key`}
+            id={`${subscription.subscription_id}Plan`}
+            name={subscription.subscription_name}
+            description={subscription.description}
+            price={subscription.price}
+            subscriptionType={subscription.subscription_name}
+            features={featureList}
+          />
+        );
+      });
+    }
     return (
       <Container fluid>
-        {/** Register As Practitioner Details */}
+        {/* Register As Practitioner Details */}
         <Container className="practitionerRegisterStyle">
           <h2>Become one of Us</h2>
           <h4 id="pracRegisterHeader">
@@ -59,21 +91,10 @@ class PractitionerRegister extends React.Component {
             How would you like to join Us?
           </span>
           <CardGroup>
-            <SubscriptionPlan
-              id="basicPlan"
-              name="Basic"
-              description="Great for those starting out"
-              price="30"
-              features={basicPlanFeatures}
-            />
-            <SubscriptionPlan
-              id="businessPlan"
-              name="Business"
-              description="Great for growing your business"
-              price="100"
-              features={businessPlanFeatures}
-            />
+            {/** Cards For the Subscription Plans */}
+            {planList}
           </CardGroup>
+          {/** Additional Information Section*/}
           <p>
             *
             <br />
@@ -81,7 +102,7 @@ class PractitionerRegister extends React.Component {
             how best to market your business through our site. As such, we
             review the copy and images that you upload before it is published to
             the site. We will provide you with feedback on how to improve the
-            copy and images should if it isneeded to enhance the impact of your
+            copy and images should if it is needed to enhance the impact of your
             listing.
           </p>
         </Container>

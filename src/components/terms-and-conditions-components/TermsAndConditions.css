@@ -1,3 +1,4 @@
+/* Desktop Styles */
 .tacPage {
  margin-left:15%;
  margin-right:15%;
@@ -22,4 +23,32 @@
   color: gray;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+/* Mobile Styles */
+.tacPageMobile {
+ margin-left:15%;
+ margin-right:15%;
+ margin-top: 8%;
+ margin-bottom: 8%;
+}
+
+.tacHeaderMobile{
+  font-size: 3vh;
+  font-weight: 300;
+  font-family: "AvenirLTPro-Heavy";
+  text-align: center;
+  color: #79158f;
+  padding-bottom: 5%;
+  margin-top: 30%;
+}
+
+.tacTextMobile{
+  font-size: 2vh;
+  font-weight: 500;
+  font-family: "AvenirLTStd-Book";
+  text-align: left;
+  color: gray;
+  padding-left: 5%;
+  padding-right: 5%;
 }
