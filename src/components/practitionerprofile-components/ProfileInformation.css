@@ -9,6 +9,14 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+@media (max-width: 900px) {
+  #profile-image-frame {
+    display: block;
+    margin: 0 auto;
+    margin-top: 190px;
+  }
+}
+
 .container-dimensions {
   padding-left: 19%;
   padding-right: 17%;
@@ -16,53 +24,36 @@
   padding-bottom: 80px;
 }
 
-.contact-details-card {
-  margin-top: 233px;
-  margin-right: 0px;
-  width: 375px;
-  height: 330px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: left;
-  float: right;
-  background-color: white;
-}
+/* @media (max-width: 1440px) and (min-width: 1280px) {
+  .container-dimensions {
+    padding-left: 10%;
+    margin-top: -230px;
+  }
+} */
 
-.contact-card-body {
-  color: "#5B5B5B";
-  font-family: "AvenirLTStd-Book";
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 33px;
-}
-.contact-card-practitioner-name {
-  color: #5b5b5b;
-  font-family: "AvenirLTPro-Heavy";
-  margin-bottom: "0px";
-  font-size: "17.5px";
-}
-
-.contact-card-title {
-  color: #5b5b5b;
-  font-family: "AvenirLTPro-Heavy";
-  padding-bottom: 20px;
-}
-
-.contact-card-personal {
-  color: #79158f;
-  font-family: "AvenirLTPro-Heavy";
-}
-
-.main-col {
-  width: 10000px;
-  background-color: darkgreen;
+@media (max-width: 900px) {
+  .container-dimensions {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 .practitioner-logo {
   vertical-align: text-top;
   float: right;
   margin-top: -35px;
+  /* margin-right: -60px; */
 }
 
+@media (max-width: 1280px) {
+  .practitioner-logo {
+    display: none;
+  }
+}
+
+.testing {
+  padding-right: 50px;
+}
 .no-padding {
   margin-right: 0 !important;
   padding-right: 0 !important;
@@ -74,12 +65,31 @@
   color: #5b5b5b;
 }
 
-.title-header {
-  font-family: "AvenirLTPro-Heavy";
+#category-text {
+  color: #79158f;
+  font-size: 19px;
+  font-family: "AvenirLTStd-Book";
+}
+#suburb,
+#city {
+  font-size: 19px;
+  font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-left: 0px;
+}
+
+#location,
+#category {
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  #category,
+  #practitioner-name,
+  #location,
+  .practitioner-title,
+  .practitioner-name {
+    text-align: center;
+  }
 }
 
 .service-list-style {
@@ -96,10 +106,17 @@
   background-color: #f2e9f4;
   color: #79158f;
   font-family: "AvenirLTStd-Book";
+  font-size: 19px;
   padding-top: 7px;
   padding-bottom: 7px;
   text-align: center;
   width: 192px;
+}
+
+@media (max-width: 900px) {
+  .box {
+    display: none;
+  }
 }
 
 .arrow-position {
@@ -127,6 +144,56 @@
   font-family: "AvenirLTPro-Heavy";
 }
 
-.read-more-arrow{
+.read-more-arrow {
   height: 8px;
+}
+
+#container.one-column {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.accordion-section {
+  font-family: "AvenirLTStd-Book";
+  margin: none;
+}
+
+.accordion-section .card {
+  border-right: 0px solid rgba(0, 0, 0, 0);
+  border-left: 0px solid rgba(0, 0, 0, 0);
+  width: 100%;
+}
+
+.accordion-section .card-header {
+  background-color: white;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.accordion-section .accordion {
+  margin-left: -3%;
+  margin-right: -3%;
+}
+
+.accordion-section .card-body {
+  margin-left: -2.5%;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+}
+
+.accordion-section .card-header {
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+  font-size: 1.3em;
+}
+
+@media (max-width: 560px) {
+  .contact-card-column {
+    padding-right: 60%;
+  }
 }

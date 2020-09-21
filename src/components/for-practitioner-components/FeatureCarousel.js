@@ -4,7 +4,6 @@ import { Container, Carousel } from "react-bootstrap";
 
 const FeatureCarousel = () => {
   return (
-    /** Carousel Component for Features  */
     <Container fluid className="featureCarouselStyle">
       <Container>
         <Carousel>

@@ -5,21 +5,23 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
-import { Link } from "react-router-dom";
-import { pageTransition } from "../../transitions/Transitions";
-import { motion } from "framer-motion";
+import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
 import CustomButton from "../general-components/CustomButton";
+import { Link } from "react-router-dom";
 import api from "../../api/api";
 
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { practitioners: [] };
+  constructor() {
+    super();
+    this.state = {
+      width: window.innerWidth,
+      practitioners: []
+    };
 
     // Prevents Memory Leaks
     this._isMounted = false;
   }
-
+  
   // Function to Get All The Practitioners from the Server
   getAllPractitioners = async () => {
     const practitionerResponse = await api.get("/companies");
@@ -31,49 +33,88 @@ class HomePage extends React.Component {
   };
 
   componentDidMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
     this._isMounted = true;
     this._isMounted && this.getAllPractitioners();
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
     this._isMounted = false;
   }
 
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
+
   render() {
-    return (
-      <motion.div
-        intial="in"
-        animate="in"
-        exit="out"
-        variants={pageTransition}
-        className="homePage"
-      >
-        <PageHeader
+    const { width } = this.state;
+    const isMobile = width <= 600;
+
+    if (isMobile) {
+      // Mobile version
+      return (
+        <div>
+          <PageHeader
           learnMoreButton={
             <React.Fragment>
               <Link to="/for-practitioner">
-                <CustomButton id="headerButton" text="Learn More" />
+                <CustomButton id="headerButtonMobile" text="Learn More" />
               </Link>
             </React.Fragment>
           }
         />
-        <MessageOfTheDay
-          motd={
-            <React.Fragment>
-              <strong>We are Us</strong> connects you with health, wellness, and
-              self-improvement <br /> practitioners throughout New Zealand.
-            </React.Fragment>
-          }
-        />
-        <NewPractitionerList />
-        <SearchField />
-        <PractitionerList
+          <MessageOfTheDay
+            motd={
+              <React.Fragment>
+                <br />
+                <br />
+                <strong>We are Us</strong> connects you with <br />
+                health, wellness, and self-<br />
+                improvement practitioners <br />
+                throughout New Zealand. 
+                <br />
+                <br />
+              </React.Fragment>
+            }
+          />
+          <NewPractitionerList />
+          <SearchField />
+          <PractitionerCTA />
+          <CallToAction />
+        </div>
+      );
+    }
+    else {
+      // Desktop version
+      return (
+        <div>
+        <PageHeader
+        learnMoreButton={
+          <React.Fragment>
+            <Link to="/for-practitioner">
+              <CustomButton id="headerButton" text="Learn More" />
+            </Link>
+          </React.Fragment>
+        }
+      />
+          <MessageOfTheDay
+            motd={
+              <React.Fragment>
+                <strong>We are Us</strong> connects you with health, wellness, and
+          self-improvement <br /> practitioners throughout New Zealand.
+          </React.Fragment>
+            }
+          />
+          <NewPractitionerList />
+          <SearchField />
+          <PractitionerList 
           practitioners={this.state.practitioners}
-          showAll={false}
-        />
-        <CallToAction />
-      </motion.div>
-    );
+          showAll={false} />
+          <CallToAction />
+        </div>
+      );
+    }
   }
 }
 

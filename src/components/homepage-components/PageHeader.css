@@ -1,8 +1,8 @@
+/* DESKTOP STYLES */
 .pageHeader {
-  background-image: linear-gradient(
-    rgba(211, 173, 194, 1),
-    rgba(211, 173, 194, 1)
-  );
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
   position: relative;
   margin: auto;
@@ -11,7 +11,7 @@
 }
 
 .pageHeader img {
-  width: 75%;
+  width: 100%;
   height: auto;
 }
 
@@ -44,4 +44,62 @@
 
 .break-word {
   word-wrap: break-word;
+}
+
+
+/* MOBILE STYLES */
+.pageHeaderMobile {
+  background-image: url("../../assets/images/placeholders/mobile_home_page_placeholder.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  top: 0;
+  font-family: "AvenirLTStd-Book";
+  width: auto;
+  height: 100vh;
+  padding-top: 50%;
+  padding-bottom: 15%;
+}
+
+
+.pageHeaderMobile-text {
+  text-align: center;
+  color: white;
+}
+
+#headerTitleMobile {
+  font-size: 4vh;
+  font-weight: 500;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#headerDescMobile {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 2.5vh;
+  font-weight: 200;
+}
+
+#headerButtonMobile {
+  background-color: #79158f;
+  font-size: 2.5vh;
+  font-family: "AvenirLTStd-Book";
+  margin-top: 3vh;
+  padding: 2vh 12vh 2vh 12vh;
+}
+
+.break-wordMobile {
+  word-wrap: break-word;
+}
+
+#scrollDownButton {
+  align-self: center;
+  width: 5vh;
+  height:auto;
+  padding-top: 50%;
 }

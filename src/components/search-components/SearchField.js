@@ -24,11 +24,16 @@ class SearchField extends React.Component {
       searchRegion: this.props.searchRegion ? this.props.searchRegion : "",
       services: [],
       regions: [],
+      width: window.innerWidth,
     };
 
     // Prevents Memory Leaks
     this._isMounted = false;
   }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
 
   // Function to Set the Search Keywords or Terms
   setSearchKeywords = async () => {
@@ -71,11 +76,13 @@ class SearchField extends React.Component {
     this._isMounted = true;
     this.setState({ redirect: false });
     this._isMounted && this.setSearchKeywords();
+    window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
   componentWillUnmount() {
     this._isMounted = false;
     this.setState({ redirect: false });
+    window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
   render() {
@@ -101,6 +108,126 @@ class SearchField extends React.Component {
           </Dropdown.Item>
         );
       });
+    }
+
+    const { width } = this.state;
+    const isMobile = width <= 600;
+    if (isMobile) {
+      // Mobile version
+      return (
+        <Container fluid className="searchFieldContainerMobile">
+          <Container>
+            <Form
+              className="searchFieldStyleMobile"
+              onSubmit={this.onSearchSubmit}
+            >
+              <Row>
+                <Col>
+                  <h3>Search Practitioners</h3>
+                </Col>
+              </Row>
+              <Row className="rowSearchFieldStyle">
+                <Col sm={4}>
+                  {/** Search Practitioners Through Text Section */}
+                  <Form.Group controlId="searchPractitionerName">
+                    <InputGroup>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text id="searchFieldIconMobile">
+                          <img
+                            alt="search icon"
+                            src={require("../../assets/icons/search_icon.svg")}
+                          />
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <Form.Control
+                        value={this.state.searchPractitionerName}
+                        onChange={this.formOnChangeHandler}
+                        placeholder="Search Practitioners"
+                      ></Form.Control>
+                    </InputGroup>
+                  </Form.Group>
+                </Col>
+                <Col sm={3}>
+                  {/** Dropdown Search by Therapy Type */}
+                  <Dropdown
+                    onSelect={(e) =>
+                      this.formOnSelectHandler(e, "searchService")
+                    }
+                    className="searchFieldDropMobile"
+                  >
+                    <Dropdown.Toggle id="therapyTypeButtonMobile">
+                      <h6>
+                        {this.state.searchService
+                          ? this.state.searchService
+                          : "Therapy Type"}
+                      </h6>
+                      <img
+                        alt="Therapy Type Accordion Arrow"
+                        src={require("../../assets/icons/menu_arrow_white.svg")}
+                      />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item
+                        eventKey={"Any Therapy Type"}
+                        key={"Any Therapy Type"}
+                      >
+                        Any Therapy Type
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      {/** Generate Service Dropdown Items */}
+                      {serviceKeywords}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
+                <Col sm={3}>
+                  {/** Dropdown Search by Region */}
+                  <Dropdown
+                    onSelect={(e) =>
+                      this.formOnSelectHandler(e, "searchRegion")
+                    }
+                    className="searchFieldDropMobile"
+                  >
+                    <Dropdown.Toggle id="regionButtonMobile">
+                      <h6>
+                        {this.state.searchRegion
+                          ? this.state.searchRegion
+                          : "Region"}
+                      </h6>
+                      <img
+                        alt="Region Accordion Arrow"
+                        src={require("../../assets/icons/menu_arrow_white.svg")}
+                      />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item eventKey={"Any Region"} key={"Any Region"}>
+                        Any Region
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      {/** Generate Region Dropdown Items */}
+                      {regionKeywords}
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Col>
+                <Col sm={2}>
+                  {/** Search Button */}
+                  <Link
+                    to={{
+                      pathname: "/results",
+                      search: `?company_name=${this.state.searchPractitionerName}&service_name=${this.state.searchService}&region_name=${this.state.searchRegion}`,
+                    }}
+                  >
+                    <CustomButton
+                      id="searchFieldButtonMobile"
+                      type="submit"
+                      text="Search"
+                    />
+                  </Link>
+                </Col>
+              </Row>
+            </Form>
+          </Container>
+        </Container>
+      );
     }
     return (
       <Container fluid className="searchFieldContainer">

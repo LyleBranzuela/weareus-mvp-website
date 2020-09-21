@@ -1,8 +1,6 @@
 import React from "react";
 import CallToAction from "../homepage-components/CallToAction";
 import PractitionerList from "../practitioner-components/PractitionerList";
-import { pageTransition } from "../../transitions/Transitions";
-import { motion } from "framer-motion";
 import api from "../../api/api";
 
 class PractitionerListPage extends React.Component {
@@ -35,19 +33,13 @@ class PractitionerListPage extends React.Component {
 
   render() {
     return (
-      <motion.div
-        intial="out"
-        animate="in"
-        exit="out"
-        variants={pageTransition}
-        className="practitionerList mt-5"
-      >
+      <div className="practitionerList mt-5">
         <PractitionerList
           practitioners={this.state.practitioners}
           showAll={true}
         />
         <CallToAction />
-      </motion.div>
+      </div>
     );
   }
 }

@@ -20,8 +20,21 @@ class LoginForm extends React.Component {
       // AWS Cognito Authentication Variables
       email: "",
       password: "",
+      width: window.innerWidth,
     };
   }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
 
   // Updates States for Login Forms
   formOnChangeHandler = (e) => {
@@ -204,78 +217,139 @@ class LoginForm extends React.Component {
   };
 
   render() {
-    return (
-      <Container className="loginFormStyle">
-        <h2>Login</h2>
-        <div id="test"></div>
-        <Form onSubmit={this.onSubmit}>
-          <span>
-            Need a We are Us account?{" "}
-            <Link to="register">
-              <u>Register</u>
-            </Link>
-          </span>
-          {/** Login Username Form Section */}
-          <Form.Group controlId="email">
-            <Form.Label>Username or Email</Form.Label>
-            <Form.Control
-              value={this.state.email}
-              onChange={this.formOnChangeHandler}
-              type="email"
-              placeholder="Your Username"
-            />
-          </Form.Group>
-          {/** Password Form Section */}
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              value={this.state.password}
-              onChange={this.formOnChangeHandler}
-              type="password"
-              placeholder="Your Password"
-            />
-          </Form.Group>
-          {/** Remember Me and Forget Password Form Section */}
-          <Row>
-            <Col sm={6}>
-              <Form.Group controlId="rememberMeCheckBox">
-                <Form.Check type="checkbox" label="Remember Me" />
-              </Form.Group>
-            </Col>
-            <Col sm={6}>
-              <u id="forgetPassword" onClick={(e) => this.sendCode(e)}>
-                Forgot Your Password
-              </u>
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={5}>
-              <CustomButton id="loginFormButton" type="submit" text="Log In" />
-            </Col>
-            <Col>
-              <div
-                className="fb-login-button"
-                data-size="large"
-                data-button-type="continue_with"
-                data-layout="default"
-                data-auto-logout-link="true"
-                data-use-continue-as="false"
-                data-width=""
-                data-onsuccess={facebookSignInCallBack}
-              ></div>
-            </Col>
-            <Col>
-              <GoogleLogin
-                clientId="423149440415-l1v06tlarr297mkbv1oh5g2jv0pgdrv3.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={googleSignInCallBack}
-                cookiePolicy={"single_host_origin"}
+    const { width } = this.state;
+    const isMobile = width <= 600;
+
+    if (isMobile) {
+      // Mobile version
+      return (
+        <Container className="loginFormStyleMobile">
+          <h2>Login</h2>
+          <Form onSubmit={this.onSubmit}>
+            <span>
+              Need a We are Us account?{" "}
+              <Link to="practitioner-list">
+                <u>Register</u>
+              </Link>
+            </span>
+            {/** Login Username Form Section */}
+            <Form.Group controlId="loginUsername">
+              <Form.Label>Username or Email</Form.Label>
+              <Form.Control
+                value={this.state.email}
+                onChange={this.formOnChangeHandler}
+                type="email"
+                placeholder="Your Username"
               />
-            </Col>
-          </Row>
-        </Form>
-      </Container>
-    );
+            </Form.Group>
+            {/** Password Form Section */}
+            <Form.Group controlId="loginPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                value={this.state.password}
+                onChange={this.formOnChangeHandler}
+                type="password"
+                placeholder="Your Password"
+              />
+            </Form.Group>
+            {/** Remember Me and Forget Password Form Section */}
+            <Row>
+              <Col sm={6}>
+                <Form.Group controlId="rememberMeCheckBox">
+                  <Form.Check type="checkbox" label="Remember Me" />
+                </Form.Group>
+              </Col>
+              <Col sm={6}>
+                <u id="forgetPasswordMobile" onClick={(e) => this.sendCode(e)}>
+                  Forgot Your Password
+                </u>
+              </Col>
+            </Row>
+            <CustomButton
+              id="loginFormButtonMobile"
+              type="submit"
+              text="Log In"
+            />
+          </Form>
+        </Container>
+      );
+    } else {
+      return (
+        <Container className="loginFormStyle">
+          <h2>Login</h2>
+          <Form onSubmit={this.onSubmit}>
+            <span>
+              Need a We are Us account?{" "}
+              <Link to="register">
+                <u>Register</u>
+              </Link>
+            </span>
+            {/** Login Username Form Section */}
+            <Form.Group controlId="email">
+              <Form.Label>Username or Email</Form.Label>
+              <Form.Control
+                value={this.state.email}
+                onChange={this.formOnChangeHandler}
+                type="email"
+                placeholder="Your Username"
+              />
+            </Form.Group>
+            {/** Password Form Section */}
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                value={this.state.password}
+                onChange={this.formOnChangeHandler}
+                type="password"
+                placeholder="Your Password"
+              />
+            </Form.Group>
+            {/** Remember Me and Forget Password Form Section */}
+            <Row>
+              <Col sm={6}>
+                <Form.Group controlId="rememberMeCheckBox">
+                  <Form.Check type="checkbox" label="Remember Me" />
+                </Form.Group>
+              </Col>
+              <Col sm={6}>
+                <u id="forgetPassword" onClick={(e) => this.sendCode(e)}>
+                  Forgot Your Password
+                </u>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={5}>
+                <CustomButton
+                  id="loginFormButton"
+                  type="submit"
+                  text="Log In"
+                />
+              </Col>
+              <Col>
+                <div
+                  className="fb-login-button"
+                  data-size="large"
+                  data-button-type="continue_with"
+                  data-layout="default"
+                  data-auto-logout-link="true"
+                  data-use-continue-as="false"
+                  data-width=""
+                  data-onsuccess={facebookSignInCallBack}
+                ></div>
+              </Col>
+              <Col>
+                <GoogleLogin
+                  clientId="423149440415-l1v06tlarr297mkbv1oh5g2jv0pgdrv3.apps.googleusercontent.com"
+                  buttonText="Login"
+                  onSuccess={googleSignInCallBack}
+                  cookiePolicy={"single_host_origin"}
+                />
+              </Col>
+            </Row>
+          </Form>
+        </Container>
+      );
+    }
   }
 }
 
