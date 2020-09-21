@@ -19,9 +19,10 @@ class PractitionerList extends React.Component {
         return (
           <PractitionerCard
             key={practitioner.company_name}
-            practitionerName={practitioner.company_name}
-            practitionerImage={image_url}
-            practitionerLocation={`${practitioner.suburb}, ${practitioner.region_name}`}
+            company_id={practitioner.company_id}
+            company_name={practitioner.company_name}
+            cover_image={image_url}
+            address={`${practitioner.suburb}, ${practitioner.region_name}`}
           />
         );
       });

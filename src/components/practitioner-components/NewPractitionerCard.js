@@ -1,6 +1,7 @@
 import "./NewPractitionerCard.css";
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class NewPractitionerCard extends React.Component {
   constructor() {
@@ -26,28 +27,40 @@ class NewPractitionerCard extends React.Component {
     const { width } = this.state;
     const isMobile = width <= 600;
 
+    // Map all of the Services
+    let servicesList;
+    if (this.props.services) {
+      servicesList = this.props.services;
+      servicesList = Object.keys(servicesList)
+        .map(function (service) {
+          return servicesList[service].service_name;
+        })
+        .join(", ");
+    }
+    console.log(this.props.company_name);
+
     if (isMobile) {
       // Mobile version
       return (
         /** Component that generates a New Practitioner Card */
         <Card className="newPracCardStyleMobile">
           <Card.Img
-            alt={this.props.practitionerCompany}
+            alt={this.props.company_name}
             variant="top"
             src={require("../../assets/images/placeholders/" +
-              this.props.practitionerImage)}
+              this.props.cover_image)}
           />
           <Card.ImgOverlay>
-            <span id="newPracCardTypeMobile">
-              {this.props.practitionerCardType}
-            </span>
+            <span id="newPracCardTypeMobile">{servicesList}</span>
           </Card.ImgOverlay>
           <Card.Body>
-            <Card.Title>{this.props.practitionerName}</Card.Title>
+            <Link to={`/temp-prac-profile/${this.props.company_id}`}>
+              <Card.Title>{this.props.company_name}</Card.Title>
+            </Link>
             <Card.Subtitle className="mb-4 text-muted">
-              {this.props.practitionerLocation}
+              {this.props.address}
             </Card.Subtitle>
-            <Card.Text>{this.props.practitionerDesc}</Card.Text>
+            <Card.Text>{this.props.about}</Card.Text>
           </Card.Body>
         </Card>
       );
@@ -56,20 +69,22 @@ class NewPractitionerCard extends React.Component {
         /** Component that generates a New Practitioner Card */
         <Card className="newPracCardStyle">
           <Card.Img
-            alt={this.props.practitionerCompany}
+            alt={this.props.company_name}
             variant="top"
             src={require("../../assets/images/placeholders/" +
-              this.props.practitionerImage)}
+              this.props.cover_image)}
           />
           <Card.ImgOverlay>
-            <span id="newPracCardType">{this.props.practitionerCardType}</span>
+            <span id="newPracCardType">{servicesList}</span>
           </Card.ImgOverlay>
           <Card.Body>
-            <Card.Title>{this.props.practitionerName}</Card.Title>
+            <Link to={`/temp-prac-profile/${this.props.company_id}`}>
+              <Card.Title>{this.props.company_name}</Card.Title>
+            </Link>
             <Card.Subtitle className="mb-4 text-muted">
-              {this.props.practitionerLocation}
+              {this.props.address}
             </Card.Subtitle>
-            <Card.Text>{this.props.practitionerDesc}</Card.Text>
+            <Card.Text>{this.props.about}</Card.Text>
           </Card.Body>
         </Card>
       );

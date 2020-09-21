@@ -4,6 +4,7 @@ import SearchField from "./SearchField";
 import CallToAction from "../homepage-components/CallToAction";
 import { Container, Col, Row } from "react-bootstrap";
 import queryString from "query-string";
+import { Link } from "react-router-dom";
 import api from "../../api/api";
 
 class SearchResults extends React.Component {
@@ -123,12 +124,16 @@ class SearchResults extends React.Component {
                 />
               </Col>
               <Col className="pracResultDetails" sm={6}>
-                <h4>{practitioner.company_name}</h4>
+                <Link to={`/temp-prac-profile/${practitioner.company_id}`}>
+                  <h4>{practitioner.company_name}</h4>
+                </Link>
                 <h6>{`${practitioner.suburb}, ${practitioner.region_name}`}</h6>
                 {/* <p>{practitioner.about}</p> */}
                 <p className="pracResultAbout">
                   {testString.slice(0, 190)}
-                  <span>...More</span>
+                  <Link to={`/temp-prac-profile/${practitioner.company_id}`}>
+                    <span>...More</span>
+                  </Link>
                 </p>
               </Col>
               <Col className="pracResultMoreDetails" sm={3}>

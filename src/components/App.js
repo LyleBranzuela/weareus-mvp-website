@@ -9,6 +9,7 @@ import AboutPage from "./pages/AboutPage";
 import ForPractitionersPage from "./pages/ForPractitionersPage";
 import PractitionerListPage from "./pages/PractitionerListPage";
 import PractitionerProfile from "./pages/PractitionerProfile";
+import TempPractitionerProfile from "./pages/TempPractitionerProfile";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserRegister from "./register-login-components/UserRegister";
@@ -56,6 +57,7 @@ function App() {
           <Route path="/for-practitioner" component={ForPractitionersPage} />
           <Route path="/practitioner-list" component={PractitionerListPage} />
           <Route path="/practitioner-profile" component={PractitionerProfile} />
+          <Route path="/temp-prac-profile/:company_id" component={TempPractitionerProfile} />
           <Route exact path={["/index.html", "/"]}>
             <Redirect to="/home" />
           </Route>
