@@ -56,3 +56,20 @@ input[type="checkbox"]:checked + label {
 .siteDefaultMargin {
   margin: 0.5% 15% 0.5% 15%;
 }
+
+/* Sweet Alerts Custom */
+.swal-button--confirm {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #79158f;
+  border: 1px solid  rgba(0, 0, 0, 0.8);
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.swal-button--confirm:hover {
+  background-color: #b823dad3 !important;
+}
+
+/* .swal-overlay {
+  background-color: rgba(121, 21, 143, 0.25);
+} */

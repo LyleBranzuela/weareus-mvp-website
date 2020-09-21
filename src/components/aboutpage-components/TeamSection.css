@@ -1,3 +1,22 @@
+#team-column-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 50px;
+}
+
+.container-margin-position {
+  /* margin-right: 20%; */
+  margin-left: 15%;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .container-margin-position {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 #emp-frame {
   display: block;
   border-radius: 50%;
@@ -42,3 +61,4 @@
   padding-left: 50px;
   font-size: 17.8px;
 }
+

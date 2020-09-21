@@ -1,75 +1,65 @@
 import "./PractitionerList.css";
 import React from "react";
 import PractitionerCard from "./PractitionerCard";
-import { Container, CardDeck, Row } from "react-bootstrap";
+import { Container, CardDeck, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class PractitionerList extends React.Component {
   render() {
+    // Map all of the Practitioners
+    let practitionerList = [];
+    let practitioners = this.props.practitioners;
+    if (practitioners) {
+      practitionerList = practitioners.map((practitioner) => {
+        // Temporary Image URL until S3 is setup
+        let image_url = "listing_placeholder_2.jpg";
+        if (!image_url) {
+          image_url = "listing_placeholder_2.jpg";
+        }
+        return (
+          <PractitionerCard
+            key={practitioner.company_name}
+            practitionerName={practitioner.company_name}
+            practitionerImage={image_url}
+            practitionerLocation={`${practitioner.suburb}, ${practitioner.region_name}`}
+          />
+        );
+      });
+    }
+
+    // Show All Practitioners Button
+    let showAllButton;
+    if (!this.props.showAll) {
+      showAllButton = (
+        <Link to="practitioner-list">Show All ({practitionerList.length})</Link>
+      );
+    }
     return (
-      <Container fluid className="pracContainerStyle">
+      <Container
+        fluid
+        className="pracContainerStyle"
+        style={{ backgroundColor: this.props.showAll ? "white" : "#F3F1F3" }}
+      >
         {/** Card Deck for all Practitioner Cards */}
         <Container className="pracListStyle">
           <h4>Practitioners</h4>
           <CardDeck className="pracListDeckStyle">
-            <Row>
-              <PractitionerCard
-                practitionerName="Body Mechanics Orthopedic Massage"
-                practitionerImage="listing_placeholder_1.jpg"
-                practitionerLocation="Albany, Auckland"
-              />
-              <PractitionerCard
-                practitionerName="Horizon Wellbeing"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_1.jpg"
-              />
-              <PractitionerCard
-                practitionerName="Sarah Savage Massage"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_3.jpg"
-              />
-              <PractitionerCard
-                practitionerName="Sarah Savage Massage"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_1.jpg"
-              />
-              <PractitionerCard
-                practitionerName="Paul Labrecque Salon & Spa"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_2.jpg"
-              />
-            </Row>
-            <Row>
-              <PractitionerCard
-                practitionerName="Mother Health"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_3.jpg"
-              />
-              <PractitionerCard
-                practitionerName="D'mai Urban Spa"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_1.jpg"
-              />
-              <PractitionerCard
-                practitionerName="Great Jones Spa"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_2.jpg"
-              />
-              <PractitionerCard
-                practitionerName="Refresh Body"
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_3.jpg"
-              />
-              <PractitionerCard
-                practitionerName="Escape Away Massage   "
-                practitionerLocation="Albany, Auckland"
-                practitionerImage="listing_placeholder_1.jpg"
-              />
-            </Row>
+            {/* Render all Practitioners based if it should be showing all or not */}
+            {this.props.showAll ? (
+              <Row>
+                {practitionerList.map((practitioner) => {
+                  return <Col sm={3}>{practitioner}</Col>;
+                })}
+              </Row>
+            ) : (
+              <div>
+                <Row>{practitionerList.slice(0, 5)}</Row>
+                <Row>{practitionerList.slice(5, 10)}</Row>
+              </div>
+            )}
           </CardDeck>
           <br />
-          {/** Show all New Practitioners */}
-          <Link to="practitioner-list">Show All (12)</Link>
+          {showAllButton}
         </Container>
       </Container>
     );

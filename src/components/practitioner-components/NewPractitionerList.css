@@ -18,3 +18,34 @@
   font-size: 0.9vw;
   color: #79158f;
 }
+
+/* Mobile Styles */
+#pracListHeader{
+  font-size: 3vh;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5B5B5B;
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+
+.newPracCarouselStyle .carousel-indicators li {
+  background-color: #79158f;
+  border-radius: 50%;
+  height: 1vh;
+  width: 1vh;
+}
+
+.newPracCarouselStyle .carousel-control-prev-icon {
+  background-image: url(../../assets/icons/carousel_arrow_left.svg);
+  width: 6vh;
+  height: 6vh;
+  margin-bottom: 15vh;
+}
+
+.newPracCarouselStyle .carousel-control-next-icon {
+  background-image: url(../../assets/icons/carousel_arrow_right.svg);
+  width: 6vh;
+  height: 6vh;
+  margin-bottom: 15vh;
+}

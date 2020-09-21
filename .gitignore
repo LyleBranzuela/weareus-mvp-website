@@ -17,6 +17,9 @@
 .env.development.local
 .env.test.local
 .env.production.local
+sql_query_data_setup.txt
+sql_query_setup.txt
+LightsailDefaultKey-ap-southeast-2.ppk
 
 npm-debug.log*
 yarn-debug.log*

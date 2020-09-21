@@ -3,13 +3,22 @@
   padding-top: 60px;
 }
 
+#mainFrame {
+  display: block;
+  border-radius: 50%;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
 #lightHeader {
   font-family: "AvenirLTStd-Book";
   color: #79158f;
   text-align: center;
   font-size: 21px;
-  padding-left: 350px;
-  padding-right: 350px;
+  padding-left: 36%;
+  padding-right: 36%;
   padding-bottom: 30px;
 }
 
@@ -23,10 +32,10 @@
 
 #big-description {
   font-family: "AvenirLTStd-Book";
-  font-size: 23px;
+  font-size: 22px;
   text-align: left;
-  padding-left: 230px;
-  padding-right: 230px;
+  padding-left: 27%;
+  padding-right: 27%;
   color: #5b5b5b;
 }
 
