@@ -65,7 +65,7 @@
 
   width: 100%;
   height: auto;
-  padding-top: 70%;
+  padding-top: 50%;
   padding-bottom: 15%;
 }
 
@@ -84,15 +84,16 @@
 #headerDescMobile {
   margin-top: 1%;
   margin-bottom: 5%;
-  font-size: 2vh;
+  font-size: 2.5vh;
   font-weight: 200;
 }
 
 #headerButtonMobile {
   background-color: #79158f;
-  padding: 20px 75px 20px 75px;
-  font-size: 2vh;
-  font-weight: 500;
+  font-size: 2.5vh;
+  font-weight: 600;
+  margin-top: 3vh;
+  padding: 2vh 12vh 2vh 12vh;
 }
 
 .break-wordMobile {

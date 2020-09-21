@@ -50,7 +50,8 @@ class PageHeader extends React.Component {
             <p id="headerDescMobile">
               We Are Us. An exciting new platform  <br />
               to grow your health, wellness and <br />
-              self-improvement business.
+              self-improvement business.  <br />
+              {this.props.learnMoreButton}     
             </p>
             <img
             src={require("../../assets/icons/menu_arrow_white.svg")}
@@ -60,7 +61,6 @@ class PageHeader extends React.Component {
             />
             </div>
           </Container>
-          <p id="scroll-ref"> </p>
         </div>
 
       );
