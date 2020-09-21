@@ -107,7 +107,7 @@ class Footer extends React.Component {
             </LinkContainer>
             <Nav>
               {/* Register Page Link */}
-              <LinkContainer to="/search">
+              <LinkContainer to="">
                 <Nav.Link href="/register-practitioner">
                   Register As Practicioner
                 </Nav.Link>

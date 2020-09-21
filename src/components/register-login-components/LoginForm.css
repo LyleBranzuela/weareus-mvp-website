@@ -47,3 +47,67 @@
   font-size: 1vw;
   font-weight: 500;
 }
+
+/* Mobile Styles */
+.loginFormStyleMobile {
+  margin-top: 20vh;
+  font-family: "AvenirLTStd-Book";
+  color: #5b5b5b;
+  width: 50vh;
+  margin-bottom: 15vh;
+}
+
+.loginFormStyleMobile h2 {
+  text-align: center;
+  font-family: "AvenirLTPro-Heavy";
+  color: #79158f;
+  margin-bottom: 5vh;
+}
+
+.loginFormStyleMobile span {
+  margin-bottom: 5vh;
+}
+
+.loginFormStyleMobile u {
+  color: #79158f;
+}
+
+.loginFormStyleMobile .row {
+  margin-top: 3vh;
+}
+
+.loginFormStyleMobile .form-label {
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+  margin-top: 2vh;
+}
+
+.loginFormStyleMobile .form-check-label {
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+}
+
+#forgetPasswordMobile {
+  display:block;
+  margin-left:auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 2vh;
+}
+
+#loginFormButtonMobile {
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+  margin-top: 2vh;
+  background-color: #79158f;
+  padding-top:1vh;
+  padding-bottom:1vh;
+  padding-left: 25%;
+  padding-right: 25%;
+  font-size: 2.5vh;
+  font-weight: 500;
+}
+
+
+

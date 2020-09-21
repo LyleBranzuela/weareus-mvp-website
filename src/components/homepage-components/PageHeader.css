@@ -63,8 +63,8 @@
   top: 0;
   font-family: "AvenirLTStd-Book";
 
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100vh;
   padding-top: 50%;
   padding-bottom: 15%;
 }
