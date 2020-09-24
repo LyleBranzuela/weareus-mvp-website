@@ -14,7 +14,7 @@ class ProfileInformation extends React.Component {
     return (
       <Container fluid className="container-dimensions">
         <Row>
-          <Col md={8} className="no-padding">
+          <Col lg={8} className="no-padding">
             {/* Practitioner Profile Image */}
             <img
               src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
@@ -48,16 +48,16 @@ class ProfileInformation extends React.Component {
             <br />
             <p className="box">Covered by ACC</p>
             <h5 className="practitioner-name" id="person-name">
-              Name
+              Name 
             </h5>
           </Col>
-
-          <Col md={4} className="contact-card-column">
+          {/* Contact card column */}
+          <Col lg={4} className="contact-card-column">
             <ContactCard></ContactCard>
           </Col>
         </Row>
         <Row>
-          <Col md={8} className="no-padding">
+          <Col lg={8} className="no-padding">
             {/* Practitioner "About" Section*/}
 
             {/* Read More button for practitioner description */}

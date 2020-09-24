@@ -3,13 +3,26 @@
   width: 380px;
   height: 332px;
   padding-top: 13px;
-  padding-left: 17px;
+  padding-left: 5%;
+  padding-right: 5%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: left;
   position: relative;
   color: "#5B5B5B";
   font-family: "AvenirLTStd-Book";
 }
+
+@media (max-width: 991px) {
+  .contact-card-box {
+    width: 100%;
+  }
+}
+
+/* @media (max-width: 900px) and (min-width: 767px){
+  .contact-card-box{
+    margin-top: -405px;
+  }
+} */
 
 .contact-card-box .card-title {
   color: #5b5b5b;
@@ -34,17 +47,17 @@
   font-family: "AvenirLTPro-Heavy";
 }
 
-@media (max-width: 768px) and (min-width: 550px){
+@media (max-width: 768px) and (min-width: 550px) {
   .contact-card-box {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 5%;
+    margin-bottom: 5%;
     margin-left: 20%;
     display: flex;
   }
 }
 
-@media (max-width: 551px){
-  .contact-card-box{
+@media (max-width: 551px) {
+  .contact-card-box {
     margin-top: 50px;
     margin-bottom: 50px;
   }
