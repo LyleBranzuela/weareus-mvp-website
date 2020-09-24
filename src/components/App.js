@@ -17,53 +17,78 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation, BrowserRouter } from "react-router-dom";
 
 function App() {
   // Returns the location object that represents the current URL
   const location = useLocation();
-  return (
+
+  // 
+  const DefaultPages = () => (
     <div>
       {/* Scrolls To The Top Everytime they navigate through the routes */}
-      <ScrollToTop>
-        <NavigationBar />
-        {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
-        <Switch location={location} key={location.pathname}>
-          {/* General Pages */}
-          <Route path="/home" component={HomePage} />
-          <Route path="/search" component={SearchPage} />
-          <Route path="/results" component={SearchResults} />
-          <Route path="/about" component={AboutPage} />
-          <Route
-            exact
-            path="/terms-and-conditions"
-            component={TermsAndConditionsPage}
-          />
-          <Route path="/contact-us" component={ContactUsPage} />
+      <NavigationBar />
+      {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
+      <Switch location={location} key={location.pathname}>
+        {/* General Pages */}
 
-          {/* Register-Login Pages */}
-          <Route path="/login" component={LoginPage} />
-          <Route path="/membership-form" component={MembershipForm} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/register-user" component={UserRegister} />
-          <Route
-            path={`/register-practitioner`}
-            component={PractitionerRegister}
-          />
-          <Route path={`/profile-setup`} component={ProfileSetup} />
+        <Route path="/search" component={SearchPage} />
+        <Route path="/results" component={SearchResults} />
+        <Route path="/about" component={AboutPage} />
+        <Route
+          exact
+          path="/terms-and-conditions"
+          component={TermsAndConditionsPage}
+        />
+        <Route path="/contact-us" component={ContactUsPage} />
 
-          {/* Practitioner Related Pages */}
-          <Route path="/for-practitioner" component={ForPractitionersPage} />
-          <Route path="/practitioner-list" component={PractitionerListPage} />
-          <Route path="/practitioner-profile" component={PractitionerProfile} />
-          <Route exact path={["/index.html", "/"]}>
-            <Redirect to="/home" />
-          </Route>
-        </Switch>
-        {/* </AnimatePresence> */}
-        <Footer />
-      </ScrollToTop>
+        {/* Register-Login Pages */}
+        <Route path="/login" component={LoginPage} />
+        <Route path="/membership-form" component={MembershipForm} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/register-user" component={UserRegister} />
+        <Route
+          path={`/register-practitioner`}
+          component={PractitionerRegister}
+        />
+        <Route path={`/profile-setup`} component={ProfileSetup} />
+
+        {/* Practitioner Related Pages */}
+
+        <Route path="/practitioner-list" component={PractitionerListPage} />
+        <Route path="/practitioner-profile" component={PractitionerProfile} />
+        <Route exact path={["/index.html", "/"]}>
+          <Redirect to="/home" />
+        </Route>
+      </Switch>
+      {/* </AnimatePresence> */}
+
     </div>
+  )
+  
+  // Pages that requires a different navbar or no navbar at all
+  const NoNavPages = () => (
+    <div>
+      <Switch location={location} key={location.pathname}>
+        <Route path="/home" component={HomePage} />
+        <Route path="/for-practitioner" component={ForPractitionersPage} />
+        <Route component={DefaultPages} />
+        {/* <Route component={404_Component} path="/notfound" /> */}
+      </Switch>
+    </div>
+  )
+
+  return (
+    <ScrollToTop>
+      <Route>
+        <Switch location={location} key={location.pathname}>
+          <Route component={NoNavPages} />
+          <Route component={DefaultPages} />
+        </Switch>
+      </Route>
+      <Footer />
+    </ScrollToTop>
   );
+
 }
 export default App;
