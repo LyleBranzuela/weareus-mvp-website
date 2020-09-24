@@ -9,8 +9,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   #profile-image-frame {
     display: block;
     margin: 0 auto;
@@ -18,16 +17,23 @@
   }
 }
 
-.practitioner-description-card{
+.practitioner-description-card {
   outline: none;
   border: none;
 }
 
-.practitioner-description-card .card-title{
-  margin-top: -40px;
+.practitioner-description-card .card-title {
+  margin-top: -0px;
   margin-left: -20px;
   font-family: "AvenirLTPro-Heavy";
   color: #5b5b5b;
+}
+
+@media (max-width: 991px) {
+  .practitioner-description-card .card-body {
+    margin-left: 6%;
+    margin-right: 12%;
+  }
 }
 
 .container-dimensions {
@@ -37,10 +43,31 @@
   padding-bottom: 80px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   .container-dimensions {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 0%;
+    padding-right: 0%;
+    margin-left: 0%;
+  }
+}
+
+.contact-card-column {
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-right: 0%;
+  margin-left: 0%;
+}
+
+@media (max-width: 768px) and (min-width: 550px) {
+  .contact-card-column {
+    margin-left: -20%;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+  .contact-card-column {
+    margin-top: -20%;
+    margin-bottom: 5%;
   }
 }
 
@@ -84,7 +111,7 @@
   text-align: left;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   #category,
   #practitioner-name,
   #location,
@@ -115,7 +142,7 @@
   width: 192px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   .box {
     display: none;
   }
@@ -150,6 +177,13 @@
   margin: none;
 }
 
+@media (max-width: 991px) {
+  .accordion-section {
+    padding-left: 8%;
+    padding-right: 12%;
+  }
+}
+
 .accordion-section .card {
   border-right: 0px solid rgba(0, 0, 0, 0);
   border-left: 0px solid rgba(0, 0, 0, 0);
@@ -181,12 +215,6 @@
   font-family: "AvenirLTPro-Heavy";
   color: #5b5b5b;
   font-size: 1.3em;
-}
-
-@media (max-width: 560px) {
-  .contact-card-column {
-    padding-right: 60%;
-  }
 }
 
 .training-accordion-body-font {
