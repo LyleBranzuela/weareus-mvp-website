@@ -2,6 +2,7 @@ import React from "react";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
 import ScrollToTop from "./general-components/ScrollToTop";
+import Error404Page from "./general-components/Error404Page";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import SearchResults from "./search-components/SearchResults";
@@ -17,7 +18,8 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import { Switch, Route, Redirect, useLocation, BrowserRouter } from "react-router-dom";
+
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
 function App() {
   // Returns the location object that represents the current URL
@@ -31,7 +33,6 @@ function App() {
       {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
       <Switch location={location} key={location.pathname}>
         {/* General Pages */}
-
         <Route path="/search" component={SearchPage} />
         <Route path="/results" component={SearchResults} />
         <Route path="/about" component={AboutPage} />
@@ -60,9 +61,9 @@ function App() {
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
+        <Route path="" component={Error404Page} />
       </Switch>
       {/* </AnimatePresence> */}
-
     </div>
   )
   
@@ -73,7 +74,6 @@ function App() {
         <Route path="/home" component={HomePage} />
         <Route path="/for-practitioner" component={ForPractitionersPage} />
         <Route component={DefaultPages} />
-        {/* <Route component={404_Component} path="/notfound" /> */}
       </Switch>
     </div>
   )
