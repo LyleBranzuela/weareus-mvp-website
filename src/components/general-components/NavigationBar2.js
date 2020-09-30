@@ -3,6 +3,7 @@ import React from "react";
 import { getSession, logout } from "../../manage-accounts/Accounts";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { withRouter } from "react-router-dom";
 
 class NavigationBar2 extends React.Component {
   constructor() {
@@ -192,4 +193,4 @@ class NavigationBar2 extends React.Component {
   }
 }
 
-export default NavigationBar2;
+export default withRouter(NavigationBar2);

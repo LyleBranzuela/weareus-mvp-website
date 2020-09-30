@@ -1,7 +1,7 @@
 import "./ErrorPage.css";
 import React from "react";
 
-class Error404Page extends React.Component {
+class Error500Page extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -30,22 +30,22 @@ class Error404Page extends React.Component {
       // Mobile version
       return (
       <div className="errorPageMobile">
-        <p className="errorHeaderMobile"> <strong> Error 404: Page not found</strong> </p>
-        <p className="errorTextMobile"> We could not find that page. <br /> 
+        <p className="errorHeaderMobile"> <strong> Error 500: Internal Server Errord</strong> </p>
+        <p className="errorTextMobile"> An issue has occured on our end. <br /> 
                                         Sorry for the inconvenience. </p>
       </div>
       );
     }  else {
       return (
         <div className="errorPage">
-          <p className="errorHeader"> <strong>Error 404: Page not found </strong> </p>
-          <p className="errorText">  We could not find that page. <br /> 
-                                        Sorry for the inconvenience.</p>
+          <p className="errorHeader"> <strong>Error 500: Internal Server Error</strong> </p>
+          <p className="errorText">  An issue has occured on our end. <br /> 
+                                            Sorry for the inconvenience.</p>
         </div>
       );
     }
   }
 }
 
-export default Error404Page;
+export default Error500Page;
 

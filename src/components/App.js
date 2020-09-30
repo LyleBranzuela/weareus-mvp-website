@@ -3,6 +3,7 @@ import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
 import ScrollToTop from "./general-components/ScrollToTop";
 import Error404Page from "./general-components/Error404Page";
+import Error500Page from "./general-components/Error500Page";
 import HomePage from "./pages/HomePage";
 import SearchPage from "./pages/SearchPage";
 import SearchResults from "./search-components/SearchResults";
@@ -20,6 +21,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+
 
 function App() {
   // Returns the location object that represents the current URL
@@ -61,7 +63,8 @@ function App() {
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
-        <Route path="" component={Error404Page} />
+        <Route path="*" component={Error404Page} />
+        <Route path="/500" component={Error500Page} />
       </Switch>
       {/* </AnimatePresence> */}
     </div>

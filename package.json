@@ -8,7 +8,6 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@sweetalert/with-react": "^0.1.1",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "amazon-cognito-identity-js": "^4.3.4",
     "aws-sdk": "^2.739.0",
@@ -52,6 +51,8 @@
     ]
   },
   "devDependencies": {
-    "jest": "^26.4.2"
+    "@babel/preset-env": "^7.11.5",
+    "@testing-library/react": "^9.5.0",
+    "react-test-renderer": "^16.13.1"
   }
 }
