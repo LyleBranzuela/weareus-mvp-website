@@ -3,8 +3,8 @@ import "./PracticeProfileInfo.css";
 import icon_accordion_arrow from "../../assets/icons/accordion_arrow.svg";
 import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
 import OurSpecialists from "./OurSpecialists";
-import ContactCard from "../practitionerprofile-components/ContactCard";
-import ExpendableText from "../practitionerprofile-components//ExpendableText";
+import ContactCard from "../for-profile-components/ContactCard";
+import ExpendableText from "../for-profile-components/ExpendableText";
 
 
 class PracticeProfileInfo extends React.Component {
