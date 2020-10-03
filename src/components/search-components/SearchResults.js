@@ -124,14 +124,14 @@ class SearchResults extends React.Component {
                 />
               </Col>
               <Col className="pracResultDetails" sm={6}>
-                <Link to={`/temp-prac-profile/${practitioner.company_id}`}>
+                <Link to={`/practitioner-profile/${practitioner.company_id}`}>
                   <h4>{practitioner.company_name}</h4>
                 </Link>
                 <h6>{`${practitioner.suburb}, ${practitioner.region_name}`}</h6>
                 {/* <p>{practitioner.about}</p> */}
                 <p className="pracResultAbout">
                   {testString.slice(0, 190)}
-                  <Link to={`/temp-prac-profile/${practitioner.company_id}`}>
+                  <Link to={`/practitioner-profile/${practitioner.company_id}`}>
                     <span>...More</span>
                   </Link>
                 </p>
