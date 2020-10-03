@@ -66,7 +66,7 @@ class PracticeProfileInfo extends React.Component {
                   you achieve and maintain the best physical, mental and
                   emotional energy.
                   {/* Remove the below text to view the description WITHOUT the "Read More" button */}
-                  Understanding your body's responses and tension patterns can 
+                  Understanding your body's responses and tension patterns can
                   help you understand the conscious choices you make and puts
                   you back in charge of your own well-being. Experience
                   day-to-day life in a positive, enjoyable and empowered way.
@@ -80,10 +80,7 @@ class PracticeProfileInfo extends React.Component {
             </Card>
             {/* END OF practice "About" Section */}
 
-            {/* Our Specialists */}
-            <Col md={4} className="our-specialists">
-              <OurSpecialists></OurSpecialists>
-            </Col>
+
 
             {/* START OF Accordion Section */}
             <Container fluid className="profile-accordion-section">
@@ -131,9 +128,13 @@ class PracticeProfileInfo extends React.Component {
                   </Accordion.Toggle>
                 </Card>
                 {/* Google map */}
-                
+
               </Accordion>
             </Container>
+          </Col>
+          {/* Our Specialists */}
+          <Col md={4} className="our-specialists">
+            <OurSpecialists></OurSpecialists>
           </Col>
         </Row>
       </Container>

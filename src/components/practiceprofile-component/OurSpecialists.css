@@ -1,5 +1,4 @@
 .our-specialists {
-    margin-top: 233px;
     width: 500px;
     height: 400px;
     padding-top: 13px;
@@ -10,7 +9,9 @@
     color: "#5B5B5B";
     font-family: "AvenirLTStd-Book";
 }
-
+.container-dimensions{
+    margin-bottom: 20vw;
+}
 @media (max-width: 768px) and (min-width: 550px){
     .our-specialists {
       margin-top: 50px;
