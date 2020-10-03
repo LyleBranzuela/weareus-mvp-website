@@ -53,7 +53,7 @@ class NewPractitionerCard extends React.Component {
             <span id="newPracCardTypeMobile">{servicesList}</span>
           </Card.ImgOverlay>
           <Card.Body>
-            <Link to={`/temp-prac-profile/${this.props.company_id}`}>
+            <Link to={`/practitioner-profile/${this.props.company_id}`}>
               <Card.Title>{this.props.company_name}</Card.Title>
             </Link>
             <Card.Subtitle className="mb-4 text-muted">
@@ -77,7 +77,7 @@ class NewPractitionerCard extends React.Component {
             <span id="newPracCardType">{servicesList}</span>
           </Card.ImgOverlay>
           <Card.Body>
-            <Link to={`/temp-prac-profile/${this.props.company_id}`}>
+            <Link to={`/practitioner-profile/${this.props.company_id}`}>
               <Card.Title>{this.props.company_name}</Card.Title>
             </Link>
             <Card.Subtitle className="mb-4 text-muted">

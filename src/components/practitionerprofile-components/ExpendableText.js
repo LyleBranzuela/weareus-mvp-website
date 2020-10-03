@@ -3,7 +3,6 @@ import "./ExpendableText.css";
 import { useRef, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import icon_accordion_arrow_purple from "../../assets/icons/accordion_arrow_purple.svg";
-import icon_accordion_arrow_upwards_purple from "../../assets/icons/accordion_arrow_upwards_purple.svg";
 
 const MAX_POSSIBLE_HEIGHT = 500;
 
@@ -21,12 +20,13 @@ const ExpendableText = ({ maxHeight, children }) => {
 
   return (
     <Card.Text ref={ref}>
-      <div
-        class="inner"
+      <a
+      
+        className="inner"
         style={{ maxHeight: expanded ? MAX_POSSIBLE_HEIGHT : maxHeight }}
       >
         {children}
-      </div>
+      </a>
       {shouldShowExpand && (
         <button
           onClick={() => setExpanded(!expanded)}
