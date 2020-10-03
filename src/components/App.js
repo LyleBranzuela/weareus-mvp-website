@@ -17,6 +17,7 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import PracticeProfile from "./pages/PracticeProfilePage"
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
 function App() {
@@ -51,6 +52,8 @@ function App() {
             component={PractitionerRegister}
           />
           <Route path={`/profile-setup`} component={ProfileSetup} />
+
+          <Route path={'/practice-profile'} component = {PracticeProfile} />
 
           {/* Practitioner Related Pages */}
           <Route path="/for-practitioner" component={ForPractitionersPage} />

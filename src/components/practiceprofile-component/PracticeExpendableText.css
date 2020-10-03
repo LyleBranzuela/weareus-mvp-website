@@ -1,0 +1,28 @@
+.internal {
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+  font-size: 19px;
+  font-family: "AvenirLTStd-Book";
+  color: #5b5b5b;
+  margin-left: -20px;
+  margin-right: -20px;
+  line-height: normal;
+}
+
+.readMoreButton {
+  color: #79158f;
+  margin-top: 20px;
+  margin-left: -22px;
+  margin-bottom: 5px;
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background-color: white;
+  padding-left: 0px;
+
+}
+
+.readMoreArrow {
+  height: 8px;
+}
