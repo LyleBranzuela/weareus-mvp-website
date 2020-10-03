@@ -43,8 +43,17 @@
 }
 
 .contact-card-box #purple-card-heading {
+  display: inline-block;
   color: #79158f;
   font-family: "AvenirLTPro-Heavy";
+}
+
+.contact-card-box .horizontal-line-card {
+  display: block;
+  border-top: 1px solid darkgray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  content: " ";
 }
 
 @media (max-width: 768px) and (min-width: 550px) {

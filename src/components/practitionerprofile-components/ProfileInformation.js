@@ -1,15 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ProfileInformation.css";
 import icon_diploma from "../../assets/icons/icon_diploma.svg";
 import icon_certificate from "../../assets/icons/icon_certificate.svg";
 import icon_memberships from "../../assets/icons/icon_memberships.svg";
 import icon_accordion_arrow from "../../assets/icons/accordion_arrow.svg";
-import icon_accordion_arrow_purple from "../../assets/icons/accordion_arrow_purple.svg";
 import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
 import ContactCard from "./ContactCard";
 import ExpendableText from "./ExpendableText";
+import api from "../../api/api";
 
 class ProfileInformation extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      onlySpecialist: "",
+    };
+
+    // Prevents Memory Leaks
+    this._isMounted = false;
+  }
+
+  // Gets the Specialist Details from the Server
+  getSpecialistDetails = async () => {
+    const specialistResponse = await api.get(
+      `/specialist-profile/${this.props.specialists[0]}`
+    );
+    // Setting the Specialists's Detail State
+    this._isMounted &&
+      this.setState({
+        onlySpecialist: specialistResponse.data,
+      });
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  // Update Search whenever the URL is changed
+  componentDidUpdate(prevProps) {
+    if (this.props.specialists !== prevProps.specialists) {
+      this.getSpecialistDetails();
+    }
+  }
+
   render() {
     return (
       <Container fluid className="container-dimensions">
@@ -17,43 +54,82 @@ class ProfileInformation extends React.Component {
           <Col lg={8} className="no-padding">
             {/* Practitioner Profile Image */}
             <img
+              alt="practitioner-profile"
               src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
               id="profile-image-frame"
-              alt="profile image"
             />
+            {/* Practitioner Profile Image */}
+            {/* <img
+              alt="practitioner-profile"
+              src={require("../../assets/images/placeholders/{this.onlySpecialist.specialist_logo.jpg}")}
+              id="profile-image-frame"
+            /> */}
 
             {/* Practitioner Name */}
             <h2 className="practitioner-title" id="practitioner-name">
-              Atma Studio Yoga
+              {this.props.company_name}
               {/* Practitioner Business Logo Image */}
               <img
                 src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
                 alt="logo"
-                class="practitioner-logo"
+                className="practitioner-logo"
               />
+              {/* Practitioner Business Logo Image */}
+              {/* <img
+                src={require("../../assets/images/placeholders/{this.props.logo}}.jpg")}
+                alt="logo"
+                className="practitioner-logo"
+              /> */}
             </h2>
-
             {/* Practitioner Specialty Category/ies */}
-
             <div id="category">
-              <span id="category-text">Herbal Medicine, Massage, Reiki</span>
+              <span id="category-text">
+                {this.state.onlySpecialist.specialty &&
+                  this.state.onlySpecialist.specialty.map((service, index) => {
+                    return (
+                      <span key={service.service_id}>
+                        {index < this.state.onlySpecialist.specialty.length - 1
+                          ? service.service_name + ", "
+                          : service.service_name}
+                      </span>
+                    );
+                  })}
+              </span>
             </div>
 
             {/* Location including Suburb and City*/}
             <div id="location">
-              <span id="suburb">Albany, </span>
-              <span id="city"> Auckland</span>
+              <span id="suburb">{this.props.suburb},</span>
+              <span id="city"> {this.props.city}</span>
             </div>
             <br />
-            <br />
-            <p className="box">Covered by ACC</p>
+            {this.props.accreditations &&
+              this.props.accreditations.map((accreditation, index) => {
+                return (
+                  <p
+                    className="box"
+                    key={`${index}-${accreditation.accreditation_id}`}
+                  >
+                    {accreditation.accreditation_name}
+                  </p>
+                );
+              })}
             <h5 className="practitioner-name" id="person-name">
-              Name 
+              {this.state.onlySpecialist.specialist_first_name}{" "}
+              {this.state.onlySpecialist.specialist_last_name}
             </h5>
           </Col>
           {/* Contact card column */}
           <Col lg={4} className="contact-card-column">
-            <ContactCard></ContactCard>
+            <ContactCard
+              first_name={this.state.onlySpecialist.specialist_first_name}
+              last_name={this.state.onlySpecialist.specialist_last_name}
+              company_name={this.props.company_name}
+              company_address1={this.props.company_address1}
+              company_address2={this.props.company_address2}
+              phone={this.props.phone}
+              email={this.props.email}
+            ></ContactCard>
           </Col>
         </Row>
         <Row>
@@ -68,25 +144,7 @@ class ProfileInformation extends React.Component {
                 {/* maxHeight will determine how much text is shown in the description */}
                 {/* IF a description is longer than the height of the Card THEN a "Read More" button will appear */}
                 <ExpendableText maxHeight={145}>
-                  Understanding your body's responses and tension patterns can
-                  help you understand the conscious choices you make and puts
-                  you back in charge of your own well-being. Experience
-                  day-to-day life in a positive, enjoyable and empowered way.
-                  Using the nurtured touch of Reflexology, positive
-                  reinforcement, sharing of knowledge, lifestyle support and a
-                  deep understanding of how the nervous system works I can help
-                  you achieve and maintain the best physical, mental and
-                  emotional energy.
-                  {/* Remove the below text to view the description WITHOUT the "Read More" button */}
-                  Understanding your body's responses and tension patterns can
-                  help you understand the conscious choices you make and puts
-                  you back in charge of your own well-being. Experience
-                  day-to-day life in a positive, enjoyable and empowered way.
-                  Using the nurtured touch of Reflexology, positive
-                  reinforcement, sharing of knowledge, lifestyle support and a
-                  deep understanding of how the nervous system works I can help
-                  you achieve and maintain the best physical, mental and
-                  emotional energy.
+                  {this.props.about}
                 </ExpendableText>
               </Card.Body>
             </Card>
@@ -94,12 +152,13 @@ class ProfileInformation extends React.Component {
 
             {/* START OF Accordion Section */}
             <Container fluid className="accordion-section">
-              <Accordion defaultAtionKey="0">
+              <Accordion defaultationkey="0">
                 {/* Specialties Accordion */}
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
                     Specialties
                     <img
+                      alt="accordion_arrow"
                       src={icon_accordion_arrow}
                       className="arrow-position"
                     ></img>
@@ -108,15 +167,16 @@ class ProfileInformation extends React.Component {
                     {/* Section containing Specialty categories */}
                     <Card.Body>
                       <ul className="accordion-content-list-style">
-                        <li>
-                          <h5>Item 1</h5>
-                        </li>
-                        <li>
-                          <h5>Item 1</h5>
-                        </li>
-                        <li>
-                          <h5>Item 1</h5>
-                        </li>
+                        {this.state.onlySpecialist.specialty &&
+                          this.state.onlySpecialist.specialty.map(
+                            (service, index) => {
+                              return (
+                                <li key={`${index}-${service.service_id}`}>
+                                  <h5>{service.service_name}</h5>
+                                </li>
+                              );
+                            }
+                          )}
                       </ul>
                     </Card.Body>
                   </Accordion.Collapse>
@@ -128,6 +188,7 @@ class ProfileInformation extends React.Component {
                   <Accordion.Toggle as={Card.Header} eventKey="1">
                     Services
                     <img
+                      alt="accordion_arrow"
                       src={icon_accordion_arrow}
                       className="arrow-position"
                     ></img>
@@ -138,18 +199,14 @@ class ProfileInformation extends React.Component {
                         className="accordion-content-list-style"
                         id="services"
                       >
-                        <li>
-                          <h5>Reflexology</h5>
-                        </li>
-                        <li>
-                          <h5>Reiki</h5>
-                        </li>
-                        <li>
-                          <h5>Metamorphosis</h5>
-                        </li>
-                        <li>
-                          <h5>Energy Balance</h5>
-                        </li>
+                        {this.props.services &&
+                          this.props.services.map((service, index) => {
+                            return (
+                              <li key={`${index}-${service}`}>
+                                <h5>{service.service_name}</h5>
+                              </li>
+                            );
+                          })}
                       </ul>
                     </Card.Body>
                   </Accordion.Collapse>
@@ -160,6 +217,7 @@ class ProfileInformation extends React.Component {
                   <Accordion.Toggle as={Card.Header} eventKey="2">
                     Training, Qualifications & Memberships
                     <img
+                      alt="accordion_arrow"
                       src={icon_accordion_arrow}
                       className="arrow-position"
                     ></img>
@@ -169,68 +227,91 @@ class ProfileInformation extends React.Component {
                     <Card.Body>
                       <h6 className="title-header">
                         <img
+                          alt="accordion_diploma"
                           src={icon_diploma}
                           style={{ paddingRight: "5px" }}
                         ></img>
                         Diplomas
                       </h6>
                       <div className="font-body" id="education">
-                        {/* Name of education provider */}
-                        <span>International Institute of Reflexology</span>
-                        <br />
-                        {/* Name of education qualification name */}
-                        <span>
-                          Level 4 Anatomy & Physiology/Pathology (3 yrs)
-                        </span>
-                        <br />
-                        <br />
+                        {/* List of Diplomas */}
+                        <ul className="training-accordion-body-font">
+                          {this.state.onlySpecialist.diplomas &&
+                            this.state.onlySpecialist.diplomas.map(
+                              (training) => {
+                                return (
+                                  <li key={training.diploma_id}>
+                                    {training.diploma_name}{" "}
+                                    {training.time_taken &&
+                                      `(${training.time_taken})`}
+                                  </li>
+                                );
+                              }
+                            )}
+                        </ul>
                       </div>
+                      <br />
                       {/* END OF Education (Diploma) section */}
-
                       {/* Certifications sub-section */}
                       <h6 className="title-header">
                         <img
+                          alt="accordion_certificate"
                           src={icon_certificate}
                           style={{ paddingRight: "5px" }}
                         ></img>
                         Certificates
                       </h6>
                       {/* List of certifications achieved */}
-
                       <ul className="training-accordion-body-font">
-                        <li>
-                          How Reflexology Helps with Conception, Pregnancy &
-                          Childbirth (3 yrs)
-                        </li>
-                        <li>Reflexology for the Me | Patient Cert</li>
-                        <li>How Reflexology helps Cancer</li>
-                        <li>Coastal Paramedic</li>
-                        <li>Current First Aid</li>
+                        {this.state.onlySpecialist.certification &&
+                          this.state.onlySpecialist.certification.map(
+                            (training) => {
+                              return (
+                                <li key={training.certification_id}>
+                                  {training.certification_name}{" "}
+                                  {training.time_taken &&
+                                    `(${training.time_taken})`}
+                                </li>
+                              );
+                            }
+                          )}
                       </ul>
                       <br />
-
                       {/* Memberships sub-section*/}
                       <h6 className="title-header">
                         <img
+                          alt="accordion_memberships"
                           src={icon_memberships}
                           style={{ paddingRight: "5px" }}
                         ></img>
                         Memberships
                       </h6>
                       <div className="font-body" id="memberships">
-                        {/* Show REGULAR TEXT - IF link is NOT given */}
-                        <a id="membership-no-link">
-                          Reflexology Institute New Zealand
-                        </a>
-                        <br />
-                        {/* SHOW LINK - IF the website is given */}
-                        <a
-                          href=""
-                          style={{ color: "#79158f" }}
-                          id="membership-link"
-                        >
-                          <u>National Health Practitioners of New Zealand</u>
-                        </a>
+                        {this.state.onlySpecialist.membership &&
+                          this.state.onlySpecialist.membership.map(
+                            (training) => {
+                              return (
+                                <div key={training.membership_id}>
+                                  {/* Show REGULAR TEXT - IF link is NOT given */}
+                                  {!training.website ? (
+                                    <span href="/#" id="membership-no-link">
+                                      {training.membership_name}
+                                    </span>
+                                  ) : (
+                                    /* SHOW LINK - IF the website is given */
+                                    <a
+                                      href={`${training.website}`}
+                                      style={{ color: "#79158f" }}
+                                      id="membership-link"
+                                    >
+                                      <u>{training.membership_name}</u>
+                                    </a>
+                                  )}
+                                  <br />
+                                </div>
+                              );
+                            }
+                          )}
                       </div>
                     </Card.Body>
                   </Accordion.Collapse>

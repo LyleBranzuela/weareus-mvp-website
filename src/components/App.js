@@ -27,7 +27,7 @@ function App() {
   // Returns the location object that represents the current URL
   const location = useLocation();
 
-  // 
+  //
   const DefaultPages = () => (
     <div>
       {/* Scrolls To The Top Everytime they navigate through the routes */}
@@ -57,9 +57,8 @@ function App() {
         <Route path={`/profile-setup`} component={ProfileSetup} />
 
         {/* Practitioner Related Pages */}
-
         <Route path="/practitioner-list" component={PractitionerListPage} />
-        <Route path="/practitioner-profile" component={PractitionerProfile} />
+        <Route path="/practitioner-profile/:company_id" component={PractitionerProfile} />
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
@@ -68,8 +67,8 @@ function App() {
       </Switch>
       {/* </AnimatePresence> */}
     </div>
-  )
-  
+  );
+
   // Pages that requires a different navbar or no navbar at all
   const NoNavPages = () => (
     <div>
@@ -79,7 +78,7 @@ function App() {
         <Route component={DefaultPages} />
       </Switch>
     </div>
-  )
+  );
 
   return (
     <ScrollToTop>
@@ -92,6 +91,5 @@ function App() {
       <Footer />
     </ScrollToTop>
   );
-
 }
 export default App;

@@ -1,10 +1,7 @@
 import React from "react";
-import CallToAction from "../homepage-components/CallToAction";
-import ImageCarousel from "../practitionerprofile-components/ImageCarousel";
-import ProfileInformation from "../practitionerprofile-components/ProfileInformation";
 import api from "../../api/api";
 
-class PractitionerProfile extends React.Component {
+class TempPractitionerProfile extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -14,12 +11,10 @@ class PractitionerProfile extends React.Component {
       email: "",
       phone: "",
       about: "",
-      suburb: "",
-      city: "",
       company_address1: "",
       company_address2: "",
       subscription_type: "",
-      accreditations: [],
+      accredation: [],
       services: [],
       specialists: [],
       cover_images: [],
@@ -33,6 +28,7 @@ class PractitionerProfile extends React.Component {
   // Gets the Practitioner (Company) Details from the Server
   getCompanyDetails = async () => {
     let company_id = this.props.match.params.company_id;
+    console.log(company_id);
     const practitionerResponse = await api.get(
       `/company-profile/${company_id}`
     );
@@ -46,12 +42,10 @@ class PractitionerProfile extends React.Component {
         email: practitionerResponse.data.email,
         phone: practitionerResponse.data.phone,
         about: practitionerResponse.data.about,
-        suburb: practitionerResponse.data.company_address1.split(",")[2],
-        city: practitionerResponse.data.company_address2.split(",")[0],
         company_address1: practitionerResponse.data.company_address1,
         company_address2: practitionerResponse.data.company_address2,
         subscription_type: practitionerResponse.data.subscription_type,
-        accreditations: practitionerResponse.data.accreditation,
+        accredation: practitionerResponse.data.accredation,
         services: practitionerResponse.data.services,
         specialists: practitionerResponse.data.specialists,
         cover_images: practitionerResponse.data.cover_images,
@@ -78,16 +72,20 @@ class PractitionerProfile extends React.Component {
   }
 
   render() {
-    return this.state.specialists.length > 1 ? (
-      <div className="practitionerPage"></div>
-    ) : (
-      <div className="practitionerPage">
-        <ImageCarousel cover_images={this.state.cover_images} />
-        <ProfileInformation {...this.state} />
-        <CallToAction />
+    return (
+      <div className="mt-5 pt-5 practitionerPage">
+        <p>{this.state.company_id}</p>
+        <p>{this.state.logo}</p>
+        <p>{this.state.company_name}</p>
+        <p>{this.state.email}</p>
+        <p>{this.state.phone}</p>
+        <p>{this.state.about}</p>
+        <p>{this.state.company_address1}</p>
+        <p>{this.state.company_address2}</p>
+        <p>{this.state.subscription_type}</p>
       </div>
     );
   }
 }
 
-export default PractitionerProfile;
+export default TempPractitionerProfile;
