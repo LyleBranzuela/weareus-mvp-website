@@ -186,6 +186,7 @@
 @media (max-width: 560px) {
   .contact-card-column {
     padding-right: 60%;
+    margin-left: -40px;
   }
 }
 
