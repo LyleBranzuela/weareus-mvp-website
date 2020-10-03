@@ -10,6 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import ForPractitionersPage from "./pages/ForPractitionersPage";
 import PractitionerListPage from "./pages/PractitionerListPage";
 import PractitionerProfile from "./pages/PractitionerProfile";
+import TempPractitionerProfile from "./pages/TempPractitionerProfile";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserRegister from "./register-login-components/UserRegister";
@@ -25,7 +26,7 @@ function App() {
   // Returns the location object that represents the current URL
   const location = useLocation();
 
-  // 
+  //
   const DefaultPages = () => (
     <div>
       {/* Scrolls To The Top Everytime they navigate through the routes */}
@@ -55,7 +56,10 @@ function App() {
         <Route path={`/profile-setup`} component={ProfileSetup} />
 
         {/* Practitioner Related Pages */}
-
+        <Route
+          path="/temp-prac-profile/:company_id"
+          component={TempPractitionerProfile}
+        />
         <Route path="/practitioner-list" component={PractitionerListPage} />
         <Route path="/practitioner-profile" component={PractitionerProfile} />
         <Route exact path={["/index.html", "/"]}>
@@ -65,8 +69,8 @@ function App() {
       </Switch>
       {/* </AnimatePresence> */}
     </div>
-  )
-  
+  );
+
   // Pages that requires a different navbar or no navbar at all
   const NoNavPages = () => (
     <div>
@@ -76,7 +80,7 @@ function App() {
         <Route component={DefaultPages} />
       </Switch>
     </div>
-  )
+  );
 
   return (
     <ScrollToTop>
@@ -89,6 +93,5 @@ function App() {
       <Footer />
     </ScrollToTop>
   );
-
 }
 export default App;

@@ -8,9 +8,7 @@ import api from "../../api/api";
 class PractitionerRegister extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      subscriptions: [],
-    };
+    this.state = {};
 
     // Prevents Memory Leaks
     this._isMounted = false;
@@ -147,11 +145,11 @@ class PractitionerRegister extends React.Component {
                 </Accordion.Collapse>
               </Card>
               <br />
-              <Link to={`/membership-form`}>
+              <Link to={`/for-practitioner`}>
                 <u>Join We are Us now</u>
               </Link>
               <br />
-              <Link to="practitioner-list">
+              <Link to="contact-us">
                 <u>Want to talk it over? Drop us a line</u>
               </Link>
             </Accordion>

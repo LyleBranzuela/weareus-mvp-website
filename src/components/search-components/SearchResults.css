@@ -71,6 +71,10 @@
   font-size: 1em;
 }
 
+.pracResultDetails a:hover {
+  color: #79158f !important;
+}
+
 .searchPhone {
   color: #79158f;
 }
