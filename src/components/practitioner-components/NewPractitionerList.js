@@ -38,7 +38,6 @@ class NewPractitionerList extends React.Component {
         if (!image_url) {
           image_url = "listing_placeholder_1.jpg";
         }
-        console.log(practitioner.company_name);
         if (isMobile) {
           return (
             <Carousel.Item key={practitioner.company_name}>

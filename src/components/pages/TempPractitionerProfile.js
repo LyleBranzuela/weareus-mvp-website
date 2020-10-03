@@ -1,8 +1,4 @@
 import React from "react";
-import CallToAction from "../homepage-components/CallToAction";
-import ImageCarousel from "../practitionerprofile-components/ImageCarousel";
-import ProfileInformation from "../practitionerprofile-components/ProfileInformation";
-import { useParams } from "react-router-dom";
 import api from "../../api/api";
 
 class TempPractitionerProfile extends React.Component {

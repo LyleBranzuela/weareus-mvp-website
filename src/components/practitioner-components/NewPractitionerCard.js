@@ -37,7 +37,6 @@ class NewPractitionerCard extends React.Component {
         })
         .join(", ");
     }
-    console.log(this.props.company_name);
 
     if (isMobile) {
       // Mobile version
