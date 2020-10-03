@@ -13,15 +13,13 @@ class ContactCard extends React.Component {
             Atma Studio Yoga
           </Card.Subtitle>
           <Card.Text>
-            Name
-            <br />
             184 Beech Road, Diary Flat,
             <br />
             RD4 Albany, Auckland 0794
             <hr />
             <h5 id="purple-card-heading">+64 (0)21 754 459</h5>
             <hr />
-            <h5 id="purple-card-heading">gill@sbsltd.co.nz</h5>
+            <h5 id="purple-card-heading">bookl@atmastudioyoga.co.nz</h5>
           </Card.Text>
         </Card.Body>
       </Card>

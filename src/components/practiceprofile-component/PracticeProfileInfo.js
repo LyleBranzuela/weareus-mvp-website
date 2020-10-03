@@ -2,9 +2,9 @@ import React from "react";
 import "./PracticeProfileInfo.css";
 import icon_accordion_arrow from "../../assets/icons/accordion_arrow.svg";
 import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
-import PracticeContactCard from "./PracticeContactCard";
-import PracticeExpendableText from "./PracticeExpendableText";
 import OurSpecialists from "./OurSpecialists";
+import ContactCard from "../practitionerprofile-components/ContactCard";
+import ExpendableText from "../practitionerprofile-components//ExpendableText";
 
 
 class PracticeProfileInfo extends React.Component {
@@ -41,7 +41,7 @@ class PracticeProfileInfo extends React.Component {
           </Col>
 
           <Col md={4} className="contact-card">
-            <PracticeContactCard></PracticeContactCard>
+            <ContactCard></ContactCard>
           </Col>
         </Row>
         <Row>
@@ -55,7 +55,7 @@ class PracticeProfileInfo extends React.Component {
                 {/* Max Height by default is 145 */}
                 {/* maxHeight will determine how much text is shown in the description */}
                 {/* IF a description is longer than the height of the Card THEN a "Read More" button will appear */}
-                <PracticeExpendableText maxHeight={145}>
+                <ExpendableText maxHeight={145}>
                   Understanding your body's responses and tension patterns can
                   help you understand the conscious choices you make and puts
                   you back in charge of your own well-being. Experience
@@ -75,15 +75,15 @@ class PracticeProfileInfo extends React.Component {
                   deep understanding of how the nervous system works I can help
                   you achieve and maintain the best physical, mental and
                   emotional energy.
-                </PracticeExpendableText>
+                </ExpendableText>
               </Card.Body>
             </Card>
             {/* END OF practice "About" Section */}
 
             {/* Our Specialists */}
-            {/*<Col md={4} className="our-specialists">
+            <Col md={4} className="our-specialists">
               <OurSpecialists></OurSpecialists>
-            </Col>*/}
+            </Col>
 
             {/* START OF Accordion Section */}
             <Container fluid className="profile-accordion-section">
