@@ -6,6 +6,7 @@ import NewPractitionerList from "../practitioner-components/NewPractitionerList"
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
 import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
+import NavigationBar2 from "../general-components/NavigationBar2";
 import CustomButton from "../general-components/CustomButton";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
@@ -59,6 +60,7 @@ class HomePage extends React.Component {
       // Mobile version
       return (
         <div>
+          <NavigationBar2 />
           <PageHeader
             learnMoreButton={
               <React.Fragment>
@@ -96,6 +98,7 @@ class HomePage extends React.Component {
       // Desktop version
       return (
         <div>
+          <NavigationBar2 />
           <PageHeader
             learnMoreButton={
               <React.Fragment>

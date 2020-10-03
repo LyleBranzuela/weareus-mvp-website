@@ -3,9 +3,8 @@ import React from "react";
 import { getSession, logout } from "../../manage-accounts/Accounts";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { withRouter } from "react-router";
 
-class NavigationBar extends React.Component {
+class NavigationBar2 extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -16,7 +15,6 @@ class NavigationBar extends React.Component {
 
     this.handleScroll = this.handleScroll.bind(this);
   }
-
 
   componentDidMount() {
     window.addEventListener("resize", this.handleWindowSizeChange);
@@ -62,25 +60,28 @@ class NavigationBar extends React.Component {
         <Navbar
           collapseOnSelect
           fixed="top"
-          variant="light"
+          variant="dark"
           expand="lg"
-          className="navBarMobile"
+          className="navBarMobile2"
+          style={{
+            backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
+          }}
         >
           {/*fixed="top"*/}
           <LinkContainer to="/home">
             <Navbar.Brand>
               <img
                 alt="we are us logo"
-                src={require("../../assets/icons/we_are_us_logo.svg")}
+                src={require("../../assets/icons/we_are_us_logo_white.svg")}
                 className="d-inline-block align-top"
                 id="mobile_logo"
               />
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="mobileToggle" />
+          <Navbar.Toggle image="" aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse
             className="justify-content-end"
-            id="responsive-navbarMobile-nav"
+            id="responsive-navbarMobile2-nav"
           >
             <Nav className="navBarMobile-links">
               {/* Search Page Link */}
@@ -118,7 +119,7 @@ class NavigationBar extends React.Component {
                 )}
             </Nav>
             {/* Register Page Link */}
-            <LinkContainer to="/register" className="highlightNavMobile">
+            <LinkContainer to="/register" className="highlightNavMobile2">
               <Nav.Link>Register</Nav.Link>
             </LinkContainer>
           </Navbar.Collapse>
@@ -127,13 +128,15 @@ class NavigationBar extends React.Component {
     } else {
       // Desktop version
       return (
-        <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar">
+        <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar2" style={{
+          backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
+        }}>
           {/*fixed="top"*/}
           <LinkContainer to="/home">
             <Navbar.Brand>
               <img
                 alt="we are us logo"
-                src={require("../../assets/icons/we_are_us_logo.svg")}
+                src={require("../../assets/icons/we_are_us_logo_white.svg")}
                 className="d-inline-block align-top"
               />
             </Navbar.Brand>
@@ -143,26 +146,26 @@ class NavigationBar extends React.Component {
             className="justify-content-end"
             id="responsive-navbar-nav"
           >
-            <Nav className="navBar-links">
+            <Nav className="navBar2-links">
               {/* Search Page Link */}
               <LinkContainer to="/search">
-                <Nav.Link className="navBarEffect" href="/search">
+                <Nav.Link className="navBar2Effect" href="/search">
                   Search
                 </Nav.Link>
               </LinkContainer>
               {/* About Page Link */}
-              <LinkContainer className="navBarEffect" to="/about">
+              <LinkContainer className="navBar2Effect" to="/about">
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
               {/* Practitioner Page Link */}
-              <LinkContainer className="navBarEffect" to="/for-practitioner">
+              <LinkContainer className="navBar2Effect" to="/for-practitioner">
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
               {/* Login Page Link */}
               {this.state.userLoggedIn ? (
                 /* Logout Page Link */
                 <LinkContainer
-                  className="navBarEffect"
+                  className="navBar2Effect"
                   to="/home"
                   onClick={() => {
                     logout();
@@ -173,12 +176,12 @@ class NavigationBar extends React.Component {
                 </LinkContainer>
               ) : (
                   /* Login Page Link */
-                  <LinkContainer className="navBarEffect" to="/login">
+                  <LinkContainer className="navBar2Effect" to="/login">
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
                 )}
               {/* Register Page Link */}
-              <LinkContainer to="/register" className="highlightNav">
+              <LinkContainer to="/register" className="highlightNav2">
                 <Nav.Link>Register</Nav.Link>
               </LinkContainer>
             </Nav>
@@ -189,4 +192,4 @@ class NavigationBar extends React.Component {
   }
 }
 
-export default withRouter(NavigationBar);
+export default NavigationBar2;

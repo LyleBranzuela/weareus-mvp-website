@@ -1,18 +1,27 @@
 /* DESKTOP STYLES */
 .pageHeader {
-  background-position: center center;
+  display:block;
+
+  background-image: url("../../assets/images/for_practitioners_header.jpg");
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  text-align: center;
+
   position: relative;
-  margin: auto;
-  top: 0;
+  padding-top: 650px;
+
+  height: 100%;
+  width: auto;
   font-family: "AvenirLTStd-Book";
 }
 
-.pageHeader img {
-  width: 100%;
+#scrollDownButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   height: auto;
+  width: 2%;
+  padding-bottom: 2%;
 }
 
 .pageHeader-text {
@@ -21,11 +30,10 @@
   color: white;
   position: absolute;
   transform: translate(28%, -145%);
-  width: 100%;
 }
 
 #headerTitle {
-  font-size: 2.2vw;
+  font-size: 2em;
   font-weight: 500;
   font-family: "AvenirLTPro-Heavy";
 }
@@ -33,13 +41,13 @@
 #headerDesc {
   margin-top: 1%;
   margin-bottom: 5%;
-  font-size: 1.4vw;
+  font-size: 1.5em;
   font-weight: 200;
 }
 
 #headerButton {
   padding: 20px 75px 20px 75px;
-  font-size: 1vw;
+  font-size: 1.5em;
 }
 
 .break-word {
@@ -97,7 +105,7 @@
   word-wrap: break-word;
 }
 
-#scrollDownButton {
+#scrollDownButtonMobile {
   align-self: center;
   width: 5vh;
   height:auto;

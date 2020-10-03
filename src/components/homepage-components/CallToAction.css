@@ -1,15 +1,17 @@
 /* DESKTOP STYLES */
 .ctaStyle {
+  display: block;
+  background-image: url("../../assets/images/promotion_bg_nowhite.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+ 
+  padding-top: 500px;
+  height: 100%;
+  width: auto;
   text-align: center;
   position: relative;
   font-family: "AvenirLTStd-Book";
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.ctaStyle img {
-  width: 100%;
 }
 
 .ctaStyle-text {
@@ -21,21 +23,21 @@
 }
 
 #ctaTitle {
-  font-size: 1.6vw;
+  font-size: 1.6em;
   font-weight: 600;
   font-family: "AvenirLTStd-Book";
 }
 
 #ctaDesc {
   margin-top: 2%;
-  font-size: 1vw;
+  font-size: 1em;
   font-weight: 200;
 }
 
 #ctaButton {
   margin-top: 2%;
   padding: 20px 75px 20px 75px;
-  font-size: 1vw;
+  font-size: 1em;
 }
 
 #ctaSignUp {
@@ -141,6 +143,7 @@
   margin-left: 30px;
   font-weight: 100;
   font-size: 2vh;
+  background-color: white;
   font-family: "AvenirLTStd-Book";
 }
 

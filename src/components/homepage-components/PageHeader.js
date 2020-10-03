@@ -20,7 +20,7 @@ class PageHeader extends React.Component {
 
   scrollDown = () => {
     document.body.scrollBy({
-      top: window.innerHeight - window.innerHeight * 0.05,
+      top: window.innerHeight - window.innerHeight * 0.1,
       left: 0,
       behavior: "smooth",
     });
@@ -56,21 +56,17 @@ class PageHeader extends React.Component {
               <img
                 src={require("../../assets/icons/menu_arrow_white.svg")}
                 alt="practitioners-header"
-                id="scrollDownButton"
+                id="scrollDownButtonMobile"
                 onClick={this.scrollDown}
               />
             </div>
           </Container>
         </div>
-      );
+      );   
     } else {
       return (
         /** Adjustable Page Header for Practitioner and Homepage */
         <div className="pageHeader">
-          <img
-            src={require("../../assets/images/for_practitioners_header.jpg")}
-            alt="practitioners-header"
-          />
           <Container className="pageHeader-text">
             <Row>
               <h1 id="headerTitle">
@@ -86,6 +82,12 @@ class PageHeader extends React.Component {
             </Row>
             <Row>{this.props.learnMoreButton}</Row>
           </Container>
+          <img
+                src={require("../../assets/icons/menu_arrow_white.svg")}
+                alt="practitioners-header"
+                id="scrollDownButton"
+                onClick={this.scrollDown}
+              />
         </div>
       );
     }

@@ -22,6 +22,13 @@
   padding-bottom: 30px;
 }
 
+@media (max-width: 900px){
+  #lightHeader{
+    margin-left: -40%;
+    margin-right: -40%;
+  }
+}
+
 #heavyHeader {
   font-family: "AvenirLTPro-Heavy";
   color: #79158f;
@@ -37,6 +44,15 @@
   padding-left: 27%;
   padding-right: 27%;
   color: #5b5b5b;
+}
+
+@media (max-width: 900px){
+  #big-description{
+    font-size: 20px;
+    text-align: center;
+    margin-left: -25%;
+    margin-right: -25%;
+  }
 }
 
 blockquote {
@@ -66,4 +82,10 @@ blockquote:before {
   font-family: "AvenirLTStd-Book";
   color: #79158f;
   text-align: center;
+}
+
+@media (max-width: 900px){
+  #clientMessage{
+    font-size: 22px;
+  }
 }

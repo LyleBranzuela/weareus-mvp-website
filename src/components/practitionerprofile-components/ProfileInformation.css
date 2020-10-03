@@ -9,11 +9,30 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   #profile-image-frame {
     display: block;
     margin: 0 auto;
     margin-top: 190px;
+  }
+}
+
+.practitioner-description-card {
+  outline: none;
+  border: none;
+}
+
+.practitioner-description-card .card-title {
+  margin-top: -0px;
+  margin-left: -20px;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+}
+
+@media (max-width: 991px) {
+  .practitioner-description-card .card-body {
+    margin-left: 6%;
+    margin-right: 12%;
   }
 }
 
@@ -24,17 +43,31 @@
   padding-bottom: 80px;
 }
 
-/* @media (max-width: 1440px) and (min-width: 1280px) {
+@media (max-width: 991px) {
   .container-dimensions {
-    padding-left: 10%;
-    margin-top: -230px;
+    padding-left: 0%;
+    padding-right: 0%;
+    margin-left: 0%;
   }
-} */
+}
 
-@media (max-width: 900px) {
-  .container-dimensions {
-    padding-left: 10%;
-    padding-right: 10%;
+.contact-card-column {
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-right: 0%;
+  margin-left: 0%;
+}
+
+@media (max-width: 768px) and (min-width: 550px) {
+  .contact-card-column {
+    margin-left: -20%;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+  .contact-card-column {
+    margin-top: -20%;
+    margin-bottom: 5%;
   }
 }
 
@@ -42,7 +75,6 @@
   vertical-align: text-top;
   float: right;
   margin-top: -35px;
-  /* margin-right: -60px; */
 }
 
 @media (max-width: 1280px) {
@@ -51,9 +83,6 @@
   }
 }
 
-.testing {
-  padding-right: 50px;
-}
 .no-padding {
   margin-right: 0 !important;
   padding-right: 0 !important;
@@ -82,7 +111,7 @@
   text-align: left;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   #category,
   #practitioner-name,
   #location,
@@ -92,7 +121,7 @@
   }
 }
 
-.service-list-style {
+.accordion-content-list-style {
   font-family: "AvenirLTPro-Heavy";
   list-style-type: none;
   padding-top: 10px;
@@ -113,7 +142,7 @@
   width: 192px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 991px) {
   .box {
     display: none;
   }
@@ -137,17 +166,6 @@
   padding-bottom: 10px;
 }
 
-.read-more-button {
-  color: #79158f;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-family: "AvenirLTPro-Heavy";
-}
-
-.read-more-arrow {
-  height: 8px;
-}
-
 #container.one-column {
   display: flex;
   flex-direction: column;
@@ -157,6 +175,13 @@
 .accordion-section {
   font-family: "AvenirLTStd-Book";
   margin: none;
+}
+
+@media (max-width: 991px) {
+  .accordion-section {
+    padding-left: 8%;
+    padding-right: 12%;
+  }
 }
 
 .accordion-section .card {
@@ -192,8 +217,13 @@
   font-size: 1.3em;
 }
 
-@media (max-width: 560px) {
-  .contact-card-column {
-    padding-right: 60%;
-  }
+.training-accordion-body-font {
+  font-size: 19px;
+  font-family: "AvenirLTStd-Book";
+  color: #5b5b5b;
+  list-style-type: none;
+  padding-top: 10px;
+  padding-left: 0;
+  padding-bottom: 15px;
+  margin: 0;
 }
