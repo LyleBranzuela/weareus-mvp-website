@@ -2,7 +2,7 @@ import "./ProfileSetup.css";
 import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import CustomButton from "../general-components/CustomButton";
-// import plus_circle_fill from "../../assets/icons/plus_circle_fill";
+import swal from "@sweetalert/with-react";
 import api from "../../api/api";
 
 class ProfileSetup extends React.Component {
@@ -11,17 +11,22 @@ class ProfileSetup extends React.Component {
     this.state = {
       services: [],
       accreditations: [],
+      search_filter: "",
 
       // Company Details States
       company_name: "",
       subscription_id: 0,
       logo: "",
-      email: this.props.location.state.email
-        ? this.props.location.state.email
-        : "",
-      phone: this.props.location.state.phone
-        ? this.props.location.state.phone
-        : "",
+      email:
+        // this.props.location.state.email
+        // ? this.props.location.state.email
+        // :
+        "",
+      phone:
+        // this.props.location.state.phone
+        // ? this.props.location.state.phone
+        // :
+        "",
       about: "",
       country_name: "New Zealand",
       city_name: "",
@@ -35,9 +40,11 @@ class ProfileSetup extends React.Component {
       cover_images: [],
 
       // Practitioner (First Specialist) States
-      reference_id: this.props.location.state.reference_id
-        ? this.props.location.state.reference_id
-        : "",
+      reference_id:
+        // this.props.location.state.reference_id
+        // ? this.props.location.state.reference_id
+        // :
+        "",
       profile_picture: "",
       diplomas: [],
       certifications: [],
@@ -78,38 +85,56 @@ class ProfileSetup extends React.Component {
     this._isMounted = false;
   }
 
+  // Function to check if the field is empty or not
+  checkField = (field, tag) => {
+    if (field !== "" || field) {
+      return tag;
+    }
+  };
+
   // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
   onSubmit = async (event) => {
     event.preventDefault();
-    let userObject = {
-      // Company Details States
-      company_name: this.state.company_name,
-      subscription_id: this.state.subscription_id,
-      logo: this.state.logo,
-      email: this.state.email,
-      phone: this.state.phone,
-      about: this.state.about,
-      country_name: this.state.country_name,
-      city_name: this.state.city_name,
-      region_name: this.state.region_name,
-      building_number: this.state.building_number,
-      street: this.state.street,
-      suburb: this.state.suburb,
-      postal_code: this.state.postal_code,
-      chosen_accreditation: this.state.chosen_accreditation,
-      chosen_services: this.state.chosen_services,
-      cover_images: this.state.cover_images,
+    let missingFields = [];
 
-      // Practitioner (First Specialist) States
-      reference_id: this.state.reference_id,
-      profile_picture: this.state.profile_picture,
-      diplomas: this.state.diplomas,
-      certifications: this.state.certifications,
-      memberships: this.state.memberships,
-    };
+    if (missingFields.length > 0) {
+      swal({
+        title: "Unsuccessful!",
+        text: `Missing Fields: ${missingFields.join(", ")}`,
+        icon: "error",
+        buttons: [false, true],
+      });
+    } else {
+      let userObject = {
+        // Company Details States
+        company_name: this.state.company_name,
+        subscription_id: this.state.subscription_id,
+        logo: this.state.logo,
+        email: this.state.email,
+        phone: this.state.phone,
+        about: this.state.about,
+        country_name: this.state.country_name,
+        city_name: this.state.city_name,
+        region_name: this.state.region_name,
+        building_number: this.state.building_number,
+        street: this.state.street,
+        suburb: this.state.suburb,
+        postal_code: this.state.postal_code,
+        chosen_accreditation: this.state.chosen_accreditation,
+        chosen_services: this.state.chosen_services,
+        cover_images: this.state.cover_images,
 
-    // Generate a Company
-    await api.post("/company", userObject);
+        // Practitioner (First Specialist) States
+        reference_id: this.state.reference_id,
+        profile_picture: this.state.profile_picture,
+        diplomas: this.state.diplomas,
+        certifications: this.state.certifications,
+        memberships: this.state.memberships,
+      };
+
+      // Generate a Company
+      // await api.post("/company", userObject);
+    }
   };
 
   // Handles Any Active Changes on the Form
@@ -120,15 +145,27 @@ class ProfileSetup extends React.Component {
   };
 
   // Updates the Sections of Files with Images (company logo, profile picture, and cover images)
-  onChangeImageHandler = (e, isArray) => {
-    if (isArray) {
-      this.setState({
-        [e.target.id]: this.state[e.target.id].concat(e.target.files[0]),
-      });
-    } else {
-      this.setState({
-        [e.target.id]: e.target.files[0],
-      });
+  onChangeImageHandler = async (e, isArray) => {
+    const target = e.target.id;
+    if (e.target.files[0]) {
+      const data = new FormData();
+      data.append("image", e.target.files[0]);
+      const uploadResponse = await api.post(
+        "/upload?user_id=" + 8 + "&folder=" + e.target.id,
+        data
+      );
+      if (target !== "cover_images") {
+        this.setState({
+          [target]: uploadResponse.data.fileName,
+        });
+        localStorage.setItem("logo", uploadResponse.data.fileName);
+      } else {
+        this.setState({
+          cover_images: this.state.cover_images.concat([
+            uploadResponse.data.fileName,
+          ]),
+        });
+      }
     }
   };
 
@@ -141,36 +178,77 @@ class ProfileSetup extends React.Component {
   addPractitionerCredential = (e, credential) => {
     e.preventDefault();
     let chosenCredentialObj = {};
+    let errorFlag = false;
+    let errorMessage = "";
     switch (credential) {
       case "diplomas":
-        chosenCredentialObj = {
-          diploma_name: this.state.diploma_name,
-          time_taken: this.state.diploma_time_taken,
-        };
+        if (
+          this.state.diploma_name === "" ||
+          !this.state.diploma_name ||
+          !this.state.diploma_name.replace(/\s/g, "").length
+        ) {
+          // Unsuccessful Addition of Pracititoner Modal
+          errorMessage = "Please input a Diploma";
+          errorFlag = true;
+        } else {
+          chosenCredentialObj = {
+            diploma_name: this.state.diploma_name,
+            time_taken: this.state.diploma_time_taken,
+          };
+        }
         break;
 
       case "certifications":
-        chosenCredentialObj = {
-          certification_name: this.state.certification_name,
-          time_taken: this.state.certification_time_taken,
-        };
+        if (
+          this.state.certification_name === "" ||
+          !this.state.certification_name ||
+          !this.state.certification_name.replace(/\s/g, "").length
+        ) {
+          // Unsuccessful Addition of Pracititoner Modal
+          errorMessage = "Please input a Certification";
+          errorFlag = true;
+        } else {
+          chosenCredentialObj = {
+            certification_name: this.state.certification_name,
+            time_taken: this.state.certification_time_taken,
+          };
+        }
         break;
 
       case "memberships":
-        chosenCredentialObj = {
-          membership_name: this.state.membership_name,
-          website: this.state.membership_website,
-        };
+        if (
+          this.state.membership_name === "" ||
+          !this.state.membership_name ||
+          !this.state.membership_name.replace(/\s/g, "").length
+        ) {
+          // Unsuccessful Addition of Pracititoner Modal
+          errorMessage = "Please input a Membership";
+          errorFlag = true;
+        } else {
+          chosenCredentialObj = {
+            membership_name: this.state.membership_name,
+            website: this.state.membership_website,
+          };
+        }
         break;
 
       default:
         break;
     }
 
-    // Add to the List
-    this.setState({
-      [credential]: [...this.state[credential], chosenCredentialObj],
-    });
+    if (!errorFlag) {
+      // Add to the List
+      this.setState({
+        [credential]: [...this.state[credential], chosenCredentialObj],
+      });
+    } else {
+      swal({
+        title: "Unsuccessful!",
+        text: errorMessage,
+        icon: "error",
+        buttons: [false, true],
+      });
+    }
   };
 
   // Handles The Services/Accredation Checkboxes on the Form
@@ -201,7 +279,18 @@ class ProfileSetup extends React.Component {
     // Map the dropdown items of Services
     let serviceKeywords = [];
     if (this.state.services) {
-      serviceKeywords = this.state.services.map((service) => {
+      let filteredServices = this.state.services;
+      if (this.state.search_filter && this.state.search_filter !== "") {
+        filteredServices = this.state.services.filter((service) => {
+          return service.service_name
+            .toLowerCase()
+            .includes(this.state.search_filter.toLowerCase());
+        });
+      }
+      serviceKeywords = filteredServices.map((service) => {
+        let check = this.state.chosen_services.indexOf(
+          service.service_id.toString()
+        );
         return (
           <label
             id={`service-${service.service_id}`}
@@ -213,6 +302,7 @@ class ProfileSetup extends React.Component {
               type="checkbox"
               name={service.service_name}
               value={service.service_id}
+              checked={check !== -1}
               onChange={(e) => {
                 this.checkboxOnChangeHandler(e, "chosen_services");
               }}
@@ -282,37 +372,6 @@ class ProfileSetup extends React.Component {
           </Form.Group>
           <hr size="50" />
           <h5>Your Contact Details</h5>
-          {this.props.location.state.first_name &&
-            this.props.location.state.last_name && (
-              <Row>
-                <Col>
-                  {/** First Name Form Group */}
-                  <Form.Group controlId="first_name">
-                    <Form.Label>Your First Name:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter First Name"
-                      defaultValue={this.props.location.state.first_name}
-                      onChange={this.formOnChangeHandler}
-                      readOnly
-                    />
-                  </Form.Group>
-                </Col>
-                <Col>
-                  {/** Last Name Form Group */}
-                  <Form.Group controlId="last_name">
-                    <Form.Label>Your Last Name:</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter Last Name"
-                      defaultValue={this.props.location.state.last_name}
-                      onChange={this.formOnChangeHandler}
-                      readOnly
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-            )}
           <Row>
             <Col>
               {/** Contact Number Form Group */}
@@ -323,7 +382,7 @@ class ProfileSetup extends React.Component {
                   defaultValue={this.state.phone}
                   placeholder="Enter Contact Number"
                   onChange={this.formOnChangeHandler}
-                  readOnly={this.props.location.state.phone ? true : false}
+                  // readOnly={this.props.location.state.phone ? true : false}
                 />
               </Form.Group>
             </Col>
@@ -336,7 +395,7 @@ class ProfileSetup extends React.Component {
                   defaultValue={this.state.email}
                   placeholder="Enter Email"
                   onChange={this.formOnChangeHandler}
-                  readOnly={this.props.location.state.email ? true : false}
+                  // readOnly={this.props.location.state.email ? true : false}
                 />
               </Form.Group>
             </Col>
@@ -405,17 +464,19 @@ class ProfileSetup extends React.Component {
           <hr size="50" />
           <h5>Your Logo</h5>
           {/** Logo Form Group */}
-          <Form.Group controlId="company_logo">
+          <Form.Group controlId="logo">
             <Form.Label>Size: 720px wide by 720px high</Form.Label>
             <br />
+            <img src={this.state.logo}></img>
             {/** Upload Logo */}
             <label className="custom-file-upload">
               <input
-                id="company_logo"
+                id="logo"
                 type="file"
                 accept="image/*"
+                name="logo"
                 onChange={(e) => {
-                  this.onChangeImageHandler(e, false);
+                  this.onChangeImageHandler(e);
                 }}
               />
               <u>Change Image</u>
@@ -446,7 +507,7 @@ class ProfileSetup extends React.Component {
             </label>
           </Form.Group>
           <hr size="50" />
-          <div>{this.state.cover_images}</div>
+          <div>{this.state.cover_images.toString()}</div>
           <h5>Your Cover Image</h5>
           {/** Cover Image Form Group */}
           <Form.Group controlId="cover_images">
@@ -496,12 +557,29 @@ class ProfileSetup extends React.Component {
             {accreditationBoxes}
           </Form.Group>
           {/** Practitioner's Services Form Group */}
-          <Form.Group controlId="profileSetupServices">
+          <Form.Group controlId="search_filter">
+            {/* {this.state.chosen_services &&
+              this.state.chosen_services.map((chosen_id, index) => {
+                let result = this.state.services.find((service) => {
+                  return service.service_id === chosen_id;
+                });
+                console.log(this.state.services);
+                console.log(result);
+                if (result) {
+                  return (
+                    <span className="service-box" key={`${index}-${chosen_id}`}>
+                      {result}YEET
+                    </span>
+                  );
+                }
+              })} */}
+            <br />
             <Form.Label>Search Service:</Form.Label>
             <Form.Control
               className="mb-3"
               type="text"
               placeholder="Begin typing your service eg. Acupuncture..."
+              onChange={this.formOnChangeHandler}
             />
             <Form.Label>Or select from the following list:</Form.Label>
             <Container className="checkboxContainerList">
@@ -541,13 +619,34 @@ class ProfileSetup extends React.Component {
             {this.state.diplomas &&
               this.state.diplomas.map((diploma, index) => {
                 return (
-                  <Form.Group key={`${index}-${diploma.diploma_name}`}>
-                    <Form.Control
-                      type="text"
-                      placeholder={`${diploma.diploma_name} (${diploma.time_taken})`}
-                      readOnly
-                    />
-                  </Form.Group>
+                  <div
+                    className="customTrainingStyle"
+                    key={`${index}-${diploma.diploma_name}`}
+                  >
+                    <Row>
+                      <Col sm={11}>
+                        <Form.Control
+                          type="text"
+                          placeholder={`${diploma.diploma_name} ${
+                            diploma.time_taken && "(" + diploma.time_taken + ")"
+                          }`}
+                          readOnly
+                        />
+                      </Col>
+                      <Col sm={1}>
+                        <CustomButton
+                          text="-"
+                          onClick={() => {
+                            let splicedDiplomas = this.state.diplomas;
+                            splicedDiplomas.splice(index, 1);
+                            this.setState({
+                              diplomas: splicedDiplomas,
+                            });
+                          }}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
                 );
               })}
             <Form.Control
@@ -586,15 +685,36 @@ class ProfileSetup extends React.Component {
             {this.state.certifications &&
               this.state.certifications.map((certification, index) => {
                 return (
-                  <Form.Group
+                  <div
+                    className="customTrainingStyle"
                     key={`${index}-${certification.certification_name}`}
                   >
-                    <Form.Control
-                      type="text"
-                      placeholder={`${certification.certification_name} (${certification.time_taken})`}
-                      readOnly
-                    />
-                  </Form.Group>
+                    <Row>
+                      <Col sm={11}>
+                        <Form.Control
+                          type="text"
+                          placeholder={`${certification.certification_name} ${
+                            certification.time_taken &&
+                            "(" + certification.time_taken + ")"
+                          }`}
+                          readOnly
+                        />
+                      </Col>
+                      <Col sm={1}>
+                        <CustomButton
+                          text="-"
+                          onClick={() => {
+                            let splicedCertifications = this.state
+                              .certifications;
+                            splicedCertifications.splice(index, 1);
+                            this.setState({
+                              certifications: splicedCertifications,
+                            });
+                          }}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
                 );
               })}
             <Form.Control
@@ -629,17 +749,39 @@ class ProfileSetup extends React.Component {
               />
               <u>Add another</u>
             </span>
+
             {/** Render Created Certifications */}
             {this.state.memberships &&
               this.state.memberships.map((membership, index) => {
                 return (
-                  <Form.Group key={`${index}-${membership.membership_name}`}>
-                    <Form.Control
-                      type="text"
-                      placeholder={`${membership.membership_name} (${membership.website})`}
-                      readOnly
-                    />
-                  </Form.Group>
+                  <div
+                    className="customTrainingStyle"
+                    key={`${index}-${membership.membership_name}`}
+                  >
+                    <Row>
+                      <Col sm={11}>
+                        <Form.Control
+                          type="text"
+                          placeholder={`${membership.membership_name} ${
+                            membership.website && "(" + membership.website + ")"
+                          }`}
+                          readOnly
+                        />
+                      </Col>
+                      <Col sm={1}>
+                        <CustomButton
+                          text="-"
+                          onClick={() => {
+                            let splicedMemberships = this.state.memberships;
+                            splicedMemberships.splice(index, 1);
+                            this.setState({
+                              memberships: splicedMemberships,
+                            });
+                          }}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
                 );
               })}
             <Form.Control

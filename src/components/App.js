@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
 import ScrollToTop from "./general-components/ScrollToTop";
@@ -18,7 +19,6 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
 function App() {
@@ -56,7 +56,10 @@ function App() {
 
         {/* Practitioner Related Pages */}
         <Route path="/practitioner-list" component={PractitionerListPage} />
-        <Route path="/practitioner-profile/:company_id" component={PractitionerProfile} />
+        <Route
+          path="/practitioner-profile/:company_id"
+          component={PractitionerProfile}
+        />
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
@@ -89,4 +92,13 @@ function App() {
     </ScrollToTop>
   );
 }
-export default App;
+
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.userReducer.isLoggedIn,
+});
+
+const mapDispatchToProps = () => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(App);

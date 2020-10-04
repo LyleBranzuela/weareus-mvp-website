@@ -99,8 +99,8 @@ class ProfileInformation extends React.Component {
 
             {/* Location including Suburb and City*/}
             <div id="location">
-              <span id="suburb">{this.props.suburb},</span>
-              <span id="city"> {this.props.city}</span>
+              <span id="suburb-profile">{this.props.suburb},</span>
+              <span id="city-profile"> {this.props.city}</span>
             </div>
             <br />
             {this.props.accreditations &&

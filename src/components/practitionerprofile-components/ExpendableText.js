@@ -21,7 +21,6 @@ const ExpendableText = ({ maxHeight, children }) => {
   return (
     <Card.Text ref={ref}>
       <a
-      
         className="inner"
         style={{ maxHeight: expanded ? MAX_POSSIBLE_HEIGHT : maxHeight }}
       >

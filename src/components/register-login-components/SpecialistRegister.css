@@ -63,33 +63,10 @@
 }
 .checkboxContainerList {
   color: #3b3b3b;
-  max-height: 260px;
+  height: 260px;
   overflow-y: scroll;
   padding: 0px;
   font-size: 1em;
-}
-.customTrainingStyle {
-  margin-bottom: 15px;
-}
-
-.customTrainingStyle .col-sm-11 {
-  padding-right: 0;
-}
-
-.customTrainingStyle .col-sm-1 {
-  padding-right: 0;
-}
-
-.service-box {
-  background-color: #f2e9f4;
-  display: inline-block;
-  color: #79158f;
-  font-family: "AvenirLTStd-Book";
-  font-size: 19px;
-  padding: 5px 10px 5px 10px;
-  margin-bottom: 5px;
-  margin-right: 10px;
-  text-align: center;
 }
 
 /* Create a custom checkbox */

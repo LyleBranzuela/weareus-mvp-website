@@ -3,6 +3,8 @@ import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import swal from "@sweetalert/with-react";
+import { connect } from "react-redux";
+import { signin } from "../../actions";
 // import GoogleLogin from "react-google-login";
 import {
   getUser,
@@ -64,6 +66,7 @@ class LoginForm extends React.Component {
           });
         }
 
+        this.props.signin(data);
         // Successful Login Modal
         swal({
           title: "Login Successful!",
@@ -74,7 +77,7 @@ class LoginForm extends React.Component {
           closeOnClickOutside: false,
           closeOnEsc: false,
         }).then(() => {
-          window.location = "/home";
+          // window.location = "/home";
         });
       })
       .catch((err) => {
@@ -242,4 +245,14 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.userReducer.isLoggedIn,
+});
+
+const mapDispatchToProps = () => {
+  return {
+    signin,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(LoginForm);

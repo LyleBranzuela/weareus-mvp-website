@@ -1,6 +1,8 @@
 import "./NavigationBar.css";
 import React from "react";
-import { getSession, logout } from "../../manage-accounts/Accounts";
+import { logout } from "../../manage-accounts/Accounts";
+import { connect } from "react-redux";
+import { signout } from "../../actions";
 import { Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -25,18 +27,6 @@ class NavigationBar2 extends React.Component {
     window.removeEventListener("resize", this.handleWindowSizeChange);
     window.removeEventListener("scroll", this.handleScroll, true);
   }
-
-  // Check If User Has Logged in
-  // useEffect(() => {
-  //   getSession()
-  //     .then((session) => {
-  //       console.log("Session", session);
-  //       setUserLoggedIn(true);
-  //     })
-  //     .catch((err) => {
-  //       setUserLoggedIn(false);
-  //     });
-  // });
 
   handleScroll(event) {
     const scroll_pos = document.body.scrollTop;
@@ -99,24 +89,24 @@ class NavigationBar2 extends React.Component {
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
               {/* Login Page Link */}
-              {this.state.userLoggedIn ? (
+              {this.props.isLoggedIn ? (
                 /* Logout Page Link */
                 <LinkContainer
                   className="navBarEffect"
                   to="/home"
                   onClick={() => {
                     logout();
-                    this.setState({ userLoggedIn: false });
+                    this.props.signout();
                   }}
                 >
                   <Nav.Link>Logout</Nav.Link>
                 </LinkContainer>
               ) : (
-                  /* Login Page Link */
-                  <LinkContainer className="navBarEffect" to="/login">
-                    <Nav.Link>Login</Nav.Link>
-                  </LinkContainer>
-                )}
+                /* Login Page Link */
+                <LinkContainer className="navBarEffect" to="/login">
+                  <Nav.Link>Login</Nav.Link>
+                </LinkContainer>
+              )}
             </Nav>
             {/* Register Page Link */}
             <LinkContainer to="/register" className="highlightNavMobile2">
@@ -128,9 +118,15 @@ class NavigationBar2 extends React.Component {
     } else {
       // Desktop version
       return (
-        <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar2" style={{
-          backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
-        }}>
+        <Navbar
+          collapseOnSelect
+          fixed="top"
+          expand="lg"
+          className="navBar2"
+          style={{
+            backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
+          }}
+        >
           {/*fixed="top"*/}
           <LinkContainer to="/home">
             <Navbar.Brand>
@@ -162,24 +158,24 @@ class NavigationBar2 extends React.Component {
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
               {/* Login Page Link */}
-              {this.state.userLoggedIn ? (
+              {this.props.isLoggedIn ? (
                 /* Logout Page Link */
                 <LinkContainer
                   className="navBar2Effect"
                   to="/home"
                   onClick={() => {
                     logout();
-                    this.setState({ userLoggedIn: false });
+                    this.props.signout();
                   }}
                 >
                   <Nav.Link>Logout</Nav.Link>
                 </LinkContainer>
               ) : (
-                  /* Login Page Link */
-                  <LinkContainer className="navBar2Effect" to="/login">
-                    <Nav.Link>Login</Nav.Link>
-                  </LinkContainer>
-                )}
+                /* Login Page Link */
+                <LinkContainer className="navBar2Effect" to="/login">
+                  <Nav.Link>Login</Nav.Link>
+                </LinkContainer>
+              )}
               {/* Register Page Link */}
               <LinkContainer to="/register" className="highlightNav2">
                 <Nav.Link>Register</Nav.Link>
@@ -192,4 +188,16 @@ class NavigationBar2 extends React.Component {
   }
 }
 
-export default NavigationBar2;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.userReducer.isLoggedIn,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    signout,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(NavigationBar2);

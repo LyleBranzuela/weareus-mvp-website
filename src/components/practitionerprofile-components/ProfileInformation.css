@@ -99,8 +99,9 @@
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
 }
-#suburb,
-#city {
+
+#suburb-profile,
+#city-profile {
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
