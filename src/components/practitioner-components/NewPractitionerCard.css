@@ -7,13 +7,13 @@
 
 .newPracCardStyle .card-title {
   color: #79158F !important;
-  font-size: 1.3vw;
+  font-size: 1.2vw;
   font-family: "AvenirLTPro-Heavy";
 }
 
 .newPracCardStyle .card-subtitle {
   color: gray !important;
-  font-size: 0.9vw;
+  font-size: 0.8vw;
   margin-bottom: 15px !important;
 }
 
@@ -30,13 +30,15 @@
   left: 0;
   top: 0;
   background: linear-gradient(transparent 320px, white);
+  pointer-events: none;
 }
 
-.card-img-overlay {
+.newPracCardStyle .card-img-overlay {
   right: 0;
   padding: 0;
-  top: 50%;
+  top: 55%;
   position: absolute;
+  pointer-events: none;
 }
 
 #newPracCardType {
@@ -83,11 +85,12 @@
   background: linear-gradient(transparent 320px, white);
 }
 
-.card-img-overlay {
+.newPracCardStyleMobile .card-img-overlay {
   right: 0;
   padding: 0;
   top: 50%;
   position: absolute;
+  pointer-events: none;
 }
 
 #newPracCardTypeMobile {

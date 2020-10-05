@@ -88,10 +88,6 @@ class CallToAction extends React.Component {
       return (
         <div>
           <div className="ctaStyle">
-            <img
-              src={require("../../assets/images/promotion_bg_nowhite.jpg")}
-              alt="practicioners-header"
-            />
             <Container className="ctaStyle-text">
               <Row>
                 <h1 id="ctaTitle">

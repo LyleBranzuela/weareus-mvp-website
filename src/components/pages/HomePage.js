@@ -6,6 +6,7 @@ import NewPractitionerList from "../practitioner-components/NewPractitionerList"
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
 import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
+import NavigationBar2 from "../general-components/NavigationBar2";
 import CustomButton from "../general-components/CustomButton";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
@@ -15,31 +16,35 @@ class HomePage extends React.Component {
     super();
     this.state = {
       width: window.innerWidth,
-      practitioners: []
+      practitioners: [],
+      newPractitioners: [],
     };
 
     // Prevents Memory Leaks
     this._isMounted = false;
   }
-  
+
   // Function to Get All The Practitioners from the Server
   getAllPractitioners = async () => {
     const practitionerResponse = await api.get("/companies");
+    const newPracResponse = await api.get("/new-companies");
+
     // Setting the Services and Regions States
     this._isMounted &&
       this.setState({
         practitioners: practitionerResponse.data.rows,
+        newPractitioners: newPracResponse.data,
       });
   };
 
   componentDidMount() {
-    window.addEventListener('resize', this.handleWindowSizeChange);
+    window.addEventListener("resize", this.handleWindowSizeChange);
     this._isMounted = true;
     this._isMounted && this.getAllPractitioners();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener("resize", this.handleWindowSizeChange);
     this._isMounted = false;
   }
 
@@ -55,62 +60,72 @@ class HomePage extends React.Component {
       // Mobile version
       return (
         <div>
+          <NavigationBar2 />
           <PageHeader
-          learnMoreButton={
-            <React.Fragment>
-              <Link to="/for-practitioner">
-                <CustomButton id="headerButtonMobile" text="Learn More" />
-              </Link>
-            </React.Fragment>
-          }
-        />
+            learnMoreButton={
+              <React.Fragment>
+                <Link to="/for-practitioner">
+                  <CustomButton id="headerButtonMobile" text="Learn More" />
+                </Link>
+              </React.Fragment>
+            }
+          />
           <MessageOfTheDay
             motd={
               <React.Fragment>
                 <br />
                 <br />
                 <strong>We are Us</strong> connects you with <br />
-                health, wellness, and self-<br />
+                health, wellness, and self-
+                <br />
                 improvement practitioners <br />
-                throughout New Zealand. 
+                throughout New Zealand.
                 <br />
                 <br />
               </React.Fragment>
             }
           />
-          <NewPractitionerList />
+          <NewPractitionerList
+            newPractitioners={this.state.newPractitioners}
+            showAll={false}
+          />
           <SearchField />
           <PractitionerCTA />
           <CallToAction />
         </div>
       );
-    }
-    else {
+    } else {
       // Desktop version
       return (
         <div>
-        <PageHeader
-        learnMoreButton={
-          <React.Fragment>
-            <Link to="/for-practitioner">
-              <CustomButton id="headerButton" text="Learn More" />
-            </Link>
-          </React.Fragment>
-        }
-      />
+          <NavigationBar2 />
+          <PageHeader
+            learnMoreButton={
+              <React.Fragment>
+                <Link to="/for-practitioner">
+                  <CustomButton id="headerButton" text="Learn More" />
+                </Link>
+              </React.Fragment>
+            }
+          />
           <MessageOfTheDay
             motd={
               <React.Fragment>
-                <strong>We are Us</strong> connects you with health, wellness, and
-          self-improvement <br /> practitioners throughout New Zealand.
-          </React.Fragment>
+                <strong>We are Us</strong> connects you with health, wellness,
+                and self-improvement <br /> practitioners throughout New
+                Zealand.
+              </React.Fragment>
             }
           />
-          <NewPractitionerList />
+          <NewPractitionerList
+            newPractitioners={this.state.newPractitioners}
+            showAll={false}
+          />
           <SearchField />
-          <PractitionerList 
-          practitioners={this.state.practitioners}
-          showAll={false} />
+          <PractitionerList
+            practitioners={this.state.practitioners}
+            showAll={false}
+          />
           <CallToAction />
         </div>
       );

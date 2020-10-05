@@ -7,6 +7,19 @@ class ImageCarousel extends React.Component {
     return (
       <div>
         <Carousel className="pracPersonalCarousel" autoPlay>
+          {/** Loop Through the Cover Images */}
+          {/* {this.props.cover_images &&
+            this.props.cover_images.map((cover_image, index) => {
+              return (
+                <Carousel.Item key={cover_image.image_id}>
+                  <img
+                    className="carousel-img-margin"
+                    src={require(cover_image.image_url)}
+                    alt={`${index}-pracititioner-slide`}
+                  />
+                </Carousel.Item>
+              );
+            })} */}
           <Carousel.Item>
             <img
               className="carousel-img-margin"

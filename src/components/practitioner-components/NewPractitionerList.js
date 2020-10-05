@@ -28,6 +28,54 @@ class NewPractitionerList extends React.Component {
     const { width } = this.state;
     const isMobile = width <= 600;
 
+    // Map all of the Practitioners
+    let newPracList = [];
+    let newPractitioners = this.props.newPractitioners;
+    if (newPractitioners) {
+      newPracList = newPractitioners.map((practitioner) => {
+        // Temporary Image URL until S3 is setup
+        let image_url = "listing_placeholder_1.jpg";
+        if (!image_url) {
+          image_url = "listing_placeholder_1.jpg";
+        }
+        if (isMobile) {
+          return (
+            <Carousel.Item key={practitioner.company_name}>
+              <NewPractitionerCard
+                key={practitioner.company_name}
+                company_id={practitioner.company_id}
+                company_name={practitioner.company_name}
+                cover_image={image_url}
+                address={`${practitioner.suburb}, ${practitioner.region_name}`}
+                about={practitioner.about}
+                services={practitioner.services}
+              />
+            </Carousel.Item>
+          );
+        } else {
+          return (
+            <NewPractitionerCard
+              key={practitioner.company_name}
+              company_id={practitioner.company_id}
+              company_name={practitioner.company_name}
+              cover_image={image_url}
+              address={`${practitioner.suburb}, ${practitioner.region_name}`}
+              about={practitioner.about}
+              services={practitioner.services}
+            />
+          );
+        }
+      });
+    }
+
+    // Show All Practitioners Button
+    let showAllButton;
+    if (!this.props.showAll) {
+      showAllButton = (
+        <Link to="practitioner-list">Show All ({newPracList.length})</Link>
+      );
+    }
+
     if (isMobile) {
       // Mobile version
       return (
@@ -35,39 +83,7 @@ class NewPractitionerList extends React.Component {
           <Container className="newPracListStyle">
             <p id="pracListHeader">New Listed Practicioners</p>
             <Carousel className="newPracCarouselStyle">
-              <Carousel.Item>
-                <NewPractitionerCard
-                  practitionerImage="listing_placeholder_1.jpg"
-                  practitionerName="Walk In Light"
-                  practitionerCardType="Massage, Reiki"
-                  practitionerLocation="Albany, Auckland"
-                  practitionerDesc="
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <NewPractitionerCard
-                  practitionerImage="listing_placeholder_2.jpg"
-                  practitionerName="Infinite Well Being"
-                  practitionerCardType="Massage, Reiki"
-                  practitionerLocation="Albany, Auckland"
-                  practitionerDesc="
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                />
-              </Carousel.Item>
-              <Carousel.Item>
-                <NewPractitionerCard
-                  practitionerImage="listing_placeholder_3.jpg"
-                  practitionerName="Judith Yasnik"
-                  practitionerCardType="Herbal Medicine, Massage, Reiki"
-                  practitionerLocation="Albany, Auckland"
-                  practitionerDesc="
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                />
-              </Carousel.Item>
+              {newPracList.slice(0, 3)}
             </Carousel>
           </Container>
         </Container>
@@ -78,38 +94,10 @@ class NewPractitionerList extends React.Component {
           <Container className="newPracListStyle">
             <h4>New Listed Practicioners</h4>
             {/** Card Deck for all New Practitioner Cards */}
-            <CardDeck>
-              <NewPractitionerCard
-                practitionerImage="listing_placeholder_1.jpg"
-                practitionerName="Walk In Light"
-                practitionerCardType="Massage, Reiki"
-                practitionerLocation="Albany, Auckland"
-                practitionerDesc="
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              />
-              <NewPractitionerCard
-                practitionerImage="listing_placeholder_2.jpg"
-                practitionerName="Infinite Well Being"
-                practitionerCardType="Massage, Reiki"
-                practitionerLocation="Albany, Auckland"
-                practitionerDesc="
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              />
-              <NewPractitionerCard
-                practitionerImage="listing_placeholder_3.jpg"
-                practitionerName="Judith Yasnik"
-                practitionerCardType="Herbal Medicine, Massage, Reiki"
-                practitionerLocation="Albany, Auckland"
-                practitionerDesc="
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-              />
-            </CardDeck>
+            <CardDeck>{newPracList.slice(0, 3)}</CardDeck>
             <br />
             {/** Show all New Practitioners */}
-            <Link to="practitioner-list">Show All (5)</Link>
+            {showAllButton}
           </Container>
         </Container>
       );

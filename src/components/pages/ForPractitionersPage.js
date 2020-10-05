@@ -1,4 +1,5 @@
 import React from "react";
+import NavigationBar2 from "../general-components/NavigationBar2";
 import PageHeader from "../homepage-components/PageHeader";
 import FeaturesList from "../for-practitioner-components/FeaturesList";
 import FeatureCarousel from "../for-practitioner-components/FeatureCarousel";
@@ -10,6 +11,7 @@ class ForPractitionersPage extends React.Component {
   render() {
     return (
       <div>
+        <NavigationBar2 />
         <PageHeader />
         <MessageOfTheDay
           motd={
