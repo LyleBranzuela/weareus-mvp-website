@@ -15,14 +15,10 @@
   margin-bottom: 80px;
 }
 
-.chooseRegisterStyle img {
-  margin-right: 10px;
-}
-
 .chooseRegisterStyle button {
   margin-top: 75px;
   padding: 20px 60px 20px 60px;
-  font-size: 0.9vw;
+  font-size: 0.9vi;
   position: relative;
 }
 
@@ -38,20 +34,22 @@
   background: url("../../assets/icons/check_circle.svg") no-repeat;
 }
 
-.chooseRegisterStyle .col {
+#userRegisterCol {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-  padding: 10% 5% 10% 5%;
-}
-
-#userRegisterCol {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../assets/images/placeholders/listing_placeholder_3.jpg");
+  padding: 10% 5% 4% 5%;
 }
 
 #practitionerRegisterCol {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../../assets/images/placeholders/listing_placeholder_1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  padding: 10% 5% 4% 5%;
 }
