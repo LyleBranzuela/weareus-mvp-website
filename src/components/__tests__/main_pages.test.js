@@ -11,9 +11,9 @@ import HomePage from '../pages/HomePage.js';
 import LoginPage from '../pages/LoginPage.js';
 import PractitionerListPage from '../pages/PractitionerListPage.js';
 import PractitionerProfile from '../pages/PractitionerProfile.js';
-import RegisterPage from '../pages/RegisterPage.js';
-import SearchPage from '../pages/SearchPage.js';
-import TermsAndConditionsPage from '../pages/TermsAndConditionsPage.js';
+// import RegisterPage from '../pages/RegisterPage.js';
+// import SearchPage from '../pages/SearchPage.js';
+// import TermsAndConditionsPage from '../pages/TermsAndConditionsPage.js';
 
 
 // Snapshot tests for UI testing.

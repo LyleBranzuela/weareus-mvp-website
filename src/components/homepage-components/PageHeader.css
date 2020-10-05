@@ -2,7 +2,7 @@
 .pageHeader {
   display:block;
 
-  background-image: url("../../assets/images/for_practitioners_header.jpg");
+  /* background-image: url("../../assets/images/for_practitioners_header.jpg"); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13,6 +13,8 @@
   height: 100%;
   width: auto;
   font-family: "AvenirLTStd-Book";
+
+  white-space: pre-line;
 }
 
 #scrollDownButton {
@@ -36,6 +38,7 @@
   font-size: 2em;
   font-weight: 500;
   font-family: "AvenirLTPro-Heavy";
+  white-space: pre-line;
 }
 
 #headerDesc {

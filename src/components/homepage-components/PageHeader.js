@@ -1,5 +1,7 @@
 import "./PageHeader.css";
 import React from "react";
+import axios from 'axios';
+import strapi from '../../api/strapi.js';
 import { Container, Row } from "react-bootstrap";
 
 class PageHeader extends React.Component {
@@ -7,11 +9,38 @@ class PageHeader extends React.Component {
     super();
     this.state = {
       width: window.innerWidth,
+      copyHeader: "",
+      copyText: "",
+      imageURL: "",
     };
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     window.addEventListener("resize", this.handleWindowSizeChange);
+
+    // Get requests to retrieve JSON information from Strapi
+    const getHeader = await axios({
+      method: 'GET',
+      url: 'http://localhost:1337/copies/1'
+    });
+
+    const getText = await axios({
+      method: 'GET',
+      url: 'http://localhost:1337/copies/2'
+    });
+
+    const getImages = await axios({ 
+      method: 'GET',
+      url: 'http://localhost:1337/images/4'
+    })
+
+    const copyHeader = JSON.stringify(getHeader.data.copyText).replace(/\\n/g, '\n').replace(/\"/g, "");
+    const copyText = JSON.stringify(getText.data.copyText).replace(/\\n/g, '\n').replace(/\"/g, "");
+    const headerImage = JSON.stringify(getImages.data.imageURL).replace(/\"/g, "");
+    this.setState({ copyHeader: copyHeader,
+                    copyText: copyText,
+                    imageURL: headerImage })
+  
   }
 
   componentWillUnmount() {
@@ -33,6 +62,7 @@ class PageHeader extends React.Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
+    const headerImage = 'http://localhost:1337' + this.state.imageURL;  //Change localhost to AWS generated path when deployed.
 
     if (isMobile) {
       // Mobile version
@@ -66,18 +96,17 @@ class PageHeader extends React.Component {
     } else {
       return (
         /** Adjustable Page Header for Practitioner and Homepage */
-        <div className="pageHeader">
+        <div className="pageHeader" style={{ 
+          backgroundImage: "url(" + headerImage + ")"}}>
           <Container className="pageHeader-text">
             <Row>
               <h1 id="headerTitle">
-                Discover a refreshing new <br />
-                way to attract more clients.
+                {this.state.copyHeader}
               </h1>
             </Row>
             <Row>
               <p id="headerDesc">
-                We Are Us. An exciting new platform to grow your <br />
-                health, wellness and self-improvement business.
+               {this.state.copyText} 
               </p>
             </Row>
             <Row>{this.props.learnMoreButton}</Row>
