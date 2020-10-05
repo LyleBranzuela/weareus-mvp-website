@@ -12,7 +12,7 @@ class PracticeProfileInfo extends React.Component {
     return (
       <Container fluid className="container-dimensions">
         <Row>
-          <Col md={7}>
+          <Col lg={7} className="test">
             {/* Practice Profile Image */}
             <img
               src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
@@ -37,15 +37,16 @@ class PracticeProfileInfo extends React.Component {
               <span id="city"> Auckland</span>
             </div>
             <br />
-            <p className="details">Covered by ACC</p>
+    
+            <p id="covered-by-box">Covered by ACC</p>
           </Col>
 
-          <Col md={5} className="contact-card">
+          <Col lg={5} className="practice-contact-card-col">
             <ContactCard></ContactCard>
           </Col>
         </Row>
         <Row>
-          <Col md={7} className="Info">
+          <Col lg={7} className="info">
             {/* Practice "About" Section*/}
 
             {/* Read More button for practice description */}
@@ -131,10 +132,11 @@ class PracticeProfileInfo extends React.Component {
             </Container>
           </Col>
           {/* Our Specialists */}
-          <Col md={5} className="our-specialists">
+          <Col lg={5} className="our-specialists">
             <OurSpecialists></OurSpecialists>
           </Col>
         </Row>
+        <br/>
       </Container>
     );
   }

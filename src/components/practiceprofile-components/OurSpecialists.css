@@ -1,6 +1,6 @@
 .our-specialists {
   width: 500px;
-  height: 400px;
+  height: 100%;
   padding-top: 13px;
   padding-left: 8%;
   box-shadow: none;
@@ -10,16 +10,18 @@
   font-family: "AvenirLTStd-Book";
 }
 
-.container-dimensions {
-  margin-bottom: 20vw;
+@media (max-width: 561px) {
+  .our-specialists {
+    margin-top: 20px;
+    margin-left: -1%;
+    display: flex;
+  }
 }
 
-@media (max-width: 768px) and (min-width: 550px) {
+@media (max-width: 991px) and (min-width: 561px) {
   .our-specialists {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 20%;
-    display: flex;
+    margin-left: -3%;
+    margin-top: -5px;
   }
 }
 

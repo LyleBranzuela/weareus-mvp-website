@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 class OurSpecialists extends React.Component {
   render() {
     return (
-      <Card className="our-specialist">
+      <Card className="our-specialists">
         <Card>
           <Card.Body>
             <Card.Title>Our Specialists</Card.Title>
@@ -70,6 +70,21 @@ class OurSpecialists extends React.Component {
             </Card.Text>
           </Card.Body>
         </Card>
+{/* 
+        <Card>
+          <Card.Body>
+            <Card.Img
+              alt="placeholder-img"
+              className="placeholder-img-frame"
+              src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
+              roundedCirle
+            />
+            <Card.Text>
+              <h5 id="specialists-name">Long-Name Long-Surname</h5>
+              Herbal Medicine, Massage, Reiki
+            </Card.Text>
+          </Card.Body>
+        </Card> */}
       </Card> //END OF Card containter holding inner cards
     );
   }

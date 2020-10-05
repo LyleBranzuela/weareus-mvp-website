@@ -18,6 +18,7 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import PracticeProfile from "./pages/PracticeProfilePage";
 
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
@@ -57,6 +58,7 @@ function App() {
         {/* Practitioner Related Pages */}
         <Route path="/practitioner-list" component={PractitionerListPage} />
         <Route path="/practitioner-profile/:company_id" component={PractitionerProfile} />
+        <Route path="/practice-profile" component={PracticeProfile}/>
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
