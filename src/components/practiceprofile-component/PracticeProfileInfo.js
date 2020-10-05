@@ -12,7 +12,7 @@ class PracticeProfileInfo extends React.Component {
     return (
       <Container fluid className="container-dimensions">
         <Row>
-          <Col md={8} className="no-padding">
+          <Col md={7}>
             {/* Practice Profile Image */}
             <img
               src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
@@ -40,12 +40,12 @@ class PracticeProfileInfo extends React.Component {
             <p className="details">Covered by ACC</p>
           </Col>
 
-          <Col md={4} className="contact-card">
+          <Col md={5} className="contact-card">
             <ContactCard></ContactCard>
           </Col>
         </Row>
         <Row>
-          <Col md={8} className="Info">
+          <Col md={7} className="Info">
             {/* Practice "About" Section*/}
 
             {/* Read More button for practice description */}
@@ -79,8 +79,6 @@ class PracticeProfileInfo extends React.Component {
               </Card.Body>
             </Card>
             {/* END OF practice "About" Section */}
-
-
 
             {/* START OF Accordion Section */}
             <Container fluid className="profile-accordion-section">
@@ -133,7 +131,7 @@ class PracticeProfileInfo extends React.Component {
             </Container>
           </Col>
           {/* Our Specialists */}
-          <Col md={4} className="our-specialists">
+          <Col md={5} className="our-specialists">
             <OurSpecialists></OurSpecialists>
           </Col>
         </Row>

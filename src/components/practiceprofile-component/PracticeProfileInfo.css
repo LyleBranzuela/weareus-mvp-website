@@ -24,7 +24,7 @@
 }
 
 .practice-description-card .card-title{
-  margin-top: -50px;
+  margin-top: -120px;
   margin-left: -20px;
   font-family: "AvenirLTPro-Heavy";
   color: #5b5b5b;
@@ -89,7 +89,7 @@
 
 @media (max-width: 900px) {
   .details {
-    display: none;
+ margin-left: 25%;
   }
 }
 
@@ -163,6 +163,10 @@
   font-family: "AvenirLTPro-Heavy";
   color: #5b5b5b;
   font-size: 1.3em;
+}
+
+.contact-card{
+  padding-left: 8%;
 }
 
 @media (max-width: 560px) {
