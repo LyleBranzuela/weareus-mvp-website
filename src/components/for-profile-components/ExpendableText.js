@@ -20,12 +20,12 @@ const ExpendableText = ({ maxHeight, children }) => {
 
   return (
     <Card.Text ref={ref}>
-      <a
-        className="inner"
+      <div
+        class="inner"
         style={{ maxHeight: expanded ? MAX_POSSIBLE_HEIGHT : maxHeight }}
       >
         {children}
-      </a>
+      </div>
       {shouldShowExpand && (
         <button
           onClick={() => setExpanded(!expanded)}

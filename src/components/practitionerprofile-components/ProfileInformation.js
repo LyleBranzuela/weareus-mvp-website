@@ -6,6 +6,7 @@ import icon_memberships from "../../assets/icons/icon_memberships.svg";
 import icon_accordion_arrow from "../../assets/icons/accordion_arrow.svg";
 import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
 import ContactCard from "./ContactCard";
+// import ContactCard from "../for-profile-components/ContactCard";
 import ExpendableText from "./ExpendableText";
 import api from "../../api/api";
 
