@@ -59,6 +59,7 @@ function App() {
         {/* Practitioner Related Pages */}
         <Route path="/practitioner-list" component={PractitionerListPage} />
         <Route path="/practitioner-profile/:company_id" component={PractitionerProfile} />
+        <Route path="/practice-profile" component={PracticeProfilePage} />
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
