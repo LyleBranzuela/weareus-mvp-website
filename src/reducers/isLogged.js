@@ -1,6 +1,7 @@
 const userReducer = (
   state = {
-    user: {},
+    reference_id: "",
+    user_information: {},
     isLoggedIn: false,
   },
   action
@@ -8,11 +9,21 @@ const userReducer = (
   let newState = {};
   switch (action.type) {
     case "SIGN_IN":
-      newState = { ...state, user: action.user, isLoggedIn: true };
+      newState = {
+        ...state,
+        reference_id: action.reference_id,
+        user_information: action.user_information,
+        isLoggedIn: true,
+      };
       return newState;
 
     case "SIGN_OUT":
-      newState = { ...state, user: {}, isLoggedIn: false };
+      newState = {
+        ...state,
+        reference_id: "",
+        user_information: {},
+        isLoggedIn: false,
+      };
       return newState;
 
     default:

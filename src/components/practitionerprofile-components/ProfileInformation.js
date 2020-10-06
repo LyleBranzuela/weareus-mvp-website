@@ -34,6 +34,7 @@ class ProfileInformation extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
+    this._isMounted && this.getSpecialistDetails();
   }
 
   componentWillUnmount() {

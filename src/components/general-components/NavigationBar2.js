@@ -76,42 +76,64 @@ class NavigationBar2 extends React.Component {
             <Nav className="navBarMobile-links">
               {/* Search Page Link */}
               <LinkContainer to="/search">
-                <Nav.Link className="navBarEffect" href="/search">
+                <Nav.Link className="navBar2Effect" href="/search">
                   Search
                 </Nav.Link>
               </LinkContainer>
               {/* About Page Link */}
-              <LinkContainer className="navBarEffect" to="/about">
+              <LinkContainer className="navBar2Effect" to="/about">
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
               {/* Practitioner Page Link */}
-              <LinkContainer className="navBarEffect" to="/for-practitioner">
+              <LinkContainer className="navBar2Effect" to="/for-practitioner">
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
-              {/* Login Page Link */}
+              {/* Conditional Rendering if a user is logged in*/}
               {this.props.isLoggedIn ? (
-                /* Logout Page Link */
-                <LinkContainer
-                  className="navBarEffect"
-                  to="/home"
-                  onClick={() => {
-                    logout();
-                    this.props.signout();
-                  }}
-                >
-                  <Nav.Link>Logout</Nav.Link>
-                </LinkContainer>
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer
+                    className="navBar2Effect"
+                    to="/home"
+                    onClick={() => {
+                      logout();
+                      this.props.signout();
+                    }}
+                  >
+                    <Nav.Link>Logout</Nav.Link>
+                  </LinkContainer>
+                  {/* Conditional Rendering if the user is practitioner or not */}
+                  {this.props.user_information.user_type === "practitioner" ? (
+                    /* Link to their Profile */
+                    <LinkContainer
+                      to={`/practitioner-profile/${this.props.user_information.company_id}`}
+                      className="highlightNavMobile2"
+                    >
+                      <Nav.Link>My Profile</Nav.Link>
+                    </LinkContainer>
+                  ) : (
+                    /* User Join Us Page Link */
+                    <LinkContainer
+                      to="/register-practitioner"
+                      className="highlightNavMobile2"
+                    >
+                      <Nav.Link>Join Us!</Nav.Link>
+                    </LinkContainer>
+                  )}
+                </>
               ) : (
-                /* Login Page Link */
-                <LinkContainer className="navBarEffect" to="/login">
-                  <Nav.Link>Login</Nav.Link>
-                </LinkContainer>
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer className="navBar2Effect" to="/login">
+                    <Nav.Link>Login</Nav.Link>
+                  </LinkContainer>
+                  {/* Register Page Link */}
+                  <LinkContainer to="/register" className="highlightNavMobile2">
+                    <Nav.Link>Register</Nav.Link>
+                  </LinkContainer>
+                </>
               )}
             </Nav>
-            {/* Register Page Link */}
-            <LinkContainer to="/register" className="highlightNavMobile2">
-              <Nav.Link>Register</Nav.Link>
-            </LinkContainer>
           </Navbar.Collapse>
         </Navbar>
       );
@@ -127,7 +149,6 @@ class NavigationBar2 extends React.Component {
             backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
           }}
         >
-          {/*fixed="top"*/}
           <LinkContainer to="/home">
             <Navbar.Brand>
               <img
@@ -157,29 +178,51 @@ class NavigationBar2 extends React.Component {
               <LinkContainer className="navBar2Effect" to="/for-practitioner">
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
-              {/* Login Page Link */}
+              {/* Conditional Rendering if a user is logged in*/}
               {this.props.isLoggedIn ? (
-                /* Logout Page Link */
-                <LinkContainer
-                  className="navBar2Effect"
-                  to="/home"
-                  onClick={() => {
-                    logout();
-                    this.props.signout();
-                  }}
-                >
-                  <Nav.Link>Logout</Nav.Link>
-                </LinkContainer>
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer
+                    className="navBar2Effect"
+                    to="/home"
+                    onClick={() => {
+                      logout();
+                      this.props.signout();
+                    }}
+                  >
+                    <Nav.Link>Logout</Nav.Link>
+                  </LinkContainer>
+                  {/* Conditional Rendering if the user is practitioner or not */}
+                  {this.props.user_information.user_type === "practitioner" ? (
+                    /* Link to their Profile */
+                    <LinkContainer
+                      to={`/practitioner-profile/${this.props.user_information.company_id}`}
+                      className="highlightNav2"
+                    >
+                      <Nav.Link>My Profile</Nav.Link>
+                    </LinkContainer>
+                  ) : (
+                    /* User Join Us Page Link */
+                    <LinkContainer
+                      to="/register-practitioner"
+                      className="highlightNav2"
+                    >
+                      <Nav.Link>Join Us!</Nav.Link>
+                    </LinkContainer>
+                  )}
+                </>
               ) : (
-                /* Login Page Link */
-                <LinkContainer className="navBar2Effect" to="/login">
-                  <Nav.Link>Login</Nav.Link>
-                </LinkContainer>
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer className="navBar2Effect" to="/login">
+                    <Nav.Link>Login</Nav.Link>
+                  </LinkContainer>
+                  {/* Register Page Link */}
+                  <LinkContainer to="/register" className="highlightNav2">
+                    <Nav.Link>Register</Nav.Link>
+                  </LinkContainer>
+                </>
               )}
-              {/* Register Page Link */}
-              <LinkContainer to="/register" className="highlightNav2">
-                <Nav.Link>Register</Nav.Link>
-              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -191,6 +234,7 @@ class NavigationBar2 extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.userReducer.isLoggedIn,
+    user_information: state.userReducer.user_information,
   };
 };
 

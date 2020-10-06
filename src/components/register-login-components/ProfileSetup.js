@@ -1,6 +1,8 @@
 import "./ProfileSetup.css";
 import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import CustomButton from "../general-components/CustomButton";
 import swal from "@sweetalert/with-react";
 import api from "../../api/api";
@@ -17,16 +19,8 @@ class ProfileSetup extends React.Component {
       company_name: "",
       subscription_id: 0,
       logo: "",
-      email:
-        // this.props.location.state.email
-        // ? this.props.location.state.email
-        // :
-        "",
-      phone:
-        // this.props.location.state.phone
-        // ? this.props.location.state.phone
-        // :
-        "",
+      email: this.props.user_information.email,
+      phone: this.props.user_information.phone,
       about: "",
       country_name: "New Zealand",
       city_name: "",
@@ -40,11 +34,7 @@ class ProfileSetup extends React.Component {
       cover_images: [],
 
       // Practitioner (First Specialist) States
-      reference_id:
-        // this.props.location.state.reference_id
-        // ? this.props.location.state.reference_id
-        // :
-        "",
+      reference_id: this.props.user_information.reference_id,
       profile_picture: "",
       diplomas: [],
       certifications: [],
@@ -105,7 +95,7 @@ class ProfileSetup extends React.Component {
         buttons: [false, true],
       });
     } else {
-      let userObject = {
+      let companyObject = {
         // Company Details States
         company_name: this.state.company_name,
         subscription_id: this.state.subscription_id,
@@ -113,7 +103,7 @@ class ProfileSetup extends React.Component {
         email: this.state.email,
         phone: this.state.phone,
         about: this.state.about,
-        country_name: this.state.country_name,
+        country_name: "New Zealand",
         city_name: this.state.city_name,
         region_name: this.state.region_name,
         building_number: this.state.building_number,
@@ -133,7 +123,18 @@ class ProfileSetup extends React.Component {
       };
 
       // Generate a Company
-      // await api.post("/company", userObject);
+      try {
+        const response = await api.post("/company", companyObject);
+        console.log(response);
+      } catch (error) {
+        swal({
+          title: "Database Error!",
+          text:
+            "User already exists in the database! Phone, email, or username already exists!",
+          icon: "error",
+          buttons: [false, true],
+        });
+      }
     }
   };
 
@@ -357,21 +358,49 @@ class ProfileSetup extends React.Component {
           <u>Download profile how-to-guide</u>
         </span>
         <hr size="50" />
-        <Form>
-          <h5>Your Profile Name</h5>
-          {/** Profile Name Form Group */}
+        <Form onSubmit={this.onSubmit}>
+          <h5>Your Company Name</h5>
+          {/** Company Name Form Group */}
           <Form.Group controlId="company_name">
             <Form.Label>
               This is the name that gets highlighted on your We are Us page.
             </Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter Profile Name"
+              placeholder="Enter Company Name"
               onChange={this.formOnChangeHandler}
             />
           </Form.Group>
           <hr size="50" />
           <h5>Your Contact Details</h5>
+          <Row>
+            <Col>
+              {/** First Name Form Group */}
+              <Form.Group controlId="first_name">
+                <Form.Label>Your First Name:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter First Name"
+                  defaultValue={this.props.user_information.first_name}
+                  onChange={this.formOnChangeHandler}
+                  readOnly
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              {/** Last Name Form Group */}
+              <Form.Group controlId="last_name">
+                <Form.Label>Your Last Name:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Last Name"
+                  defaultValue={this.props.user_information.last_name}
+                  onChange={this.formOnChangeHandler}
+                  readOnly
+                />
+              </Form.Group>
+            </Col>
+          </Row>
           <Row>
             <Col>
               {/** Contact Number Form Group */}
@@ -635,7 +664,7 @@ class ProfileSetup extends React.Component {
                       </Col>
                       <Col sm={1}>
                         <CustomButton
-                          text="-"
+                          text="x"
                           onClick={() => {
                             let splicedDiplomas = this.state.diplomas;
                             splicedDiplomas.splice(index, 1);
@@ -807,4 +836,11 @@ class ProfileSetup extends React.Component {
   }
 }
 
-export default ProfileSetup;
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.userReducer.isLoggedIn,
+  user_information: state.userReducer.user_information,
+});
+
+const mapDispatchToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ProfileSetup);

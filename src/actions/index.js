@@ -1,7 +1,8 @@
-export const signin = (user) => {
+export const signin = (reference_id, user_information) => {
   return {
     type: "SIGN_IN",
-    user,
+    reference_id,
+    user_information,
   };
 };
 

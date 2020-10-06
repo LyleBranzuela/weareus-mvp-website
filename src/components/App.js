@@ -1,5 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
 import ScrollToTop from "./general-components/ScrollToTop";
@@ -19,18 +20,21 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
 function App() {
   // Returns the location object that represents the current URL
   const location = useLocation();
+  const isLoggedIn = useSelector((state) => state.userReducer.isLoggedIn);
+  const user_information = useSelector(
+    (state) => state.userReducer.user_information
+  );
 
-  //
+  // All The Default Pages
   const DefaultPages = () => (
     <div>
       {/* Scrolls To The Top Everytime they navigate through the routes */}
       <NavigationBar />
-      {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
+      {/* Single Page Website Routings */}
       <Switch location={location} key={location.pathname}>
         {/* General Pages */}
         <Route path="/search" component={SearchPage} />
@@ -43,17 +47,6 @@ function App() {
         />
         <Route path="/contact-us" component={ContactUsPage} />
 
-        {/* Register-Login Pages */}
-        <Route path="/login" component={LoginPage} />
-        <Route path="/membership-form" component={MembershipForm} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/register-user" component={UserRegister} />
-        <Route
-          path={`/register-practitioner`}
-          component={PractitionerRegister}
-        />
-        <Route path={`/profile-setup`} component={ProfileSetup} />
-
         {/* Practitioner Related Pages */}
         <Route path="/practitioner-list" component={PractitionerListPage} />
         <Route
@@ -63,9 +56,34 @@ function App() {
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
+
+        {/* Conditional Routes if the User is Logged in or Not */}
+        {!isLoggedIn ? (
+          <>
+            {/* Register-Login Pages When Logged Out*/}
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/register-user" component={UserRegister} />
+            <Route path="/membership-form" component={MembershipForm} />
+            <Route
+              path={`/register-practitioner`}
+              component={PractitionerRegister}
+            />
+          </>
+        ) : (
+          <>
+            {/* Register-Login Pages When Logged In*/}
+            <Route path="/register-user" component={UserRegister} />
+            <Route path={`/profile-setup`} component={ProfileSetup} />
+            <Route
+              path={`/register-practitioner`}
+              component={PractitionerRegister}
+            />
+            <Route path="/membership-form" component={MembershipForm} />
+          </>
+        )}
         <Route path="" component={Error404Page} />
       </Switch>
-      {/* </AnimatePresence> */}
     </div>
   );
 
@@ -93,12 +111,4 @@ function App() {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isLoggedIn: state.userReducer.isLoggedIn,
-});
-
-const mapDispatchToProps = () => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps())(App);
+export default App;

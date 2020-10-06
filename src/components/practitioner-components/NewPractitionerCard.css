@@ -36,7 +36,7 @@
 .newPracCardStyle .card-img-overlay {
   right: 0;
   padding: 0;
-  top: 55%;
+  top: 45%;
   position: absolute;
   pointer-events: none;
 }
@@ -55,6 +55,7 @@
   font-family: "AvenirLTStd-Book";
   position: relative;
   display: inline-block;
+  min-height: 470px;
   margin-bottom: 5vh;
 }
 
@@ -88,7 +89,7 @@
 .newPracCardStyleMobile .card-img-overlay {
   right: 0;
   padding: 0;
-  top: 50%;
+  top: 45%;
   position: absolute;
   pointer-events: none;
 }

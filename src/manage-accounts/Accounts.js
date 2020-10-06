@@ -269,7 +269,7 @@ const resetPasswordModal = () => {
 };
 
 // Asks for a Cognito User and Render the Modal
-const AccountVerificationModal = (currentUser, redirectPage) => {
+const AccountVerificationModal = (currentUser) => {
   function renderModal(user) {
     return swal({
       title: "Account Verification",
@@ -290,7 +290,6 @@ const AccountVerificationModal = (currentUser, redirectPage) => {
       closeOnClickOutside: false,
       closeOnEsc: false,
     }).then((valueData) => {
-      console.log(user);
       switch (valueData) {
         // When Resend Code Button is Pressed - Resend the Verification Code to the Email
         case "resendCode":
@@ -353,10 +352,6 @@ const AccountVerificationModal = (currentUser, redirectPage) => {
                   text: "Account is now verified, and can be logged in.",
                   icon: "success",
                   buttons: [false, true],
-                }).then((value) => {
-                  if (redirectPage) {
-                    window.location = redirectPage;
-                  }
                 });
               }
             });

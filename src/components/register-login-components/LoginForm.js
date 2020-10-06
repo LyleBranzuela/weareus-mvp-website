@@ -1,7 +1,7 @@
 import "./LoginForm.css";
 import React from "react";
 import { Container, Form, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import swal from "@sweetalert/with-react";
 import { connect } from "react-redux";
 import { signin } from "../../actions";
@@ -15,6 +15,7 @@ import {
 } from "../../manage-accounts/Accounts";
 import CustomButton from "../general-components/CustomButton";
 import { authenticate } from "../../manage-accounts/Accounts";
+import api from "../../api/api";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -24,17 +25,49 @@ class LoginForm extends React.Component {
       email: "",
       password: "",
       width: window.innerWidth,
+      redirect: false,
       rememberAccount: false,
     };
   }
 
   componentDidMount() {
     window.addEventListener("resize", this.handleWindowSizeChange);
+    this.setState({ redirect: false });
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowSizeChange);
   }
+
+  // Function to Get a Specific User by reference_id
+  getUserByRef = async (referenceId) => {
+    let userObj = {
+      user_id: "",
+      user_type: "",
+      email: "",
+      first_name: "",
+      last_name: "",
+      user_name: "",
+      phone: "",
+    };
+    const userResponse = await api.get("/user/?reference_id=" + referenceId);
+    // Fill up relevant info and Create the Retrieved User from the Response
+    userObj.user_id = userResponse.data.rows[0].user_id;
+    userObj.user_type = userResponse.data.rows[0].user_type;
+    userObj.email = userResponse.data.rows[0].email;
+    userObj.first_name = userResponse.data.rows[0].first_name;
+    userObj.last_name = userResponse.data.rows[0].last_name;
+    userObj.user_name = userResponse.data.rows[0].user_name;
+    userObj.phone = userResponse.data.rows[0].phone;
+
+    if (userObj.user_type === "practitioner") {
+      const specialistResponse = await api.get(
+        `/specialist-profile/${userObj.user_id}`
+      );
+      userObj.company_id = specialistResponse.data.company_id;
+    }
+    return userObj;
+  };
 
   handleWindowSizeChange = () => {
     this.setState({ width: window.innerWidth });
@@ -50,7 +83,6 @@ class LoginForm extends React.Component {
   // Function to Submit Form and Check For Authentication
   onSubmit = (event) => {
     event.preventDefault();
-
     authenticate(this.state.email, this.state.password)
       .then((data) => {
         // If The User wants the Device to be Remembered
@@ -65,8 +97,6 @@ class LoginForm extends React.Component {
             onFailure: function (err) {},
           });
         }
-
-        this.props.signin(data);
         // Successful Login Modal
         swal({
           title: "Login Successful!",
@@ -76,8 +106,14 @@ class LoginForm extends React.Component {
           buttons: [false, true],
           closeOnClickOutside: false,
           closeOnEsc: false,
-        }).then(() => {
-          // window.location = "/home";
+        }).then(async () => {
+          this.setState({ redirect: true });
+          const reference_id = data.accessToken.payload.sub;
+          console.log(reference_id);
+          this.props.signin(
+            reference_id,
+            await this.getUserByRef(reference_id)
+          );
         });
       })
       .catch((err) => {
@@ -100,6 +136,11 @@ class LoginForm extends React.Component {
     const { width } = this.state;
     const isMobile = width <= 600;
 
+    // Redirect to home if logged in
+    if (this.state.redirect || this.props.isLoggedIn) {
+      return <Redirect to="home" />;
+    }
+
     if (isMobile) {
       // Mobile version
       return (
@@ -114,12 +155,12 @@ class LoginForm extends React.Component {
             </span>
             {/** Login Username Form Section */}
             <Form.Group controlId="loginUsername">
-              <Form.Label>Username or Email</Form.Label>
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 value={this.state.email}
                 onChange={this.formOnChangeHandler}
                 type="email"
-                placeholder="Your Username"
+                placeholder="Your Email"
               />
             </Form.Group>
             {/** Password Form Section */}

@@ -33,10 +33,7 @@ class PractitionerProfile extends React.Component {
   // Gets the Practitioner (Company) Details from the Server
   getCompanyDetails = async () => {
     let company_id = this.props.match.params.company_id;
-    const practitionerResponse = await api.get(
-      `/company-profile/${company_id}`
-    );
-
+    const practitionerResponse = await api.get(`/company/${company_id}`);
     // Setting the Practitioner Detail's States
     this._isMounted &&
       this.setState({
@@ -57,6 +54,7 @@ class PractitionerProfile extends React.Component {
         cover_images: practitionerResponse.data.cover_images,
         reviews: practitionerResponse.data.reviews,
       });
+    console.log(this.state);
   };
 
   componentDidMount() {
