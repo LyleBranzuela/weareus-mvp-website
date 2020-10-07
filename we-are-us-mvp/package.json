@@ -1,0 +1,58 @@
+{
+  "name": "weareus-mvp-website",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "@sweetalert/with-react": "^0.1.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/user-event": "^7.2.1",
+    "amazon-cognito-identity-js": "^4.3.4",
+    "aws-sdk": "^2.739.0",
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.0",
+    "google-maps-react": "^2.0.6",
+    "mysql": "^2.18.1",
+    "npm-merge-driver": "^2.3.6",
+    "query-string": "^6.13.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
+    "react-google-login": "^5.1.21",
+    "react-icons": "^3.10.0",
+    "react-redux": "^7.2.1",
+    "react-redux-form": "^1.16.14",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
+    "redux": "^4.0.5",
+    "sweetalert": "^2.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^9.5.0",
+    "react-test-renderer": "^16.13.1"
+  }
+}

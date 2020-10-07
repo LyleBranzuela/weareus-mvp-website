@@ -1,0 +1,75 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #afafaf; /* old IE */
+  background-color: #afafaf; /* Modern Browsers */
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="checkbox"]:checked + label {
+  cursor: pointer;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #333;
+  border-color: #333;
+}
+
+/* General Form Styles */
+.form-control:focus {
+  border-color: #b823dad3;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(121, 21, 143, 0.6);
+  color: #79158f;
+  background-color: #f3f1f3;
+}
+
+.form-control {
+  color: #79158f;
+  font-family: "AvenirLTStd-Book";
+  background-color: #f3f1f3;
+}
+
+/* End of General Form Styles */
+
+.siteDefaultMargin {
+  margin: 0.5% 15% 0.5% 15%;
+}
+
+/* Sweet Alerts Custom */
+.swal-button--confirm {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #79158f;
+  border: 1px solid  rgba(0, 0, 0, 0.8);
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.swal-button--confirm:hover {
+  background-color: #b823dad3 !important;
+}
+
+/* .swal-overlay {
+  background-color: rgba(121, 21, 143, 0.25);
+} */

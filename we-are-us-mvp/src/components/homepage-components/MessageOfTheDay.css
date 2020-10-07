@@ -1,0 +1,21 @@
+.motdStyle {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin: 0;
+  color: #79158F;
+  font-size: 1.4em;
+  font-weight: 500;
+  font-family: "AvenirLTStd-Book";
+}
+
+.motdStyleMobile {
+  text-align: center;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  margin: 0;
+  color: #79158F;
+  font-size: 2.5vh;
+  font-weight: 580;
+  font-family: "AvenirLTStd-Book";
+}

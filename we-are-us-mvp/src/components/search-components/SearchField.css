@@ -1,0 +1,249 @@
+.searchFieldContainer {
+  background-color: lavender;
+  background-image: url("../../assets/images/we_are_us_yoga.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.searchFieldStyle {
+  font-family: "AvenirLTStd-Book";
+  font-size: 1em;
+  padding-top: 180px;
+  padding-bottom: 180px;
+}
+
+.searchFieldStyle h3 {
+  text-align: center !important;
+  font-family: "AvenirLTPro-Heavy";
+  color: #79158f !important;
+  margin-bottom: 60px;
+  font-size: 2em;
+}
+
+.searchFieldStyle .form-control {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: white;
+}
+
+.searchFieldStyle .dropdown-toggle {
+  background-color: #79158f !important;
+  border-color: #79158f !important;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  padding: 8px 10px 8px 10px;
+}
+
+.searchFieldStyle .dropdown-toggle h6 {
+  margin: 5px 0px 0px 10px;
+  max-width: 180px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.searchFieldStyle .dropdown-toggle img {
+  float: right;
+  margin: 10px;
+  display: inline-flex;
+}
+
+.searchFieldStyle .dropdown-toggle:active {
+  background-color: #79158f;
+  border-color: white;
+}
+
+.searchFieldStyle .dropdown-toggle:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0 white !important;
+}
+
+.searchFieldStyle .dropdown-toggle:active {
+  background-color: #f3f1f3;
+  border-color: #79158f;
+  color: #79158f;
+}
+
+.searchFieldStyle .dropdown-toggle::after {
+  display: none !important;
+}
+.searchFieldStyle .dropdown .dropdown-menu {
+  transition: all 0.5s;
+  max-height: 0;
+  width: 100%;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  opacity: 0;
+}
+
+.searchFieldStyle .dropdown.show .dropdown-menu {
+  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
+  max-width: 300px;
+  max-height: 300px;
+  white-space: normal;
+  word-break: break-all;
+  opacity: 1;
+}
+
+.searchFieldStyle .dropdown-menu.show {
+  background-color: #79158f;
+}
+
+.searchFieldStyle .dropdown-item {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}
+
+.searchFieldStyle .dropdown-item:hover {
+  color: #79158f;
+}
+
+.searchFieldStyle .dropdown-item:focus {
+  color: white;
+  background-color: #79158f;
+}
+
+/* Custom Scroll CSS Design */
+.searchFieldStyle .dropdown-menu::-webkit-scrollbar-track {
+  border: 1px solid #f3f1f3;
+  background-color: #f3f1f3;
+}
+
+.searchFieldStyle .dropdown-menu::-webkit-scrollbar {
+  width: 15px;
+  background-color: #f3f1f3;
+}
+
+.searchFieldStyle .dropdown-menu::-webkit-scrollbar-thumb {
+  border-radius: 1px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  background-color: #f3f1f3;
+  border: 1px solid #79158f;
+}
+
+#searchFieldButton {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+}
+
+#searchFieldIcon {
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}
+
+/* Mobile Styles */
+.searchFieldDropMobile {
+  width: 100%;
+  padding-top: 1.5vh;
+}
+
+.searchFieldStyleMobile {
+  font-family: "AvenirLTStd-Book";
+  font-size: 2vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.searchFieldStyleMobile h3 {
+  text-align: center !important;
+  font-family: "AvenirLTPro-Heavy";
+  color: #79158f !important;
+  margin-bottom: 60px;
+  font-size: 2em;
+}
+
+.searchFieldContainerMobile {
+  background-color: #f0d9f7;
+}
+
+.searchFieldStyleMobile .form-control {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.searchFieldStyleMobile .dropdown-toggle {
+  background-color: #79158f !important;
+  border-color: #79158f !important;
+  width: 100%;
+  position: relative;
+  text-align: left;
+  padding: 8px 10px 8px 10px;
+}
+
+.searchFieldStyleMobile .dropdown-toggle h6 {
+  margin: 5px 0px 0px 10px;
+  display: inline-block;
+}
+
+.searchFieldStyleMobile .dropdown-toggle:active {
+  background-color: #79158f;
+  border-color: white;
+}
+
+.searchFieldStyleMobile .dropdown-toggle:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0 white !important;
+}
+
+.searchFieldStyleMobile .dropdown-toggle:active {
+  background-color: #f3f1f3;
+  border-color: #79158f;
+  color: #79158f;
+}
+
+.searchFieldStyleMobile .dropdown-toggle::after {
+  display: none !important;
+}
+
+.searchFieldStyleMobile .dropdown-toggle img {
+  float: right;
+  margin: 7px;
+  display: inline-flex;
+}
+
+.searchFieldStyleMobile .dropdown-menu.show {
+  background-color: #79158f;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.searchFieldStyleMobile .dropdown-item {
+  color: white;
+  width: 100%;
+}
+
+.searchFieldStyleMobile .dropdown-item:hover {
+  color: #79158f;
+}
+
+.searchFieldStyleMobile .dropdown-item:focus {
+  color: white;
+  background-color: #79158f;
+}
+
+#searchFieldButtonMobile {
+  background-color: #79158f;
+  border-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  margin-top: 3vh;
+}
+
+#searchFieldIconMobile {
+  background-color: rgb(255, 255, 255);
+  border-top: 1px solid #ced4da;
+  border-right: 0px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+}

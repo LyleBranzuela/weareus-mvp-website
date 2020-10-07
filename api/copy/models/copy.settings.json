@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "copies",
+  "info": {
+    "name": "Copy"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "copyText": {
+      "type": "text",
+      "required": true,
+      "unique": false
+    },
+    "copyLocation": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "copyHierarchy": {
+      "type": "string"
+    }
+  }
+}

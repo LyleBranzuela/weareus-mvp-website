@@ -1,0 +1,80 @@
+.our-specialists {
+  width: 500px;
+  height: 100%;
+  padding-top: 13px;
+  padding-left: 8%;
+  box-shadow: none;
+  text-align: left;
+  position: relative;
+  color: #5b5b5b;
+  font-family: "AvenirLTStd-Book";
+}
+
+@media (max-width: 561px) {
+  .our-specialists {
+    margin-top: 20px;
+    margin-left: -1%;
+    display: flex;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 561px) {
+  .our-specialists {
+    margin-left: -3%;
+    margin-top: -5px;
+  }
+}
+
+.our-specialists .card-title {
+  color: #5b5b5b;
+  font-family: "AvenirLTPro-Heavy";
+  padding-bottom: 20px;
+}
+
+.our-specialists #specialists-name {
+  display: table;
+  font-family: "AvenirLTPro-Heavy";
+  font-size: 19px;
+  padding-top: 15%;
+}
+
+.our-specialists .card-text {
+  color: #79158f;
+  font-family: "AvenirLTStd-Book";
+  font-size: 14px;
+  float: left;
+  padding-bottom: 8%;
+}
+
+.placeholder-img-frame {
+  border-radius: 50%;
+  padding: 5px;
+  width: 120px;
+  float: left;
+  margin-right: 15px;
+}
+
+.our-specialists .card-img {
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  #placeholder-img-frame {
+    display: ruby;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-height: 10px;
+    max-width: 10px;
+  }
+}
+
+.our-specialists .card-body {
+  width: 500px;
+  padding-left: 0%;
+  margin-top: -50px;
+}
+
+.our-specialists .card {
+  border: none;
+  padding-top: 8%;
+}

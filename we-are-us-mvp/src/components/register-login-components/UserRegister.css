@@ -1,0 +1,29 @@
+.userRegisterFormStyle {
+  margin-top: 160px;
+}
+
+.userRegisterFormStyle h2 {
+  text-align: center;
+  color: #79158f;
+  font-family: "AvenirLTPro-Heavy";
+  margin-bottom: 30px;
+}
+
+.userRegisterFormStyle form {
+  margin: 0.5% 15% 5% 15%;
+}
+
+.userRegisterFormStyle .form-label {
+  margin-top: 20px;
+  font-family: "AvenirLTPro-Heavy";
+  color: #5b5b5b;
+}
+
+.userRegisterFormStyle .form-control {
+  background-color: #f3f1f3;
+}
+
+#registerUserButton {
+  margin-top: 40px;
+  padding: 15px 85px 15px 85px;
+}
