@@ -10,7 +10,7 @@ const PractitionerCTA = () => {
         <Row>
           <Col sm={6} id="prac-CTA-1">
             <h5>
-              Launching early 2019.
+              Launching at 31 December.
               <br />
               Join We are Us and become one of Us.
             </h5>
