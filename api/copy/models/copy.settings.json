@@ -17,6 +17,9 @@
     },
     "copyType": {
       "type": "string"
+    },
+    "copyTextMobile": {
+      "type": "text"
     }
   }
 }

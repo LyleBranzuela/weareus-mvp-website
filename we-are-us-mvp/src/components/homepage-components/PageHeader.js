@@ -1,7 +1,6 @@
 import "./PageHeader.css";
 import React from "react";
 import axios from 'axios';
-import strapi from '../../api/strapi.js';
 import { Container, Row } from "react-bootstrap";
 
 class PageHeader extends React.Component {
@@ -11,7 +10,10 @@ class PageHeader extends React.Component {
       width: window.innerWidth,
       copyHeader: "",
       copyText: "",
+      copyHeaderMobile: "",
+      copyTextMobile: "",
       imageURL: "",
+      imageURLMobile: "",
     };
   }
 
@@ -29,18 +31,26 @@ class PageHeader extends React.Component {
       url: 'http://localhost:1337/copies/2'
     });
 
-    const getImages = await axios({ 
+    const getImages = await axios({
       method: 'GET',
-      url: 'http://localhost:1337/images/4'
+      url: 'http://localhost:1337/images/1'
     })
 
     const copyHeader = JSON.stringify(getHeader.data.copyText).replace(/\\n/g, '\n').replace(/\"/g, "");
     const copyText = JSON.stringify(getText.data.copyText).replace(/\\n/g, '\n').replace(/\"/g, "");
+    const copyHeaderMobile = JSON.stringify(getHeader.data.copyTextMobile).replace(/\\n/g, '\n').replace(/\"/g, "");
+    const copyTextMobile = JSON.stringify(getText.data.copyTextMobile).replace(/\\n/g, '\n').replace(/\"/g, "");
     const headerImage = JSON.stringify(getImages.data.imageURL).replace(/\"/g, "");
-    this.setState({ copyHeader: copyHeader,
-                    copyText: copyText,
-                    imageURL: headerImage })
-  
+    const headerImageMobile = JSON.stringify(getImages.data.imageURLMobile).replace(/\"/g, "");
+    this.setState({
+      copyHeader: copyHeader,
+      copyText: copyText,
+      copyHeaderMobile: copyHeaderMobile,
+      copyTextMobile: copyTextMobile,
+      imageURL: headerImage,
+      imageURLMobile: headerImageMobile
+    })
+
   }
 
   componentWillUnmount() {
@@ -63,24 +73,22 @@ class PageHeader extends React.Component {
     const { width } = this.state;
     const isMobile = width <= 600;
     const headerImage = 'http://localhost:1337' + this.state.imageURL;  //Change localhost to AWS generated path when deployed.
-
+    const headerImageMobile = 'http://localhost:1337' + this.state.imageURLMobile;
     if (isMobile) {
       // Mobile version
       return (
-        <div className="pageHeaderMobile">
+        <div className="pageHeaderMobile" style={{
+          backgroundImage: "url(" + headerImageMobile + ")"
+        }}>
           <Container className="pageHeaderMobile-text">
             <div>
               <h1 id="headerTitleMobile">
-                Discover a refreshing <br />
-                new way to attract <br />
-                more clients.
+                {this.state.copyHeaderMobile}
               </h1>
             </div>
             <div>
               <p id="headerDescMobile">
-                We Are Us. An exciting new platform <br />
-                to grow your health, wellness and <br />
-                self-improvement business. <br />
+                {this.state.copyTextMobile} <br />
                 {this.props.learnMoreButton}
               </p>
               <img
@@ -92,12 +100,13 @@ class PageHeader extends React.Component {
             </div>
           </Container>
         </div>
-      );   
+      );
     } else {
       return (
         /** Adjustable Page Header for Practitioner and Homepage */
-        <div className="pageHeader" style={{ 
-          backgroundImage: "url(" + headerImage + ")"}}>
+        <div className="pageHeader" style={{
+          backgroundImage: "url(" + headerImage + ")"
+        }}>
           <Container className="pageHeader-text">
             <Row>
               <h1 id="headerTitle">
@@ -106,17 +115,17 @@ class PageHeader extends React.Component {
             </Row>
             <Row>
               <p id="headerDesc">
-               {this.state.copyText} 
+                {this.state.copyText}
               </p>
             </Row>
             <Row>{this.props.learnMoreButton}</Row>
           </Container>
           <img
-                src={require("../../assets/icons/menu_arrow_white.svg")}
-                alt="practitioners-header"
-                id="scrollDownButton"
-                onClick={this.scrollDown}
-              />
+            src={require("../../assets/icons/menu_arrow_white.svg")}
+            alt="practitioners-header"
+            id="scrollDownButton"
+            onClick={this.scrollDown}
+          />
         </div>
       );
     }

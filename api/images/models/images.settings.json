@@ -25,6 +25,20 @@
     },
     "imageLocation": {
       "type": "string"
+    },
+    "imageFileMobile": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "imageURLMobile": {
+      "type": "string"
     }
   }
 }
