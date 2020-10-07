@@ -10,25 +10,21 @@
   },
   "attributes": {
     "imageFile": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
-        "files",
         "images",
+        "files",
         "videos"
       ],
       "plugin": "upload",
-      "required": true
-    },
-    "imageLocation": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "required": false
     },
     "imageURL": {
-      "type": "string",
-      "required": true,
-      "unique": false
+      "type": "string"
+    },
+    "imageLocation": {
+      "type": "string"
     }
   }
 }

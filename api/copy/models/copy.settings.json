@@ -10,16 +10,12 @@
   },
   "attributes": {
     "copyText": {
-      "type": "text",
-      "required": true,
-      "unique": false
+      "type": "text"
     },
     "copyLocation": {
-      "type": "string",
-      "required": true,
-      "unique": false
+      "type": "string"
     },
-    "copyHierarchy": {
+    "copyType": {
       "type": "string"
     }
   }
