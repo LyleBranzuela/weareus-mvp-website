@@ -24,8 +24,8 @@ import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 function App() {
   // Returns the location object that represents the current URL
   const location = useLocation();
-  const isLoggedIn = useSelector((state) => state.userReducer.isLoggedIn);
-  const user_information = useSelector(
+  let isLoggedIn = useSelector((state) => state.userReducer.isLoggedIn);
+  let user_information = useSelector(
     (state) => state.userReducer.user_information
   );
 
@@ -56,7 +56,6 @@ function App() {
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
-
         {/* Conditional Routes if the User is Logged in or Not */}
         {!isLoggedIn ? (
           <>
@@ -71,18 +70,18 @@ function App() {
             />
           </>
         ) : (
-          <>
-            {/* Register-Login Pages When Logged In*/}
-            <Route path="/register-user" component={UserRegister} />
-            <Route path={`/profile-setup`} component={ProfileSetup} />
-            <Route
-              path={`/register-practitioner`}
-              component={PractitionerRegister}
-            />
-            <Route path="/membership-form" component={MembershipForm} />
-          </>
+          /* Register-Login Pages When Logged In*/
+          !user_information.company_id && (
+            <>
+              <Route path={`/profile-setup`} component={ProfileSetup} />
+              <Route
+                path={`/register-practitioner`}
+                component={PractitionerRegister}
+              />
+              <Route path="/membership-form" component={MembershipForm} />
+            </>
+          )
         )}
-        <Route path="" component={Error404Page} />
       </Switch>
     </div>
   );
@@ -104,6 +103,7 @@ function App() {
         <Switch location={location} key={location.pathname}>
           <Route component={NoNavPages} />
           <Route component={DefaultPages} />
+          <Route path="" component={Error404Page} />
         </Switch>
       </Route>
       <Footer />

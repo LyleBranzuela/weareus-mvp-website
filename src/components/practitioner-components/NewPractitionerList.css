@@ -1,7 +1,11 @@
 .newPracContainerStyle {
   padding-top: 4%;
   padding-bottom: 4%;
-  background-color: #F3F1F3;
+  background-color: #f3f1f3;
+}
+.newPracContainerStyle .container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .newPracListStyle h4 {
@@ -9,7 +13,7 @@
   font-family: "AvenirLTPro-Heavy";
   font-size: 1.3vw;
   font-weight: 500;
-  color: #5B5B5B;
+  color: #5b5b5b;
 }
 
 .newPracListStyle a {
@@ -20,21 +24,28 @@
 }
 
 /* Mobile Styles */
-#pracListHeader{
+#pracListHeader {
   font-size: 3vh;
   font-family: "AvenirLTPro-Heavy";
-  color: #5B5B5B;
+  color: #5b5b5b;
   text-align: center;
   padding-bottom: 5%;
   padding-top: 5%;
 }
 
 .newPracCarouselStyle .carousel-indicators li {
-  background-color: #79158f;
+  background-color: #5b5b5b;
   border-radius: 50%;
-  height: 1vh;
-  width: 1vh;
+  height: 1.5vh;
+  width: 1.5vh;
+  margin-left: 10px;
+  margin-right: 10px;
 }
+
+.newPracCarouselStyle .carousel-indicators .active {
+  background-color: #79158f;
+}
+
 
 .newPracCarouselStyle .carousel-control-prev-icon {
   background-image: url(../../assets/icons/carousel_arrow_left.svg);

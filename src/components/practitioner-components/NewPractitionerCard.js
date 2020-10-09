@@ -59,7 +59,7 @@ class NewPractitionerCard extends React.Component {
             <Card.Subtitle className="mb-4 text-muted">
               {this.props.address}
             </Card.Subtitle>
-            <Card.Text>{this.props.about.slice(0, 200)}</Card.Text>
+            <Card.Text>{this.props.about}</Card.Text>
           </Card.Body>
         </Card>
       );
@@ -83,7 +83,7 @@ class NewPractitionerCard extends React.Component {
             <Card.Subtitle className="mb-4 text-muted">
               {this.props.address}
             </Card.Subtitle>
-            <Card.Text>{this.props.about.slice(0, 200)}</Card.Text>
+            <Card.Text>{this.props.about}</Card.Text>
           </Card.Body>
         </Card>
       );

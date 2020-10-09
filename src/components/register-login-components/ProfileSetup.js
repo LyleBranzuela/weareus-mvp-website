@@ -13,11 +13,12 @@ class ProfileSetup extends React.Component {
     this.state = {
       services: [],
       accreditations: [],
+      specialties: [],
       search_filter: "",
 
       // Company Details States
       company_name: "",
-      subscription_id: 0,
+      subscription_id: 2,
       logo: "",
       email: this.props.user_information.email,
       phone: this.props.user_information.phone,
@@ -34,11 +35,12 @@ class ProfileSetup extends React.Component {
       cover_images: [],
 
       // Practitioner (First Specialist) States
-      reference_id: this.props.user_information.reference_id,
+      user_id: this.props.user_information.user_id,
       profile_picture: "",
       diplomas: [],
       certifications: [],
       memberships: [],
+      chosen_specialties: [],
 
       // Temporary Practitioner Placeholders (Holding Diplomas, Certificates, and Memberships Data)
       diploma_name: "",
@@ -115,15 +117,17 @@ class ProfileSetup extends React.Component {
         cover_images: this.state.cover_images,
 
         // Practitioner (First Specialist) States
-        reference_id: this.state.reference_id,
+        user_id: this.state.user_id,
         profile_picture: this.state.profile_picture,
         diplomas: this.state.diplomas,
         certifications: this.state.certifications,
         memberships: this.state.memberships,
+        chosen_specialties: this.state.chosen_specialties,
       };
 
       // Generate a Company
       try {
+        console.log("CALLING");
         const response = await api.post("/company", companyObject);
         console.log(response);
       } catch (error) {
@@ -196,6 +200,10 @@ class ProfileSetup extends React.Component {
             diploma_name: this.state.diploma_name,
             time_taken: this.state.diploma_time_taken,
           };
+          this.setState({
+            diploma_name: "",
+            diploma_time_taken: "",
+          });
         }
         break;
 
@@ -213,6 +221,10 @@ class ProfileSetup extends React.Component {
             certification_name: this.state.certification_name,
             time_taken: this.state.certification_time_taken,
           };
+          this.setState({
+            certification_name: "",
+            certification_time_taken: "",
+          });
         }
         break;
 
@@ -230,6 +242,10 @@ class ProfileSetup extends React.Component {
             membership_name: this.state.membership_name,
             website: this.state.membership_website,
           };
+          this.setState({
+            membership_name: "",
+            membership_website: "",
+          });
         }
         break;
 
@@ -454,6 +470,30 @@ class ProfileSetup extends React.Component {
             </Col>
           </Row>
           <Row>
+            <Col sm={6}>
+              {/** City Form Group */}
+              <Form.Group controlId="region_name">
+                <Form.Label>Region:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter Region"
+                  onChange={this.formOnChangeHandler}
+                />
+              </Form.Group>
+            </Col>
+            <Col sm={6}>
+              {/** City Form Group */}
+              <Form.Group controlId="city_name">
+                <Form.Label>City:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter City"
+                  onChange={this.formOnChangeHandler}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
             <Col>
               {/** Town/Suburb Form Group */}
               <Form.Group controlId="suburb">
@@ -472,19 +512,6 @@ class ProfileSetup extends React.Component {
                 <Form.Control
                   type="number"
                   placeholder="Enter Postcode"
-                  onChange={this.formOnChangeHandler}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={6}>
-              {/** City Form Group */}
-              <Form.Group controlId="city_name">
-                <Form.Label>City:</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter City"
                   onChange={this.formOnChangeHandler}
                 />
               </Form.Group>
@@ -569,7 +596,7 @@ class ProfileSetup extends React.Component {
           <hr size="50" />
           <h5>About your Practice</h5>
           {/** About Practice Form Group */}
-          <Form.Group controlId="profileSetupAboutPractices">
+          <Form.Group controlId="about">
             <Form.Label>
               First impressions count. The first 120 characters, or about 20
               words, is what shows if you're featured on the home page after
@@ -577,7 +604,7 @@ class ProfileSetup extends React.Component {
               paragraph are shown on your listing. The best length for your copy
               is the time it takes to get your key message across.
             </Form.Label>
-            <Form.Control as="textarea" rows="5" />
+            <Form.Control as="textarea" rows="5" onChange={this.formOnChangeHandler} />
           </Form.Group>
           <hr size="50" />
           <h5>Your Services</h5>
@@ -681,13 +708,18 @@ class ProfileSetup extends React.Component {
             <Form.Control
               as="textarea"
               rows="3"
+              value={this.state.diploma_name}
               onChange={this.formOnChangeHandler}
             />
           </Form.Group>
           {/** Practitioner's Qualifications - Practitioner Diploma/Training Time Form Group */}
           <Form.Group controlId="diploma_time_taken">
             <Form.Label>Time taken to complete training (optional)</Form.Label>
-            <Form.Control type="text" onChange={this.formOnChangeHandler} />
+            <Form.Control
+              type="text"
+              value={this.state.diploma_time_taken}
+              onChange={this.formOnChangeHandler}
+            />
           </Form.Group>
           {/** Practitioner's Qualifications - Practitioner Certificates Form Group */}
           <Form.Group controlId="certification_name">
@@ -749,13 +781,18 @@ class ProfileSetup extends React.Component {
             <Form.Control
               as="textarea"
               rows="3"
+              value={this.state.certification_name}
               onChange={this.formOnChangeHandler}
             />
           </Form.Group>
           {/** Practitioner's Qualifications - Practitioner Diploma/Training Time Form Group */}
           <Form.Group controlId="certification_time_taken">
             <Form.Label>Time taken to complete training (optional)</Form.Label>
-            <Form.Control type="text" onChange={this.formOnChangeHandler} />
+            <Form.Control
+              type="text"
+              value={this.state.certification_time_taken}
+              onChange={this.formOnChangeHandler}
+            />
           </Form.Group>
           {/** Practitioner's Qualifications - Practitioner Memberships Form Group */}
           <Form.Group controlId="membership_name">
@@ -816,6 +853,7 @@ class ProfileSetup extends React.Component {
             <Form.Control
               as="textarea"
               rows="3"
+              value={this.state.membership_name}
               onChange={this.formOnChangeHandler}
             />
           </Form.Group>
@@ -825,6 +863,7 @@ class ProfileSetup extends React.Component {
             <Form.Control
               type="text"
               placeholder="http://"
+              value={this.state.membership_website}
               onChange={this.formOnChangeHandler}
             />
           </Form.Group>
