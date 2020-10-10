@@ -45,7 +45,7 @@ class PractitionerRegister extends React.Component {
         return (
           <SubscriptionPlan
             key={`${subscription.subscription_id}Plan_Key`}
-            id={`${subscription.subscription_id}Plan`}
+            id={subscription.subscription_id}
             name={subscription.subscription_name}
             description={subscription.description}
             price={subscription.price}

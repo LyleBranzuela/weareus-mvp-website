@@ -152,15 +152,14 @@ class UserRegister extends React.Component {
                   if (err) {
                     swal({
                       title: "Account Cleanup Error",
-                      text: "Something went wrong of the account cleanup",
+                      text: "Something went wrong with the account cleanup",
                       icon: "error",
                       buttons: [false, true],
                     });
                   } else {
                     swal({
                       title: "Database Error!",
-                      text:
-                        "User already exists in the database! Phone, email, or username already exists!",
+                      text: error?.response?.data || "Unknown Error",
                       icon: "error",
                       buttons: [false, true],
                     });

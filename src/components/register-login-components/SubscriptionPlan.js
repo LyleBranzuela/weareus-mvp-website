@@ -31,6 +31,7 @@ class SubscriptionPlan extends React.Component {
             to={{
               pathname: "/membership-form",
               state: {
+                subscription_id: this.props.id,
                 subscriptionType: this.props.subscriptionType,
                 price: this.props.price,
               },
@@ -47,7 +48,7 @@ class SubscriptionPlan extends React.Component {
           <Card.Title>
             <strong>Features</strong>
           </Card.Title>
-          <ul id={this.props.id.concat("Features")}>{features}</ul>
+          <ul id={`${this.props.id}-feature-id`}>{features}</ul>
         </Card.Body>
       </Card>
     );

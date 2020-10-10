@@ -390,11 +390,21 @@ class MembershipForm extends React.Component {
                   </Row>
                   <hr size="50" />
                   {/** Section: Pay Button */}
-                  <CustomButton
-                    id="paymentFormButton"
-                    type="submit"
-                    text="Payment"
-                  />
+                  <Link
+                    to={{
+                      pathname: "/profile-setup",
+                      state: {
+                        subscription_id: this.props.location.state
+                          .subscription_id,
+                      },
+                    }}
+                  >
+                    <CustomButton
+                      id="paymentFormButton"
+                      type="submit"
+                      text="Payment"
+                    />
+                  </Link>
                 </Col>
               </Row>
             </Container>

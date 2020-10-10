@@ -18,7 +18,6 @@ class ProfileSetup extends React.Component {
 
       // Company Details States
       company_name: "",
-      subscription_id: 2,
       logo: "",
       email: this.props.user_information.email,
       phone: this.props.user_information.phone,
@@ -100,7 +99,7 @@ class ProfileSetup extends React.Component {
       let companyObject = {
         // Company Details States
         company_name: this.state.company_name,
-        subscription_id: this.state.subscription_id,
+        subscription_id: this.props.location.state.subscription_id,
         logo: this.state.logo,
         email: this.state.email,
         phone: this.state.phone,
@@ -127,14 +126,12 @@ class ProfileSetup extends React.Component {
 
       // Generate a Company
       try {
-        console.log("CALLING");
         const response = await api.post("/company", companyObject);
         console.log(response);
       } catch (error) {
         swal({
           title: "Database Error!",
-          text:
-            "User already exists in the database! Phone, email, or username already exists!",
+          text: error?.response?.data || "Unknown Error",
           icon: "error",
           buttons: [false, true],
         });
