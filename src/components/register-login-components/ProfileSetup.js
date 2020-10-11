@@ -147,7 +147,7 @@ class ProfileSetup extends React.Component {
   };
 
   // Updates the Sections of Files with Images (company logo, profile picture, and cover images)
-  onChangeImageHandler = async (e, isArray) => {
+  onChangeImageHandler = async (e) => {
     const target = e.target.id;
     if (e.target.files[0]) {
       const data = new FormData();
@@ -156,6 +156,16 @@ class ProfileSetup extends React.Component {
         "/upload?user_id=" + 8 + "&folder=" + e.target.id,
         data
       );
+
+      // let img = new Image();
+      // img.src = uploadResponse.data.fileName;
+      // src.onChange =
+      // console.log(img);
+      // if (img.width === 720 && img.height === 720) {
+      //   console.log("WORKED!");
+      // } else {
+      //   console.log("ERROR!" + img.width + "|" + img.height);
+      // }
       if (target !== "cover_images") {
         this.setState({
           [target]: uploadResponse.data.fileName,
@@ -169,11 +179,6 @@ class ProfileSetup extends React.Component {
         });
       }
     }
-  };
-
-  // Clears The List
-  clearStateArray = (stateArray) => {
-    this.setState({ [stateArray]: [] });
   };
 
   // Adds a Specific Credential to the Array
@@ -350,6 +355,11 @@ class ProfileSetup extends React.Component {
         );
       });
     }
+
+    // Redirect to home if logged in
+    if (this.props.user_information.user_type === "practitioner") {
+      return <Redirect to="home" />;
+    }
     return (
       <Container className="profileSetupStyle">
         {/** Profile Setup Header  */}
@@ -379,6 +389,7 @@ class ProfileSetup extends React.Component {
               This is the name that gets highlighted on your We are Us page.
             </Form.Label>
             <Form.Control
+              required
               type="text"
               placeholder="Enter Company Name"
               onChange={this.formOnChangeHandler}
@@ -392,6 +403,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="first_name">
                 <Form.Label>Your First Name:</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter First Name"
                   defaultValue={this.props.user_information.first_name}
@@ -405,6 +417,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="last_name">
                 <Form.Label>Your Last Name:</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Last Name"
                   defaultValue={this.props.user_information.last_name}
@@ -420,6 +433,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="phone">
                 <Form.Label>Your Company's Contact Phone Number:</Form.Label>
                 <Form.Control
+                  required
                   type="number"
                   defaultValue={this.state.phone}
                   placeholder="Enter Contact Number"
@@ -433,6 +447,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="email">
                 <Form.Label>Your Company's Contact Email:</Form.Label>
                 <Form.Control
+                  required
                   type="email"
                   defaultValue={this.state.email}
                   placeholder="Enter Email"
@@ -472,6 +487,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="region_name">
                 <Form.Label>Region:</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Region"
                   onChange={this.formOnChangeHandler}
@@ -483,6 +499,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="city_name">
                 <Form.Label>City:</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter City"
                   onChange={this.formOnChangeHandler}
@@ -496,6 +513,7 @@ class ProfileSetup extends React.Component {
               <Form.Group controlId="suburb">
                 <Form.Label>Town/Suburb:</Form.Label>
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Enter Town/Suburb"
                   onChange={this.formOnChangeHandler}
@@ -520,7 +538,20 @@ class ProfileSetup extends React.Component {
           <Form.Group controlId="logo">
             <Form.Label>Size: 720px wide by 720px high</Form.Label>
             <br />
-            <img src={this.state.logo}></img>
+            {this.state.logo ? (
+              <div>
+                <img alt="company-logo" src={this.state.logo}></img>
+                <br />
+              </div>
+            ) : (
+              <div>
+                <img
+                  alt="company-logo-placeholder"
+                  src={require("../../assets/images/placeholders/logo_placeholder.PNG")}
+                ></img>
+                <br />
+              </div>
+            )}
             {/** Upload Logo */}
             <label className="custom-file-upload">
               <input
@@ -539,13 +570,26 @@ class ProfileSetup extends React.Component {
           <h5>Your Profile Image</h5>
           {/** Profile Image Form Group */}
           <Form.Group controlId="profile_picture">
-            <p>{this.state.profile_picture}</p>
             <Form.Label>
               This is where you put your headshot so people can put a face to a
               name. <br />
               Size: 720px wide by 720px high
             </Form.Label>
             <br />
+            {this.state.profile_picture ? (
+              <div className="mt-2">
+                <img alt="profile-pic" src={this.state.profile_picture}></img>
+                <br />
+              </div>
+            ) : (
+              <div className="mt-2">
+                <img
+                  alt="profile-pic-placeholder"
+                  src={require("../../assets/images/placeholders/profile_picture_placeholder.PNG")}
+                ></img>
+                <br />
+              </div>
+            )}
             {/** Upload Profile Image */}
             <label className="custom-file-upload">
               <input
@@ -601,7 +645,12 @@ class ProfileSetup extends React.Component {
               paragraph are shown on your listing. The best length for your copy
               is the time it takes to get your key message across.
             </Form.Label>
-            <Form.Control as="textarea" rows="5" onChange={this.formOnChangeHandler} />
+            <Form.Control
+              required
+              as="textarea"
+              rows="5"
+              onChange={this.formOnChangeHandler}
+            />
           </Form.Group>
           <hr size="50" />
           <h5>Your Services</h5>

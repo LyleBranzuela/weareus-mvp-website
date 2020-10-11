@@ -56,32 +56,80 @@ function App() {
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
-        {/* Conditional Routes if the User is Logged in or Not */}
-        {!isLoggedIn ? (
-          <>
-            {/* Register-Login Pages When Logged Out*/}
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/register-user" component={UserRegister} />
-            <Route path="/membership-form" component={MembershipForm} />
-            <Route
-              path={`/register-practitioner`}
-              component={PractitionerRegister}
-            />
-          </>
-        ) : (
-          /* Register-Login Pages When Logged In*/
-          !user_information.company_id && (
-            <>
-              <Route path={`/profile-setup`} component={ProfileSetup} />
-              <Route
-                path={`/register-practitioner`}
-                component={PractitionerRegister}
-              />
-              <Route path="/membership-form" component={MembershipForm} />
-            </>
-          )
-        )}
+
+        {/* Register-Login Pages */}
+        <Route
+          path="/login"
+          render={(props) =>
+            !isLoggedIn ? <LoginPage {...props} /> : <Redirect to="/home" />
+          }
+        />
+        <Route
+          path="/register"
+          render={(props) =>
+            !isLoggedIn ? <RegisterPage {...props} /> : <Redirect to="/home" />
+          }
+        />
+        <Route
+          path="/register-user"
+          render={(props) =>
+            !isLoggedIn ? <UserRegister {...props} /> : <Redirect to="/home" />
+          }
+        />
+        <Route
+          path="/register-practitioner"
+          render={(props) =>
+            !isLoggedIn ||
+            (isLoggedIn && user_information.user_type === "user") ? (
+              <PractitionerRegister {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        <Route
+          path="/membership-form"
+          render={(props) =>
+            !isLoggedIn ||
+            (isLoggedIn && user_information.user_type === "user") ? (
+              <MembershipForm {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        <Route
+          path="/profile-setup"
+          render={(props) =>
+            isLoggedIn && user_information.user_type === "practitioner" ? (
+              <ProfileSetup {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        {/* <Route
+          path="/edit-profile"
+          render={(props) =>
+            isLoggedIn &&
+            (user_information.user_type === "practitioner" ||
+              user_information.user_type === "admin") ? (
+              <EditProfile {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        <Route
+          path="/finances"
+          render={(props) =>
+            isLoggedIn && user_information.user_type === "practitioner" ? (
+              <FinancesPage {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        /> */}
       </Switch>
     </div>
   );

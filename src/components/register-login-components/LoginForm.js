@@ -109,7 +109,6 @@ class LoginForm extends React.Component {
         }).then(async () => {
           this.setState({ redirect: true });
           const reference_id = data.accessToken.payload.sub;
-          console.log(reference_id);
           this.props.signin(
             reference_id,
             await this.getUserByRef(reference_id)

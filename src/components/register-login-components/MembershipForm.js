@@ -44,7 +44,7 @@ class MembershipForm extends React.Component {
   // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
   onSubmit = (event) => {
     event.preventDefault();
-    if (this.props.isLogged) {
+    if (this.props.isLoggedIn) {
     } else {
       if (this.state.password === this.state.confirmPassword) {
         let userObject = {
@@ -53,7 +53,7 @@ class MembershipForm extends React.Component {
           user_name: this.state.username,
           email: this.state.email,
           phone: this.state.phoneNumber,
-          user_type: "user",
+          user_type: "practitioner",
         };
 
         // Create Data Variables with key-value pairing
@@ -147,15 +147,14 @@ class MembershipForm extends React.Component {
                     if (err) {
                       swal({
                         title: "Account Cleanup Error",
-                        text: "Something went wrong of the account cleanup",
+                        text: "Something went wrong with the account cleanup",
                         icon: "error",
                         buttons: [false, true],
                       });
                     } else {
                       swal({
                         title: "Database Error!",
-                        text:
-                          "User already exists in the database! Phone, email, or username already exists!",
+                        text: error?.response?.data || "Unknown Error",
                         icon: "error",
                         buttons: [false, true],
                       });
@@ -305,7 +304,7 @@ class MembershipForm extends React.Component {
                 </Form.Group>
               </Col>
             </Row>
-            {this.props.isLogged && (
+            {!this.props.isLoggedIn && (
               <div>
                 <Row>
                   {/** Account Password Form Group */}
@@ -418,7 +417,7 @@ class MembershipForm extends React.Component {
 // Setup Redux States
 const mapStateToProps = (state) => {
   return {
-    isLogged: state.userReducer.isLogged,
+    isLoggedIn: state.userReducer.isLoggedIn,
     user_information: state.userReducer.user_information,
   };
 };

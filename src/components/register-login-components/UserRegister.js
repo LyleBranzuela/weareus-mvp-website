@@ -148,7 +148,7 @@ class UserRegister extends React.Component {
               };
               cognitoidentityserviceprovider.adminDeleteUser(
                 params,
-                (err, data) => {  
+                (err, data) => {
                   if (err) {
                     swal({
                       title: "Account Cleanup Error",

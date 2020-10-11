@@ -4,6 +4,7 @@ import { logout } from "../../manage-accounts/Accounts";
 import { connect } from "react-redux";
 import { signout } from "../../actions";
 import { Navbar, Nav } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
 class NavigationBar extends React.Component {
@@ -236,4 +237,6 @@ const mapDispatchToProps = () => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps())(NavigationBar);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps())(NavigationBar)
+);
