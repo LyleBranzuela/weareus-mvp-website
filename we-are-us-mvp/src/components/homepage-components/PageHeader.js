@@ -1,6 +1,6 @@
 import "./PageHeader.css";
 import React from "react";
-import axios from 'axios';
+import strapi from '../../api/strapi.js';
 import { Container, Row } from "react-bootstrap";
 
 class PageHeader extends React.Component {
@@ -21,20 +21,9 @@ class PageHeader extends React.Component {
     window.addEventListener("resize", this.handleWindowSizeChange);
 
     // Get requests to retrieve JSON information from Strapi
-    const getHeader = await axios({
-      method: 'GET',
-      url: 'http://localhost:1337/copies/1'
-    });
-
-    const getText = await axios({
-      method: 'GET',
-      url: 'http://localhost:1337/copies/2'
-    });
-
-    const getImages = await axios({
-      method: 'GET',
-      url: 'http://localhost:1337/images/1'
-    })
+    const getHeader = await strapi.get('/copies/1');
+    const getText = await strapi.get('/copies/2');
+    const getImages = await strapi.get('/images/1');
 
     const copyHeader = JSON.stringify(getHeader.data.copyText).replace(/\\n/g, '\n').replace(/\"/g, "");
     const copyText = JSON.stringify(getText.data.copyText).replace(/\\n/g, '\n').replace(/\"/g, "");
@@ -42,6 +31,8 @@ class PageHeader extends React.Component {
     const copyTextMobile = JSON.stringify(getText.data.copyTextMobile).replace(/\\n/g, '\n').replace(/\"/g, "");
     const headerImage = JSON.stringify(getImages.data.imageURL).replace(/\"/g, "");
     const headerImageMobile = JSON.stringify(getImages.data.imageURLMobile).replace(/\"/g, "");
+
+    // Assigning values retrievd from Strapi to this.state
     this.setState({
       copyHeader: copyHeader,
       copyText: copyText,

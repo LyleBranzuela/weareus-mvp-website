@@ -6,6 +6,7 @@ import OurSpecialists from "./OurSpecialists";
 import ContactCard from "../for-profile-components/ContactCard";
 import ExpendableText from "../for-profile-components/ExpendableText";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import Geocode from "react-geocode";
 
 class PracticeProfileInfo extends React.Component {
   render() {
@@ -13,6 +14,21 @@ class PracticeProfileInfo extends React.Component {
       width: '100%',
       height: '400px',
     };
+
+    Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
+
+    const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010";
+
+    Geocode.fromAddress(testAddress).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        alert(lat);
+        alert(lng);
+      },
+      error => {
+        console.error(error);
+      }
+    );
 
     return (
       <Container fluid className="container-dimensions">
@@ -132,7 +148,7 @@ class PracticeProfileInfo extends React.Component {
 
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="2">
-                    <Card.Body classname="map">
+                    <Card.Body>
 
                       <Map
                         google={this.props.google}
@@ -141,7 +157,7 @@ class PracticeProfileInfo extends React.Component {
                         initialCenter={{ lat: -36.84, lng: 174.76 }}
                       >
                         <Marker position={{ lat: -36.84, lng: 174.76 }}
-                          icon={{ url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"}} />
+                          icon={{ url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png" }} />
                       </Map>
 
                     </Card.Body>
