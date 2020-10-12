@@ -4,12 +4,6 @@
   padding-right: 200px;
 }
 
-.form-control:disabled,
-.form-control[readonly] {
-  color: rgb(85, 85, 85);
-  background-color: #dddddd;
-}
-
 .profileSetupStyle h2 {
   text-align: center;
   color: #79158f;

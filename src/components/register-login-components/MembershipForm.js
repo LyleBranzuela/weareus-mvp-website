@@ -5,7 +5,7 @@ import swal from "@sweetalert/with-react";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { CognitoUserAttribute } from "amazon-cognito-identity-js";
-import { Link } from "react-router-dom";
+import { Link, Redirect} from "react-router-dom";
 import AWS from "aws-sdk";
 import CustomButton from "../general-components/CustomButton";
 import UserPool from "../../manage-accounts/UserPool";
@@ -27,7 +27,7 @@ class MembershipForm extends React.Component {
       username: "", // Shown as preferred_username for AWS Cognito
       password: "",
       confirmPassword: "",
-      verifiedAccount: false,
+      redirect: false,
     };
 
     // Prevents Memory Leaks
@@ -203,6 +203,14 @@ class MembershipForm extends React.Component {
   }
 
   render() {
+    // Redirect to home if finished registering
+    // if (this.state.redirect) {
+    //   if (this.props.isLoggedIn) {
+    //     return <Redirect to="home" />;
+    //   } else {
+    //     return <Redirect to="login" />;
+    //   }
+    // }
     return (
       <Container fluid>
         <Container className="membershipFormStyle">

@@ -13,6 +13,7 @@ import {
   // googleSignInCallBack,
   // facebookSignInCallBack,
 } from "../../manage-accounts/Accounts";
+import UserPool from "../../manage-accounts/UserPool";
 import CustomButton from "../general-components/CustomButton";
 import { authenticate } from "../../manage-accounts/Accounts";
 import api from "../../api/api";
@@ -64,7 +65,13 @@ class LoginForm extends React.Component {
       const specialistResponse = await api.get(
         `/specialist-profile/${userObj.user_id}`
       );
-      userObj.company_id = specialistResponse.data.company_id;
+      if (
+        specialistResponse.data.company_id &&
+        specialistResponse.data.subscription_id
+      ) {
+        userObj.company_id = specialistResponse.data.company_id;
+        userObj.subscription_id = specialistResponse.data.subscription_id;
+      }
     }
     return userObj;
   };
@@ -84,20 +91,32 @@ class LoginForm extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
     authenticate(this.state.email, this.state.password)
-      .then((data) => {
+      .then((data, err) => {
+        console.log(err);
+        console.log(data);
+        console.log(this.state.rememberAccount);
+        console.log(UserPool.getCurrentUser());
         // If The User wants the Device to be Remembered
-        if (this.state.rememberAccount) {
-          getUser(this.state.email).setDeviceStatusRemembered({
-            onSuccess: function (result) {},
-            onFailure: function (err) {},
-          });
-        } else {
-          getUser(this.state.email).setDeviceStatusNotRemembered({
-            onSuccess: function (result) {},
-            onFailure: function (err) {},
-          });
-        }
-        // Successful Login Modal
+        // if (this.state.rememberAccount) {
+        //   UserPool.getCurrentUser().setDeviceStatusRemembered({
+        //     onSuccess: function (result) {
+        //       console.log(result);
+        //     },
+        //     onFailure: function (err) {
+        //       console.log(err);
+        //     },
+        //   });
+        // } else {
+        //   UserPool.getCurrentUser().setDeviceStatusNotRemembered({
+        //     onSuccess: function (result) {
+        //       console.log(result);
+        //     },
+        //     onFailure: function (err) {
+        //       console.log(err);
+        //     },
+        //   });
+        // }
+        // // Successful Login Modal
         swal({
           title: "Login Successful!",
           text: "Returning you to the homepage...",
@@ -231,7 +250,14 @@ class LoginForm extends React.Component {
             <Row>
               <Col sm={6}>
                 <Form.Group controlId="rememberMeCheckBox">
-                  <Form.Check type="checkbox" label="Remember Me" />
+                  <Form.Check
+                    type="checkbox"
+                    label="Remember Me"
+                    checked={this.state.rememberAccount}
+                    onChange={(e) => {
+                      this.setState({ rememberAccount: e.target.checked });
+                    }}
+                  />
                 </Form.Group>
               </Col>
               <Col sm={6}>
@@ -246,10 +272,6 @@ class LoginForm extends React.Component {
                   id="loginFormButton"
                   type="submit"
                   text="Log In"
-                  checked={this.state.rememberAccount}
-                  onChange={(e) => {
-                    this.setState({ rememberAccount: e.target.checked });
-                  }}
                 />
               </Col>
               <Col>

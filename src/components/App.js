@@ -101,7 +101,11 @@ function App() {
         <Route
           path="/profile-setup"
           render={(props) =>
-            isLoggedIn && user_information.user_type === "practitioner" ? (
+            isLoggedIn &&
+            user_information.user_type === "user" 
+            // user_information.user_type === "practitioner" 
+            // && !user_information.user_type.company_id 
+            ? (
               <ProfileSetup {...props} />
             ) : (
               <Redirect to="/home" />
@@ -111,7 +115,7 @@ function App() {
         {/* <Route
           path="/edit-profile"
           render={(props) =>
-            isLoggedIn &&
+            isLoggedIn && user_information.user_type.company_id &&
             (user_information.user_type === "practitioner" ||
               user_information.user_type === "admin") ? (
               <EditProfile {...props} />
@@ -130,6 +134,7 @@ function App() {
             )
           }
         /> */}
+        <Route path="" component={Error404Page} />
       </Switch>
     </div>
   );
@@ -151,7 +156,6 @@ function App() {
         <Switch location={location} key={location.pathname}>
           <Route component={NoNavPages} />
           <Route component={DefaultPages} />
-          <Route path="" component={Error404Page} />
         </Switch>
       </Route>
       <Footer />
