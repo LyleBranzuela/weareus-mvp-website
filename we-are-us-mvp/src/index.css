@@ -51,6 +51,12 @@ input[type="checkbox"]:checked + label {
   background-color: #f3f1f3;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  color: rgb(85, 85, 85);
+  background-color: #dddddd;
+}
+
 /* End of General Form Styles */
 
 .siteDefaultMargin {
@@ -62,7 +68,7 @@ input[type="checkbox"]:checked + label {
   padding: 7px 19px;
   border-radius: 2px;
   background-color: #79158f;
-  border: 1px solid  rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
 

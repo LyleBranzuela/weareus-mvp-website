@@ -25,7 +25,7 @@ class Footer extends React.Component {
 
   render() {
     const { width } = this.state;
-    const isMobile = width <= 600;
+    const isMobile = width <= 780;
 
     if (isMobile) {
       // Mobile version

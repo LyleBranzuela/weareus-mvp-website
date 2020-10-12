@@ -48,8 +48,12 @@ class PractitionerList extends React.Component {
             {/* Render all Practitioners based if it should be showing all or not */}
             {this.props.showAll ? (
               <Row>
-                {practitionerList.map((practitioner) => {
-                  return <Col sm={3}>{practitioner}</Col>;
+                {practitionerList.map((practitioner, index) => {
+                  return (
+                    <Col key={index} sm={3}>
+                      {practitioner}
+                    </Col>
+                  );
                 })}
               </Row>
             ) : (

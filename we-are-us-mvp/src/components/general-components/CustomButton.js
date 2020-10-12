@@ -6,8 +6,8 @@ import { Button } from "react-bootstrap";
 const CustomButton = (props) => (
   <Button
     className="primaryCustomButtonStyle"
-    id={props.id}
     variant="primary"
+    id={props.id}
     type={props.type}
     onClick={props.onClick}
   >

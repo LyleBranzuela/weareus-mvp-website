@@ -9,26 +9,41 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import Geocode from "react-geocode";
 
 class PracticeProfileInfo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      latitude: "",
+      longitude: "",
+    };
+  }
+
+  componentDidMount() {
+    getPracticeLocation(){
+      Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
+
+      const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010"; //Replace this with dynamic address
+   
+      Geocode.fromAddress(testAddress).then(
+        response => {
+          const { latResult, lngResult } = response.results[0].geometry.location;
+          this.setState({latitude: latResult,
+                        longitude: lngResult})
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+  }
+  
+  
   render() {
     const mapStyles = {
       width: '100%',
       height: '400px',
     };
 
-    Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
 
-    const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010";
-
-    Geocode.fromAddress(testAddress).then(
-      response => {
-        const { lat, lng } = response.results[0].geometry.location;
-        alert(lat);
-        alert(lng);
-      },
-      error => {
-        console.error(error);
-      }
-    );
 
     return (
       <Container fluid className="container-dimensions">
@@ -154,9 +169,9 @@ class PracticeProfileInfo extends React.Component {
                         google={this.props.google}
                         zoom={15}
                         style={mapStyles}
-                        initialCenter={{ lat: -36.84, lng: 174.76 }}
+                        initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
                       >
-                        <Marker position={{ lat: -36.84, lng: 174.76 }}
+                        <Marker position={{ lat: lat: this.state.latitude, lng: this.state.longitude }}
                           icon={{ url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png" }} />
                       </Map>
 

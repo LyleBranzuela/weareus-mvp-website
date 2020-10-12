@@ -13,6 +13,7 @@
 .footerStyle .nav-link {
   display: flex;
   position: relative;
+  margin-left: 16px !important;
   color: #5b5b5b !important;
 }
 
@@ -43,9 +44,10 @@
   left: 0;
 }
 
-@media screen and (min-width: 992px) {
-  .footerStyle .nav-link {
-    margin-left: 16px !important;
+@media screen and (max-width: 992px) {
+  .footerStyle .navbar-nav {
+    display: flex;
+    flex-direction: row;
   }
 }
 

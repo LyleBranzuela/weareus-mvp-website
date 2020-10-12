@@ -1,7 +1,10 @@
 import "./NavigationBar.css";
 import React from "react";
-import { getSession, logout } from "../../manage-accounts/Accounts";
+import { logout } from "../../manage-accounts/Accounts";
+import { connect } from "react-redux";
+import { signout } from "../../actions";
 import { Navbar, Nav } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { withRouter } from "react-router-dom";
 
@@ -26,18 +29,6 @@ class NavigationBar2 extends React.Component {
     window.removeEventListener("resize", this.handleWindowSizeChange);
     window.removeEventListener("scroll", this.handleScroll, true);
   }
-
-  // Check If User Has Logged in
-  // useEffect(() => {
-  //   getSession()
-  //     .then((session) => {
-  //       console.log("Session", session);
-  //       setUserLoggedIn(true);
-  //     })
-  //     .catch((err) => {
-  //       setUserLoggedIn(false);
-  //     });
-  // });
 
   handleScroll(event) {
     const scroll_pos = document.body.scrollTop;
@@ -87,52 +78,79 @@ class NavigationBar2 extends React.Component {
             <Nav className="navBarMobile-links">
               {/* Search Page Link */}
               <LinkContainer to="/search">
-                <Nav.Link className="navBarEffect" href="/search">
+                <Nav.Link className="navBar2Effect" href="/search">
                   Search
                 </Nav.Link>
               </LinkContainer>
               {/* About Page Link */}
-              <LinkContainer className="navBarEffect" to="/about">
+              <LinkContainer className="navBar2Effect" to="/about">
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
               {/* Practitioner Page Link */}
-              <LinkContainer className="navBarEffect" to="/for-practitioner">
+              <LinkContainer className="navBar2Effect" to="/for-practitioner">
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
-              {/* Login Page Link */}
-              {this.state.userLoggedIn ? (
-                /* Logout Page Link */
-                <LinkContainer
-                  className="navBarEffect"
-                  to="/home"
-                  onClick={() => {
-                    logout();
-                    this.setState({ userLoggedIn: false });
-                  }}
-                >
-                  <Nav.Link>Logout</Nav.Link>
-                </LinkContainer>
+              {/* Conditional Rendering if a user is logged in*/}
+              {this.props.isLoggedIn ? (
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer
+                    className="navBar2Effect"
+                    to="/home"
+                    onClick={() => {
+                      logout();
+                      this.props.signout();
+                    }}
+                  >
+                    <Nav.Link>Logout</Nav.Link>
+                  </LinkContainer>
+                  {/* Conditional Rendering if the user is practitioner or not */}
+                  {this.props.user_information.user_type === "practitioner" ? (
+                    /* Link to their Profile */
+                    <LinkContainer
+                      to={`/practitioner-profile/${this.props.user_information.company_id}`}
+                      className="highlightNavMobile2"
+                    >
+                      <Nav.Link>My Profile</Nav.Link>
+                    </LinkContainer>
+                  ) : (
+                    /* User Join Us Page Link */
+                    <LinkContainer
+                      to="/register-practitioner"
+                      className="highlightNavMobile2"
+                    >
+                      <Nav.Link>Join Us!</Nav.Link>
+                    </LinkContainer>
+                  )}
+                </>
               ) : (
-                  /* Login Page Link */
-                  <LinkContainer className="navBarEffect" to="/login">
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer className="navBar2Effect" to="/login">
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
-                )}
+                  {/* Register Page Link */}
+                  <LinkContainer to="/register" className="highlightNavMobile2">
+                    <Nav.Link>Register</Nav.Link>
+                  </LinkContainer>
+                </>
+              )}
             </Nav>
-            {/* Register Page Link */}
-            <LinkContainer to="/register" className="highlightNavMobile2">
-              <Nav.Link>Register</Nav.Link>
-            </LinkContainer>
           </Navbar.Collapse>
         </Navbar>
       );
     } else {
       // Desktop version
       return (
-        <Navbar collapseOnSelect fixed="top" expand="lg" className="navBar2" style={{
-          backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
-        }}>
-          {/*fixed="top"*/}
+        <Navbar
+          collapseOnSelect
+          fixed="top"
+          expand="lg"
+          className="navBar2"
+          style={{
+            backgroundColor: this.state.scrolled ? "#79158f" : "transparent",
+          }}
+        >
           <LinkContainer to="/home">
             <Navbar.Brand>
               <img
@@ -162,29 +180,51 @@ class NavigationBar2 extends React.Component {
               <LinkContainer className="navBar2Effect" to="/for-practitioner">
                 <Nav.Link>For Practitioners</Nav.Link>
               </LinkContainer>
-              {/* Login Page Link */}
-              {this.state.userLoggedIn ? (
-                /* Logout Page Link */
-                <LinkContainer
-                  className="navBar2Effect"
-                  to="/home"
-                  onClick={() => {
-                    logout();
-                    this.setState({ userLoggedIn: false });
-                  }}
-                >
-                  <Nav.Link>Logout</Nav.Link>
-                </LinkContainer>
+              {/* Conditional Rendering if a user is logged in*/}
+              {this.props.isLoggedIn ? (
+                <>
+                  {/* Logout Page Link */}
+                  <LinkContainer
+                    className="navBar2Effect"
+                    to="/home"
+                    onClick={() => {
+                      logout();
+                      this.props.signout();
+                    }}
+                  >
+                    <Nav.Link>Logout</Nav.Link>
+                  </LinkContainer>
+                  {/* Conditional Rendering if the user is practitioner or not */}
+                  {this.props.user_information.user_type === "practitioner" ? (
+                    /* Link to their Profile */
+                    <LinkContainer
+                      to={`/practitioner-profile/${this.props.user_information.company_id}`}
+                      className="highlightNav2"
+                    >
+                      <Nav.Link>My Profile</Nav.Link>
+                    </LinkContainer>
+                  ) : (
+                    /* User Join Us Page Link */
+                    <LinkContainer
+                      to="/register-practitioner"
+                      className="highlightNav2"
+                    >
+                      <Nav.Link>Join Us!</Nav.Link>
+                    </LinkContainer>
+                  )}
+                </>
               ) : (
-                  /* Login Page Link */
+                <>
+                  {/* Logout Page Link */}
                   <LinkContainer className="navBar2Effect" to="/login">
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
-                )}
-              {/* Register Page Link */}
-              <LinkContainer to="/register" className="highlightNav2">
-                <Nav.Link>Register</Nav.Link>
-              </LinkContainer>
+                  {/* Register Page Link */}
+                  <LinkContainer to="/register" className="highlightNav2">
+                    <Nav.Link>Register</Nav.Link>
+                  </LinkContainer>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -193,4 +233,23 @@ class NavigationBar2 extends React.Component {
   }
 }
 
+<<<<<<< HEAD:we-are-us-mvp/src/components/general-components/NavigationBar2.js
 export default withRouter(NavigationBar2);
+=======
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.userReducer.isLoggedIn,
+    user_information: state.userReducer.user_information,
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    signout,
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps())(NavigationBar2)
+);
+>>>>>>> fa3fb886a49c1b9389f32f528fbb5e8c8194aeeb:src/components/general-components/NavigationBar2.js
