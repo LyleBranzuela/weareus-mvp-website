@@ -18,25 +18,26 @@ class PracticeProfileInfo extends React.Component {
   }
 
   componentDidMount() {
-    getPracticeLocation(){
-      Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
 
-      const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010"; //Replace this with dynamic address
-   
-      Geocode.fromAddress(testAddress).then(
-        response => {
-          const { latResult, lngResult } = response.results[0].geometry.location;
-          this.setState({latitude: latResult,
-                        longitude: lngResult})
-        },
-        error => {
-          console.error(error);
-        }
-      );
-    }
+    Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
+
+    const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010"; //Replace this with dynamic address
+
+    Geocode.fromAddress(testAddress).then(
+      response => {
+        const { latResult, lngResult } = response.results[0].geometry.location;
+        this.setState({
+          latitude: latResult,
+          longitude: lngResult
+        })
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
-  
-  
+
+
   render() {
     const mapStyles = {
       width: '100%',
@@ -171,7 +172,7 @@ class PracticeProfileInfo extends React.Component {
                         style={mapStyles}
                         initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
                       >
-                        <Marker position={{ lat: lat: this.state.latitude, lng: this.state.longitude }}
+                        <Marker position={{ lat: this.state.latitude, lng: this.state.longitude }}
                           icon={{ url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png" }} />
                       </Map>
 

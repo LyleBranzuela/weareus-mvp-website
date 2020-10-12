@@ -6,7 +6,7 @@ import { signout } from "../../actions";
 import { Navbar, Nav } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { withRouter } from "react-router-dom";
+
 
 class NavigationBar2 extends React.Component {
   constructor() {
@@ -233,9 +233,6 @@ class NavigationBar2 extends React.Component {
   }
 }
 
-<<<<<<< HEAD:we-are-us-mvp/src/components/general-components/NavigationBar2.js
-export default withRouter(NavigationBar2);
-=======
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.userReducer.isLoggedIn,
@@ -252,4 +249,3 @@ const mapDispatchToProps = () => {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps())(NavigationBar2)
 );
->>>>>>> fa3fb886a49c1b9389f32f528fbb5e8c8194aeeb:src/components/general-components/NavigationBar2.js
