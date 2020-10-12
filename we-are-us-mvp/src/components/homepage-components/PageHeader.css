@@ -1,0 +1,115 @@
+/* DESKTOP STYLES */
+.pageHeader {
+  display:block;
+
+  /* background-image: url("../../assets/images/for_practitioners_header.jpg"); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  position: relative;
+  padding-top: 650px;
+
+  height: 100%;
+  width: auto;
+  font-family: "AvenirLTStd-Book";
+
+  white-space: pre-line;
+}
+
+#scrollDownButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 2%;
+  padding-bottom: 2%;
+}
+
+.pageHeader-text {
+  text-align: left;
+  margin: 0;
+  color: white;
+  position: absolute;
+  transform: translate(28%, -145%);
+}
+
+#headerTitle {
+  font-size: 2em;
+  font-weight: 500;
+  font-family: "AvenirLTPro-Heavy";
+  white-space: pre-line;
+}
+
+#headerDesc {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 1.5em;
+  font-weight: 200;
+}
+
+#headerButton {
+  padding: 20px 75px 20px 75px;
+  font-size: 1.5em;
+}
+
+.break-word {
+  word-wrap: break-word;
+}
+
+
+/* MOBILE STYLES */
+.pageHeaderMobile {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  top: 0;
+  font-family: "AvenirLTStd-Book";
+  width: auto;
+  height: 100vh;
+  padding-top: 50%;
+  padding-bottom: 15%;
+}
+
+
+.pageHeaderMobile-text {
+  text-align: center;
+  color: white;
+}
+
+#headerTitleMobile {
+  font-size: 4vh;
+  font-weight: 500;
+  font-family: "AvenirLTPro-Heavy";
+}
+
+#headerDescMobile {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  font-size: 2.5vh;
+  font-weight: 200;
+}
+
+#headerButtonMobile {
+  background-color: #79158f;
+  font-size: 2.5vh;
+  font-family: "AvenirLTStd-Book";
+  margin-top: 3vh;
+  padding: 2vh 12vh 2vh 12vh;
+}
+
+.break-wordMobile {
+  word-wrap: break-word;
+}
+
+#scrollDownButtonMobile {
+  align-self: center;
+  width: 5vh;
+  height:auto;
+  padding-top: 50%;
+}

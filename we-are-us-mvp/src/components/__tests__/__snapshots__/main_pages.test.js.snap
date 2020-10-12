@@ -1,0 +1,1960 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About Page Renders properly 1`] = `
+<div>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <h2
+          id="aboutTitle"
+        >
+          About us
+        </h2>
+        <p
+          id="about-paragraph"
+        >
+          We're all on a journey. Having the right people with us on our journey can ground 
+          <br />
+          us, grow us and help us be of service to others on their journey.
+          <br />
+          <br />
+          But choosing the right people to help us can be difficult. That's why so many of us 
+          <br />
+          ask our friends and family for recommendations, or go online and read reviews.
+        </p>
+        <hr
+          style={
+            Object {
+              "marginTop": "100px",
+              "width": "1300px",
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="container-fluid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <img
+          alt="charis"
+          id="mainFrame"
+          src="team_charis_robinson.jpg"
+        />
+        <h5
+          id="heavyHeader"
+        >
+          Hi, I'm Charis.
+        </h5>
+        <p
+          id="lightHeader"
+        >
+          Let me tell you why I know how powerful client reviews can be to actually get bookings.
+        </p>
+        <p
+          id="big-description"
+        >
+          When I was living in Queenstown I needed to find a therapist to help me after an injury. I found a wonderful Bowen practitioner. But then I moved north to Auckland. And needed to find another practitioner.
+          <br />
+          <br />
+          The internet's a wonderful thing, and so I did was what most people do. I searched for a new practitioner online. No one I knew could recommend anyone, and I was unsure of booking without personal recommendation. So I went without.
+          <br />
+          <br />
+          But the seed of an idea was planted.
+          <br />
+          <br />
+          With my background in visual communication I know that creating meaningful connections starts with how well you present visually and through the power of the right words.
+          <br />
+          <br />
+          I developed We are Us as an online platform to help businesses in the health, wellness & self-improvement space to connect with new clients, and for clients to find out more about businesses can help them achieve their goals.
+          <br />
+          <br />
+          I wanted the We are Us platform to be simple to use so you could focus your attention on what you really loved, helping clients. Helping you to attract new customers who're interested in what you offer because we've nailed the visual design and usability.
+          <br />
+          <br />
+          I also wanted clients to be able to see independent feedback that would help them make the decision about who was best to help them achieve what they wanted for health, wellness & self-improvement.
+          <br />
+          <br />
+          <strong>
+            <blockquote />
+          </strong>
+          <p
+            id="clientMessage"
+          >
+            What we do matters to help people grow. For us to move forward as a society, individually and collectively, must always be growing and learning. This is how progress is made.
+          </p>
+          <br />
+          I've build a team around me to make sure that We are Us becomes the most reliable, professional place for clients and health and wellness professionals to come together. To keep evolving the We are Us platform as we go. Bringing a community to life.
+          <br />
+          <br />
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="bottom-padding teamSectionStyle container-margin-position container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-4"
+          id="team-column-padding"
+        >
+          <img
+            alt="about dan"
+            id="emp-frame"
+            src="team_dan_matthews.jpg"
+          />
+          <h4
+            id="name"
+          >
+            Dan Matthews
+          </h4>
+          <h4
+            id="role"
+          >
+            Creative Director
+          </h4>
+          <p
+            id="team-description"
+          >
+            We are Us is such a unique platform that I needed some special talents around. And Dan fits that brilliantly. He brings to We are Us international experience with branding projects including with My Food Bag, Te Uru and The Great Catering Company. Dan's also managed large-scale brand and design projects for Auckland Airport, New Zealand Trade and Enterprise and Te Wānanga o Aotearoa.
+            <br />
+            <br />
+            What does he do with all that experience? He makes sure that everything We are Us does connects with both health, wellness & self-improvement professionals and their clients. So your business can be presented in the best possible way.
+          </p>
+          <a
+            href="https://designcabin.co.nz"
+          >
+            designcabin.co.nz
+          </a>
+        </div>
+        <div
+          className="col-sm-4"
+          id="team-column-padding"
+        >
+          <img
+            alt="about walter"
+            id="emp-frame"
+            src="team_walter_rumbsy.jpg"
+          />
+          <h4
+            id="name"
+          >
+            Walter Rumbsy
+          </h4>
+          <h4
+            id="role"
+          >
+            Creative Director
+          </h4>
+          <p
+            id="team-description"
+          >
+            With all things online I needed a web developer that could support the incredible dreams I have for We are Us. I want to provide you with a service that's reliable, responsive and does what it says on the packet.
+            <br />
+            <br />
+            With a background with the big-names (Xero, Orion Health and My Food Bag) as a lead developer, head of engineering and front-end practice lead, Walt's our man. Most of what Walt does is totally beyond me but I do know that Walt makes all the behind-the-scenes code work to ensure that your experience is top notch and seamless for both practitioners and users.
+          </p>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-4"
+          id="team-column-padding"
+        >
+          <span
+            id="emp-frame"
+          />
+          <h4
+            id="name"
+          >
+            Katrin Pace
+          </h4>
+          <h4
+            id="role"
+          >
+            Copy Writer
+          </h4>
+          <p
+            id="team-description"
+          >
+            We are Us is such a unique platform that I needed some special talents around. And Dan fits that brilliantly. He brings to We are Us international experience with branding projects including with My Food Bag, Te Uru and The Great Catering Company. Dan's also managed large-scale brand and design projects for Auckland Airport. New Zealand Trade and Enterprise and Te Wananga o Aotearoa.
+            <br />
+            <br />
+            What does he do with all that experience? He makes sure that everything We are Us does connects with both health, wellness & self-improvement professionals and their clients. So your business can be presented in the best possible way.
+          </p>
+          <a
+            href="https://wordsforwellness.com"
+          >
+            wordsforwellness.com
+          </a>
+        </div>
+        <div
+          className="col-sm-4"
+          id="team-column-padding"
+        >
+          <span
+            id="emp-frame"
+          />
+          <h4
+            id="name"
+          >
+            Fraser Gardyne
+          </h4>
+          <h4
+            id="role"
+          >
+            Business Mentor
+          </h4>
+          <p
+            id="team-description"
+          >
+            Fraser has been invaluable in mentoring me through the whole process from when I first thought of We are Us through to building the plan and beyond. And I couldn't have hoped for a more qualified mentor. With a background in print and digital design, Fraser's been the judge in national and international design awards, so really knows what looks good. His contribution to New Zealand design was recognised in 2011 when he was awarded the prestigious Designers Institute Black Pin Award.
+          </p>
+          <a
+            href="https://gardyneholt.co.nz"
+          >
+            gardyneholt.co.nz
+          </a>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-4"
+          id="team-column-padding"
+        >
+          <span
+            id="emp-frame"
+          />
+          <h4
+            id="name"
+          >
+            Silverlane
+          </h4>
+          <h4
+            id="role"
+          >
+            Marketing
+          </h4>
+          <p
+            id="team-description"
+          >
+            These guys are based in Melbourne but I've been so wowed by the work that they do that we've teamed up with them so they can guide us in our marketing strategy. These guys are experts at what they do. Since 2012, Silverlane have advised over 700 businesses on digital and brand strategy. They've been able to draw some conclusions about what works and what really doesn't.
+          </p>
+          <a
+            href="https://silverlane.agency"
+          >
+            silverlane.agency
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="ctaStyle"
+    >
+      <div
+        className="ctaStyle-text container"
+      >
+        <div
+          className="row"
+        >
+          <h1
+            id="ctaTitle"
+          >
+            Practitioners, discover a refreshing new 
+            <br />
+            way to meet more clients.
+          </h1>
+        </div>
+        <div
+          className="row"
+        >
+          <p
+            id="ctaDesc"
+          >
+            Get in front of people who're looking for your help. Grow your business through 
+            <br />
+            the power of online word-of-mouth. Easily build a trusted, professional profile 
+            <br />
+            that showcases your skills to clients actively seeking your help.
+          </p>
+        </div>
+        <div
+          className="row"
+        >
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            <button
+              className="primaryCustomButtonStyle btn btn-primary"
+              disabled={false}
+              id="ctaButton"
+              type="button"
+            >
+              Join Us Now
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-6"
+        >
+          <p
+            id="ctaSignUp"
+          >
+            Sign up for We are Us news and special offers.
+          </p>
+        </div>
+        <div
+          className="col-sm-6"
+        >
+          <div
+            className="mb-3 input-group"
+          >
+            <input
+              className="form-control"
+              id="ctaSignUpForm"
+              placeholder="Enter your email"
+              type="text"
+            />
+            <div
+              className="input-group-append"
+            >
+              <button
+                className="btn btn-light"
+                disabled={false}
+                id="ctaSignUpFormSubmit"
+                type="button"
+              >
+                <img
+                  alt="Submit Button"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "subscribe_enter_arrow.svg",
+                    }
+                  }
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Contact Renders properly 1`] = `
+<div>
+  <div
+    className="contactUsPage"
+  >
+    <p
+      className="contactCTA"
+    >
+       
+      <strong>
+         Contact Us 
+      </strong>
+       
+    </p>
+    <p
+      className="contactText"
+    >
+       T +64 000 0000 
+      <br />
+       info@weareus.co.nz
+    </p>
+  </div>
+</div>
+`;
+
+exports[`For-Practitioners Page Renders properly 1`] = `
+<div>
+  <div
+    className="contactUsPage"
+  >
+    <p
+      className="contactCTA"
+    >
+       
+      <strong>
+         Contact Us 
+      </strong>
+       
+    </p>
+    <p
+      className="contactText"
+    >
+       T +64 000 0000 
+      <br />
+       info@weareus.co.nz
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Home Page Renders properly 1`] = `
+<div>
+  <nav
+    className="navBar2 navbar navbar-expand-lg navbar-light fixed-top"
+    style={
+      Object {
+        "backgroundColor": "transparent",
+      }
+    }
+  >
+    <a
+      className="navbar-brand"
+      href="/home"
+      onClick={[Function]}
+    >
+      <img
+        alt="we are us logo"
+        className="d-inline-block align-top"
+        src={
+          Object {
+            "ReactComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+            "__esModule": true,
+            "default": "we_are_us_logo_white.svg",
+          }
+        }
+      />
+    </a>
+    <button
+      aria-controls="responsive-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="justify-content-end navbar-collapse collapse"
+      id="responsive-navbar-nav"
+    >
+      <div
+        className="navBar2-links navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="navBar2Effect nav-link"
+          data-rb-event-key="/search"
+          href="/search"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          Search
+        </a>
+        <a
+          className="navBar2Effect nav-link"
+          data-rb-event-key="/about"
+          href="/about"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          About
+        </a>
+        <a
+          className="navBar2Effect nav-link"
+          data-rb-event-key="/for-practitioner"
+          href="/for-practitioner"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          For Practitioners
+        </a>
+        <a
+          className="navBar2Effect nav-link"
+          data-rb-event-key="/login"
+          href="/login"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          Login
+        </a>
+        <a
+          className="highlightNav2 nav-link"
+          data-rb-event-key="/register"
+          href="/register"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+        >
+          Register
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="pageHeader"
+  >
+    <div
+      className="pageHeader-text container"
+    >
+      <div
+        className="row"
+      >
+        <h1
+          id="headerTitle"
+        >
+          Discover a refreshing new 
+          <br />
+          way to attract more clients.
+        </h1>
+      </div>
+      <div
+        className="row"
+      >
+        <p
+          id="headerDesc"
+        >
+          We Are Us. An exciting new platform to grow your 
+          <br />
+          health, wellness and self-improvement business.
+        </p>
+      </div>
+      <div
+        className="row"
+      >
+        <a
+          href="/for-practitioner"
+          onClick={[Function]}
+        >
+          <button
+            className="primaryCustomButtonStyle btn btn-primary"
+            disabled={false}
+            id="headerButton"
+            type="button"
+          >
+            Learn More
+          </button>
+        </a>
+      </div>
+    </div>
+    <img
+      alt="practitioners-header"
+      id="scrollDownButton"
+      onClick={[Function]}
+      src={
+        Object {
+          "ReactComponent": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "__esModule": true,
+          "default": "menu_arrow_white.svg",
+        }
+      }
+    />
+  </div>
+  <p
+    className="motdStyle"
+  >
+    <strong>
+      We are Us
+    </strong>
+     connects you with health, wellness, and self-improvement 
+    <br />
+     practitioners throughout New Zealand.
+  </p>
+  <div
+    className="newPracContainerStyle container-fluid"
+  >
+    <div
+      className="newPracListStyle container"
+    >
+      <h4>
+        New Listed Practicioners
+      </h4>
+      <div
+        className="card-deck"
+      >
+        <div
+          className="newPracCardStyle card"
+        >
+          <img
+            className="card-img-top"
+            src="listing_placeholder_1.jpg"
+          />
+          <div
+            className="card-img-overlay"
+          >
+            <span
+              id="newPracCardType"
+            >
+              Massage, Reiki
+            </span>
+          </div>
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Walk In Light
+            </div>
+            <div
+              className="mb-4 text-muted card-subtitle h6"
+            >
+              Albany, Auckland
+            </div>
+            <p
+              className="card-text"
+            >
+              
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+ do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div
+          className="newPracCardStyle card"
+        >
+          <img
+            className="card-img-top"
+            src="listing_placeholder_2.jpg"
+          />
+          <div
+            className="card-img-overlay"
+          >
+            <span
+              id="newPracCardType"
+            >
+              Massage, Reiki
+            </span>
+          </div>
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Infinite Well Being
+            </div>
+            <div
+              className="mb-4 text-muted card-subtitle h6"
+            >
+              Albany, Auckland
+            </div>
+            <p
+              className="card-text"
+            >
+              
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+ do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div
+          className="newPracCardStyle card"
+        >
+          <img
+            className="card-img-top"
+            src="listing_placeholder_3.jpg"
+          />
+          <div
+            className="card-img-overlay"
+          >
+            <span
+              id="newPracCardType"
+            >
+              Herbal Medicine, Massage, Reiki
+            </span>
+          </div>
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Judith Yasnik
+            </div>
+            <div
+              className="mb-4 text-muted card-subtitle h6"
+            >
+              Albany, Auckland
+            </div>
+            <p
+              className="card-text"
+            >
+              
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+ do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+      </div>
+      <br />
+      <a
+        href="/practitioner-list"
+        onClick={[Function]}
+      >
+        Show All (5)
+      </a>
+    </div>
+  </div>
+  <div
+    className="searchFieldContainer container-fluid"
+  >
+    <div
+      className="container"
+    >
+      <form
+        className="searchFieldStyle"
+        onSubmit={[Function]}
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col"
+          >
+            <h3>
+              Search Practitioners
+            </h3>
+          </div>
+        </div>
+        <div
+          className="rowSearchFieldStyle row"
+        >
+          <div
+            className="col-sm-4"
+          >
+            <div
+              className="form-group"
+            >
+              <div
+                className="input-group"
+              >
+                <div
+                  className="input-group-prepend"
+                >
+                  <span
+                    className="input-group-text"
+                    id="searchFieldIcon"
+                  >
+                    <img
+                      alt="search icon"
+                      src={
+                        Object {
+                          "ReactComponent": Object {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "render": [Function],
+                          },
+                          "__esModule": true,
+                          "default": "search_icon.svg",
+                        }
+                      }
+                    />
+                  </span>
+                </div>
+                <input
+                  className="form-control"
+                  id="searchPractitionerName"
+                  onChange={[Function]}
+                  placeholder="Search Practitioners"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-sm-3"
+          >
+            <div
+              className="dropdown"
+              onKeyDown={[Function]}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="dropdown-toggle btn btn-primary"
+                disabled={false}
+                id="therapyTypeButton"
+                onClick={[Function]}
+                type="button"
+              >
+                <h6>
+                  Therapy Type
+                </h6>
+                <img
+                  alt="Therapy Type Accordion Arrow"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "menu_arrow_white.svg",
+                    }
+                  }
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            className="col-sm-3"
+          >
+            <div
+              className="dropdown"
+              onKeyDown={[Function]}
+            >
+              <button
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="dropdown-toggle btn btn-primary"
+                disabled={false}
+                id="regionButton"
+                onClick={[Function]}
+                type="button"
+              >
+                <h6>
+                  Region
+                </h6>
+                <img
+                  alt="Region Accordion Arrow"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "menu_arrow_white.svg",
+                    }
+                  }
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            className="col-sm-2"
+          >
+            <a
+              href="/results?company_name=&service_name=&region_name="
+              onClick={[Function]}
+            >
+              <button
+                className="primaryCustomButtonStyle btn btn-primary"
+                disabled={false}
+                id="searchFieldButton"
+                type="submit"
+              >
+                Search
+              </button>
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    className="pracContainerStyle container-fluid"
+    style={
+      Object {
+        "backgroundColor": "#F3F1F3",
+      }
+    }
+  >
+    <div
+      className="pracListStyle container"
+    >
+      <h4>
+        Practitioners
+      </h4>
+      <div
+        className="pracListDeckStyle card-deck"
+      >
+        <div>
+          <div
+            className="row"
+          />
+          <div
+            className="row"
+          />
+        </div>
+      </div>
+      <br />
+      <a
+        href="/practitioner-list"
+        onClick={[Function]}
+      >
+        Show All (
+        0
+        )
+      </a>
+    </div>
+  </div>
+  <div>
+    <div
+      className="ctaStyle"
+    >
+      <div
+        className="ctaStyle-text container"
+      >
+        <div
+          className="row"
+        >
+          <h1
+            id="ctaTitle"
+          >
+            Practitioners, discover a refreshing new 
+            <br />
+            way to meet more clients.
+          </h1>
+        </div>
+        <div
+          className="row"
+        >
+          <p
+            id="ctaDesc"
+          >
+            Get in front of people who're looking for your help. Grow your business through 
+            <br />
+            the power of online word-of-mouth. Easily build a trusted, professional profile 
+            <br />
+            that showcases your skills to clients actively seeking your help.
+          </p>
+        </div>
+        <div
+          className="row"
+        >
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            <button
+              className="primaryCustomButtonStyle btn btn-primary"
+              disabled={false}
+              id="ctaButton"
+              type="button"
+            >
+              Join Us Now
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-6"
+        >
+          <p
+            id="ctaSignUp"
+          >
+            Sign up for We are Us news and special offers.
+          </p>
+        </div>
+        <div
+          className="col-sm-6"
+        >
+          <div
+            className="mb-3 input-group"
+          >
+            <input
+              className="form-control"
+              id="ctaSignUpForm"
+              placeholder="Enter your email"
+              type="text"
+            />
+            <div
+              className="input-group-append"
+            >
+              <button
+                className="btn btn-light"
+                disabled={false}
+                id="ctaSignUpFormSubmit"
+                type="button"
+              >
+                <img
+                  alt="Submit Button"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "subscribe_enter_arrow.svg",
+                    }
+                  }
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Login Page Renders properly 1`] = `
+<div>
+  <div
+    className="loginFormStyle container"
+  >
+    <h2>
+      Login
+    </h2>
+    <form
+      className=""
+      onSubmit={[Function]}
+    >
+      <span>
+        Need a We are Us account?
+         
+        <a
+          href="/register"
+          onClick={[Function]}
+        >
+          <u>
+            Register
+          </u>
+        </a>
+      </span>
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+          htmlFor="email"
+        >
+          Username or Email
+        </label>
+        <input
+          className="form-control"
+          id="email"
+          onChange={[Function]}
+          placeholder="Your Username"
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+          htmlFor="password"
+        >
+          Password
+        </label>
+        <input
+          className="form-control"
+          id="password"
+          onChange={[Function]}
+          placeholder="Your Password"
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-6"
+        >
+          <div
+            className="form-group"
+          >
+            <div
+              className="form-check"
+            >
+              <input
+                className="form-check-input"
+                disabled={false}
+                id="rememberMeCheckBox"
+                type="checkbox"
+              />
+              <label
+                className="form-check-label"
+                htmlFor="rememberMeCheckBox"
+                title=""
+              >
+                Remember Me
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="col-sm-6"
+        >
+          <u
+            id="forgetPassword"
+            onClick={[Function]}
+          >
+            Forgot Your Password
+          </u>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-5"
+        >
+          <button
+            className="primaryCustomButtonStyle btn btn-primary"
+            disabled={false}
+            id="loginFormButton"
+            type="submit"
+          >
+            Log In
+          </button>
+        </div>
+        <div
+          className="col"
+        >
+          <div
+            className="fb-login-button"
+            data-auto-logout-link="true"
+            data-button-type="continue_with"
+            data-layout="default"
+            data-onsuccess={[Function]}
+            data-size="large"
+            data-use-continue-as="false"
+            data-width=""
+          />
+        </div>
+        <div
+          className="col"
+        >
+          <button
+            disabled={true}
+            onClick={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#fff",
+                "border": "1px solid transparent",
+                "borderRadius": 2,
+                "boxShadow": "0 2px 2px 0 rgba(0, 0, 0, .24), 0 0 1px 0 rgba(0, 0, 0, .24)",
+                "color": "rgba(0, 0, 0, .54)",
+                "display": "inline-flex",
+                "fontFamily": "Roboto, sans-serif",
+                "fontSize": 14,
+                "fontWeight": "500",
+                "opacity": 0.6,
+                "padding": 0,
+              }
+            }
+            type="button"
+          >
+            <div
+              style={
+                Object {
+                  "background": "#fff",
+                  "borderRadius": 2,
+                  "marginRight": 10,
+                  "padding": 10,
+                }
+              }
+            >
+              <svg
+                height="18"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g
+                  fill="#000"
+                  fillRule="evenodd"
+                >
+                  <path
+                    d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z"
+                    fill="#EA4335"
+                  />
+                  <path
+                    d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M0 0h18v18H0z"
+                    fill="none"
+                  />
+                </g>
+              </svg>
+            </div>
+            <span
+              style={
+                Object {
+                  "fontWeight": 500,
+                  "paddingBottom": 10,
+                  "paddingLeft": 0,
+                  "paddingRight": 10,
+                  "paddingTop": 10,
+                }
+              }
+            >
+              Login
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Practitioner List Page Renders properly 1`] = `
+<div
+  className="practitionerList mt-5"
+>
+  <div
+    className="pracContainerStyle container-fluid"
+    style={
+      Object {
+        "backgroundColor": "white",
+      }
+    }
+  >
+    <div
+      className="pracListStyle container"
+    >
+      <h4>
+        Practitioners
+      </h4>
+      <div
+        className="pracListDeckStyle card-deck"
+      >
+        <div
+          className="row"
+        />
+      </div>
+      <br />
+    </div>
+  </div>
+  <div>
+    <div
+      className="ctaStyle"
+    >
+      <div
+        className="ctaStyle-text container"
+      >
+        <div
+          className="row"
+        >
+          <h1
+            id="ctaTitle"
+          >
+            Practitioners, discover a refreshing new 
+            <br />
+            way to meet more clients.
+          </h1>
+        </div>
+        <div
+          className="row"
+        >
+          <p
+            id="ctaDesc"
+          >
+            Get in front of people who're looking for your help. Grow your business through 
+            <br />
+            the power of online word-of-mouth. Easily build a trusted, professional profile 
+            <br />
+            that showcases your skills to clients actively seeking your help.
+          </p>
+        </div>
+        <div
+          className="row"
+        >
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            <button
+              className="primaryCustomButtonStyle btn btn-primary"
+              disabled={false}
+              id="ctaButton"
+              type="button"
+            >
+              Join Us Now
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-6"
+        >
+          <p
+            id="ctaSignUp"
+          >
+            Sign up for We are Us news and special offers.
+          </p>
+        </div>
+        <div
+          className="col-sm-6"
+        >
+          <div
+            className="mb-3 input-group"
+          >
+            <input
+              className="form-control"
+              id="ctaSignUpForm"
+              placeholder="Enter your email"
+              type="text"
+            />
+            <div
+              className="input-group-append"
+            >
+              <button
+                className="btn btn-light"
+                disabled={false}
+                id="ctaSignUpFormSubmit"
+                type="button"
+              >
+                <img
+                  alt="Submit Button"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "subscribe_enter_arrow.svg",
+                    }
+                  }
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Practitioner Profile Renders properly 1`] = `
+<div
+  className="practitionerPage"
+>
+  <div>
+    <div
+      autoPlay={true}
+      className="pracPersonalCarousel carousel slide"
+      onKeyDown={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+    >
+      <ol
+        className="carousel-indicators"
+      >
+        <li
+          className="active"
+          onClick={[Function]}
+        />
+        <li
+          onClick={[Function]}
+        />
+        <li
+          onClick={[Function]}
+        />
+      </ol>
+      <div
+        className="carousel-inner"
+      >
+        <div
+          className="active carousel-item"
+        >
+          <img
+            alt="First slide"
+            className="carousel-img-margin"
+            src="prac_image_carousel_placeholder.jpg"
+          />
+        </div>
+        <div
+          className="carousel-item"
+        >
+          <img
+            alt="second slide"
+            className="carousel-img-margin"
+            src="prac_image_carousel_placeholder.jpg"
+          />
+        </div>
+        <div
+          className="carousel-item"
+        >
+          <img
+            alt="third slide"
+            className="carousel-img-margin"
+            src="prac_image_carousel_placeholder.jpg"
+          />
+        </div>
+      </div>
+      <a
+        className="carousel-control-prev"
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+      >
+        <span
+          aria-hidden="true"
+          className="carousel-control-prev-icon"
+        />
+        <span
+          className="sr-only"
+        >
+          Previous
+        </span>
+      </a>
+      <a
+        className="carousel-control-next"
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+      >
+        <span
+          aria-hidden="true"
+          className="carousel-control-next-icon"
+        />
+        <span
+          className="sr-only"
+        >
+          Next
+        </span>
+      </a>
+    </div>
+  </div>
+  <div
+    className="container-dimensions container-fluid"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="no-padding col-lg-8"
+      >
+        <img
+          alt="profile image"
+          id="profile-image-frame"
+          src="prac_profile_placeholder.jpg"
+        />
+        <h2
+          className="practitioner-title"
+          id="practitioner-name"
+        >
+          Atma Studio Yoga
+          <img
+            alt="logo"
+            class="practitioner-logo"
+            src="prac_logo_placeholder.jpg"
+          />
+        </h2>
+        <div
+          id="category"
+        >
+          <span
+            id="category-text"
+          >
+            Herbal Medicine, Massage, Reiki
+          </span>
+        </div>
+        <div
+          id="location"
+        >
+          <span
+            id="suburb"
+          >
+            Albany, 
+          </span>
+          <span
+            id="city"
+          >
+             Auckland
+          </span>
+        </div>
+        <br />
+        <br />
+        <p
+          className="box"
+        >
+          Covered by ACC
+        </p>
+        <h5
+          className="practitioner-name"
+          id="person-name"
+        >
+          Name
+        </h5>
+      </div>
+      <div
+        className="contact-card-column col-lg-4"
+      >
+        <div
+          className="contact-card-box card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              Contact Details
+            </div>
+            <div
+              className="card-subtitle h6"
+            >
+              Atma Studio Yoga
+            </div>
+            <p
+              className="card-text"
+            >
+              Name
+              <br />
+              184 Beech Road, Diary Flat,
+              <br />
+              RD4 Albany, Auckland 0794
+              <hr />
+              <h5
+                id="purple-card-heading"
+              >
+                +64 (0)21 754 459
+              </h5>
+              <hr />
+              <h5
+                id="purple-card-heading"
+              >
+                gill@sbsltd.co.nz
+              </h5>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="no-padding col-lg-8"
+      >
+        <div
+          className="practitioner-description-card card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="card-title h5"
+            >
+              About
+            </div>
+            <p
+              className="card-text"
+            >
+              <div
+                class="inner"
+                style={
+                  Object {
+                    "maxHeight": 500,
+                  }
+                }
+              >
+                Understanding your body's responses and tension patterns can help you understand the conscious choices you make and puts you back in charge of your own well-being. Experience day-to-day life in a positive, enjoyable and empowered way. Using the nurtured touch of Reflexology, positive reinforcement, sharing of knowledge, lifestyle support and a deep understanding of how the nervous system works I can help you achieve and maintain the best physical, mental and emotional energy.
+                Understanding your body's responses and tension patterns can help you understand the conscious choices you make and puts you back in charge of your own well-being. Experience day-to-day life in a positive, enjoyable and empowered way. Using the nurtured touch of Reflexology, positive reinforcement, sharing of knowledge, lifestyle support and a deep understanding of how the nervous system works I can help you achieve and maintain the best physical, mental and emotional energy.
+              </div>
+            </p>
+          </div>
+        </div>
+        <div
+          className="accordion-section container-fluid"
+        >
+          <div
+            className="accordion"
+            defaultAtionKey="0"
+          >
+            <div
+              className="card"
+            >
+              <div
+                className="card-header"
+                onClick={[Function]}
+              >
+                Specialties
+                <img
+                  className="arrow-position"
+                  src="accordion_arrow.svg"
+                />
+              </div>
+              <div
+                aria-expanded={null}
+                className="collapse"
+              >
+                <div
+                  className="card-body"
+                >
+                  <ul
+                    className="accordion-content-list-style"
+                  >
+                    <li>
+                      <h5>
+                        Item 1
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        Item 1
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        Item 1
+                      </h5>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <div
+                className="card-header"
+                onClick={[Function]}
+              >
+                Services
+                <img
+                  className="arrow-position"
+                  src="accordion_arrow.svg"
+                />
+              </div>
+              <div
+                aria-expanded={null}
+                className="collapse"
+              >
+                <div
+                  className="card-body"
+                >
+                  <ul
+                    className="accordion-content-list-style"
+                    id="services"
+                  >
+                    <li>
+                      <h5>
+                        Reflexology
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        Reiki
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        Metamorphosis
+                      </h5>
+                    </li>
+                    <li>
+                      <h5>
+                        Energy Balance
+                      </h5>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <div
+                className="card-header"
+                onClick={[Function]}
+              >
+                Training, Qualifications & Memberships
+                <img
+                  className="arrow-position"
+                  src="accordion_arrow.svg"
+                />
+              </div>
+              <div
+                aria-expanded={null}
+                className="collapse"
+              >
+                <div
+                  className="card-body"
+                >
+                  <h6
+                    className="title-header"
+                  >
+                    <img
+                      src="icon_diploma.svg"
+                      style={
+                        Object {
+                          "paddingRight": "5px",
+                        }
+                      }
+                    />
+                    Diplomas
+                  </h6>
+                  <div
+                    className="font-body"
+                    id="education"
+                  >
+                    <span>
+                      International Institute of Reflexology
+                    </span>
+                    <br />
+                    <span>
+                      Level 4 Anatomy & Physiology/Pathology (3 yrs)
+                    </span>
+                    <br />
+                    <br />
+                  </div>
+                  <h6
+                    className="title-header"
+                  >
+                    <img
+                      src="icon_certificate.svg"
+                      style={
+                        Object {
+                          "paddingRight": "5px",
+                        }
+                      }
+                    />
+                    Certificates
+                  </h6>
+                  <ul
+                    className="training-accordion-body-font"
+                  >
+                    <li>
+                      How Reflexology Helps with Conception, Pregnancy & Childbirth (3 yrs)
+                    </li>
+                    <li>
+                      Reflexology for the Me | Patient Cert
+                    </li>
+                    <li>
+                      How Reflexology helps Cancer
+                    </li>
+                    <li>
+                      Coastal Paramedic
+                    </li>
+                    <li>
+                      Current First Aid
+                    </li>
+                  </ul>
+                  <br />
+                  <h6
+                    className="title-header"
+                  >
+                    <img
+                      src="icon_memberships.svg"
+                      style={
+                        Object {
+                          "paddingRight": "5px",
+                        }
+                      }
+                    />
+                    Memberships
+                  </h6>
+                  <div
+                    className="font-body"
+                    id="memberships"
+                  >
+                    <a
+                      id="membership-no-link"
+                    >
+                      Reflexology Institute New Zealand
+                    </a>
+                    <br />
+                    <a
+                      href=""
+                      id="membership-link"
+                      style={
+                        Object {
+                          "color": "#79158f",
+                        }
+                      }
+                    >
+                      <u>
+                        National Health Practitioners of New Zealand
+                      </u>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="ctaStyle"
+    >
+      <div
+        className="ctaStyle-text container"
+      >
+        <div
+          className="row"
+        >
+          <h1
+            id="ctaTitle"
+          >
+            Practitioners, discover a refreshing new 
+            <br />
+            way to meet more clients.
+          </h1>
+        </div>
+        <div
+          className="row"
+        >
+          <p
+            id="ctaDesc"
+          >
+            Get in front of people who're looking for your help. Grow your business through 
+            <br />
+            the power of online word-of-mouth. Easily build a trusted, professional profile 
+            <br />
+            that showcases your skills to clients actively seeking your help.
+          </p>
+        </div>
+        <div
+          className="row"
+        >
+          <a
+            href="/register"
+            onClick={[Function]}
+          >
+            <button
+              className="primaryCustomButtonStyle btn btn-primary"
+              disabled={false}
+              id="ctaButton"
+              type="button"
+            >
+              Join Us Now
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-sm-6"
+        >
+          <p
+            id="ctaSignUp"
+          >
+            Sign up for We are Us news and special offers.
+          </p>
+        </div>
+        <div
+          className="col-sm-6"
+        >
+          <div
+            className="mb-3 input-group"
+          >
+            <input
+              className="form-control"
+              id="ctaSignUpForm"
+              placeholder="Enter your email"
+              type="text"
+            />
+            <div
+              className="input-group-append"
+            >
+              <button
+                className="btn btn-light"
+                disabled={false}
+                id="ctaSignUpFormSubmit"
+                type="button"
+              >
+                <img
+                  alt="Submit Button"
+                  src={
+                    Object {
+                      "ReactComponent": Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "render": [Function],
+                      },
+                      "__esModule": true,
+                      "default": "subscribe_enter_arrow.svg",
+                    }
+                  }
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
