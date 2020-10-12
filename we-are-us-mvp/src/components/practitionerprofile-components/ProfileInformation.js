@@ -6,7 +6,6 @@ import icon_memberships from "../../assets/icons/icon_memberships.svg";
 import icon_accordion_arrow from "../../assets/icons/accordion_arrow.svg";
 import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
 import ContactCard from "./ContactCard";
-// import ContactCard from "../for-profile-components/ContactCard";
 import ExpendableText from "./ExpendableText";
 import api from "../../api/api";
 
@@ -31,10 +30,13 @@ class ProfileInformation extends React.Component {
       this.setState({
         onlySpecialist: specialistResponse.data,
       });
+    console.log(this.props);
+    console.log(specialistResponse);
   };
 
   componentDidMount() {
     this._isMounted = true;
+    this._isMounted && this.getSpecialistDetails();
   }
 
   componentWillUnmount() {
@@ -62,7 +64,7 @@ class ProfileInformation extends React.Component {
             {/* Practitioner Profile Image */}
             {/* <img
               alt="practitioner-profile"
-              src={require("../../assets/images/placeholders/{this.onlySpecialist.specialist_logo.jpg}")}
+              src={this.onlySpecialist.profile_image_url}
               id="profile-image-frame"
             /> */}
 
@@ -71,37 +73,34 @@ class ProfileInformation extends React.Component {
               {this.props.company_name}
               {/* Practitioner Business Logo Image */}
               <img
-                src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
+                src={this.props.logo}
                 alt="logo"
                 className="practitioner-logo"
               />
-              {/* Practitioner Business Logo Image */}
-              {/* <img
-                src={require("../../assets/images/placeholders/{this.props.logo}}.jpg")}
-                alt="logo"
-                className="practitioner-logo"
-              /> */}
             </h2>
             {/* Practitioner Specialty Category/ies */}
             <div id="category">
               <span id="category-text">
                 {this.state.onlySpecialist.specialty &&
-                  this.state.onlySpecialist.specialty.map((service, index) => {
-                    return (
-                      <span key={service.service_id}>
-                        {index < this.state.onlySpecialist.specialty.length - 1
-                          ? service.service_name + ", "
-                          : service.service_name}
-                      </span>
-                    );
-                  })}
+                  this.state.onlySpecialist.specialty.map(
+                    (specialty, index) => {
+                      return (
+                        <span key={specialty.specialty_id}>
+                          {index <
+                          this.state.onlySpecialist.specialty.length - 1
+                            ? specialty.specialty_name + ", "
+                            : specialty.specialty_name}
+                        </span>
+                      );
+                    }
+                  )}
               </span>
             </div>
 
             {/* Location including Suburb and City*/}
             <div id="location">
-              <span id="suburb">{this.props.suburb},</span>
-              <span id="city"> {this.props.city}</span>
+              <span id="suburb-profile">{this.props.suburb},</span>
+              <span id="city-profile"> {this.props.city}</span>
             </div>
             <br />
             {this.props.accreditations &&
@@ -116,8 +115,8 @@ class ProfileInformation extends React.Component {
                 );
               })}
             <h5 className="practitioner-name" id="person-name">
-              {this.state.onlySpecialist.specialist_first_name}{" "}
-              {this.state.onlySpecialist.specialist_last_name}
+              {this.state.onlySpecialist.first_name}{" "}
+              {this.state.onlySpecialist.last_name}
             </h5>
           </Col>
           {/* Contact card column */}
@@ -170,10 +169,10 @@ class ProfileInformation extends React.Component {
                       <ul className="accordion-content-list-style">
                         {this.state.onlySpecialist.specialty &&
                           this.state.onlySpecialist.specialty.map(
-                            (service, index) => {
+                            (specialty, index) => {
                               return (
-                                <li key={`${index}-${service.service_id}`}>
-                                  <h5>{service.service_name}</h5>
+                                <li key={`${index}-${specialty.specialty_id}`}>
+                                  <h5>{specialty.specialty_name}</h5>
                                 </li>
                               );
                             }
@@ -303,7 +302,7 @@ class ProfileInformation extends React.Component {
                                     <a
                                       href={`${training.website}`}
                                       style={{ color: "#79158f" }}
-                                      id="membership-link"
+                                      className="membership-link"
                                     >
                                       <u>{training.membership_name}</u>
                                     </a>
