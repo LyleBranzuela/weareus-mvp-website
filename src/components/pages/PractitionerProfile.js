@@ -54,7 +54,6 @@ class PractitionerProfile extends React.Component {
         cover_images: practitionerResponse.data.cover_images,
         reviews: practitionerResponse.data.reviews,
       });
-    console.log(this.state);
   };
 
   componentDidMount() {
