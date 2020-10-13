@@ -26,8 +26,8 @@ class HomePage extends React.Component {
 
   // Function to Get All The Practitioners from the Server
   getAllPractitioners = async () => {
-    const practitionerResponse = await api.get("/companies");
-    const newPracResponse = await api.get("/new-companies");
+    const practitionerResponse = await api.get("/company");
+    const newPracResponse = await api.get("/company/?getNewCompanies=true");
 
     // Setting the Services and Regions States
     this._isMounted &&

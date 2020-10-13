@@ -14,7 +14,7 @@ class PractitionerListPage extends React.Component {
 
   // Function to Get All The Practitioners from the Server
   getAllPractitioners = async () => {
-    const practitionerResponse = await api.get("/companies");
+    const practitionerResponse = await api.get("/company");
     // Setting the Services and Regions States
     this._isMounted &&
       this.setState({

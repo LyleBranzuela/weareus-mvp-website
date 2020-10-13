@@ -92,24 +92,17 @@ function facebookSignInCallBack() {
 }
 
 // Function to Authenticate Users in AWS Cognito
-const authenticate = async (Username, Password) => {
-  await new Promise((resolve, reject) => {
+const authenticate = (Username, Password) => {
+  return new Promise((resolve, reject) => {
     const user = new CognitoUser({ Username, Pool: UserPool });
     const authDetails = new AuthenticationDetails({ Username, Password });
 
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
-        // Succesfully Authenticated the User
-        swal({
-          title: "Successfully Authenticated!",
-          text: "Your account has been successfully authenticated.",
-          icon: "success",
-          buttons: [false, true],
-        });
         resolve(data);
       },
-
       onFailure: (err) => {
+        console.log("Authenticate User Error" + err);
         // Problems in Authentication
         swal({
           title: "Authentication Error!",
@@ -120,6 +113,7 @@ const authenticate = async (Username, Password) => {
         reject(err);
       },
       newPasswordRequired: (data) => {
+        console.log(data);
         swal({
           title: "New Password Required!",
           icon: "error",
@@ -275,7 +269,7 @@ const resetPasswordModal = () => {
 };
 
 // Asks for a Cognito User and Render the Modal
-const AccountVerificationModal = (currentUser, redirectPage) => {
+const AccountVerificationModal = (currentUser) => {
   function renderModal(user) {
     return swal({
       title: "Account Verification",
@@ -296,7 +290,6 @@ const AccountVerificationModal = (currentUser, redirectPage) => {
       closeOnClickOutside: false,
       closeOnEsc: false,
     }).then((valueData) => {
-      console.log(user);
       switch (valueData) {
         // When Resend Code Button is Pressed - Resend the Verification Code to the Email
         case "resendCode":
@@ -359,10 +352,6 @@ const AccountVerificationModal = (currentUser, redirectPage) => {
                   text: "Account is now verified, and can be logged in.",
                   icon: "success",
                   buttons: [false, true],
-                }).then((value) => {
-                  if (redirectPage) {
-                    window.location = redirectPage;
-                  }
                 });
               }
             });

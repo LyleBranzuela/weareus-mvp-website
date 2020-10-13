@@ -1,4 +1,4 @@
-import "./Error404Page.css";
+import "./ErrorPage.css";
 import React from "react";
 
 class Error404Page extends React.Component {

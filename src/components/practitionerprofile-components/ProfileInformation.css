@@ -94,13 +94,22 @@
   color: #5b5b5b;
 }
 
+.membership-link u {
+  color: #79158f;
+}
+
+.membership-link u:hover {
+  color: #b823dad3;
+}
+
 #category-text {
   color: #79158f;
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
 }
-#suburb,
-#city {
+
+#suburb-profile,
+#city-profile {
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;

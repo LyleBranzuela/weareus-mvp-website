@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import NavigationBar from "./general-components/NavigationBar";
 import Footer from "./general-components/Footer";
 import ScrollToTop from "./general-components/ScrollToTop";
@@ -18,20 +20,23 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import PracticeProfile from "./pages/PracticeProfilePage";
-
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import Error500Page from "./general-components/Error500Page";
+// import PracticeProfile from "./pages/PracticeProfilePage";
 
 function App() {
   // Returns the location object that represents the current URL
   const location = useLocation();
+  let isLoggedIn = useSelector((state) => state.userReducer.isLoggedIn);
+  let user_information = useSelector(
+    (state) => state.userReducer.user_information
+  );
 
-  //
+  // All The Default Pages
   const DefaultPages = () => (
     <div>
       {/* Scrolls To The Top Everytime they navigate through the routes */}
       <NavigationBar />
-      {/* Single Page Website Routings (AnimatePresence for Transition Animations)*/}
+      {/* Single Page Website Routings */}
       <Switch location={location} key={location.pathname}>
         {/* General Pages */}
         <Route path="/search" component={SearchPage} />
@@ -44,27 +49,90 @@ function App() {
         />
         <Route path="/contact-us" component={ContactUsPage} />
 
-        {/* Register-Login Pages */}
-        <Route path="/login" component={LoginPage} />
-        <Route path="/membership-form" component={MembershipForm} />
-        <Route path="/register" component={RegisterPage} />
-        <Route path="/register-user" component={UserRegister} />
-        <Route
-          path={`/register-practitioner`}
-          component={PractitionerRegister}
-        />
-        <Route path={`/profile-setup`} component={ProfileSetup} />
-
         {/* Practitioner Related Pages */}
         <Route path="/practitioner-list" component={PractitionerListPage} />
-        <Route path="/practitioner-profile/:company_id" component={PractitionerProfile} />
-        <Route path="/practice-profile" component={PracticeProfile}/>
+        <Route
+          path="/practitioner-profile/:company_id"
+          component={PractitionerProfile}
+        />
         <Route exact path={["/index.html", "/"]}>
           <Redirect to="/home" />
         </Route>
-        <Route path="" component={Error404Page} />
+
+        {/* Register-Login Pages */}
+        <Route
+          path="/login"
+          render={(props) =>
+            !isLoggedIn ? <LoginPage {...props} /> : <Redirect to="/home" />
+          }
+        />
+        <Route
+          path="/register"
+          render={(props) =>
+            !isLoggedIn ? <RegisterPage {...props} /> : <Redirect to="/home" />
+          }
+        />
+        <Route
+          path="/register-user"
+          render={(props) =>
+            !isLoggedIn ? <UserRegister {...props} /> : <Redirect to="/home" />
+          }
+        />
+        <Route
+          path="/register-practitioner"
+          render={(props) =>
+            !isLoggedIn ||
+            (isLoggedIn && user_information.user_type === "user") ? (
+              <PractitionerRegister {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        <Route
+          path="/membership-form"
+          render={(props) =>
+            !isLoggedIn ||
+            (isLoggedIn && user_information.user_type === "user") ? (
+              <MembershipForm {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        <Route
+          path="/profile-setup"
+          render={(props) =>
+            isLoggedIn && user_information.user_type === "practitioner" ? (
+              <ProfileSetup {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        {/* <Route
+          path="/edit-profile"
+          render={(props) =>
+            isLoggedIn &&
+            (user_information.user_type === "practitioner" ||
+              user_information.user_type === "admin") ? (
+              <EditProfile {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        />
+        <Route
+          path="/finances"
+          render={(props) =>
+            isLoggedIn && user_information.user_type === "practitioner" ? (
+              <FinancesPage {...props} />
+            ) : (
+              <Redirect to="/home" />
+            )
+          }
+        /> */}
       </Switch>
-      {/* </AnimatePresence> */}
     </div>
   );
 
@@ -85,10 +153,12 @@ function App() {
         <Switch location={location} key={location.pathname}>
           <Route component={NoNavPages} />
           <Route component={DefaultPages} />
+          <Route path="" component={Error404Page} />
         </Switch>
       </Route>
       <Footer />
     </ScrollToTop>
   );
 }
+
 export default App;

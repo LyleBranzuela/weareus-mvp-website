@@ -5,10 +5,47 @@ import { Container, Row, Col, Accordion, Card } from "react-bootstrap";
 import OurSpecialists from "./OurSpecialists";
 import ContactCard from "../for-profile-components/ContactCard";
 import ExpendableText from "../for-profile-components/ExpendableText";
-
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import Geocode from "react-geocode";
 
 class PracticeProfileInfo extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      latitude: "",
+      longitude: "",
+    };
+  }
+
+  componentDidMount() {
+
+    Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
+
+    const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010"; //Replace this with dynamic address
+
+    Geocode.fromAddress(testAddress).then(
+      response => {
+        const { latResult, lngResult } = response.results[0].geometry.location;
+        this.setState({
+          latitude: latResult,
+          longitude: lngResult
+        })
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  }
+
+
   render() {
+    const mapStyles = {
+      width: '100%',
+      height: '400px',
+    };
+
+
+
     return (
       <Container fluid className="container-dimensions">
         <Row>
@@ -37,7 +74,7 @@ class PracticeProfileInfo extends React.Component {
               <span id="city"> Auckland</span>
             </div>
             <br />
-    
+
             <p id="covered-by-box">Covered by ACC</p>
           </Col>
 
@@ -117,14 +154,30 @@ class PracticeProfileInfo extends React.Component {
                 </Card>
 
                 {/* Google map */}
-                <Card>
-                  <Accordion.Toggle as={Card.Header} eventKey="1">
+                <Card style={{ height: '40em' }}>
+                  <Accordion.Toggle as={Card.Header} eventKey="2">
                     Location
                     <img
                       src={icon_accordion_arrow}
                       className="arrow-position"
                     ></img>
+
                   </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="2">
+                    <Card.Body>
+
+                      <Map
+                        google={this.props.google}
+                        zoom={15}
+                        style={mapStyles}
+                        initialCenter={{ lat: this.state.latitude, lng: this.state.longitude }}
+                      >
+                        <Marker position={{ lat: this.state.latitude, lng: this.state.longitude }}
+                          icon={{ url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png" }} />
+                      </Map>
+
+                    </Card.Body>
+                  </Accordion.Collapse>
                 </Card>
                 {/* Google map */}
 
@@ -136,10 +189,10 @@ class PracticeProfileInfo extends React.Component {
             <OurSpecialists></OurSpecialists>
           </Col>
         </Row>
-        <br/>
+        <br />
       </Container>
     );
   }
 }
 
-export default PracticeProfileInfo;
+export default GoogleApiWrapper({ apiKey: 'AIzaSyDrL-6gCrk9OQ_3l1k7BxAOPXcUIfU2xFo' })(PracticeProfileInfo);

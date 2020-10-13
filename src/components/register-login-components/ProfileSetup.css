@@ -4,6 +4,12 @@
   padding-right: 200px;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  color: rgb(85, 85, 85);
+  background-color: #dddddd;
+}
+
 .profileSetupStyle h2 {
   text-align: center;
   color: #79158f;
@@ -63,10 +69,33 @@
 }
 .checkboxContainerList {
   color: #3b3b3b;
-  height: 260px;
+  max-height: 260px;
   overflow-y: scroll;
   padding: 0px;
   font-size: 1em;
+}
+.customTrainingStyle {
+  margin-bottom: 15px;
+}
+
+.customTrainingStyle .col-sm-11 {
+  padding-right: 0;
+}
+
+.customTrainingStyle .col-sm-1 {
+  padding-right: 0;
+}
+
+.service-box {
+  background-color: #f2e9f4;
+  display: inline-block;
+  color: #79158f;
+  font-family: "AvenirLTStd-Book";
+  font-size: 19px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  text-align: center;
 }
 
 /* Create a custom checkbox */
@@ -151,7 +180,7 @@
   cursor: pointer;
 }
 
-.addAnotherIcon:hover{
+.addAnotherIcon:hover {
   color: #b823dad3;
 }
 

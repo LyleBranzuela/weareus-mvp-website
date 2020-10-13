@@ -2,11 +2,15 @@
   font-size: 1em;
   font-family: "AvenirLTStd-Book";
   position: relative;
+  max-height: 450px;
   display: inline-block;
+  overflow: hidden;
+  background-color: transparent !important;
+  border: transparent !important;
 }
 
 .newPracCardStyle .card-title {
-  color: #79158F !important;
+  color: #79158f !important;
   font-size: 1.2vw;
   font-family: "AvenirLTPro-Heavy";
 }
@@ -15,6 +19,12 @@
   color: gray !important;
   font-size: 0.8vw;
   margin-bottom: 15px !important;
+}
+
+.newPracCardStyle .card-body {
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .newPracCardStyle .card-text {
@@ -29,21 +39,21 @@
   position: absolute;
   left: 0;
   top: 0;
-  background: linear-gradient(transparent 320px, white);
+  background: linear-gradient(transparent 320px, #f3f1f3);
   pointer-events: none;
 }
 
 .newPracCardStyle .card-img-overlay {
   right: 0;
   padding: 0;
-  top: 55%;
-  position: absolute;
+  top: -27px;
+  position: relative;
   pointer-events: none;
 }
 
 #newPracCardType {
   color: white;
-  background-color: #79158F;
+  background-color: #79158f;
   padding: 5px 15px 5px 15px;
   font-size: 0.8vw;
   height: 0;
@@ -55,13 +65,28 @@
   font-family: "AvenirLTStd-Book";
   position: relative;
   display: inline-block;
-  margin-bottom: 5vh;
+  min-height: 375px;
+  max-height: 375px;
+  overflow: hidden;
+  margin-bottom: 7vh;
+  background-color: transparent !important;
+  border: transparent !important;
+}
+
+.newPracCardStyleMobile img {
+  max-height: 300px;
 }
 
 .newPracCardStyleMobile .card-title {
-  color: #79158F !important;
+  color: #79158f !important;
   font-size: 2.5vh;
   font-family: "AvenirLTPro-Heavy";
+}
+
+.newPracCardStyleMobile .card-body {
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .newPracCardStyleMobile .card-subtitle {
@@ -82,20 +107,20 @@
   position: absolute;
   left: 0;
   top: 0;
-  background: linear-gradient(transparent 320px, white);
+  background: linear-gradient(transparent 300px, #f3f1f3);
 }
 
 .newPracCardStyleMobile .card-img-overlay {
   right: 0;
   padding: 0;
-  top: 50%;
-  position: absolute;
+  top: -22px;
+  position: relative;
   pointer-events: none;
 }
 
 #newPracCardTypeMobile {
   color: white;
-  background-color: #79158F;
+  background-color: #79158f;
   padding: 5px 15px 5px 15px;
   font-size: 2vh;
 }

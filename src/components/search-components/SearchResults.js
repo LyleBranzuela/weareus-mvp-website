@@ -130,7 +130,9 @@ class SearchResults extends React.Component {
                 <h6>{`${practitioner.suburb}, ${practitioner.region_name}`}</h6>
                 {/* <p>{practitioner.about}</p> */}
                 <p className="pracResultAbout">
-                  {testString.slice(0, 190)}
+                  {practitioner.about
+                    ? practitioner.about.slice(0, 190)
+                    : testString.slice(0, 190)}
                   <Link to={`/practitioner-profile/${practitioner.company_id}`}>
                     <span>...More</span>
                   </Link>
