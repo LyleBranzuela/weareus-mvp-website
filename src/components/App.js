@@ -103,7 +103,9 @@ function App() {
         <Route
           path="/profile-setup"
           render={(props) =>
-            isLoggedIn && user_information.user_type === "practitioner" ? (
+            isLoggedIn &&
+            user_information.user_type === "practitioner" &&
+            user_information.hasActiveSubscription ? (
               <ProfileSetup {...props} />
             ) : (
               <Redirect to="/home" />

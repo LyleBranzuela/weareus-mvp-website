@@ -59,13 +59,15 @@ class LoginForm extends React.Component {
     userObj.last_name = userResponse.data.rows[0].last_name;
     userObj.user_name = userResponse.data.rows[0].user_name;
     userObj.phone = userResponse.data.rows[0].phone;
-
-    if (userObj.user_type === "practitioner") {
-      const specialistResponse = await api.get(
-        `/specialist-profile/${userObj.user_id}`
-      );
-      userObj.company_id = specialistResponse.data.company_id;
+    userObj.hasActiveSubscription = userResponse.data.rows[0].payment_id
+      ? true
+      : false;
+    if (userObj.hasActiveSubscription) {
+      // This ID will determine what Subscription They're In (Business/Basic)
+      userObj.subscription_id = userResponse.data.rows[0].subscription_id;
+      userObj.company_id = userResponse.data.rows[0].company_id;
     }
+
     return userObj;
   };
 

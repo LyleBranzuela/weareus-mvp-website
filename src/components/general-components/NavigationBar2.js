@@ -7,7 +7,6 @@ import { Navbar, Nav } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
-
 class NavigationBar2 extends React.Component {
   constructor() {
     super();
@@ -95,7 +94,7 @@ class NavigationBar2 extends React.Component {
                 <>
                   {/* Logout Page Link */}
                   <LinkContainer
-                    className="navBar2Effect"
+                    className="navBarEffect"
                     to="/home"
                     onClick={() => {
                       logout();
@@ -104,14 +103,25 @@ class NavigationBar2 extends React.Component {
                   >
                     <Nav.Link>Logout</Nav.Link>
                   </LinkContainer>
-                  {/* Conditional Rendering if the user is practitioner or not */}
-                  {this.props.user_information.user_type === "practitioner" ? (
+                  {/* Conditional Rendering for when a user already has a company */}
+                  {this.props.user_information.company_id && (
                     /* Link to their Profile */
                     <LinkContainer
                       to={`/practitioner-profile/${this.props.user_information.company_id}`}
                       className="highlightNavMobile2"
                     >
                       <Nav.Link>My Profile</Nav.Link>
+                    </LinkContainer>
+                  )}
+                  {/* User has no company profile yet, but has already subscribed */}
+                  {!this.props.user_information.company_id &&
+                  this.props.user_information.hasActiveSubscription ? (
+                    /* User Profile Setup Page Link */
+                    <LinkContainer
+                      to="/profile-setup"
+                      className="highlightNavMobile2"
+                    >
+                      <Nav.Link>Profile Setup</Nav.Link>
                     </LinkContainer>
                   ) : (
                     /* User Join Us Page Link */
@@ -185,7 +195,7 @@ class NavigationBar2 extends React.Component {
                 <>
                   {/* Logout Page Link */}
                   <LinkContainer
-                    className="navBar2Effect"
+                    className="navBarEffect"
                     to="/home"
                     onClick={() => {
                       logout();
@@ -194,14 +204,25 @@ class NavigationBar2 extends React.Component {
                   >
                     <Nav.Link>Logout</Nav.Link>
                   </LinkContainer>
-                  {/* Conditional Rendering if the user is practitioner or not */}
-                  {this.props.user_information.user_type === "practitioner" ? (
+                  {/* Conditional Rendering for when a user already has a company */}
+                  {this.props.user_information.company_id && (
                     /* Link to their Profile */
                     <LinkContainer
                       to={`/practitioner-profile/${this.props.user_information.company_id}`}
                       className="highlightNav2"
                     >
                       <Nav.Link>My Profile</Nav.Link>
+                    </LinkContainer>
+                  )}
+                  {/* User has no company profile yet, but has already subscribed */}
+                  {!this.props.user_information.company_id &&
+                  this.props.user_information.hasActiveSubscription ? (
+                    /* User Profile Setup Page Link */
+                    <LinkContainer
+                      to="/profile-setup"
+                      className="highlightNav2"
+                    >
+                      <Nav.Link>Profile Setup</Nav.Link>
                     </LinkContainer>
                   ) : (
                     /* User Join Us Page Link */
