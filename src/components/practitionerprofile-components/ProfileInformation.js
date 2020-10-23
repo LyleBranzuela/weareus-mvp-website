@@ -22,16 +22,18 @@ class ProfileInformation extends React.Component {
 
   // Gets the Specialist Details from the Server
   getSpecialistDetails = async () => {
-    const specialistResponse = await api.get(
-      `/specialist-profile/${this.props.specialists[0]}`
-    );
-    // Setting the Specialists's Detail State
-    this._isMounted &&
-      this.setState({
-        onlySpecialist: specialistResponse.data,
-      });
-    console.log(this.props);
-    console.log(specialistResponse);
+    if (this.props.specialists.length > 0) {
+      const specialistResponse = await api.get(
+        `/specialist-profile/${this.props.specialists[0]}`
+      );
+      // Setting the Specialists's Detail State
+      this._isMounted &&
+        this.setState({
+          onlySpecialist: specialistResponse.data,
+        });
+      console.log(this.props);
+      console.log(specialistResponse);
+    }
   };
 
   componentDidMount() {

@@ -11,30 +11,34 @@ const ExpendableText = ({ maxHeight, children }) => {
   const [shouldShowExpand, setShouldShowExpand] = useState(false);
   const [expanded, setExpanded] = useState(true);
 
+  // Listen for any changes on the text/maxheight
   useEffect(() => {
     if (ref.current.scrollHeight > maxHeight) {
       setShouldShowExpand(true);
       setExpanded(false);
     }
-  }, [maxHeight]);
+  }, [maxHeight, children]);
 
   return (
     <Card.Text ref={ref}>
-      <a
+      <span
         className="inner"
         style={{ maxHeight: expanded ? MAX_POSSIBLE_HEIGHT : maxHeight }}
       >
         {children}
-      </a>
+      </span>
       {shouldShowExpand && (
         <button
-          onClick={() => setExpanded(!expanded)}
+          onClick={() => {
+            setExpanded(!expanded);
+          }}
           className="read-more-button"
         >
           Read More{" "}
           <img
             src={icon_accordion_arrow_purple}
             className="read-more-arrow"
+            alt="read-more-arrow"
           ></img>
         </button>
       )}

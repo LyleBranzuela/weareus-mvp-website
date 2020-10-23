@@ -1,5 +1,6 @@
 .inner {
   overflow: hidden;
+  display: block;
   transition: max-height 0.2s ease;
   font-size: 19px;
   font-family: "AvenirLTStd-Book";
@@ -20,7 +21,6 @@
   border: none;
   background-color: white;
   padding-left: 0px;
-
 }
 
 .read-more-arrow {
