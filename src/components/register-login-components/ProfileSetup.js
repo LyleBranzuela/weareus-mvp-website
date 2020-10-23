@@ -14,6 +14,8 @@ class ProfileSetup extends React.Component {
       services: [],
       accreditations: [],
       specialties: [],
+      cities: [],
+      regions: [],
       search_filter: "",
 
       // Company Details States
@@ -56,15 +58,28 @@ class ProfileSetup extends React.Component {
   // Function to Set the Checkboxes for Accredations and Services
   setFormCheckboxes = async () => {
     // Getting the Services and Regions JSON From the Server
-    const serviceResponse = await api.get("/lookup_services");
-    const accreditationResponse = await api.get("/lookup_accreditation");
+    try {
+      const serviceResponse = await api.get("/lookup_services");
+      const accreditationResponse = await api.get("/lookup_accreditation");
+      const citiesResponse = await api.get("/cities");
+      const regionsResponse = await api.get("/regions");
 
-    // Setting the Services and Regions States
-    this._isMounted &&
-      this.setState({
-        services: serviceResponse.data.rows,
-        accreditations: accreditationResponse.data.rows,
+      // Setting the Services and Regions States
+      this._isMounted &&
+        this.setState({
+          services: serviceResponse.data.rows,
+          accreditations: accreditationResponse.data.rows,
+          cities: citiesResponse.data.rows,
+          regions: regionsResponse.data.rows,
+        });
+    } catch (error) {
+      swal({
+        title: "Database Error!",
+        text: error?.response?.data || "Unknown Get Error",
+        icon: "error",
+        buttons: [false, true],
       });
+    }
   };
 
   componentDidMount() {
@@ -99,7 +114,7 @@ class ProfileSetup extends React.Component {
       let companyObject = {
         // Company Details States
         company_name: this.state.company_name,
-        subscription_id: this.props.location.state.subscription_id,
+        subscription_id: this.props.user_information.subscription_id,
         logo: this.state.logo,
         email: this.state.email,
         phone: this.state.phone,
@@ -331,6 +346,7 @@ class ProfileSetup extends React.Component {
         );
       });
     }
+
     // Map the checkboxes of accreditations
     let accreditationBoxes = [];
     if (this.state.accreditations) {
@@ -356,10 +372,37 @@ class ProfileSetup extends React.Component {
       });
     }
 
-    // Redirect to home if logged in
-    if (this.props.user_information.user_type === "practitioner") {
-      return <Redirect to="home" />;
+    // Map the checkboxes of accreditations
+    let regionSelections = [];
+    if (this.state.regions) {
+      regionSelections = this.state.regions.map((region) => {
+        return (
+          <option key={region.region_id} value={region.region_name}>
+            {region.region_name}
+          </option>
+        );
+      });
     }
+
+    // Map the Options for Selections of Cities
+    let citySelections = [];
+    if (this.state.cities) {
+      citySelections = this.state.cities.map((city) => {
+        return (
+          <option key={city.city_id} value={city.city_name}>
+            {city.city_name}
+          </option>
+        );
+      });
+    }
+
+    // Redirect to home if logged in
+    // if (
+    //   this.props.user_information.user_type === "practitioner" &&
+    //   // this.props.user_information.company_id
+    // ) {
+    //   return <Redirect to="home" />;
+    // }
     return (
       <Container className="profileSetupStyle">
         {/** Profile Setup Header  */}
@@ -438,7 +481,6 @@ class ProfileSetup extends React.Component {
                   defaultValue={this.state.phone}
                   placeholder="Enter Contact Number"
                   onChange={this.formOnChangeHandler}
-                  // readOnly={this.props.location.state.phone ? true : false}
                 />
               </Form.Group>
             </Col>
@@ -452,7 +494,6 @@ class ProfileSetup extends React.Component {
                   defaultValue={this.state.email}
                   placeholder="Enter Email"
                   onChange={this.formOnChangeHandler}
-                  // readOnly={this.props.location.state.email ? true : false}
                 />
               </Form.Group>
             </Col>
@@ -488,10 +529,16 @@ class ProfileSetup extends React.Component {
                 <Form.Label>Region:</Form.Label>
                 <Form.Control
                   required
+                  as="select"
                   type="text"
                   placeholder="Enter Region"
                   onChange={this.formOnChangeHandler}
-                />
+                >
+                  <option value="" disabled selected>
+                    Select Region
+                  </option>
+                  {regionSelections}
+                </Form.Control>
               </Form.Group>
             </Col>
             <Col sm={6}>
@@ -500,10 +547,16 @@ class ProfileSetup extends React.Component {
                 <Form.Label>City:</Form.Label>
                 <Form.Control
                   required
+                  as="select"
                   type="text"
                   placeholder="Enter City"
                   onChange={this.formOnChangeHandler}
-                />
+                >
+                  <option value="" disabled selected>
+                    Select City
+                  </option>
+                  {citySelections}
+                </Form.Control>
               </Form.Group>
             </Col>
           </Row>
