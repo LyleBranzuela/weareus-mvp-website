@@ -11,10 +11,12 @@ class PractitionerList extends React.Component {
     let practitioners = this.props.practitioners;
     if (practitioners) {
       practitionerList = practitioners.map((practitioner) => {
-        // Temporary Image URL until S3 is setup
-        let image_url = "listing_placeholder_2.jpg";
-        if (!image_url) {
+        // Image URL with a Placeholder if doesnt exist (Only for Displaying Purposes)
+        let image_url;
+        if (!practitioner.image_url) {
           image_url = "listing_placeholder_2.jpg";
+        } else {
+          image_url = practitioner.image_url;
         }
         return (
           <PractitionerCard

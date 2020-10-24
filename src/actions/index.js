@@ -11,3 +11,10 @@ export const signout = () => {
     type: "SIGN_OUT",
   };
 };
+
+export const profilesetup = (company_id) => {
+  return {
+    type: "FINISH_PROFILE_SETUP",
+    company_id,
+  };
+};

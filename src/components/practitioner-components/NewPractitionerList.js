@@ -33,10 +33,12 @@ class NewPractitionerList extends React.Component {
     let newPractitioners = this.props.newPractitioners;
     if (newPractitioners) {
       newPracList = newPractitioners.map((practitioner) => {
-        // Temporary Image URL until S3 is setup
-        let image_url = "listing_placeholder_1.jpg";
-        if (!image_url) {
+        // Image URL with a Placeholder if doesnt exist (Only for Displaying Purposes)
+        let image_url;
+        if (!practitioner.image_url) {
           image_url = "listing_placeholder_1.jpg";
+        } else {
+          image_url = practitioner.image_url;
         }
         if (isMobile) {
           return (

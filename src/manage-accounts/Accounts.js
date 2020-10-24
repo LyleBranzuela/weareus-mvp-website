@@ -3,13 +3,14 @@ import UserPool from "./UserPool";
 import swal from "@sweetalert/with-react";
 import { Form } from "react-bootstrap";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
-// import { useSelector, useDispatch } from "react-redux";
-// import { signin } from "../actions";
 import AWS from "aws-sdk";
 
-/* Setting up All The Redux States and Variablees*/
-// const isLogged = useSelector((state) => state.isLogged);
-// const dispatch = useDispatch();
+// ONLY FOR THE MVP, CHANGE THIS IN PRODUCTION
+const cognitoDetails = {
+  accessKeyId: "AKIA2DSPNNEE7DJEOGKI",
+  secretAccessKey: "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",
+  region: "ap-southeast-2",
+};
 
 // Function to Get the Current Session's Information (Logged in or not)
 const getSession = async () => {
@@ -42,54 +43,8 @@ const logout = () => {
   const user = UserPool.getCurrentUser();
   if (user) {
     user.signOut();
-    // dispatch(signin());
   }
 };
-
-// Google Sign-in button's callback when pressed
-function googleSignInCallBack(authResult) {
-  console.log(authResult);
-  if (!authResult.error) {
-    // Add the Google access token to the Amazon Cognito credentials login map.
-    console.log(UserPool.getClientId());
-    console.log(authResult["tokenId"]);
-    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-      IdentityPoolId: "ap-southeast-2_70XMXEzjd",
-      Logins: {
-        "accounts.google.com": authResult["tokenId"],
-      },
-    });
-
-    // Obtain AWS credentials
-    AWS.config.credentials.get(function () {
-      // Access AWS resources here.
-    });
-  }
-}
-
-// Facebook Sign-in button's callback when pressed
-function facebookSignInCallBack() {
-  const FB = window.FB;
-  FB.login(function (response) {
-    // Check if the user logged in successfully.
-    if (response.authResponse) {
-      // Add the Facebook access token to the Amazon Cognito credentials login map.
-      AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: "ap-southeast-2_70XMXEzjd",
-        Logins: {
-          "graph.facebook.com": response.authResponse.accessToken,
-        },
-      });
-
-      // Obtain AWS credentials
-      AWS.config.credentials.get(function () {
-        // Access AWS resources here.
-      });
-    } else {
-      console.log("There was a problem logging you in.");
-    }
-  });
-}
 
 // Function to Authenticate Users in AWS Cognito
 const authenticate = (Username, Password) => {
@@ -99,10 +54,32 @@ const authenticate = (Username, Password) => {
 
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
-        resolve(data);
+        // let accessToken = data.getAccessToken().getJwtToken();
+
+        //POTENTIAL: Region needs to be set if not already set previously elsewhere.
+        AWS.config.region = "ap-southeast-2";
+
+        let loginObject = {};
+        // Change the key below according to the specific region your user pool is in.
+        loginObject[
+          `cognito-idp.ap-southeast-2.amazonaws.com/${UserPool.getUserPoolId()}`
+        ] = data.getIdToken().getJwtToken();
+
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+          IdentityPoolId: "ap-southeast-2:c303a19f-ef59-49a5-8d05-b2c74783fe77", // your identity pool id here,
+          Logins: loginObject,
+        });
+
+        //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+        AWS.config.credentials.refresh((error) => {
+          if (error) {
+            console.error(error);
+          } else {
+            resolve(data);
+          }
+        });
       },
       onFailure: (err) => {
-        console.log("Authenticate User Error" + err);
         // Problems in Authentication
         swal({
           title: "Authentication Error!",
@@ -381,12 +358,11 @@ const AccountVerificationModal = (currentUser) => {
 };
 
 export {
+  cognitoDetails,
   getSession,
   getUser,
   authenticate,
   logout,
-  googleSignInCallBack,
-  facebookSignInCallBack,
   resetPasswordModal,
   AccountVerificationModal,
 };

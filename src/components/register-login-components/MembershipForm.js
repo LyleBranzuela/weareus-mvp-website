@@ -17,6 +17,7 @@ import AWS from "aws-sdk";
 import CustomButton from "../general-components/CustomButton";
 import UserPool from "../../manage-accounts/UserPool";
 import {
+  cognitoDetails,
   AccountVerificationModal,
   getUser,
 } from "../../manage-accounts/Accounts";
@@ -57,7 +58,8 @@ class MainForm extends React.Component {
 
       // Stage Flags
       paymentStage: false,
-      registrationStage: this.props.user_information.user_id ? false : true,
+      registrationStage: false,
+      hasSubscription: false,
     };
 
     // Prevents Memory Leaks
@@ -81,7 +83,7 @@ class MainForm extends React.Component {
         default:
           break;
       }
-      this.setState({ priceId: priceIdKey });
+      this.setState({ hasSubscription: true, priceId: priceIdKey });
     } else {
       // Error with Signing up
       swal({
@@ -89,7 +91,7 @@ class MainForm extends React.Component {
         text: "Please choose a subscrption.",
         icon: "error",
         buttons: [false, true],
-      }).then(this.setState({ redirect: true }));
+      }).then(this.setState({ hasSubscription: false, redirect: true }));
     }
   }
 
@@ -324,10 +326,9 @@ class MainForm extends React.Component {
                   duplicateUserFlag = true;
                   const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider(
                     {
-                      accessKeyId: "AKIA2DSPNNEEZ3CSSBAF",
-                      secretAccessKey:
-                        "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",
-                      region: "ap-southeast-2",
+                      accessKeyId: cognitoDetails.accessKeyId,
+                      secretAccessKey: cognitoDetails.secretAccessKey,
+                      region: cognitoDetails.region,
                     }
                   );
                   const params = {
@@ -403,8 +404,6 @@ class MainForm extends React.Component {
         }
       }
     } else {
-      // Close The Registration Processing Modal
-      swal.close();
       swal({
         title: "Incomplete Form!",
         text: "Please fill all the required parts of the form.",
@@ -419,7 +418,11 @@ class MainForm extends React.Component {
     const { stripe } = this.props;
     // Redirect to home if finished registering
     if (this.state.redirect) {
-      return <Redirect to="/login" />;
+      if (this.state.hasSubscription) {
+        return <Redirect to="/register-practitioner" />;
+      } else {
+        return <Redirect to="/login" />;
+      }
     }
     return (
       <Container fluid>
@@ -604,15 +607,6 @@ class MainForm extends React.Component {
                   />
                   <hr size="50" />
                   {/** Section: Pay Button */}
-                  {/* <Link
-                    to={{
-                      pathname: "/profile-setup",
-                      state: {
-                        subscription_id: this.props.location.state
-                          .subscription_id,
-                      },
-                    }}
-                  > */}
                   <CustomButton
                     disabled={
                       !stripe ||
@@ -623,7 +617,6 @@ class MainForm extends React.Component {
                     type="submit"
                     text="Payment"
                   />
-                  {/* </Link> */}
                 </Col>
               </Row>
             </Container>

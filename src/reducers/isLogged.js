@@ -28,6 +28,14 @@ const userReducer = (
       };
       return newState;
 
+    // FINISH PROFILE SETUP
+    case "FINISH_PROFILE_SETUP":
+      newState = {
+        ...state,
+      };
+      newState.user_information.company_id = action.company_id;
+      return newState;
+
     default:
       return state;
   }

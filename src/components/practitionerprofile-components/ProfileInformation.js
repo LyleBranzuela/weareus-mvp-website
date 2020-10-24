@@ -31,8 +31,6 @@ class ProfileInformation extends React.Component {
         this.setState({
           onlySpecialist: specialistResponse.data,
         });
-      console.log(this.props);
-      console.log(specialistResponse);
     }
   };
 
@@ -58,27 +56,39 @@ class ProfileInformation extends React.Component {
         <Row>
           <Col lg={8} className="no-padding">
             {/* Practitioner Profile Image */}
-            <img
-              alt="practitioner-profile"
-              src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
-              id="profile-image-frame"
-            />
-            {/* Practitioner Profile Image */}
-            {/* <img
-              alt="practitioner-profile"
-              src={this.onlySpecialist.profile_image_url}
-              id="profile-image-frame"
-            /> */}
+            {this.state.onlySpecialist.profile_image_url ? (
+              <img
+                style={{ height: 224, width: 224 }}
+                alt="practitioner-profile"
+                src={this.state.onlySpecialist.profile_image_url}
+                id="profile-image-frame"
+              />
+            ) : (
+              <img
+                alt="practitioner-profile"
+                src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
+                id="profile-image-frame"
+              />
+            )}
 
             {/* Practitioner Name */}
             <h2 className="practitioner-title" id="practitioner-name">
               {this.props.company_name}
               {/* Practitioner Business Logo Image */}
-              <img
-                src={this.props.logo}
-                alt="logo"
-                className="practitioner-logo"
-              />
+              {this.props.logo ? (
+                <img
+                  style={{ width: 175, height: 175 }}
+                  src={this.props.logo}
+                  alt="logo"
+                  className="practitioner-logo"
+                />
+              ) : (
+                <img
+                  src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
+                  alt="logo"
+                  className="practitioner-logo"
+                />
+              )}
             </h2>
             {/* Practitioner Specialty Category/ies */}
             <div id="category">

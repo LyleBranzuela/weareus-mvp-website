@@ -114,23 +114,25 @@ class NavigationBar extends React.Component {
                   )}
                   {/* User has no company profile yet, but has already subscribed */}
                   {!this.props.user_information.company_id &&
-                  this.props.user_information.hasActiveSubscription ? (
-                    /* User Profile Setup Page Link */
-                    <LinkContainer
-                      to="/profile-setup"
-                      className="highlightNavMobile"
-                    >
-                      <Nav.Link>Profile Setup</Nav.Link>
-                    </LinkContainer>
-                  ) : (
-                    /* User Join Us Page Link */
-                    <LinkContainer
-                      to="/register-practitioner"
-                      className="highlightNavMobile"
-                    >
-                      <Nav.Link>Join Us!</Nav.Link>
-                    </LinkContainer>
-                  )}
+                    this.props.user_information.hasActiveSubscription && (
+                      /* User Profile Setup Page Link */
+                      <LinkContainer
+                        to="/profile-setup"
+                        className="highlightNavMobile"
+                      >
+                        <Nav.Link>Profile Setup</Nav.Link>
+                      </LinkContainer>
+                    )}
+                  {!this.props.user_information.company_id &&
+                    !this.props.user_information.hasActiveSubscription && (
+                      /* User Join Us Page Link */
+                      <LinkContainer
+                        to="/register-practitioner"
+                        className="highlightNavMobile"
+                      >
+                        <Nav.Link>Join Us!</Nav.Link>
+                      </LinkContainer>
+                    )}
                 </>
               ) : (
                 <>
@@ -208,20 +210,25 @@ class NavigationBar extends React.Component {
                   )}
                   {/* User has no company profile yet, but has already subscribed */}
                   {!this.props.user_information.company_id &&
-                  this.props.user_information.hasActiveSubscription ? (
-                    /* User Profile Setup Page Link */
-                    <LinkContainer to="/profile-setup" className="highlightNav">
-                      <Nav.Link>Profile Setup</Nav.Link>
-                    </LinkContainer>
-                  ) : (
-                    /* User Join Us Page Link */
-                    <LinkContainer
-                      to="/register-practitioner"
-                      className="highlightNav"
-                    >
-                      <Nav.Link>Join Us!</Nav.Link>
-                    </LinkContainer>
-                  )}
+                    this.props.user_information.hasActiveSubscription && (
+                      /* User Profile Setup Page Link */
+                      <LinkContainer
+                        to="/profile-setup"
+                        className="highlightNav"
+                      >
+                        <Nav.Link>Profile Setup</Nav.Link>
+                      </LinkContainer>
+                    )}
+                  {!this.props.user_information.company_id &&
+                    !this.props.user_information.hasActiveSubscription && (
+                      /* User Join Us Page Link */
+                      <LinkContainer
+                        to="/register-practitioner"
+                        className="highlightNav"
+                      >
+                        <Nav.Link>Join Us!</Nav.Link>
+                      </LinkContainer>
+                    )}
                 </>
               ) : (
                 <>
