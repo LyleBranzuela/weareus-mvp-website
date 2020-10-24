@@ -102,8 +102,8 @@ class NavigationBar extends React.Component {
                   >
                     <Nav.Link>Logout</Nav.Link>
                   </LinkContainer>
-                  {/* Conditional Rendering if the user is practitioner or not */}
-                  {this.props.user_information.user_type === "practitioner" ? (
+                  {/* Conditional Rendering for when a user already has a company */}
+                  {this.props.user_information.company_id && (
                     /* Link to their Profile */
                     <LinkContainer
                       to={`/practitioner-profile/${this.props.user_information.company_id}`}
@@ -111,15 +111,28 @@ class NavigationBar extends React.Component {
                     >
                       <Nav.Link>My Profile</Nav.Link>
                     </LinkContainer>
-                  ) : (
-                    /* User Join Us Page Link */
-                    <LinkContainer
-                      to="/register-practitioner"
-                      className="highlightNavMobile"
-                    >
-                      <Nav.Link>Join Us!</Nav.Link>
-                    </LinkContainer>
                   )}
+                  {/* User has no company profile yet, but has already subscribed */}
+                  {!this.props.user_information.company_id &&
+                    this.props.user_information.hasActiveSubscription && (
+                      /* User Profile Setup Page Link */
+                      <LinkContainer
+                        to="/profile-setup"
+                        className="highlightNavMobile"
+                      >
+                        <Nav.Link>Profile Setup</Nav.Link>
+                      </LinkContainer>
+                    )}
+                  {!this.props.user_information.company_id &&
+                    !this.props.user_information.hasActiveSubscription && (
+                      /* User Join Us Page Link */
+                      <LinkContainer
+                        to="/register-practitioner"
+                        className="highlightNavMobile"
+                      >
+                        <Nav.Link>Join Us!</Nav.Link>
+                      </LinkContainer>
+                    )}
                 </>
               ) : (
                 <>
@@ -185,8 +198,8 @@ class NavigationBar extends React.Component {
                   >
                     <Nav.Link>Logout</Nav.Link>
                   </LinkContainer>
-                  {/* Conditional Rendering if the user is practitioner or not */}
-                  {this.props.user_information.user_type === "practitioner" ? (
+                  {/* Conditional Rendering for when a user already has a company */}
+                  {this.props.user_information.company_id && (
                     /* Link to their Profile */
                     <LinkContainer
                       to={`/practitioner-profile/${this.props.user_information.company_id}`}
@@ -194,15 +207,28 @@ class NavigationBar extends React.Component {
                     >
                       <Nav.Link>My Profile</Nav.Link>
                     </LinkContainer>
-                  ) : (
-                    /* User Join Us Page Link */
-                    <LinkContainer
-                      to="/register-practitioner"
-                      className="highlightNav"
-                    >
-                      <Nav.Link>Join Us!</Nav.Link>
-                    </LinkContainer>
                   )}
+                  {/* User has no company profile yet, but has already subscribed */}
+                  {!this.props.user_information.company_id &&
+                    this.props.user_information.hasActiveSubscription && (
+                      /* User Profile Setup Page Link */
+                      <LinkContainer
+                        to="/profile-setup"
+                        className="highlightNav"
+                      >
+                        <Nav.Link>Profile Setup</Nav.Link>
+                      </LinkContainer>
+                    )}
+                  {!this.props.user_information.company_id &&
+                    !this.props.user_information.hasActiveSubscription && (
+                      /* User Join Us Page Link */
+                      <LinkContainer
+                        to="/register-practitioner"
+                        className="highlightNav"
+                      >
+                        <Nav.Link>Join Us!</Nav.Link>
+                      </LinkContainer>
+                    )}
                 </>
               ) : (
                 <>

@@ -20,7 +20,7 @@ import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import Error500Page from "./general-components/Error500Page";
+// import Error500Page from "./general-components/Error500Page";
 // import PracticeProfile from "./pages/PracticeProfilePage";
 
 function App() {
@@ -82,7 +82,8 @@ function App() {
           path="/register-practitioner"
           render={(props) =>
             !isLoggedIn ||
-            (isLoggedIn && user_information.user_type === "user") ? (
+            (isLoggedIn && user_information.user_type === "user") ||
+            (isLoggedIn && !user_information.hasActiveSubscription) ? (
               <PractitionerRegister {...props} />
             ) : (
               <Redirect to="/home" />
@@ -93,7 +94,8 @@ function App() {
           path="/membership-form"
           render={(props) =>
             !isLoggedIn ||
-            (isLoggedIn && user_information.user_type === "user") ? (
+            (isLoggedIn && user_information.user_type === "user") ||
+            (isLoggedIn && !user_information.hasActiveSubscription) ? (
               <MembershipForm {...props} />
             ) : (
               <Redirect to="/home" />
@@ -103,7 +105,9 @@ function App() {
         <Route
           path="/profile-setup"
           render={(props) =>
-            isLoggedIn && user_information.user_type === "practitioner" ? (
+            isLoggedIn &&
+            user_information.user_type === "practitioner" &&
+            user_information.hasActiveSubscription ? (
               <ProfileSetup {...props} />
             ) : (
               <Redirect to="/home" />

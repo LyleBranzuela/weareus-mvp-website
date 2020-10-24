@@ -4,12 +4,6 @@
   padding-right: 200px;
 }
 
-.form-control:disabled,
-.form-control[readonly] {
-  color: rgb(85, 85, 85);
-  background-color: #dddddd;
-}
-
 .profileSetupStyle h2 {
   text-align: center;
   color: #79158f;
@@ -134,7 +128,7 @@
   background-color: #b823dad3;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked */
 .serviceContainer input:checked ~ .checkBoxFill {
   background-color: #79158f;
 }

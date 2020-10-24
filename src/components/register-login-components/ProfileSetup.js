@@ -1,10 +1,11 @@
 import "./ProfileSetup.css";
 import React from "react";
-import { Container, Form, Row, Col } from "react-bootstrap";
+import { Container, Form, Row, Col, Carousel, Spinner } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import CustomButton from "../general-components/CustomButton";
 import swal from "@sweetalert/with-react";
+import { profilesetup } from "../../actions";
 import api from "../../api/api";
 
 class ProfileSetup extends React.Component {
@@ -14,7 +15,13 @@ class ProfileSetup extends React.Component {
       services: [],
       accreditations: [],
       specialties: [],
+      cities: [],
+      regions: [],
       search_filter: "",
+      coverImageLimit: 0,
+      generatedCompanyId: "",
+      redirect: false,
+      registerFlag: false,
 
       // Company Details States
       company_name: "",
@@ -56,20 +63,50 @@ class ProfileSetup extends React.Component {
   // Function to Set the Checkboxes for Accredations and Services
   setFormCheckboxes = async () => {
     // Getting the Services and Regions JSON From the Server
-    const serviceResponse = await api.get("/lookup_services");
-    const accreditationResponse = await api.get("/lookup_accreditation");
+    try {
+      const serviceResponse = await api.get("/lookup_services");
+      const accreditationResponse = await api.get("/lookup_accreditation");
+      const citiesResponse = await api.get("/cities");
+      const regionsResponse = await api.get("/regions");
 
-    // Setting the Services and Regions States
-    this._isMounted &&
-      this.setState({
-        services: serviceResponse.data.rows,
-        accreditations: accreditationResponse.data.rows,
+      // Setting the Services and Regions States
+      this._isMounted &&
+        this.setState({
+          services: serviceResponse.data.rows,
+          accreditations: accreditationResponse.data.rows,
+          cities: citiesResponse.data.rows,
+          regions: regionsResponse.data.rows,
+        });
+    } catch (error) {
+      swal({
+        title: "Database Error!",
+        text: error?.response?.data || "Unknown Get Error",
+        icon: "error",
+        buttons: [false, true],
       });
+    }
   };
 
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.setFormCheckboxes();
+
+    let limit = 0;
+    if (this.props?.user_information?.subscription_id) {
+      switch (this.props.user_information.subscription_id) {
+        case 1:
+          limit = 1;
+          break;
+
+        case 2:
+          limit = 5;
+          break;
+
+        default:
+          break;
+      }
+    }
+    this.setState({ coverImageLimit: limit });
   }
 
   componentWillUnmount() {
@@ -86,20 +123,53 @@ class ProfileSetup extends React.Component {
   // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
   onSubmit = async (event) => {
     event.preventDefault();
-    let missingFields = [];
+    this.setState({ registerFlag: true });
 
-    if (missingFields.length > 0) {
+    // Error Handling (Front End Checks)
+    let errorMessage = "";
+    if (this.state.cover_images.length < 1) {
+      errorMessage = `Please add at least 1 Cover Image`;
+    } else if (this.state.chosen_services.length < 1) {
+      errorMessage = `Please add at least 1 Service`;
+    } else if (this.state.logo === "") {
+      errorMessage = `Please add your logo`;
+    } else if (this.state.profile_picture === "") {
+      errorMessage = `Please add your profile picture`;
+    }
+
+    if (errorMessage !== "") {
+      // Close The Register Processing Modal
       swal({
-        title: "Unsuccessful!",
-        text: `Missing Fields: ${missingFields.join(", ")}`,
+        title: "Unsuccessful Registration!",
+        text: errorMessage,
         icon: "error",
         buttons: [false, true],
       });
+      this.setState({ registerFlag: false });
     } else {
+      swal({
+        title: "Processing your Registration!",
+        content: (
+          <div>
+            <Spinner
+              as="span"
+              animation="border"
+              role="status"
+              aria-hidden="true"
+            />
+            <br />
+            <br />
+            <span>Please wait for a few seconds...</span>
+          </div>
+        ),
+        buttons: [false, false],
+        closeOnClickOutside: false,
+        closeOnEsc: false,
+      });
       let companyObject = {
         // Company Details States
         company_name: this.state.company_name,
-        subscription_id: this.props.location.state.subscription_id,
+        subscription_id: this.props.user_information.subscription_id,
         logo: this.state.logo,
         email: this.state.email,
         phone: this.state.phone,
@@ -127,14 +197,37 @@ class ProfileSetup extends React.Component {
       // Generate a Company
       try {
         const response = await api.post("/company", companyObject);
-        console.log(response);
+
+        // Close The Register Processing Modal
+        swal.close();
+        swal({
+          title: "Profile Setup Successful!",
+          text: "Your Profile is now Setup! Redirecting you to your profile...",
+          icon: "success",
+          timer: 5000,
+          closeOnClickOutside: false,
+          closeOnEsc: false,
+          buttons: [false, true],
+        }).then((value) => {
+          // Update Redux Object
+          this.props.profilesetup(response.data.company_id);
+          // Redirect them to their generated company
+          this.setState({
+            redirect: true,
+            generatedCompanyId: response.data.company_id,
+            registerFlag: false,
+          });
+        });
       } catch (error) {
+        // Close The Register Processing Modal
+        swal.close();
         swal({
           title: "Database Error!",
           text: error?.response?.data || "Unknown Error",
           icon: "error",
           buttons: [false, true],
         });
+        this.setState({ registerFlag: false });
       }
     }
   };
@@ -153,30 +246,31 @@ class ProfileSetup extends React.Component {
       const data = new FormData();
       data.append("image", e.target.files[0]);
       const uploadResponse = await api.post(
-        "/upload?user_id=" + 8 + "&folder=" + e.target.id,
+        "/upload?user_id=" + this.state.user_id + "&folder=" + e.target.id,
         data
       );
-
-      // let img = new Image();
-      // img.src = uploadResponse.data.fileName;
-      // src.onChange =
-      // console.log(img);
-      // if (img.width === 720 && img.height === 720) {
-      //   console.log("WORKED!");
-      // } else {
-      //   console.log("ERROR!" + img.width + "|" + img.height);
-      // }
       if (target !== "cover_images") {
         this.setState({
           [target]: uploadResponse.data.fileName,
         });
-        localStorage.setItem("logo", uploadResponse.data.fileName);
       } else {
-        this.setState({
-          cover_images: this.state.cover_images.concat([
-            uploadResponse.data.fileName,
-          ]),
-        });
+        if (this.state.cover_images.length < this.state.coverImageLimit) {
+          this.setState({
+            cover_images: this.state.cover_images.concat([
+              uploadResponse.data.fileName,
+            ]),
+          });
+        } else {
+          swal({
+            title: "Cover Image Limit Reached!",
+            text:
+              "You only have a limit of " +
+              this.state.coverImageLimit +
+              " cover images.",
+            icon: "error",
+            buttons: [false, true],
+          });
+        }
       }
     }
   };
@@ -199,8 +293,8 @@ class ProfileSetup extends React.Component {
           errorFlag = true;
         } else {
           chosenCredentialObj = {
-            diploma_name: this.state.diploma_name,
-            time_taken: this.state.diploma_time_taken,
+            diploma_name: this.state.diploma_name.trim(),
+            time_taken: this.state.diploma_time_taken.trim(),
           };
           this.setState({
             diploma_name: "",
@@ -220,8 +314,8 @@ class ProfileSetup extends React.Component {
           errorFlag = true;
         } else {
           chosenCredentialObj = {
-            certification_name: this.state.certification_name,
-            time_taken: this.state.certification_time_taken,
+            certification_name: this.state.certification_name.trim(),
+            time_taken: this.state.certification_time_taken.trim(),
           };
           this.setState({
             certification_name: "",
@@ -241,8 +335,8 @@ class ProfileSetup extends React.Component {
           errorFlag = true;
         } else {
           chosenCredentialObj = {
-            membership_name: this.state.membership_name,
-            website: this.state.membership_website,
+            membership_name: this.state.membership_name.trim(),
+            website: this.state.membership_website.trim(),
           };
           this.setState({
             membership_name: "",
@@ -262,7 +356,7 @@ class ProfileSetup extends React.Component {
       });
     } else {
       swal({
-        title: "Unsuccessful!",
+        title: "Unsuccessful Addition of the Credential!",
         text: errorMessage,
         icon: "error",
         buttons: [false, true],
@@ -331,6 +425,7 @@ class ProfileSetup extends React.Component {
         );
       });
     }
+
     // Map the checkboxes of accreditations
     let accreditationBoxes = [];
     if (this.state.accreditations) {
@@ -356,9 +451,37 @@ class ProfileSetup extends React.Component {
       });
     }
 
-    // Redirect to home if logged in
-    if (this.props.user_information.user_type === "practitioner") {
-      return <Redirect to="home" />;
+    // Map the checkboxes of accreditations
+    let regionSelections = [];
+    if (this.state.regions) {
+      regionSelections = this.state.regions.map((region) => {
+        return (
+          <option key={region.region_id} value={region.region_name}>
+            {region.region_name}
+          </option>
+        );
+      });
+    }
+
+    // Map the Options for Selections of Cities
+    let citySelections = [];
+    if (this.state.cities) {
+      citySelections = this.state.cities.map((city) => {
+        return (
+          <option key={city.city_id} value={city.city_name}>
+            {city.city_name}
+          </option>
+        );
+      });
+    }
+
+    // Redirect to their generated Profile
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          to={`practitioner-profile/${this.state.generatedCompanyId}`}
+        />
+      );
     }
     return (
       <Container className="profileSetupStyle">
@@ -370,16 +493,24 @@ class ProfileSetup extends React.Component {
         </h5>
         <p>
           So before you get started, ensure you check out our{" "}
-          <span>
+          <a
+            style={{ color: "black" }}
+            href="/we_are_us_perfecting_your_profile_guide.pdf"
+            download
+          >
             <u>how-to-guide</u>
-          </span>{" "}
+          </a>{" "}
           we've put together for you on how to showcase your business as it
           provides you with templates and information so you can put your best
           foot forward.
         </p>
-        <span>
+        <a
+          style={{ color: "black" }}
+          href="/we_are_us_perfecting_your_profile_guide.pdf"
+          download
+        >
           <u>Download profile how-to-guide</u>
-        </span>
+        </a>
         <hr size="50" />
         <Form onSubmit={this.onSubmit}>
           <h5>Your Company Name</h5>
@@ -438,7 +569,6 @@ class ProfileSetup extends React.Component {
                   defaultValue={this.state.phone}
                   placeholder="Enter Contact Number"
                   onChange={this.formOnChangeHandler}
-                  // readOnly={this.props.location.state.phone ? true : false}
                 />
               </Form.Group>
             </Col>
@@ -452,7 +582,6 @@ class ProfileSetup extends React.Component {
                   defaultValue={this.state.email}
                   placeholder="Enter Email"
                   onChange={this.formOnChangeHandler}
-                  // readOnly={this.props.location.state.email ? true : false}
                 />
               </Form.Group>
             </Col>
@@ -488,10 +617,17 @@ class ProfileSetup extends React.Component {
                 <Form.Label>Region:</Form.Label>
                 <Form.Control
                   required
+                  as="select"
                   type="text"
+                  defaultValue=""
                   placeholder="Enter Region"
                   onChange={this.formOnChangeHandler}
-                />
+                >
+                  <option value="" disabled>
+                    Select Region
+                  </option>
+                  {regionSelections}
+                </Form.Control>
               </Form.Group>
             </Col>
             <Col sm={6}>
@@ -500,10 +636,17 @@ class ProfileSetup extends React.Component {
                 <Form.Label>City:</Form.Label>
                 <Form.Control
                   required
+                  as="select"
                   type="text"
+                  defaultValue=""
                   placeholder="Enter City"
                   onChange={this.formOnChangeHandler}
-                />
+                >
+                  <option value="" disabled>
+                    Select City
+                  </option>
+                  {citySelections}
+                </Form.Control>
               </Form.Group>
             </Col>
           </Row>
@@ -536,16 +679,21 @@ class ProfileSetup extends React.Component {
           <h5>Your Logo</h5>
           {/** Logo Form Group */}
           <Form.Group controlId="logo">
-            <Form.Label>Size: 720px wide by 720px high</Form.Label>
+            <Form.Label>Size: 150px wide by 150px high</Form.Label>
             <br />
             {this.state.logo ? (
               <div>
-                <img alt="company-logo" src={this.state.logo}></img>
+                <img
+                  style={{ width: 150, height: 150 }}
+                  alt="company-logo-placeholder"
+                  src={this.state.logo}
+                ></img>
                 <br />
               </div>
             ) : (
               <div>
                 <img
+                  style={{ width: 150, height: 150 }}
                   alt="company-logo-placeholder"
                   src={require("../../assets/images/placeholders/logo_placeholder.PNG")}
                 ></img>
@@ -573,17 +721,22 @@ class ProfileSetup extends React.Component {
             <Form.Label>
               This is where you put your headshot so people can put a face to a
               name. <br />
-              Size: 720px wide by 720px high
+              Size: 150px wide by 150px high
             </Form.Label>
             <br />
             {this.state.profile_picture ? (
               <div className="mt-2">
-                <img alt="profile-pic" src={this.state.profile_picture}></img>
+                <img
+                  style={{ width: 150, height: 150 }}
+                  alt="profile-pic"
+                  src={this.state.profile_picture}
+                ></img>
                 <br />
               </div>
             ) : (
               <div className="mt-2">
                 <img
+                  style={{ width: 150, height: 150 }}
                   alt="profile-pic-placeholder"
                   src={require("../../assets/images/placeholders/profile_picture_placeholder.PNG")}
                 ></img>
@@ -604,7 +757,6 @@ class ProfileSetup extends React.Component {
             </label>
           </Form.Group>
           <hr size="50" />
-          <div>{this.state.cover_images.toString()}</div>
           <h5>Your Cover Image</h5>
           {/** Cover Image Form Group */}
           <Form.Group controlId="cover_images">
@@ -614,12 +766,71 @@ class ProfileSetup extends React.Component {
               images show trust, confidence, professionalism, and personality.
               Size: 1440px wide by 520px high (this ensures faster loading of
               your listing)
+              <br />
+              <br />
+              {this.state.cover_images.length > 0 ? (
+                this.state.cover_images.length > 1 ? (
+                  <div className="mt-2">
+                    <Carousel autoPlay>
+                      {this.state.cover_images.map((cover_image, index) => {
+                        return (
+                          <Carousel.Item key={index}>
+                            <img
+                              style={{ width: 740, height: 250 }}
+                              alt="carousel-pic"
+                              src={cover_image}
+                            ></img>
+                          </Carousel.Item>
+                        );
+                      })}
+                    </Carousel>
+                  </div>
+                ) : (
+                  <div className="mt-2">
+                    <img
+                      style={{ width: 740, height: 250 }}
+                      alt="carousel-pic"
+                      src={this.state.cover_images[0]}
+                    ></img>
+                  </div>
+                )
+              ) : (
+                <div className="mt-2">
+                  <img
+                    style={{ width: 740, height: 250 }}
+                    alt="carousel-pic-placeholder"
+                    src={require("../../assets/images/placeholders/upload_placeholder.PNG")}
+                  ></img>
+                </div>
+              )}
             </Form.Label>
             <Row>
               <Col>
-                <br />
                 {/** Upload Cover Image */}
-                <label className="custom-file-upload">
+                {this.state.cover_images.length > 0 && (
+                  <label
+                    className="custom-file-upload"
+                    onClick={(e) => {
+                      let tempCoverImages = this.state.cover_images;
+                      console.log(tempCoverImages);
+                      if (this.state.cover_images.length === 1) {
+                        tempCoverImages = [];
+                      } else {
+                        tempCoverImages = tempCoverImages.splice(-1, 1);
+                      }
+                      this.setState({
+                        cover_images: tempCoverImages,
+                      });
+                      console.log(this.state.cover_images);
+                    }}
+                  >
+                    <u>
+                      Delete Last Image (Total: {this.state.cover_images.length}
+                      )
+                    </u>
+                  </label>
+                )}
+                <label className="custom-file-upload addAnotherIcon">
                   <input
                     id="cover_images"
                     type="file"
@@ -628,10 +839,13 @@ class ProfileSetup extends React.Component {
                       this.onChangeImageHandler(e, true);
                     }}
                   />
-                  <u>Change Image</u>
+                  <img
+                    src={require("../../assets/icons/plus_circle_fill.svg")}
+                    alt="plus_circle_fill"
+                  />
+                  <u>Add Another (Max: {this.state.coverImageLimit} Images)</u>
                 </label>
               </Col>
-              <Col></Col>
             </Row>
           </Form.Group>
           <hr size="50" />
@@ -660,22 +874,6 @@ class ProfileSetup extends React.Component {
           </Form.Group>
           {/** Practitioner's Services Form Group */}
           <Form.Group controlId="search_filter">
-            {/* {this.state.chosen_services &&
-              this.state.chosen_services.map((chosen_id, index) => {
-                let result = this.state.services.find((service) => {
-                  return service.service_id === chosen_id;
-                });
-                console.log(this.state.services);
-                console.log(result);
-                if (result) {
-                  return (
-                    <span className="service-box" key={`${index}-${chosen_id}`}>
-                      {result}YEET
-                    </span>
-                  );
-                }
-              })} */}
-            <br />
             <Form.Label>Search Service:</Form.Label>
             <Form.Control
               className="mb-3"
@@ -914,7 +1112,12 @@ class ProfileSetup extends React.Component {
             />
           </Form.Group>
           {/** Save Profile Button */}
-          <CustomButton id="saveProfileButton" type="submit" text="Save" />
+          <CustomButton
+            disabled={this.state.registerFlag}
+            id="saveProfileButton"
+            type="submit"
+            text="Save"
+          />
         </Form>
       </Container>
     );
@@ -926,6 +1129,10 @@ const mapStateToProps = (state) => ({
   user_information: state.userReducer.user_information,
 });
 
-const mapDispatchToProps = () => {};
+const mapDispatchToProps = () => {
+  return {
+    profilesetup,
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps())(ProfileSetup);
