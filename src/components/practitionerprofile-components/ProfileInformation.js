@@ -134,6 +134,8 @@ class ProfileInformation extends React.Component {
           {/* Contact card column */}
           <Col lg={4} className="contact-card-column">
             <ContactCard
+              user_id={this.state.onlySpecialist.user_id}
+              company_id={this.props.company_id}
               first_name={this.state.onlySpecialist.specialist_first_name}
               last_name={this.state.onlySpecialist.specialist_last_name}
               company_name={this.props.company_name}

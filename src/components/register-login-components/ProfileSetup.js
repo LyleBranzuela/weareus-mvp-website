@@ -1000,7 +1000,7 @@ class ProfileSetup extends React.Component {
                       </Col>
                       <Col sm={1}>
                         <CustomButton
-                          text="-"
+                          text="x"
                           onClick={() => {
                             let splicedCertifications = this.state
                               .certifications;
@@ -1073,7 +1073,7 @@ class ProfileSetup extends React.Component {
                       </Col>
                       <Col sm={1}>
                         <CustomButton
-                          text="-"
+                          text="x"
                           onClick={() => {
                             let splicedMemberships = this.state.memberships;
                             splicedMemberships.splice(index, 1);

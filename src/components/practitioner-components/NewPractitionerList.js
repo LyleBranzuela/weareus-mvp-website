@@ -43,7 +43,6 @@ class NewPractitionerList extends React.Component {
         // Image URL with a Placeholder if doesnt exist (Only for Displaying Purposes)
         let image_url;
         let hasCoverImages = false;
-        console.log(practitioner.cover_image);
         if (!practitioner.cover_image) {
           hasCoverImages = false;
           image_url = "listing_placeholder_1.jpg";
