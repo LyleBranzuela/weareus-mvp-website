@@ -44,14 +44,20 @@
 }
 
 .newPracCardStyle .card-img-overlay {
+  max-width: 200px;
+  color: white;
   right: 0;
   padding: 0;
-  top: -27px;
+  top: -24px;
   position: relative;
   pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #newPracCardType {
+  min-width: 150px;
   color: white;
   background-color: #79158f;
   padding: 5px 15px 5px 15px;
@@ -122,4 +128,8 @@
   color: white;
   background-color: #79158f;
   font-size: 14px;
+  padding: 5px 15px 5px 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

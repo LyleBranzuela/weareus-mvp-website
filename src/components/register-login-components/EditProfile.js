@@ -5,10 +5,9 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import CustomButton from "../general-components/CustomButton";
 import swal from "@sweetalert/with-react";
-import { profilesetup } from "../../actions";
 import api from "../../api/api";
 
-class ProfileSetup extends React.Component {
+class EditProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +61,7 @@ class ProfileSetup extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this._isMounted && this.setFormCheckboxes();
+    this._isMounted && this.setCompanyData();
 
     let limit = 0;
     if (this.props?.user_information?.subscription_id) {
@@ -86,31 +85,65 @@ class ProfileSetup extends React.Component {
     this._isMounted = false;
   }
 
-  // Function to Set the Checkboxes for Accredations and Services
-  setFormCheckboxes = async () => {
+  // Function to Set the Checkboxes and Data for Accredations and Services
+  setCompanyData = async () => {
     // Getting the Services and Regions JSON From the Server
-    try {
-      const serviceResponse = await api.get("/lookup_services");
-      const accreditationResponse = await api.get("/lookup_accreditation");
-      const citiesResponse = await api.get("/cities");
-      const regionsResponse = await api.get("/regions");
+    // try {
+    const serviceResponse = await api.get("/lookup_services");
+    const accreditationResponse = await api.get("/lookup_accreditation");
+    const citiesResponse = await api.get("/cities");
+    const regionsResponse = await api.get("/regions");
+    const companyResponse = await api.get(
+      "/company/" + this.props.user_information.company_id
+    );
+    console.log(companyResponse);
 
-      // Setting the Services and Regions States
-      this._isMounted &&
-        this.setState({
-          services: serviceResponse.data.rows,
-          accreditations: accreditationResponse.data.rows,
-          cities: citiesResponse.data.rows,
-          regions: regionsResponse.data.rows,
-        });
-    } catch (error) {
-      swal({
-        title: "Database Error!",
-        text: error?.response?.data || "Unknown Get Error",
-        icon: "error",
-        buttons: [false, true],
+    // Setting the Company, Services, and Regions States
+    let company_address1 = companyResponse.data.company_address1.split(", ");
+    let company_address2 = companyResponse.data.company_address2.split(", ");
+    console.log(company_address1);
+    console.log(company_address2);
+    this._isMounted &&
+      this.setState({
+        services: serviceResponse.data.rows,
+        accreditations: accreditationResponse.data.rows,
+        cities: citiesResponse.data.rows,
+        regions: regionsResponse.data.rows,
+
+        // Set Current Company Details States
+        company_name: companyResponse.data.company_name,
+        logo: companyResponse.data.logo,
+        about: companyResponse.data.about,
+        building_number:
+          company_address1[0] === "null" ? "" : company_address1[0],
+        street: company_address1[1] === "null" ? "" : company_address1[1],
+        suburb: company_address1[2] === "null" ? "" : company_address1[2],
+        city_name: company_address2[0] === "null" ? "" : company_address2[0],
+        region_name: company_address2[1] === "null" ? "" : company_address2[1],
+        postal_code: company_address2[2] === "null" ? "" : company_address2[2],
+        chosen_accreditation: companyResponse.data.accreditation
+          ? companyResponse.data.accreditation.map((accreditation) => {
+              return "" + accreditation.accreditation_id;
+            })
+          : [],
+        chosen_services: companyResponse.data.services
+          ? companyResponse.data.services.map((service) => {
+              return "" + service.service_id;
+            })
+          : [],
+        // cover_images: companyResponse.data.cover_images
+        //   ? companyResponse.data.cover_images
+        //   : [],
       });
-    }
+    // } catch (error) {
+    //   swal({
+    //     title: "Database Error!",
+    //     text: error?.response?.data || "Unknown Setting up Error",
+    //     icon: "error",
+    //     buttons: [false, true],
+    //   });
+    // }
+    console.log(this.state);
   };
 
   // Handles Any Active Changes on the Form
@@ -423,6 +456,8 @@ class ProfileSetup extends React.Component {
     let accreditationBoxes = [];
     if (this.state.accreditations) {
       accreditationBoxes = this.state.accreditations.map((accreditation) => {
+        console.log("REUPDATED" + this.state.chosen_accreditation);
+        console.log(this.state.chosen_accreditation);
         return (
           <label
             id={`accreditation-${accreditation.accreditation_id}`}
@@ -479,13 +514,9 @@ class ProfileSetup extends React.Component {
     return (
       <Container className="profileSetupStyle">
         {/** Profile Setup Header  */}
-        <h2>Profile Set-up</h2>
-        <h5>
-          Great, now that you are one of Us, we want to get you started in the
-          best possible way.
-        </h5>
+        <h2>Edit Profile</h2>
         <p>
-          So before you get started, ensure you check out our{" "}
+          Check out our{" "}
           <a
             style={{ color: "black" }}
             href="/we_are_us_perfecting_your_profile_guide.pdf"
@@ -515,6 +546,7 @@ class ProfileSetup extends React.Component {
             <Form.Control
               required
               type="text"
+              defaultValue={this.state.company_name}
               placeholder="Enter Company Name"
               onChange={this.formOnChangeHandler}
             />
@@ -586,6 +618,7 @@ class ProfileSetup extends React.Component {
                 <Form.Label>Building Name/Number:</Form.Label>
                 <Form.Control
                   type="text"
+                  defaultValue={this.state.building_number}
                   placeholder="Enter Building Name/Number"
                   onChange={this.formOnChangeHandler}
                 />
@@ -597,6 +630,7 @@ class ProfileSetup extends React.Component {
                 <Form.Label>Street:</Form.Label>
                 <Form.Control
                   type="text"
+                  defaultValue={this.state.street}
                   placeholder="Enter Street"
                   onChange={this.formOnChangeHandler}
                 />
@@ -612,7 +646,7 @@ class ProfileSetup extends React.Component {
                   required
                   as="select"
                   type="text"
-                  defaultValue=""
+                  defaultValue={this.state.region_name}
                   placeholder="Enter Region"
                   onChange={this.formOnChangeHandler}
                 >
@@ -631,7 +665,7 @@ class ProfileSetup extends React.Component {
                   required
                   as="select"
                   type="text"
-                  defaultValue=""
+                  defaultValue={this.state.city_name}
                   placeholder="Enter City"
                   onChange={this.formOnChangeHandler}
                 >
@@ -651,6 +685,7 @@ class ProfileSetup extends React.Component {
                 <Form.Control
                   required
                   type="text"
+                  defaultValue={this.state.suburb}
                   placeholder="Enter Town/Suburb"
                   onChange={this.formOnChangeHandler}
                 />
@@ -662,6 +697,7 @@ class ProfileSetup extends React.Component {
                 <Form.Label>Postcode:</Form.Label>
                 <Form.Control
                   type="number"
+                  defaultValue={this.state.postal_code}
                   placeholder="Enter Postcode"
                   onChange={this.formOnChangeHandler}
                 />
@@ -854,6 +890,7 @@ class ProfileSetup extends React.Component {
             </Form.Label>
             <Form.Control
               required
+              value={this.state.about}
               as="textarea"
               rows="5"
               onChange={this.formOnChangeHandler}
@@ -1122,10 +1159,6 @@ const mapStateToProps = (state) => ({
   user_information: state.userReducer.user_information,
 });
 
-const mapDispatchToProps = () => {
-  return {
-    profilesetup,
-  };
-};
+const mapDispatchToProps = () => {};
 
-export default connect(mapStateToProps, mapDispatchToProps())(ProfileSetup);
+export default connect(mapStateToProps, mapDispatchToProps())(EditProfile);

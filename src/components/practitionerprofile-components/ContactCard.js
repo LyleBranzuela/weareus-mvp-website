@@ -13,9 +13,19 @@ class ContactCard extends React.Component {
             {this.props.company_name}
           </Card.Subtitle>
           <Card.Text>
-            {this.props.company_address1}
+            {this.props.company_address1
+              .split(", ")
+              .filter(function (e) {
+                return e !== "null";
+              })
+              .join(", ")}
             <br />
-            {this.props.company_address2}
+            {this.props.company_address2
+              .split(", ")
+              .filter(function (e) {
+                return e !== "null";
+              })
+              .join(", ")}
             <span className="horizontal-line-card"></span>
             <a href="/#" id="purple-card-heading">
               {this.props.phone.slice(0, 3)} (0)

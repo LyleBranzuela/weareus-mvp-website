@@ -91,26 +91,31 @@
 }
 
 #forgetPasswordMobile {
-  display:block;
-  margin-left:auto;
+  display: block;
+  margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-size: 2vh;
 }
 
 #loginFormButtonMobile {
-  display:block;
+  display: block;
   margin-left: auto;
-  margin-right:auto;
+  margin-right: auto;
   margin-top: 2vh;
   background-color: #79158f;
-  padding-top:1vh;
-  padding-bottom:1vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   padding-left: 25%;
   padding-right: 25%;
   font-size: 2.5vh;
   font-weight: 500;
 }
+.googleLogin {
+  margin-top: 50px;
+  height: 70px !important;
+}
 
-
-
+.googleLogin span {
+  margin-bottom: 0px;
+}

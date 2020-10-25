@@ -18,9 +18,10 @@ import UserRegister from "./register-login-components/UserRegister";
 import PractitionerRegister from "./register-login-components/PractitionerRegister";
 import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
+import EditProfile from "./register-login-components/EditProfile";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import Error500Page from "./general-components/Error500Page";
+// import Error500Page from "./general-components/Error500Page";
 // import PracticeProfile from "./pages/PracticeProfilePage";
 
 function App() {
@@ -82,7 +83,8 @@ function App() {
           path="/register-practitioner"
           render={(props) =>
             !isLoggedIn ||
-            (isLoggedIn && user_information.user_type === "user") ? (
+            (isLoggedIn && user_information.user_type === "user") ||
+            (isLoggedIn && !user_information.hasActiveSubscription) ? (
               <PractitionerRegister {...props} />
             ) : (
               <Redirect to="/home" />
@@ -93,7 +95,8 @@ function App() {
           path="/membership-form"
           render={(props) =>
             !isLoggedIn ||
-            (isLoggedIn && user_information.user_type === "user") ? (
+            (isLoggedIn && user_information.user_type === "user") ||
+            (isLoggedIn && !user_information.hasActiveSubscription) ? (
               <MembershipForm {...props} />
             ) : (
               <Redirect to="/home" />
@@ -112,11 +115,12 @@ function App() {
             )
           }
         />
-        {/* <Route
+        <Route
           path="/edit-profile"
           render={(props) =>
             isLoggedIn &&
-            (user_information.user_type === "practitioner" ||
+            ((user_information.company_id &&
+              user_information.user_type === "practitioner") ||
               user_information.user_type === "admin") ? (
               <EditProfile {...props} />
             ) : (
@@ -124,6 +128,7 @@ function App() {
             )
           }
         />
+        {/*
         <Route
           path="/finances"
           render={(props) =>

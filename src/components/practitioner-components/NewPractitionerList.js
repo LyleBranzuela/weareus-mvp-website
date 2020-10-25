@@ -32,11 +32,24 @@ class NewPractitionerList extends React.Component {
     let newPracList = [];
     let newPractitioners = this.props.newPractitioners;
     if (newPractitioners) {
+      // Randomize Practitioners
+      for (let i = newPractitioners.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i);
+        const temp = newPractitioners[i];
+        newPractitioners[i] = newPractitioners[j];
+        newPractitioners[j] = temp;
+      }
       newPracList = newPractitioners.map((practitioner) => {
-        // Temporary Image URL until S3 is setup
-        let image_url = "listing_placeholder_1.jpg";
-        if (!image_url) {
+        // Image URL with a Placeholder if doesnt exist (Only for Displaying Purposes)
+        let image_url;
+        let hasCoverImages = false;
+        console.log(practitioner.cover_image);
+        if (!practitioner.cover_image) {
+          hasCoverImages = false;
           image_url = "listing_placeholder_1.jpg";
+        } else {
+          hasCoverImages = true;
+          image_url = practitioner.cover_image;
         }
         if (isMobile) {
           return (
@@ -45,6 +58,7 @@ class NewPractitionerList extends React.Component {
                 key={practitioner.company_name}
                 company_id={practitioner.company_id}
                 company_name={practitioner.company_name}
+                hasCoverImages={hasCoverImages}
                 cover_image={image_url}
                 address={`${practitioner.suburb}, ${practitioner.region_name}`}
                 about={practitioner.about}
@@ -58,6 +72,7 @@ class NewPractitionerList extends React.Component {
               key={practitioner.company_name}
               company_id={practitioner.company_id}
               company_name={practitioner.company_name}
+              hasCoverImages={hasCoverImages}
               cover_image={image_url}
               address={`${practitioner.suburb}, ${practitioner.region_name}`}
               about={practitioner.about}
@@ -71,9 +86,7 @@ class NewPractitionerList extends React.Component {
     // Show All Practitioners Button
     let showAllButton;
     if (!this.props.showAll) {
-      showAllButton = (
-        <Link to="practitioner-list">Show All ({newPracList.length})</Link>
-      );
+      showAllButton = <Link to="practitioner-list">Show All</Link>;
     }
 
     if (isMobile) {

@@ -16,10 +16,7 @@ import {
 import AWS from "aws-sdk";
 import CustomButton from "../general-components/CustomButton";
 import UserPool from "../../manage-accounts/UserPool";
-import {
-  AccountVerificationModal,
-  getUser,
-} from "../../manage-accounts/Accounts";
+import { cognitoDetails } from "../../manage-accounts/Accounts";
 import api from "../../api/api";
 
 const stripePromise = loadStripe(
@@ -29,6 +26,7 @@ class MainForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      generatedUserID: "",
       // Shown as given_name for AWS Cognito
       firstName: this.props.user_information?.first_name
         ? this.props.user_information.first_name
@@ -57,7 +55,8 @@ class MainForm extends React.Component {
 
       // Stage Flags
       paymentStage: false,
-      registrationStage: this.props.user_information.user_id ? false : true,
+      registrationStage: false,
+      hasSubscription: false,
     };
 
     // Prevents Memory Leaks
@@ -81,7 +80,7 @@ class MainForm extends React.Component {
         default:
           break;
       }
-      this.setState({ priceId: priceIdKey });
+      this.setState({ hasSubscription: true, priceId: priceIdKey });
     } else {
       // Error with Signing up
       swal({
@@ -89,12 +88,16 @@ class MainForm extends React.Component {
         text: "Please choose a subscrption.",
         icon: "error",
         buttons: [false, true],
-      }).then(this.setState({ redirect: true }));
+      }).then(this.setState({ hasSubscription: false, redirect: true }));
     }
   }
 
   componentWillUnmount() {
     this._isMounted = false;
+    if (this.state.redirect) {
+      this.props.signout();
+      logout();
+    }
   }
 
   // Handles Any Active Changes on the Form
@@ -105,7 +108,7 @@ class MainForm extends React.Component {
   };
 
   // Funtion to Setup the Stripe Subscription
-  setupStripeSubscription = async () => {
+  setupStripeSubscription = async (user_id) => {
     this.setState({ paymentStage: true });
     swal({
       title: "Processing your Payment!",
@@ -152,20 +155,16 @@ class MainForm extends React.Component {
     } else {
       try {
         // Creating the User's Subscription plan with the created payment method
-        const createSubscriptionResponse = await api.post(
-          "/create-subscription",
-          {
-            user_id: this.props.user_information.user_id,
-            subscription_id: this.props.location.state.subscription_id,
-            paymentMethodId: paymentMethod.id,
-            email: this.state.email,
-            priceId: this.state.priceId,
-            last_four_digits: paymentMethod.card.last4,
-          }
-        );
+        await api.post("/create-subscription", {
+          user_id: user_id,
+          subscription_id: this.props.location.state.subscription_id,
+          paymentMethodId: paymentMethod.id,
+          email: this.state.email,
+          priceId: this.state.priceId,
+          last_four_digits: paymentMethod.card.last4,
+        });
         // Close The Payment Processing Modal
         swal.close();
-        console.log(createSubscriptionResponse);
 
         // Successfully Subscribed to the Subscription Plan
         swal({
@@ -177,8 +176,6 @@ class MainForm extends React.Component {
           buttons: [false, true],
         }).then(() => {
           // If they're logged in the log them out.
-          logout();
-          this.props.signout();
           this.setState({ paymentStage: false, redirect: true });
         });
       } catch (error) {
@@ -208,7 +205,7 @@ class MainForm extends React.Component {
       this.state.phoneNumber
     ) {
       if (this.props.isLoggedIn) {
-        this.setupStripeSubscription();
+        this.setupStripeSubscription(this.props.user_information.user_id);
       } else {
         this.setState({ registrationStage: true });
         swal({
@@ -317,17 +314,18 @@ class MainForm extends React.Component {
               } else {
                 // If there's a duplicate data in the database, then remove the cognito user
                 let duplicateUserFlag = false;
+                let generatedUser;
                 try {
                   userObject.reference_id = data.userSub;
-                  await api.post("/user", userObject);
+                  generatedUser = await api.post("/user", userObject);
+                  console.log(generatedUser);
                 } catch (error) {
                   duplicateUserFlag = true;
                   const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider(
                     {
-                      accessKeyId: "AKIA2DSPNNEEZ3CSSBAF",
-                      secretAccessKey:
-                        "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",
-                      region: "ap-southeast-2",
+                      accessKeyId: cognitoDetails.accessKeyId,
+                      secretAccessKey: cognitoDetails.secretAccessKey,
+                      region: cognitoDetails.region,
                     }
                   );
                   const params = {
@@ -376,11 +374,8 @@ class MainForm extends React.Component {
                     buttons: [false, true],
                   }).then((value) => {
                     if (value === true) {
-                      // Account Verification Modal
-                      AccountVerificationModal(
-                        getUser(userObject.email.toLowerCase())
-                      );
-                      this.setupStripeSubscription();
+                      // Setup the Stripe Subscription
+                      this.setupStripeSubscription(generatedUser.data.user_id);
                       this.setState({
                         registrationStage: false,
                       });
@@ -403,8 +398,6 @@ class MainForm extends React.Component {
         }
       }
     } else {
-      // Close The Registration Processing Modal
-      swal.close();
       swal({
         title: "Incomplete Form!",
         text: "Please fill all the required parts of the form.",
@@ -419,7 +412,11 @@ class MainForm extends React.Component {
     const { stripe } = this.props;
     // Redirect to home if finished registering
     if (this.state.redirect) {
-      return <Redirect to="/login" />;
+      if (this.props.user_information.hasSubscription) {
+        return <Redirect to="/register-practitioner" />;
+      } else {
+        return <Redirect to="/login" />;
+      }
     }
     return (
       <Container fluid>
@@ -604,15 +601,6 @@ class MainForm extends React.Component {
                   />
                   <hr size="50" />
                   {/** Section: Pay Button */}
-                  {/* <Link
-                    to={{
-                      pathname: "/profile-setup",
-                      state: {
-                        subscription_id: this.props.location.state
-                          .subscription_id,
-                      },
-                    }}
-                  > */}
                   <CustomButton
                     disabled={
                       !stripe ||
@@ -623,7 +611,6 @@ class MainForm extends React.Component {
                     type="submit"
                     text="Payment"
                   />
-                  {/* </Link> */}
                 </Col>
               </Row>
             </Container>
