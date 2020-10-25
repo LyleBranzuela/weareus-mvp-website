@@ -1498,7 +1498,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
         className="no-padding col-lg-8"
       >
         <img
-          alt="profile image"
+          alt="practitioner-profile"
           id="profile-image-frame"
           src="prac_profile_placeholder.jpg"
         />
@@ -1506,11 +1506,11 @@ exports[`Practitioner Profile Renders properly 1`] = `
           className="practitioner-title"
           id="practitioner-name"
         >
-          Atma Studio Yoga
+          
           <img
             alt="logo"
-            class="practitioner-logo"
-            src="prac_logo_placeholder.jpg"
+            className="practitioner-logo"
+            src=""
           />
         </h2>
         <div
@@ -1518,36 +1518,30 @@ exports[`Practitioner Profile Renders properly 1`] = `
         >
           <span
             id="category-text"
-          >
-            Herbal Medicine, Massage, Reiki
-          </span>
+          />
         </div>
         <div
           id="location"
         >
           <span
-            id="suburb"
+            id="suburb-profile"
           >
-            Albany, 
+            
+            ,
           </span>
           <span
-            id="city"
+            id="city-profile"
           >
-             Auckland
+             
+            
           </span>
         </div>
         <br />
-        <br />
-        <p
-          className="box"
-        >
-          Covered by ACC
-        </p>
         <h5
           className="practitioner-name"
           id="person-name"
         >
-          Name
+           
         </h5>
       </div>
       <div
@@ -1567,28 +1561,38 @@ exports[`Practitioner Profile Renders properly 1`] = `
             <div
               className="card-subtitle h6"
             >
-              Atma Studio Yoga
+              
             </div>
             <p
               className="card-text"
             >
-              Name
+              
               <br />
-              184 Beech Road, Diary Flat,
-              <br />
-              RD4 Albany, Auckland 0794
-              <hr />
-              <h5
+              
+              <span
+                className="horizontal-line-card"
+              />
+              <a
+                href="/#"
                 id="purple-card-heading"
               >
-                +64 (0)21 754 459
-              </h5>
-              <hr />
-              <h5
+                
+                 (0)
+                
+                 
+                
+                 
+                
+              </a>
+              <span
+                className="horizontal-line-card"
+              />
+              <a
+                href="/#"
                 id="purple-card-heading"
               >
-                gill@sbsltd.co.nz
-              </h5>
+                
+              </a>
             </p>
           </div>
         </div>
@@ -1614,17 +1618,16 @@ exports[`Practitioner Profile Renders properly 1`] = `
             <p
               className="card-text"
             >
-              <div
-                class="inner"
+              <span
+                className="inner"
                 style={
                   Object {
                     "maxHeight": 500,
                   }
                 }
               >
-                Understanding your body's responses and tension patterns can help you understand the conscious choices you make and puts you back in charge of your own well-being. Experience day-to-day life in a positive, enjoyable and empowered way. Using the nurtured touch of Reflexology, positive reinforcement, sharing of knowledge, lifestyle support and a deep understanding of how the nervous system works I can help you achieve and maintain the best physical, mental and emotional energy.
-                Understanding your body's responses and tension patterns can help you understand the conscious choices you make and puts you back in charge of your own well-being. Experience day-to-day life in a positive, enjoyable and empowered way. Using the nurtured touch of Reflexology, positive reinforcement, sharing of knowledge, lifestyle support and a deep understanding of how the nervous system works I can help you achieve and maintain the best physical, mental and emotional energy.
-              </div>
+                
+              </span>
             </p>
           </div>
         </div>
@@ -1633,7 +1636,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
         >
           <div
             className="accordion"
-            defaultAtionKey="0"
+            defaultationkey="0"
           >
             <div
               className="card"
@@ -1644,6 +1647,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
               >
                 Specialties
                 <img
+                  alt="accordion_arrow"
                   className="arrow-position"
                   src="accordion_arrow.svg"
                 />
@@ -1657,23 +1661,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
                 >
                   <ul
                     className="accordion-content-list-style"
-                  >
-                    <li>
-                      <h5>
-                        Item 1
-                      </h5>
-                    </li>
-                    <li>
-                      <h5>
-                        Item 1
-                      </h5>
-                    </li>
-                    <li>
-                      <h5>
-                        Item 1
-                      </h5>
-                    </li>
-                  </ul>
+                  />
                 </div>
               </div>
             </div>
@@ -1686,6 +1674,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
               >
                 Services
                 <img
+                  alt="accordion_arrow"
                   className="arrow-position"
                   src="accordion_arrow.svg"
                 />
@@ -1700,28 +1689,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
                   <ul
                     className="accordion-content-list-style"
                     id="services"
-                  >
-                    <li>
-                      <h5>
-                        Reflexology
-                      </h5>
-                    </li>
-                    <li>
-                      <h5>
-                        Reiki
-                      </h5>
-                    </li>
-                    <li>
-                      <h5>
-                        Metamorphosis
-                      </h5>
-                    </li>
-                    <li>
-                      <h5>
-                        Energy Balance
-                      </h5>
-                    </li>
-                  </ul>
+                  />
                 </div>
               </div>
             </div>
@@ -1734,6 +1702,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
               >
                 Training, Qualifications & Memberships
                 <img
+                  alt="accordion_arrow"
                   className="arrow-position"
                   src="accordion_arrow.svg"
                 />
@@ -1749,6 +1718,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
                     className="title-header"
                   >
                     <img
+                      alt="accordion_diploma"
                       src="icon_diploma.svg"
                       style={
                         Object {
@@ -1762,20 +1732,16 @@ exports[`Practitioner Profile Renders properly 1`] = `
                     className="font-body"
                     id="education"
                   >
-                    <span>
-                      International Institute of Reflexology
-                    </span>
-                    <br />
-                    <span>
-                      Level 4 Anatomy & Physiology/Pathology (3 yrs)
-                    </span>
-                    <br />
-                    <br />
+                    <ul
+                      className="training-accordion-body-font"
+                    />
                   </div>
+                  <br />
                   <h6
                     className="title-header"
                   >
                     <img
+                      alt="accordion_certificate"
                       src="icon_certificate.svg"
                       style={
                         Object {
@@ -1787,28 +1753,13 @@ exports[`Practitioner Profile Renders properly 1`] = `
                   </h6>
                   <ul
                     className="training-accordion-body-font"
-                  >
-                    <li>
-                      How Reflexology Helps with Conception, Pregnancy & Childbirth (3 yrs)
-                    </li>
-                    <li>
-                      Reflexology for the Me | Patient Cert
-                    </li>
-                    <li>
-                      How Reflexology helps Cancer
-                    </li>
-                    <li>
-                      Coastal Paramedic
-                    </li>
-                    <li>
-                      Current First Aid
-                    </li>
-                  </ul>
+                  />
                   <br />
                   <h6
                     className="title-header"
                   >
                     <img
+                      alt="accordion_memberships"
                       src="icon_memberships.svg"
                       style={
                         Object {
@@ -1821,27 +1772,7 @@ exports[`Practitioner Profile Renders properly 1`] = `
                   <div
                     className="font-body"
                     id="memberships"
-                  >
-                    <a
-                      id="membership-no-link"
-                    >
-                      Reflexology Institute New Zealand
-                    </a>
-                    <br />
-                    <a
-                      href=""
-                      id="membership-link"
-                      style={
-                        Object {
-                          "color": "#79158f",
-                        }
-                      }
-                    >
-                      <u>
-                        National Health Practitioners of New Zealand
-                      </u>
-                    </a>
-                  </div>
+                  />
                 </div>
               </div>
             </div>

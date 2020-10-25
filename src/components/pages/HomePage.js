@@ -90,7 +90,6 @@ class HomePage extends React.Component {
             showAll={false}
           />
           <SearchField />
-          <PractitionerCTA />
           <CallToAction />
         </div>
       );

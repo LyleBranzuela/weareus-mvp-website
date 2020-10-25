@@ -3,7 +3,7 @@
   margin: 0.5% 15% 0.5% 15%;
   font-family: "AvenirLTStd-Book";
   font-size: 1em;
-  color: #5b5b5b;
+  color: #4F4F4F;
 }
 
 .iconStyles {
@@ -54,18 +54,19 @@
 /* Mobile Styles */
 
 .footerStyleMobile {
-  font-family: "AvenirLTPro-Heavy";
-  font-size: 2vh;
+  font-family: "AvenirLTStd-Book";
+  font-size: 1em;
+  letter-spacing: 0;
+  line-height: 0.5em;
+  font-weight: bold;
+  color: #4F4F4F;
+  text-align: center;
 }
 
 .justify-content-center {
   display: flex;
   justify-content: center;
   padding-top: 3%;
-}
-
-.footerStyleMobile {
-  text-align: center;
 }
 
 .footerSocialMedia {

@@ -62,6 +62,7 @@ class NavigationBar extends React.Component {
                 src={require("../../assets/icons/we_are_us_logo.svg")}
                 className="d-inline-block align-top"
                 id="mobile_logo"
+                style= {{ height: '2em', width: '10.1em'}}
               />
             </Navbar.Brand>
           </LinkContainer>

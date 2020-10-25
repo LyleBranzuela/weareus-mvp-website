@@ -61,7 +61,7 @@
 
 /* Mobile Styles */
 .newPracCardStyleMobile {
-  font-size: 2vh;
+  font-size: 16px;
   font-family: "AvenirLTStd-Book";
   position: relative;
   display: inline-block;
@@ -79,7 +79,7 @@
 
 .newPracCardStyleMobile .card-title {
   color: #79158f !important;
-  font-size: 2.5vh;
+  font-size: 20px;
   font-family: "AvenirLTPro-Heavy";
 }
 
@@ -91,13 +91,13 @@
 
 .newPracCardStyleMobile .card-subtitle {
   color: gray !important;
-  font-size: 2vh;
+  font-size: 0.875em;
   margin-bottom: 15px !important;
 }
 
 .newPracCardStyleMobile .card-text {
   color: gray !important;
-  font-size: 1.8vh;
+  font-size: 1em;
 }
 
 .newPracCardStyleMobile:before {
@@ -121,6 +121,5 @@
 #newPracCardTypeMobile {
   color: white;
   background-color: #79158f;
-  padding: 5px 15px 5px 15px;
-  font-size: 2vh;
+  font-size: 14px;
 }
