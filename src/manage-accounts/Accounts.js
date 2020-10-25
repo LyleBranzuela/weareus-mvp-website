@@ -81,6 +81,7 @@ const authenticate = (Username, Password) => {
       },
       onFailure: (err) => {
         // Problems in Authentication
+        swal.close();
         swal({
           title: "Authentication Error!",
           text: err.message,
@@ -90,7 +91,7 @@ const authenticate = (Username, Password) => {
         reject(err);
       },
       newPasswordRequired: (data) => {
-        console.log(data);
+        swal.close();
         swal({
           title: "New Password Required!",
           icon: "error",

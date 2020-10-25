@@ -11,6 +11,8 @@ export const loadState = () => {
   }
 };
 
+// Saving the States this way might be too unsafe,
+// please change or find an alternative way of saving the states
 export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);

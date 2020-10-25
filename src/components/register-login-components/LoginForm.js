@@ -405,12 +405,14 @@ class LoginForm extends React.Component {
                 />
               </Col> 
               */}
-              <GoogleLogin
-                clientId="423149440415-l1v06tlarr297mkbv1oh5g2jv0pgdrv3.apps.googleusercontent.com"
-                buttonText="Login"
-                onSuccess={this.googleSignInCallBack}
-                cookiePolicy={"single_host_origin"}
-              />
+              <Col>
+                <GoogleLogin
+                  className="googleLogin"
+                  clientId="423149440415-l1v06tlarr297mkbv1oh5g2jv0pgdrv3.apps.googleusercontent.com"
+                  onSuccess={this.googleSignInCallBack}
+                  cookiePolicy={"single_host_origin"}
+                />
+              </Col>
             </Row>
           </Form>
         </Container>

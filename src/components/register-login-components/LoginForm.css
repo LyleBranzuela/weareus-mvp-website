@@ -111,3 +111,11 @@
   font-size: 2.5vh;
   font-weight: 500;
 }
+.googleLogin {
+  margin-top: 50px;
+  height: 70px !important;
+}
+
+.googleLogin span {
+  margin-bottom: 0px;
+}

@@ -10,8 +10,12 @@ class PractitionerCard extends React.Component {
         <Card.Img
           alt={this.props.company_name}
           variant="top"
-          src={require("../../assets/images/placeholders/" +
-            this.props.cover_image)}
+          src={
+            this.props.hasCoverImages
+              ? this.props.cover_image
+              : require("../../assets/images/placeholders/" +
+                  this.props.cover_image)
+          }
         />
         <Card.Body>
           <Link to={`/practitioner-profile/${this.props.company_id}`}>

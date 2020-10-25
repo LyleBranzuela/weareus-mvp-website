@@ -10,12 +10,22 @@ class PractitionerList extends React.Component {
     let practitionerList = [];
     let practitioners = this.props.practitioners;
     if (practitioners) {
+      // Randomize Practitioners
+      for (let i = practitioners.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * i);
+        const temp = practitioners[i];
+        practitioners[i] = practitioners[j];
+        practitioners[j] = temp;
+      }
       practitionerList = practitioners.map((practitioner) => {
         // Image URL with a Placeholder if doesnt exist (Only for Displaying Purposes)
         let image_url;
+        let hasCoverImages = false;
         if (!practitioner.image_url) {
+          hasCoverImages = false;
           image_url = "listing_placeholder_2.jpg";
         } else {
+          hasCoverImages = true;
           image_url = practitioner.image_url;
         }
         return (
@@ -23,6 +33,7 @@ class PractitionerList extends React.Component {
             key={practitioner.company_name}
             company_id={practitioner.company_id}
             company_name={practitioner.company_name}
+            hasCoverImages={hasCoverImages}
             cover_image={image_url}
             address={`${practitioner.suburb}, ${practitioner.region_name}`}
           />
