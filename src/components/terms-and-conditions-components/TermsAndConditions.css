@@ -1,21 +1,23 @@
 /* Desktop Styles */
 .tacPage {
- margin-left:15%;
- margin-right:15%;
- margin-top: 8%;
- margin-bottom: 8%;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 8%;
+  margin-bottom: 8%;
+  white-space: pre-line;
 }
 
-.tacHeader{
+.tacHeader {
   font-size: 1.6vw;
   font-weight: 300;
   font-family: "AvenirLTPro-Heavy";
   text-align: center;
   color: #79158f;
   padding-bottom: 5%;
+  white-space: pre-line;
 }
 
-.tacText{
+.tacText {
   font-size: 0.9vw;
   font-weight: 500;
   font-family: "AvenirLTStd-Book";
@@ -23,17 +25,19 @@
   color: gray;
   padding-left: 10%;
   padding-right: 10%;
+  white-space: pre-line;
 }
 
 /* Mobile Styles */
 .tacPageMobile {
- margin-left:15%;
- margin-right:15%;
- margin-top: 8%;
- margin-bottom: 8%;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 5%;
+  margin-bottom: 8%;
+  white-space: pre-line;
 }
 
-.tacHeaderMobile{
+.tacHeaderMobile {
   font-size: 3vh;
   font-weight: 300;
   font-family: "AvenirLTPro-Heavy";
@@ -41,9 +45,10 @@
   color: #79158f;
   padding-bottom: 5%;
   margin-top: 30%;
+  white-space: pre-line;
 }
 
-.tacTextMobile{
+.tacTextMobile {
   font-size: 2vh;
   font-weight: 500;
   font-family: "AvenirLTStd-Book";
@@ -51,4 +56,5 @@
   color: gray;
   padding-left: 5%;
   padding-right: 5%;
+  white-space: pre-line;
 }

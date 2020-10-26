@@ -7,15 +7,17 @@
   font-size: 1.4em;
   font-weight: 500;
   font-family: "AvenirLTStd-Book";
+  white-space: pre-line;
 }
 
 .motdStyleMobile {
   text-align: center;
-  padding-top: 5%;
+  padding-top: 10%;
   padding-bottom: 10%;
   margin: 0;
   color: #79158F;
   font-size: 1.125em;
   font-weight: 580;
   font-family: "AvenirLTStd-Book";
+  white-space: pre-line;
 }

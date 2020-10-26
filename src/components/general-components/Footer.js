@@ -61,7 +61,7 @@ class Footer extends React.Component {
                 </LinkContainer>
                 {/* Terms and Conditions Page Link */}
                 <LinkContainer to="/terms-and-conditions">
-                  <Nav.Link>Terms And Conditions</Nav.Link>
+                  <Nav.Link>Terms & Conditions</Nav.Link>
                 </LinkContainer>
               </Nav>
             </Navbar>

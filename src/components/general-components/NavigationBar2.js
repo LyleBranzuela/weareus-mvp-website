@@ -52,10 +52,10 @@ class NavigationBar2 extends React.Component {
     else if (scrolledState === false && scroll_pos > 0) {
       this.setState({ scrolled: true });
     }
-    else if (scrolledState === true && scroll_pos == 0) {
+    else if (scrolledState === true && scroll_pos === 0) {
       this.setState({ scrolled: false });
     }
-    else if (scrolledState === false && scroll_pos == 0)
+    else if (scrolledState === false && scroll_pos === 0)
     {
       this.setState({ scrolled: true });
     }
@@ -197,7 +197,7 @@ class NavigationBar2 extends React.Component {
               />
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={this.toggleNavbar} />
           <Navbar.Collapse
             className="justify-content-end"
             id="responsive-navbar-nav"

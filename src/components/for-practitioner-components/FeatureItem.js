@@ -9,7 +9,7 @@ class FeatureItem extends React.Component {
           <img
             alt={this.props.alt}
             variant="top"
-            src={require("../../assets/images/" + this.props.image)}
+            src={this.props.image}
           />
         </span>
         <h5>{this.props.title}</h5>

@@ -4,6 +4,7 @@ import { Container, Card, CardGroup, Accordion } from "react-bootstrap";
 import SubscriptionPlan from "./SubscriptionPlan";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
+import strapi from "../../api/strapi.js";
 
 class PractitionerRegister extends React.Component {
   constructor(props) {
@@ -21,12 +22,98 @@ class PractitionerRegister extends React.Component {
     this._isMounted &&
       this.setState({
         subscriptions: subscriptionResponse.data,
+        headerMainText: "",
+        headerSubText: "",
+        headerDescription: "",
+        subPlansHeader: "",
+        subPlansInfo: "",
+        faqHeader1: "",
+        faqText1: "",
+        faqHeader2: "",
+        faqText2:"",
+        faqJoinUs: "",
+        faqContactUs: ""
       });
+  };
+
+  getPageContent = async () => {
+    let pageContent = {};
+
+    // Get requests to retrieve JSON information from Strapi
+    const getHeaderMainText = await strapi.get("/copies/6");
+    const getHeaderSubText = await strapi.get("/copies/7");
+    const getHeaderDescription = await strapi.get("/copies/8");
+    const getSubPlansHeader = await strapi.get("/copies/9");
+    const getSubPlansInfo = await strapi.get("/copies/10");
+    const getFAQHeader1 = await strapi.get("/copies/11");
+    const getFAQText1 = await strapi.get("/copies/12");
+    const getFAQHeader2 = await strapi.get("/copies/13");
+    const getFAQText2 = await strapi.get("/copies/14");
+    const getFAQJoin = await strapi.get("/copies/15");
+    const getFAQContact = await strapi.get("/copies/16");
+
+    pageContent.registerMain = JSON.stringify(getHeaderMainText.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.registerSub = JSON.stringify(getHeaderSubText.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.registerDesc= JSON.stringify(getHeaderDescription.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.subPlanHeader= JSON.stringify(getSubPlansHeader.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    
+    pageContent.subPlansInfo = JSON.stringify(getSubPlansInfo.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.faqHeader1 = JSON.stringify(getFAQHeader1.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.faqText1 = JSON.stringify(getFAQText1.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    
+    pageContent.faqHeader2 = JSON.stringify(getFAQHeader2.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    
+    pageContent.faqText2 = JSON.stringify(getFAQText2.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.faqJoin = JSON.stringify(getFAQJoin.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.faqContact = JSON.stringify(getFAQContact.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+
+    this.setState({ headerMainText: pageContent.registerMain,
+                    headerSubText: pageContent.registerSub,
+                    headerDescription: pageContent.registerDesc,
+                    subPlansHeader: pageContent.subPlanHeader,
+                    subPlansInfo: pageContent.subPlansInfo,
+                    faqHeader1: pageContent.faqHeader1,
+                    faqText1: pageContent.faqText1,
+                    faqHeader2: pageContent.faqHeader2,
+                    faqText2: pageContent.faqText2,
+                    faqJoinUs: pageContent.faqJoin,
+                    faqContactUs: pageContent.faqContact});
   };
 
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.getAllSubscriptions();
+    this._isMounted && this.getPageContent();
   }
 
   componentWillUnmount() {
@@ -59,26 +146,12 @@ class PractitionerRegister extends React.Component {
       <Container fluid>
         {/* Register As Practitioner Details */}
         <Container className="practitionerRegisterStyle">
-          <h2>Become one of Us</h2>
+          <h2> {this.state.headerMainText} </h2>
           <h4 id="pracRegisterHeader">
-            Pre-launch offer. Register NOW and get your 2nd Year Free!
+            {this.state.headerSubText}
           </h4>
           <p id="pracRegisterDesc">
-            Register with We are Us before 31 Dec 2018 and we'll give you your
-            second year free. Just to say a massive, big thank you for
-            supporting us right at the beginning of our journey.
-            <br />
-            <br />
-            When you sign up with We are Us we get you started in the best
-            possible way. Providing you with templates and information to help
-            you showcase your business. We've teamed up with health & wellness
-            copywriters and visual design experts to provide you with cracking
-            tips to help your profile your business professionally, highlighting
-            your services without being sales-y.
-            <br />
-            <br />
-            The result? A professional, branded, consistent marketing space for
-            you to confidently connect with new clients.
+            {this.state.headerDescription}
           </p>
           <hr size="50" />
         </Container>
@@ -86,7 +159,7 @@ class PractitionerRegister extends React.Component {
         {/** Card Group for The Subscription Plans */}
         <Container className="subscriptionGroup">
           <span id="subscriptionCardsHeader">
-            How would you like to join Us?
+            {this.state.subPlansHeader}
           </span>
           <CardGroup>
             {/** Cards For the Subscription Plans */}
@@ -94,14 +167,7 @@ class PractitionerRegister extends React.Component {
           </CardGroup>
           {/** Additional Information Section*/}
           <p>
-            *
-            <br />
-            The team behind We are Us are experts in visual communication and
-            how best to market your business through our site. As such, we
-            review the copy and images that you upload before it is published to
-            the site. We will provide you with feedback on how to improve the
-            copy and images should if it is needed to enhance the impact of your
-            listing.
+            {this.state.subPlansInfo}
           </p>
         </Container>
 
@@ -112,7 +178,7 @@ class PractitionerRegister extends React.Component {
             <Accordion defaultActiveKey="0">
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
-                  Help. How do I know what to write?
+                  {this.state.faqHeader1}
                   <img
                     src={require("../../assets/icons/accordion_arrow.svg")}
                     alt="accordion_arrow"
@@ -120,16 +186,13 @@ class PractitionerRegister extends React.Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec commodo eget justo id volutpat. Praesent faucibus
-                    vestibulum odio. Nullam lacinia rutrum velit scelerisque
-                    rutrum.
+                  {this.state.faqText1}
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="1">
-                  How does this 12 month 50% off deal work?
+                {this.state.faqHeader2}
                   <img
                     src={require("../../assets/icons/accordion_arrow.svg")}
                     alt="accordion_arrow"
@@ -137,20 +200,17 @@ class PractitionerRegister extends React.Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec commodo eget justo id volutpat. Praesent faucibus
-                    vestibulum odio. Nullam lacinia rutrum velit scelerisque
-                    rutrum.
+                  {this.state.faqText2}
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
               <br />
               <Link to={`/for-practitioner`}>
-                <u>Join We are Us now</u>
+                <u>{this.state.faqJoinUs}</u>
               </Link>
               <br />
               <Link to="contact-us">
-                <u>Want to talk it over? Drop us a line</u>
+                <u>{this.state.faqContactUs}</u>
               </Link>
             </Accordion>
           </Container>

@@ -1,6 +1,5 @@
 .searchFieldContainer {
   background-color: lavender;
-  background-image: url("../../assets/images/we_are_us_yoga.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -158,6 +157,7 @@
 
 .searchFieldContainerMobile {
   background-color:#EEDCFF;
+  padding-top: 10vh;
 }
 
 .searchFieldStyleMobile .form-control {

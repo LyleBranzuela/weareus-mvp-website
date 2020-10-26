@@ -1,9 +1,151 @@
 import React from "react";
 import "./TeamSection.css";
 import { Container, Col, Row } from "react-bootstrap";
+import strapi from "../../api/strapi.js";
 
 class TeamSection extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      width: window.innerWidth,
+      teamName1: "",
+      teamTitle1: "",
+      teamInfo1: "",
+      teamName2: "",
+      teamTitle2: "",
+      teamInfo2: "",
+      teamName3: "",
+      teamTitle3: "",
+      teamInfo3: "",
+      teamName4: "",
+      teamTitle4: "",
+      teamInfo4: "",
+      teamName5: "",
+      teamTitle5: "",
+      teamInfo5: "",
+      teamImage1: "",
+      teamImage2: "",
+      teamImagePlaceholder: ""
+    };
+  }
+
+
+  getPageContent = async () => {
+    let pageContent = {};
+
+    // Get requests to retrieve JSON information from Strapi
+    const getName1 = await strapi.get("/copies/35");
+    const getTitle1 = await strapi.get("/copies/36");
+    const getInfo1 = await strapi.get("/copies/37");
+
+    const getName2 = await strapi.get("/copies/38");
+    const getTitle2 = await strapi.get("/copies/39");
+    const getInfo2 = await strapi.get("/copies/40");
+
+    const getName3 = await strapi.get("/copies/41");
+    const getTitle3 = await strapi.get("/copies/42");
+    const getInfo3 = await strapi.get("/copies/43");
+
+    const getName4 = await strapi.get("/copies/44");
+    const getTitle4 = await strapi.get("/copies/45");
+    const getInfo4 = await strapi.get("/copies/46");
+
+    const getName5 = await strapi.get("/copies/47");
+    const getTitle5 = await strapi.get("/copies/48");
+    const getInfo5 = await strapi.get("/copies/49");
+
+
+    const getImage1 = await strapi.get("/images/9");
+    const getImage2 = await strapi.get("/images/10");
+    const getImagePlaceholder = await strapi.get("/images/7");
+
+
+    pageContent.memberName1 = JSON.stringify(getName1.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberName2 = JSON.stringify(getName2.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberName3 = JSON.stringify(getName3.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberName4 = JSON.stringify(getName4.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberName5 = JSON.stringify(getName5.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.memberTitle1 = JSON.stringify(getTitle1.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberTitle2 = JSON.stringify(getTitle2.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberTitle3 = JSON.stringify(getTitle3.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberTitle4 = JSON.stringify(getTitle4.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberTitle5 = JSON.stringify(getTitle5.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+
+    pageContent.memberInfo1 = JSON.stringify(getInfo1.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberInfo2 = JSON.stringify(getInfo2.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberInfo3 = JSON.stringify(getInfo3.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberInfo4 = JSON.stringify(getInfo4.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+    pageContent.memberInfo5 = JSON.stringify(getInfo5.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.teamImage1 = JSON.stringify(getImage1.data.imageURL).replace(/"/g, "");
+    pageContent.teamImage2 = JSON.stringify(getImage2.data.imageURL).replace(/"/g, "");
+    pageContent.placeholderImage = JSON.stringify(getImagePlaceholder.data.imageURL).replace(/"/g, "");
+
+    this.setState({
+      teamName1: pageContent.memberName1,
+      teamTitle1: pageContent.memberTitle1,
+      teamInfo1: pageContent.memberInfo1,
+      teamName2: pageContent.memberName2,
+      teamTitle2: pageContent.memberTitle2,
+      teamInfo2: pageContent.memberInfo2,
+      teamName3: pageContent.memberName3,
+      teamTitle3: pageContent.memberTitle3,
+      teamInfo3: pageContent.memberInfo3,
+      teamName4: pageContent.memberName4,
+      teamTitle4: pageContent.memberTitle4,
+      teamInfo4: pageContent.memberInfo4,
+      teamName5: pageContent.memberName5,
+      teamTitle5: pageContent.memberTitle5,
+      teamInfo5: pageContent.memberInfo5,
+      teamImage1: pageContent.teamImage1,
+      teamImage2: pageContent.teamImage2,
+      teamImagePlaceholder: pageContent.placeholderImage
+    });
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+    this._isMounted && this.getPageContent();
+  }
+
+
+
   render() {
+    const memberImage1 = strapi.defaults.baseURL + this.state.teamImage1;
+    const memberImage2 = strapi.defaults.baseURL + this.state.teamImage2;
+    const placeholderImage = strapi.defaults.baseURL + this.state.teamImagePlaceholder;
     return (
       <div>
         <Container
@@ -12,53 +154,30 @@ class TeamSection extends React.Component {
         >
           <Row>
             <Col sm={4} id="team-column-padding">
-                <img
-                  src={require("../../assets/images/weareus_team/team_dan_matthews.jpg")}
-                  alt="about dan"
-                  id="emp-frame"
-                />
-                <h4 id="name">Dan Matthews</h4>
-                <h4 id="role">Creative Director</h4>
+              <img
+                src={memberImage1}
+                alt="about dan"
+                id="emp-frame"
+              />
+              <h4 id="name"> {this.state.teamName1} </h4>
+              <h4 id="role"> {this.state.teamTitle1} </h4>
 
-                <p id="team-description">
-                  We are Us is such a unique platform that I needed some special
-                  talents around. And Dan fits that brilliantly. He brings to We
-                  are Us international experience with branding projects
-                  including with My Food Bag, Te Uru and The Great Catering
-                  Company. Dan's also managed large-scale brand and design
-                  projects for Auckland Airport, New Zealand Trade and
-                  Enterprise and Te Wānanga o Aotearoa.
-                  <br />
-                  <br />
-                  What does he do with all that experience? He makes sure that
-                  everything We are Us does connects with both health, wellness
-                  & self-improvement professionals and their clients. So your
-                  business can be presented in the best possible way.
-                </p>
-                <a href="https://designcabin.co.nz">designcabin.co.nz</a>
+              <p id="team-description">
+                {this.state.teamInfo1}
+              </p>
+              <a href="https://designcabin.co.nz">designcabin.co.nz</a>
             </Col>
 
             <Col sm={4} id="team-column-padding">
               <img
-                src={require("../../assets/images/weareus_team/team_walter_rumbsy.jpg")}
+                src={memberImage2}
                 alt="about walter"
                 id="emp-frame"
               />
-              <h4 id="name">Walter Rumbsy</h4>
-              <h4 id="role">Creative Director</h4>
+              <h4 id="name">{this.state.teamName2}</h4>
+              <h4 id="role">{this.state.teamTitle2}</h4>
               <p id="team-description">
-                With all things online I needed a web developer that could
-                support the incredible dreams I have for We are Us. I want to
-                provide you with a service that's reliable, responsive and does
-                what it says on the packet.
-                <br />
-                <br />
-                With a background with the big-names (Xero, Orion Health and My
-                Food Bag) as a lead developer, head of engineering and front-end
-                practice lead, Walt's our man. Most of what Walt does is totally
-                beyond me but I do know that Walt makes all the
-                behind-the-scenes code work to ensure that your experience is
-                top notch and seamless for both practitioners and users.
+                {this.state.teamInfo2}
               </p>
             </Col>
           </Row>
@@ -72,25 +191,16 @@ class TeamSection extends React.Component {
               id="emp-frame"
             /> */}
 
-              {/* Comment below span tag out to remove grey circle */}
-              <span id="emp-frame"></span>
+              <img
+                src={placeholderImage}
+                alt="about dan"
+                id="emp-frame"
+              />
 
-              <h4 id="name">Katrin Pace</h4>
-              <h4 id="role">Copy Writer</h4>
+              <h4 id="name">{this.state.teamName3}</h4>
+              <h4 id="role">{this.state.teamTitle3}</h4>
               <p id="team-description">
-                We are Us is such a unique platform that I needed some special
-                talents around. And Dan fits that brilliantly. He brings to We
-                are Us international experience with branding projects including
-                with My Food Bag, Te Uru and The Great Catering Company. Dan's
-                also managed large-scale brand and design projects for Auckland
-                Airport. New Zealand Trade and Enterprise and Te Wananga o
-                Aotearoa.
-                <br />
-                <br />
-                What does he do with all that experience? He makes sure that
-                everything We are Us does connects with both health, wellness &
-                self-improvement professionals and their clients. So your
-                business can be presented in the best possible way.
+                {this.state.teamInfo3}
               </p>
               <a href="https://wordsforwellness.com">wordsforwellness.com</a>
             </Col>
@@ -103,20 +213,16 @@ class TeamSection extends React.Component {
               id="emp-frame"
             /> */}
 
-              {/* Comment below span tag out to remove grey circle */}
-              <span id="emp-frame"></span>
+              <img
+                src={placeholderImage}
+                alt="about dan"
+                id="emp-frame"
+              />
 
-              <h4 id="name">Fraser Gardyne</h4>
-              <h4 id="role">Business Mentor</h4>
+              <h4 id="name">{this.state.teamName4}</h4>
+              <h4 id="role">{this.state.teamTitle4}</h4>
               <p id="team-description">
-                Fraser has been invaluable in mentoring me through the whole
-                process from when I first thought of We are Us through to
-                building the plan and beyond. And I couldn't have hoped for a
-                more qualified mentor. With a background in print and digital
-                design, Fraser's been the judge in national and international
-                design awards, so really knows what looks good. His contribution
-                to New Zealand design was recognised in 2011 when he was awarded
-                the prestigious Designers Institute Black Pin Award.
+                {this.state.teamInfo4}
               </p>
               <a href="https://gardyneholt.co.nz">gardyneholt.co.nz</a>
             </Col>
@@ -131,18 +237,16 @@ class TeamSection extends React.Component {
                 id="emp-frame"
               />  */}
 
-              {/* Comment below span tag out to remove grey circle */}
-              <span id="emp-frame"></span>
+              <img
+                src={placeholderImage}
+                alt="about dan"
+                id="emp-frame"
+              />
 
-              <h4 id="name">Silverlane</h4>
-              <h4 id="role">Marketing</h4>
+              <h4 id="name">{this.state.teamName5}</h4>
+              <h4 id="role">{this.state.teamTitle5}</h4>
               <p id="team-description">
-                These guys are based in Melbourne but I've been so wowed by the
-                work that they do that we've teamed up with them so they can
-                guide us in our marketing strategy. These guys are experts at
-                what they do. Since 2012, Silverlane have advised over 700
-                businesses on digital and brand strategy. They've been able to
-                draw some conclusions about what works and what really doesn't.
+                {this.state.teamInfo5}
               </p>
               <a href="https://silverlane.agency">silverlane.agency</a>
             </Col>

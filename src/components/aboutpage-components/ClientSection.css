@@ -1,6 +1,7 @@
 .aboutFluidContainer {
   width: 1300px;
   padding-top: 60px;
+  white-space: pre-line;
 }
 
 #mainFrame {
@@ -10,6 +11,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+  white-space: pre-line;
 }
 
 #lightHeader {
@@ -20,12 +22,14 @@
   padding-left: 36%;
   padding-right: 36%;
   padding-bottom: 30px;
+  white-space: pre-line;
 }
 
 @media (max-width: 900px){
   #lightHeader{
     margin-left: -40%;
     margin-right: -40%;
+    white-space: pre-line;
   }
 }
 
@@ -35,6 +39,7 @@
   text-align: center;
   margin-top: 50px;
   font-size: 22px;
+  white-space: pre-line;
 }
 
 #big-description {
@@ -44,6 +49,7 @@
   padding-left: 27%;
   padding-right: 27%;
   color: #5b5b5b;
+  white-space: pre-line;
 }
 
 @media (max-width: 900px){
@@ -52,6 +58,7 @@
     text-align: center;
     margin-left: -25%;
     margin-right: -25%;
+    white-space: pre-line;
   }
 }
 
@@ -64,6 +71,7 @@ blockquote {
   padding: 10px 20px;
   line-height: 1.4;
   text-align: center;
+  white-space: pre-line;
 }
 
 blockquote:before {
@@ -75,6 +83,7 @@ blockquote:before {
   top: 30px;
   color: #79158f;
   font-size: 2em;
+  white-space: pre-line;
 }
 
 #clientMessage {
@@ -82,10 +91,12 @@ blockquote:before {
   font-family: "AvenirLTStd-Book";
   color: #79158f;
   text-align: center;
+  white-space: pre-line;
 }
 
 @media (max-width: 900px){
   #clientMessage{
     font-size: 22px;
+    white-space: pre-line;
   }
 }

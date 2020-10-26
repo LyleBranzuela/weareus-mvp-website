@@ -14,15 +14,15 @@ import CustomButton from '../general-components/CustomButton.js';
 
 
 // Snapshot tests for UI testing.
-test('Navbar 1 Renders properly', () => {
-    const tree = renderer.create(<Router><NavigationBar /></Router>).toJSON();
-    expect(tree).toMatchSnapshot();
-});
+// test('Navbar 1 Renders properly', () => {
+//     const tree = renderer.create(<Router><NavigationBar /></Router>).toJSON();
+//     expect(tree).toMatchSnapshot();
+// });
 
-test('Navbar 2 Renders properly', () => {
-    const tree = renderer.create(<Router><NavigationBar2 /></Router>).toJSON();
-    expect(tree).toMatchSnapshot();
-});
+// test('Navbar 2 Renders properly', () => {
+//     const tree = renderer.create(<Router><NavigationBar2 /></Router>).toJSON();
+//     expect(tree).toMatchSnapshot();
+// });
 
 test('Error 404 Page Renders properly', () => {
     const tree = renderer.create(<Router><Error404Page /></Router>).toJSON();
