@@ -5,10 +5,16 @@ import { Form } from "react-bootstrap";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import AWS from "aws-sdk";
 
-// ONLY FOR THE MVP, CHANGE THIS IN PRODUCTION
+// ONLY FOR THE MVP, CHANGE THIS IN PRODUCTION - IAM User
 const cognitoDetails = {
   accessKeyId: "AKIA2DSPNNEE7DJEOGKI",
   secretAccessKey: "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",
+  region: "ap-southeast-2",
+};
+
+// ONLY FOR THE MVP, CHANGE THIS IN PRODUCTION - Identity Pool
+const identityCognitoDetails = {
+  IdentityPoolId: "ap-southeast-2:c303a19f-ef59-49a5-8d05-b2c74783fe77",
   region: "ap-southeast-2",
 };
 
@@ -57,7 +63,7 @@ const authenticate = (Username, Password) => {
         // let accessToken = data.getAccessToken().getJwtToken();
 
         //POTENTIAL: Region needs to be set if not already set previously elsewhere.
-        AWS.config.region = "ap-southeast-2";
+        AWS.config.region = identityCognitoDetails.region;
 
         let loginObject = {};
         // Change the key below according to the specific region your user pool is in.
@@ -66,7 +72,7 @@ const authenticate = (Username, Password) => {
         ] = data.getIdToken().getJwtToken();
 
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: "ap-southeast-2:c303a19f-ef59-49a5-8d05-b2c74783fe77", // your identity pool id here,
+          IdentityPoolId: identityCognitoDetails.IdentityPoolId, // your identity pool id here,
           Logins: loginObject,
         });
 
@@ -361,6 +367,7 @@ const AccountVerificationModal = (currentUser) => {
 
 export {
   cognitoDetails,
+  identityCognitoDetails,
   getSession,
   getUser,
   authenticate,
