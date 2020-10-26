@@ -8,6 +8,7 @@ import AWS from "aws-sdk";
 import GoogleLogin from "react-google-login";
 // import FacebookLogin from "react-facebook-login";
 import {
+  identityCognitoDetails,
   getUser,
   AccountVerificationModal,
   resetPasswordModal,
@@ -92,7 +93,7 @@ class LoginForm extends React.Component {
     if (!authResult.error) {
       // Add the Google access token to the Amazon Cognito credentials login map.
       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: "ap-southeast-2:c303a19f-ef59-49a5-8d05-b2c74783fe77",
+        IdentityPoolId: identityCognitoDetails.IdentityPoolId,
         Logins: {
           "accounts.google.com": authResult.tokenId,
         },
@@ -113,11 +114,11 @@ class LoginForm extends React.Component {
           // See if the User's Email already Exists within the Database
           let userObj = await this.getUserByEmail(authResult.profileObj.email);
           if (userObj) {
-            // Sign in Normally
+            // Sign in Normally and Get their Data
             this.props.signin(reference_id, userObj);
             this.setState({ redirect: true });
           } else {
-            // Create The Account
+            // Create The Account in the Database
             try {
               userObj = {
                 first_name: authResult.profileObj.givenName || " ",
@@ -140,7 +141,7 @@ class LoginForm extends React.Component {
     }
   };
 
-  // Facebook Sign-in button's callback when pressed ( NEEDS )
+  // Facebook Sign-in button's callback when pressed ( NEEDS SSL DOMAIN FOR IT TO WORK )
   // facebookSignInCallBack = () => {
   //   const FB = window.FB;
   //   FB.login(function (response) {
@@ -148,7 +149,7 @@ class LoginForm extends React.Component {
   //     if (response.authResponse) {
   //       // Add the Facebook access token to the Amazon Cognito credentials login map.
   //       AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  //         IdentityPoolId: "ap-southeast-2:c303a19f-ef59-49a5-8d05-b2c74783fe77",
+  //         IdentityPoolId: identityCognitoDetails.IdentityPoolId,
   //         Logins: {
   //           "graph.facebook.com": response.authResponse.idToken,
   //         },
@@ -384,16 +385,6 @@ class LoginForm extends React.Component {
                   }}
                 />
               </Col>
-              {/* 
-              <Col>
-                <a
-                  className="fb-login-button"
-                  href={`https://we-are-us-mvp.auth.ap-southeast-2.amazoncognito.com/oauth2/authorize?identity_provider=Facebook&redirect_uri=http://localhost:3000/home&response_type=TOKEN&client_id=1meh7rvctubo992oppdju9db6g&scope=openid`}
-                >
-                  Login With Facebook
-                </a>
-              </Col>
-              */}
               {/* 
               <Col>
                 <FacebookLogin

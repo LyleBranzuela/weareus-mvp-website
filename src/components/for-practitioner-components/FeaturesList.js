@@ -14,7 +14,7 @@ class FeaturesList extends React.Component {
       featureListText1: "",
       featureListText2: "",
       featureListIcon1: "",
-      featureListIcon2: ""
+      featureListIcon2: "",
     };
   }
 
@@ -28,7 +28,6 @@ class FeaturesList extends React.Component {
     const getListContent2 = await strapi.get("/copies/21");
     const getListIcon1 = await strapi.get("/images/5");
     const getListIcon2 = await strapi.get("/images/6");
-
 
     pageContent.listHeader1 = JSON.stringify(getListHeader1.data.copyText)
       .replace(/\\n/g, "\n")
@@ -46,23 +45,33 @@ class FeaturesList extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.listIcon1 = JSON.stringify(getListIcon1.data.imageURL).replace(/"/g, "");
-    pageContent.listIcon2 = JSON.stringify(getListIcon2.data.imageURL).replace(/"/g, "");
+    pageContent.listIcon1 = JSON.stringify(getListIcon1.data.imageURL).replace(
+      /"/g,
+      ""
+    );
+    pageContent.listIcon2 = JSON.stringify(getListIcon2.data.imageURL).replace(
+      /"/g,
+      ""
+    );
 
-
-    this.setState({
-      featureListHeader1: pageContent.listHeader1,
-      featureListHeader2: pageContent.listHeader2,
-      featureListText1: pageContent.listContent1,
-      featureListText2: pageContent.listContent2,
-      featureListIcon1: pageContent.listIcon1,
-      featureListIcon2: pageContent.listIcon2
-    });
+    this._isMounted &&
+      this.setState({
+        featureListHeader1: pageContent.listHeader1,
+        featureListHeader2: pageContent.listHeader2,
+        featureListText1: pageContent.listContent1,
+        featureListText2: pageContent.listContent2,
+        featureListIcon1: pageContent.listIcon1,
+        featureListIcon2: pageContent.listIcon2,
+      });
   };
 
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.getPageContent();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
@@ -79,9 +88,7 @@ class FeaturesList extends React.Component {
               alt="Word Of Mouth Feature Image"
               title={this.state.featureListHeader1}
               description={
-                <React.Fragment>
-                  {this.state.featureListText1}
-                </React.Fragment>
+                <React.Fragment>{this.state.featureListText1}</React.Fragment>
               }
             />
           </Col>
@@ -92,9 +99,7 @@ class FeaturesList extends React.Component {
               alt="Connections Feature Image"
               title={this.state.featureListHeader2}
               description={
-                <React.Fragment>
-                  {this.state.featureListText2}
-                </React.Fragment>
+                <React.Fragment>{this.state.featureListText2}</React.Fragment>
               }
             />
           </Col>

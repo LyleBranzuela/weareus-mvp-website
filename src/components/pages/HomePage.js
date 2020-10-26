@@ -53,8 +53,11 @@ class HomePage extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    this.setState({ motdContent: pageContent.homeMOTD,
-                    motdContentMobile: pageContent.homeMOTDMobile});
+    this._isMounted &&
+      this.setState({
+        motdContent: pageContent.homeMOTD,
+        motdContentMobile: pageContent.homeMOTDMobile,
+      });
   };
 
   componentDidMount() {
@@ -96,7 +99,8 @@ class HomePage extends React.Component {
               <React.Fragment>
                 <br />
                 <br />
-                <strong> We are Us </strong>{this.state.motdContentMobile}
+                <strong> We are Us </strong>
+                {this.state.motdContentMobile}
                 <br />
                 <br />
               </React.Fragment>
@@ -127,7 +131,8 @@ class HomePage extends React.Component {
           <MessageOfTheDay
             motd={
               <React.Fragment>
-                <strong> We are Us </strong>{this.state.motdContent}
+                <strong> We are Us </strong>
+                {this.state.motdContent}
               </React.Fragment>
             }
           />

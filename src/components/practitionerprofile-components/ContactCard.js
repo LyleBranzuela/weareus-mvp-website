@@ -39,6 +39,7 @@ class ContactCard extends React.Component {
             <a href="/#" id="purple-card-heading">
               {this.props.email}
             </a>
+            <br />
 
             {this.props.isLoggedIn &&
               this.props.user_information.company_id ===

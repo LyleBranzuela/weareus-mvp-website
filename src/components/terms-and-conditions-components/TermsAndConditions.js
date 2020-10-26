@@ -2,8 +2,8 @@ import "./TermsAndConditions.css";
 import React from "react";
 import strapi from "../../api/strapi.js";
 
-{/* When more Terms and Conditions is added, follow 
-the same template in other classes & refer to Strapi Guide to add more sections*/}
+/* When more Terms and Conditions is added, follow 
+the same template in other classes & refer to Strapi Guide to add more sections */
 class TermsAndConditions extends React.Component {
   constructor() {
     super();
@@ -23,12 +23,13 @@ class TermsAndConditions extends React.Component {
     const getTncSectionHeader = await strapi.get("/copies/27");
     const getTncContent = await strapi.get("/copies/28");
 
-
     pageContent.tncHeader = JSON.stringify(getTncHeader.data.copyText)
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.tncSectionHeader = JSON.stringify(getTncSectionHeader.data.copyText)
+    pageContent.tncSectionHeader = JSON.stringify(
+      getTncSectionHeader.data.copyText
+    )
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
@@ -36,12 +37,10 @@ class TermsAndConditions extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-
-
     this.setState({
       tncHeader: pageContent.tncHeader,
       tncSectionHeader: pageContent.tncSectionHeader,
-      tncContent: pageContent.tncContent
+      tncContent: pageContent.tncContent,
     });
   };
 
@@ -52,6 +51,7 @@ class TermsAndConditions extends React.Component {
   }
 
   componentWillUnmount() {
+    this._isMounted = false;
     window.removeEventListener("resize", this.handleWindowSizeChange);
   }
 
@@ -72,7 +72,7 @@ class TermsAndConditions extends React.Component {
             <strong> {this.state.tncHeader} </strong>{" "}
           </p>
           <p className="tacTextMobile">
-            <strong> {this.state.tncSectionHeader} </strong> <br /> 
+            <strong> {this.state.tncSectionHeader} </strong> <br />
             {this.state.tncContent}
           </p>
         </div>
@@ -85,7 +85,7 @@ class TermsAndConditions extends React.Component {
             <strong> {this.state.tncHeader} </strong>{" "}
           </p>
           <p className="tacText">
-            <strong> {this.state.tncSectionHeader} </strong> <br /> 
+            <strong> {this.state.tncSectionHeader} </strong> <br />
             {this.state.tncContent}
           </p>
         </div>

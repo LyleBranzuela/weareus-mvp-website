@@ -17,14 +17,12 @@ class PractitionerCTA extends React.Component {
     this._isMounted = false;
   }
 
-
   getPageContent = async () => {
     let pageContent = {};
 
     // Get requests to retrieve JSON information from Strapi
     const getCTAHeader1 = await strapi.get("/copies/22");
     const getCTAHeader2 = await strapi.get("/copies/23");
-
 
     pageContent.getCTAHeader1 = JSON.stringify(getCTAHeader1.data.copyText)
       .replace(/\\n/g, "\n")
@@ -43,8 +41,11 @@ class PractitionerCTA extends React.Component {
     //   .replace(/\\n/g, "\n")
     //   .replace(/"/g, "");
 
-    this.setState({ ctaHeader1: pageContent.getCTAHeader1,
-                    ctaHeader2: pageContent.getCTAHeader2});
+    this._isMounted &&
+      this.setState({
+        ctaHeader1: pageContent.getCTAHeader1,
+        ctaHeader2: pageContent.getCTAHeader2,
+      });
   };
 
   componentDidMount() {
@@ -55,6 +56,7 @@ class PractitionerCTA extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowSizeChange);
+    this._isMounted = false;
   }
 
   handleWindowSizeChange = () => {
@@ -72,17 +74,13 @@ class PractitionerCTA extends React.Component {
             <Container>
               <Row>
                 <Col sm={6} id="prac-CTA-1-mobile">
-                  <h5>
-                    {this.state.ctaHeader1}
-                  </h5>
+                  <h5>{this.state.ctaHeader1}</h5>
                   <Link to="/register-practitioner">
                     <Button variant="outline-dark">Register</Button>
                   </Link>
                 </Col>
                 <Col sm={6} id="prac-CTA-2">
-                  <h5>
-                    {this.state.ctaHeader2}
-                  </h5>
+                  <h5>{this.state.ctaHeader2}</h5>
                   <Link to="/about">
                     <Button variant="outline-dark">About Us</Button>
                   </Link>
@@ -99,17 +97,13 @@ class PractitionerCTA extends React.Component {
             <Container>
               <Row>
                 <Col sm={6} id="prac-CTA-1">
-                  <h5>
-                    {this.state.ctaHeader1}
-                  </h5>
+                  <h5>{this.state.ctaHeader1}</h5>
                   <Link to="/register-practitioner">
                     <Button variant="outline-dark">Register</Button>
                   </Link>
                 </Col>
                 <Col sm={6} id="prac-CTA-2">
-                  <h5>
-                    {this.state.ctaHeader2}
-                  </h5>
+                  <h5>{this.state.ctaHeader2}</h5>
                   <Link to="/about">
                     <Button variant="outline-dark">About Us</Button>
                   </Link>
@@ -120,8 +114,7 @@ class PractitionerCTA extends React.Component {
         </div>
       );
     }
-
-  };
+  }
 }
 
 export default PractitionerCTA;

@@ -76,15 +76,17 @@ class SearchField extends React.Component {
 
   getPageContent = async () => {
     let pageContent = {};
- 
+
     // Get requests to retrieve JSON information from Strapi
     const getImage = await strapi.get("/images/3");
- 
-    pageContent.searchImage = JSON.stringify(getImage.data.imageURL).replace(/"/g,"");
- 
-    this.setState({ imageURL: pageContent.searchImage });
-  };
 
+    pageContent.searchImage = JSON.stringify(getImage.data.imageURL).replace(
+      /"/g,
+      ""
+    );
+
+    this._isMounted && this.setState({ imageURL: pageContent.searchImage });
+  };
 
   componentDidMount() {
     this._isMounted = true;
@@ -125,7 +127,7 @@ class SearchField extends React.Component {
       });
     }
 
-    const searchImage = strapi.defaults.baseURL + this.state.imageURL; 
+    const searchImage = strapi.defaults.baseURL + this.state.imageURL;
     const { width } = this.state;
     const isMobile = width <= 600;
     if (isMobile) {
@@ -242,9 +244,13 @@ class SearchField extends React.Component {
       );
     }
     return (
-      <Container fluid className="searchFieldContainer" style={{
-        backgroundImage: "url(" + searchImage + ")",
-      }}>
+      <Container
+        fluid
+        className="searchFieldContainer"
+        style={{
+          backgroundImage: "url(" + searchImage + ")",
+        }}
+      >
         <Container>
           <Form className="searchFieldStyle" onSubmit={this.onSearchSubmit}>
             <Row>

@@ -25,10 +25,9 @@ class TeamSection extends React.Component {
       teamInfo5: "",
       teamImage1: "",
       teamImage2: "",
-      teamImagePlaceholder: ""
+      teamImagePlaceholder: "",
     };
   }
-
 
   getPageContent = async () => {
     let pageContent = {};
@@ -54,11 +53,9 @@ class TeamSection extends React.Component {
     const getTitle5 = await strapi.get("/copies/48");
     const getInfo5 = await strapi.get("/copies/49");
 
-
     const getImage1 = await strapi.get("/images/9");
     const getImage2 = await strapi.get("/images/10");
     const getImagePlaceholder = await strapi.get("/images/7");
-
 
     pageContent.memberName1 = JSON.stringify(getName1.data.copyText)
       .replace(/\\n/g, "\n")
@@ -92,7 +89,6 @@ class TeamSection extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-
     pageContent.memberInfo1 = JSON.stringify(getInfo1.data.copyText)
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
@@ -109,30 +105,39 @@ class TeamSection extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.teamImage1 = JSON.stringify(getImage1.data.imageURL).replace(/"/g, "");
-    pageContent.teamImage2 = JSON.stringify(getImage2.data.imageURL).replace(/"/g, "");
-    pageContent.placeholderImage = JSON.stringify(getImagePlaceholder.data.imageURL).replace(/"/g, "");
+    pageContent.teamImage1 = JSON.stringify(getImage1.data.imageURL).replace(
+      /"/g,
+      ""
+    );
+    pageContent.teamImage2 = JSON.stringify(getImage2.data.imageURL).replace(
+      /"/g,
+      ""
+    );
+    pageContent.placeholderImage = JSON.stringify(
+      getImagePlaceholder.data.imageURL
+    ).replace(/"/g, "");
 
-    this.setState({
-      teamName1: pageContent.memberName1,
-      teamTitle1: pageContent.memberTitle1,
-      teamInfo1: pageContent.memberInfo1,
-      teamName2: pageContent.memberName2,
-      teamTitle2: pageContent.memberTitle2,
-      teamInfo2: pageContent.memberInfo2,
-      teamName3: pageContent.memberName3,
-      teamTitle3: pageContent.memberTitle3,
-      teamInfo3: pageContent.memberInfo3,
-      teamName4: pageContent.memberName4,
-      teamTitle4: pageContent.memberTitle4,
-      teamInfo4: pageContent.memberInfo4,
-      teamName5: pageContent.memberName5,
-      teamTitle5: pageContent.memberTitle5,
-      teamInfo5: pageContent.memberInfo5,
-      teamImage1: pageContent.teamImage1,
-      teamImage2: pageContent.teamImage2,
-      teamImagePlaceholder: pageContent.placeholderImage
-    });
+    this._isMounted &&
+      this.setState({
+        teamName1: pageContent.memberName1,
+        teamTitle1: pageContent.memberTitle1,
+        teamInfo1: pageContent.memberInfo1,
+        teamName2: pageContent.memberName2,
+        teamTitle2: pageContent.memberTitle2,
+        teamInfo2: pageContent.memberInfo2,
+        teamName3: pageContent.memberName3,
+        teamTitle3: pageContent.memberTitle3,
+        teamInfo3: pageContent.memberInfo3,
+        teamName4: pageContent.memberName4,
+        teamTitle4: pageContent.memberTitle4,
+        teamInfo4: pageContent.memberInfo4,
+        teamName5: pageContent.memberName5,
+        teamTitle5: pageContent.memberTitle5,
+        teamInfo5: pageContent.memberInfo5,
+        teamImage1: pageContent.teamImage1,
+        teamImage2: pageContent.teamImage2,
+        teamImagePlaceholder: pageContent.placeholderImage,
+      });
   };
 
   componentDidMount() {
@@ -140,12 +145,15 @@ class TeamSection extends React.Component {
     this._isMounted && this.getPageContent();
   }
 
-
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     const memberImage1 = strapi.defaults.baseURL + this.state.teamImage1;
     const memberImage2 = strapi.defaults.baseURL + this.state.teamImage2;
-    const placeholderImage = strapi.defaults.baseURL + this.state.teamImagePlaceholder;
+    const placeholderImage =
+      strapi.defaults.baseURL + this.state.teamImagePlaceholder;
     return (
       <div>
         <Container
@@ -154,31 +162,19 @@ class TeamSection extends React.Component {
         >
           <Row>
             <Col sm={4} id="team-column-padding">
-              <img
-                src={memberImage1}
-                alt="about dan"
-                id="emp-frame"
-              />
+              <img src={memberImage1} alt="about dan" id="emp-frame" />
               <h4 id="name"> {this.state.teamName1} </h4>
               <h4 id="role"> {this.state.teamTitle1} </h4>
 
-              <p id="team-description">
-                {this.state.teamInfo1}
-              </p>
+              <p id="team-description">{this.state.teamInfo1}</p>
               <a href="https://designcabin.co.nz">designcabin.co.nz</a>
             </Col>
 
             <Col sm={4} id="team-column-padding">
-              <img
-                src={memberImage2}
-                alt="about walter"
-                id="emp-frame"
-              />
+              <img src={memberImage2} alt="about walter" id="emp-frame" />
               <h4 id="name">{this.state.teamName2}</h4>
               <h4 id="role">{this.state.teamTitle2}</h4>
-              <p id="team-description">
-                {this.state.teamInfo2}
-              </p>
+              <p id="team-description">{this.state.teamInfo2}</p>
             </Col>
           </Row>
           <Row>
@@ -191,17 +187,11 @@ class TeamSection extends React.Component {
               id="emp-frame"
             /> */}
 
-              <img
-                src={placeholderImage}
-                alt="about dan"
-                id="emp-frame"
-              />
+              <img src={placeholderImage} alt="about dan" id="emp-frame" />
 
               <h4 id="name">{this.state.teamName3}</h4>
               <h4 id="role">{this.state.teamTitle3}</h4>
-              <p id="team-description">
-                {this.state.teamInfo3}
-              </p>
+              <p id="team-description">{this.state.teamInfo3}</p>
               <a href="https://wordsforwellness.com">wordsforwellness.com</a>
             </Col>
             <Col sm={4} id="team-column-padding">
@@ -213,17 +203,11 @@ class TeamSection extends React.Component {
               id="emp-frame"
             /> */}
 
-              <img
-                src={placeholderImage}
-                alt="about dan"
-                id="emp-frame"
-              />
+              <img src={placeholderImage} alt="about dan" id="emp-frame" />
 
               <h4 id="name">{this.state.teamName4}</h4>
               <h4 id="role">{this.state.teamTitle4}</h4>
-              <p id="team-description">
-                {this.state.teamInfo4}
-              </p>
+              <p id="team-description">{this.state.teamInfo4}</p>
               <a href="https://gardyneholt.co.nz">gardyneholt.co.nz</a>
             </Col>
           </Row>
@@ -237,17 +221,11 @@ class TeamSection extends React.Component {
                 id="emp-frame"
               />  */}
 
-              <img
-                src={placeholderImage}
-                alt="about dan"
-                id="emp-frame"
-              />
+              <img src={placeholderImage} alt="about dan" id="emp-frame" />
 
               <h4 id="name">{this.state.teamName5}</h4>
               <h4 id="role">{this.state.teamTitle5}</h4>
-              <p id="team-description">
-                {this.state.teamInfo5}
-              </p>
+              <p id="team-description">{this.state.teamInfo5}</p>
               <a href="https://silverlane.agency">silverlane.agency</a>
             </Col>
           </Row>

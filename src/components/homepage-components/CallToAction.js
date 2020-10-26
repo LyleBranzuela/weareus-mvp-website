@@ -24,7 +24,7 @@ class CallToAction extends React.Component {
     // Get requests to retrieve JSON information from Strapi
     const getCTAHeader = await strapi.get("/copies/4");
     const getCTAContent = await strapi.get("/copies/5");
-    const getCTAImage = await strapi.get("/images/2")
+    const getCTAImage = await strapi.get("/images/2");
 
     pageContent.homeCTAHeader = JSON.stringify(getCTAHeader.data.copyText)
       .replace(/\\n/g, "\n")
@@ -34,25 +34,35 @@ class CallToAction extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.homeCTAHeaderMobile = JSON.stringify(getCTAHeader.data.copyTextMobile)
+    pageContent.homeCTAHeaderMobile = JSON.stringify(
+      getCTAHeader.data.copyTextMobile
+    )
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.homeCTAContentMobile = JSON.stringify(getCTAContent.data.copyTextMobile)
+    pageContent.homeCTAContentMobile = JSON.stringify(
+      getCTAContent.data.copyTextMobile
+    )
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.ctaImage = JSON.stringify(getCTAImage.data.imageURL).replace(/"/g, "");
-    pageContent.ctaImageMobile = JSON.stringify(getCTAImage.data.imageURLMobile).replace(/"/g, "");
+    pageContent.ctaImage = JSON.stringify(getCTAImage.data.imageURL).replace(
+      /"/g,
+      ""
+    );
+    pageContent.ctaImageMobile = JSON.stringify(
+      getCTAImage.data.imageURLMobile
+    ).replace(/"/g, "");
 
-    this.setState({
-      ctaHeader: pageContent.homeCTAHeader,
-      ctaContent: pageContent.homeCTAContent,
-      ctaHeaderMobile: pageContent.homeCTAHeaderMobile,
-      ctaContentMobile: pageContent.homeCTAContentMobile,
-      ctaImage: pageContent.ctaImage,
-      ctaImageMobile: pageContent.ctaImage,
-    });
+    this._isMounted &&
+      this.setState({
+        ctaHeader: pageContent.homeCTAHeader,
+        ctaContent: pageContent.homeCTAContent,
+        ctaHeaderMobile: pageContent.homeCTAHeaderMobile,
+        ctaContentMobile: pageContent.homeCTAContentMobile,
+        ctaImage: pageContent.ctaImage,
+        ctaImageMobile: pageContent.ctaImage,
+      });
   };
 
   componentDidMount() {
@@ -62,7 +72,9 @@ class CallToAction extends React.Component {
   }
 
   componentWillUnmount() {
+    this._isMounted = false;
     window.removeEventListener("resize", this.handleWindowSizeChange);
+    this._isMounted = false;
   }
 
   handleWindowSizeChange = () => {
@@ -80,19 +92,18 @@ class CallToAction extends React.Component {
       // Mobile version
       return (
         <div>
-          <div className="ctaStyleMobile" style={{
-            backgroundImage: "url(" + ctaImageMobile + ")",
-          }}>
+          <div
+            className="ctaStyleMobile"
+            style={{
+              backgroundImage: "url(" + ctaImageMobile + ")",
+            }}
+          >
             <Container className="ctaStyleMobile-text">
               <div id="ctaMobileTextRow">
-                <h1 id="ctaTitleMobile">
-                  {this.state.ctaHeaderMobile}
-                </h1>
+                <h1 id="ctaTitleMobile">{this.state.ctaHeaderMobile}</h1>
               </div>
               <div id="ctaMobileTextRow">
-                <p id="ctaDescMobile">
-                  {this.state.ctaContentMobile}
-                </p>
+                <p id="ctaDescMobile">{this.state.ctaContentMobile}</p>
               </div>
               <div>
                 <Button id="ctaButtonMobile">Register today!</Button>
@@ -132,19 +143,18 @@ class CallToAction extends React.Component {
       // Desktop Version
       return (
         <div>
-          <div className="ctaStyle" style={{
-            backgroundImage: "url(" + ctaImage + ")",
-          }}>
+          <div
+            className="ctaStyle"
+            style={{
+              backgroundImage: "url(" + ctaImage + ")",
+            }}
+          >
             <Container className="ctaStyle-text">
               <Row>
-                <h1 id="ctaTitle">
-                  {this.state.ctaHeader}
-                </h1>
+                <h1 id="ctaTitle">{this.state.ctaHeader}</h1>
               </Row>
               <Row>
-                <p id="ctaDesc">
-                  {this.state.ctaContent}
-                </p>
+                <p id="ctaDesc">{this.state.ctaContent}</p>
               </Row>
               <Row>
                 <Link to="/register">
@@ -166,7 +176,7 @@ class CallToAction extends React.Component {
                 <Col sm={6}>
                   <p id="ctaSignUp">
                     Sign up for We are Us news and special offers.
-                </p>
+                  </p>
                 </Col>
                 <Col sm={6}>
                   <InputGroup className="mb-3">
