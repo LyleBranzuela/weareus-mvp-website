@@ -13,7 +13,7 @@ class ClientSection extends React.Component {
       desc1: "",
       message: "",
       desc2: "",
-      imageURL: ""
+      imageURL: "",
     };
   }
 
@@ -27,7 +27,6 @@ class ClientSection extends React.Component {
     const getMessage = await strapi.get("/copies/33");
     const getDesc2 = await strapi.get("/copies/34");
     const getClientImage = await strapi.get("/images/8");
-
 
     pageContent.introHeader = JSON.stringify(getIntroHeader.data.copyText)
       .replace(/\\n/g, "\n")
@@ -49,51 +48,51 @@ class ClientSection extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.imageURL = JSON.stringify(getClientImage.data.imageURL).replace(/"/g,"");
+    pageContent.imageURL = JSON.stringify(getClientImage.data.imageURL).replace(
+      /"/g,
+      ""
+    );
 
-    this.setState({
-      introHeader: pageContent.introHeader,
-      introText: pageContent.introText,
-      desc1: pageContent.desc1,
-      message: pageContent.clientMessage,
-      desc2: pageContent.getDesc2,
-      imageURL: pageContent.imageURL
-    });
+    this._isMounted &&
+      this.setState({
+        introHeader: pageContent.introHeader,
+        introText: pageContent.introText,
+        desc1: pageContent.desc1,
+        message: pageContent.clientMessage,
+        desc2: pageContent.getDesc2,
+        imageURL: pageContent.imageURL,
+      });
   };
 
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.getPageContent();
   }
+  
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
-    const clientImage = strapi.defaults.baseURL + this.state.imageURL; 
-    return ( 
+    const clientImage = strapi.defaults.baseURL + this.state.imageURL;
+    return (
       <Container fluid>
         <Row>
           <Col>
-            <img
-              src={clientImage}
-              alt="charis"
-              id="mainFrame"
-            />
+            <img src={clientImage} alt="charis" id="mainFrame" />
             <h5 id="heavyHeader">{this.state.introHeader}</h5>
-            <p id="lightHeader">
-              {this.state.introText}
-            </p>
-            <p id="big-description">
+            <p id="lightHeader">{this.state.introText}</p>
+            <div className="aboutContentP" id="big-description">
               {this.state.desc1}
               <strong>
                 <blockquote></blockquote>
               </strong>
-              <p id="clientMessage">
-                {this.state.message}
-              </p>
+              <p id="clientMessage">{this.state.message}</p>
               <br />
-                {this.state.desc2}
+              {this.state.desc2}
               <br />
               <br />
-            </p>
+            </div>
           </Col>
         </Row>
       </Container>

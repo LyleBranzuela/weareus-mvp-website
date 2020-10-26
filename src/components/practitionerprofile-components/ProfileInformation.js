@@ -58,13 +58,14 @@ class ProfileInformation extends React.Component {
             {/* Practitioner Profile Image */}
             {this.state.onlySpecialist.profile_image_url ? (
               <img
-                style={{ height: 182, width: 182 }}
+                style={{ height: 224, width: 224 }}
                 alt="practitioner-profile"
                 src={this.state.onlySpecialist.profile_image_url}
                 id="profile-image-frame"
               />
             ) : (
               <img
+                style={{ height: 224, width: 224 }}
                 alt="practitioner-profile"
                 src={require("../../assets/images/placeholders/prac_profile_placeholder.jpg")}
                 id="profile-image-frame"
@@ -84,6 +85,7 @@ class ProfileInformation extends React.Component {
                 />
               ) : (
                 <img
+                  style={{ width: 175, height: 175 }}
                   src={require("../../assets/images/placeholders/prac_logo_placeholder.jpg")}
                   alt="logo"
                   className="practitioner-logo"
@@ -157,8 +159,8 @@ class ProfileInformation extends React.Component {
                 {/* Max Height by default is 145 */}
                 {/* maxHeight will determine how much text is shown in the description */}
                 {/* IF a description is longer than the height of the Card THEN a "Read More" button will appear */}
-                <ExpendableText maxHeight={145} >
-                  <p id="description-text">{this.props.about} </p>
+                <ExpendableText maxHeight={145}>
+                  {this.props.about}
                 </ExpendableText>
               </Card.Body>
             </Card>
@@ -186,7 +188,7 @@ class ProfileInformation extends React.Component {
                             (specialty, index) => {
                               return (
                                 <li key={`${index}-${specialty.specialty_id}`}>
-                                  <h6>{specialty.specialty_name}</h6>
+                                  <h5>{specialty.specialty_name}</h5>
                                 </li>
                               );
                             }
@@ -217,7 +219,7 @@ class ProfileInformation extends React.Component {
                           this.props.services.map((service, index) => {
                             return (
                               <li key={`${index}-${service}`}>
-                                <h6>{service.service_name}</h6>
+                                <h5>{service.service_name}</h5>
                               </li>
                             );
                           })}

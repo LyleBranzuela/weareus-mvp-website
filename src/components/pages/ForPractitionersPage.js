@@ -18,22 +18,24 @@ class ForPractitionersPage extends React.Component {
 
   getPageContent = async () => {
     let pageContent = {};
- 
+
     // Get requests to retrieve JSON information from Strapi
     const forPractMOTD = await strapi.get("/copies/17");
- 
- 
+
     pageContent.motdContent = JSON.stringify(forPractMOTD.data.copyText)
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
- 
- 
-    this.setState({ motdContent: pageContent.motdContent });
+
+    this._isMounted && this.setState({ motdContent: pageContent.motdContent });
   };
 
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.getPageContent();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
@@ -42,11 +44,7 @@ class ForPractitionersPage extends React.Component {
         <NavigationBar2 />
         <PageHeader />
         <MessageOfTheDay
-          motd={
-            <React.Fragment>
-             {this.state.motdContent}
-            </React.Fragment>
-          }
+          motd={<React.Fragment>{this.state.motdContent}</React.Fragment>}
         />
         <FeaturesList />
         <FeatureCarousel />
