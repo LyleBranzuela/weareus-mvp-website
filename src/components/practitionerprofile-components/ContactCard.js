@@ -39,36 +39,35 @@ class ContactCard extends React.Component {
             <a href="/#" id="purple-card-heading">
               {this.props.email}
             </a>
-          </Card.Text>
-          {this.props.isLoggedIn &&
-            this.props.user_information.company_id === this.props.company_id &&
-            this.props.user_information.user_type === "practitioner" && (
-              <Link
-                to={`/edit-profile`}
-                className="highlightNavMobile2"
-              >
-                <CustomButton id="editProfileButton" text="Edit Profile" />
-              </Link>
-            )}
 
-          {this.props.isLoggedIn &&
-            this.props.user_information.user_type === "admin" && (
-              <Link
-                to={{
-                  pathame: `/edit-profile`,
-                  state: {
-                    user_id: this.props.user_id,
-                    company_id: this.props.company_id,
-                  },
-                }}
-                className="highlightNavMobile2"
-              >
-                <CustomButton
-                  id="editProfileButton"
-                  text="Edit Profile As Admin"
-                />
-              </Link>
-            )}
+            {this.props.isLoggedIn &&
+              this.props.user_information.company_id ===
+                this.props.company_id &&
+              this.props.user_information.user_type === "practitioner" && (
+                <Link to={`/edit-profile`} className="mb-2">
+                  <CustomButton id="editProfileButton" text="Edit Profile" />
+                </Link>
+              )}
+
+            {this.props.isLoggedIn &&
+              this.props.user_information.user_type === "admin" && (
+                <Link
+                  to={{
+                    pathname: `/edit-profile`,
+                    state: {
+                      user_id: this.props.user_id,
+                      company_id: this.props.company_id,
+                    },
+                  }}
+                  className="mb-2"
+                >
+                  <CustomButton
+                    id="editProfileButton"
+                    text="Edit Profile As Admin"
+                  />
+                </Link>
+              )}
+          </Card.Text>
         </Card.Body>
       </Card>
     );
