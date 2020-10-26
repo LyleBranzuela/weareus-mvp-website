@@ -121,11 +121,6 @@ class SearchField extends React.Component {
               className="searchFieldStyleMobile"
               onSubmit={this.onSearchSubmit}
             >
-              <Row>
-                <Col>
-                  <h3>Search Practitioners</h3>
-                </Col>
-              </Row>
               <Row className="rowSearchFieldStyle">
                 <Col sm={4}>
                   {/** Search Practitioners Through Text Section */}
@@ -142,6 +137,7 @@ class SearchField extends React.Component {
                       <Form.Control
                         value={this.state.searchPractitionerName}
                         onChange={this.formOnChangeHandler}
+                        id="searchFieldBoxMobile"
                         placeholder="Search Practitioners"
                       ></Form.Control>
                     </InputGroup>

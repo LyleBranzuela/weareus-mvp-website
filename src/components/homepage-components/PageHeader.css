@@ -74,6 +74,8 @@
   height: 100vh;
   padding-top: 50%;
   padding-bottom: 15%;
+  display: flex;
+  font-size: 18px;
 }
 
 
@@ -83,24 +85,27 @@
 }
 
 #headerTitleMobile {
-  font-size: 4vh;
-  font-weight: 500;
-  font-family: "AvenirLTPro-Heavy";
+  font-size: 1.33em;
+  font-weight: bold;
+  line-height: 34px;
+  font-family: "AvenirLTStd-Book";
 }
 
 #headerDescMobile {
+  font-family: "AvenirLTStd-Book";
   margin-top: 1%;
   margin-bottom: 5%;
-  font-size: 2.5vh;
-  font-weight: 200;
+  font-size: 1em;
+  font-weight: 300;
 }
 
 #headerButtonMobile {
   background-color: #79158f;
-  font-size: 2.5vh;
+  font-size: 1em;
+  font-weight: bold;
   font-family: "AvenirLTStd-Book";
   margin-top: 3vh;
-  padding: 2vh 12vh 2vh 12vh;
+  padding: 1em 4em 1em 4em;
 }
 
 .break-wordMobile {
@@ -109,7 +114,7 @@
 
 #scrollDownButtonMobile {
   align-self: center;
-  width: 5vh;
+  width: 1.9em;
   height:auto;
-  padding-top: 50%;
+  padding-top: 80%;
 }

@@ -5,7 +5,6 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
-import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
 import NavigationBar2 from "../general-components/NavigationBar2";
 import CustomButton from "../general-components/CustomButton";
 import { Link } from "react-router-dom";
@@ -90,7 +89,6 @@ class HomePage extends React.Component {
             showAll={false}
           />
           <SearchField />
-          <PractitionerCTA />
           <CallToAction />
         </div>
       );

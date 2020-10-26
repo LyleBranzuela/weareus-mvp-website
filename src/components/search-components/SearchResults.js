@@ -107,10 +107,12 @@ class SearchResults extends React.Component {
     congue. Praesent pretium augue eu vehicula dignissim.`;
     if (this.state.searchResults) {
       searchResultsList = this.state.searchResults.map((practitioner) => {
-        // Temporary Image URL until S3 is setup
-        let image_url = "listing_placeholder_2.jpg";
-        if (!image_url) {
+        // Image URL with a Placeholder if doesnt exist (Only for Displaying Purposes)
+        let image_url;
+        if (!practitioner.image_url) {
           image_url = "listing_placeholder_2.jpg";
+        } else {
+          image_url = practitioner.image_url;
         }
         return (
           <div key={practitioner.company_name}>
@@ -120,7 +122,11 @@ class SearchResults extends React.Component {
                 <img
                   alt={practitioner.company_name}
                   variant="top"
-                  src={require("../../assets/images/placeholders/" + image_url)}
+                  src={
+                    practitioner.image_url
+                      ? image_url
+                      : require("../../assets/images/placeholders/" + image_url)
+                  }
                 />
               </Col>
               <Col className="pracResultDetails" sm={6}>

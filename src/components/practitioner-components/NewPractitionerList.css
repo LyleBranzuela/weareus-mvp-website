@@ -25,7 +25,7 @@
 
 /* Mobile Styles */
 #pracListHeader {
-  font-size: 3vh;
+  font-size: 1.25em;
   font-family: "AvenirLTPro-Heavy";
   color: #5b5b5b;
   text-align: center;
@@ -49,14 +49,14 @@
 
 .newPracCarouselStyle .carousel-control-prev-icon {
   background-image: url(../../assets/icons/carousel_arrow_left.svg);
-  width: 6vh;
-  height: 6vh;
-  margin-bottom: 15vh;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 50em;
 }
 
 .newPracCarouselStyle .carousel-control-next-icon {
   background-image: url(../../assets/icons/carousel_arrow_right.svg);
-  width: 6vh;
-  height: 6vh;
-  margin-bottom: 15vh;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 50em;
 }

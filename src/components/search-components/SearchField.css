@@ -156,16 +156,8 @@
   padding-bottom: 10vh;
 }
 
-.searchFieldStyleMobile h3 {
-  text-align: center !important;
-  font-family: "AvenirLTPro-Heavy";
-  color: #79158f !important;
-  margin-bottom: 60px;
-  font-size: 2em;
-}
-
 .searchFieldContainerMobile {
-  background-color: #f0d9f7;
+  background-color:#EEDCFF;
 }
 
 .searchFieldStyleMobile .form-control {
@@ -241,9 +233,14 @@
   margin-top: 3vh;
 }
 
+#searchFieldBoxMobile{
+  background-color: white;
+}
+
 #searchFieldIconMobile {
   background-color: rgb(255, 255, 255);
   border-top: 1px solid #ced4da;
   border-right: 0px solid #ced4da;
   border-bottom: 1px solid #ced4da;
 }
+

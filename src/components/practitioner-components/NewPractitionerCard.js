@@ -46,8 +46,12 @@ class NewPractitionerCard extends React.Component {
           <Card.Img
             alt={this.props.company_name}
             variant="top"
-            src={require("../../assets/images/placeholders/" +
-              this.props.cover_image)}
+            src={
+              this.props.hasCoverImages
+                ? this.props.cover_image
+                : require("../../assets/images/placeholders/" +
+                    this.props.cover_image)
+            }
           />
           <Card.ImgOverlay>
             <span id="newPracCardTypeMobile">{servicesList}</span>
@@ -70,8 +74,12 @@ class NewPractitionerCard extends React.Component {
           <Card.Img
             alt={this.props.company_name}
             variant="top"
-            src={require("../../assets/images/placeholders/" +
-              this.props.cover_image)}
+            src={
+              this.props.hasCoverImages
+                ? this.props.cover_image
+                : require("../../assets/images/placeholders/" +
+                    this.props.cover_image)
+            }
           />
           <Card.ImgOverlay>
             <span id="newPracCardType">{servicesList}</span>

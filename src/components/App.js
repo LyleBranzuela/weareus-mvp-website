@@ -18,6 +18,7 @@ import UserRegister from "./register-login-components/UserRegister";
 import PractitionerRegister from "./register-login-components/PractitionerRegister";
 import MembershipForm from "./register-login-components/MembershipForm";
 import ProfileSetup from "./register-login-components/ProfileSetup";
+import EditProfile from "./register-login-components/EditProfile";
 import ContactUsPage from "./pages/ContactUsPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 // import Error500Page from "./general-components/Error500Page";
@@ -114,11 +115,12 @@ function App() {
             )
           }
         />
-        {/* <Route
+        <Route
           path="/edit-profile"
           render={(props) =>
             isLoggedIn &&
-            (user_information.user_type === "practitioner" ||
+            ((user_information.company_id &&
+              user_information.user_type === "practitioner") ||
               user_information.user_type === "admin") ? (
               <EditProfile {...props} />
             ) : (
@@ -126,6 +128,7 @@ function App() {
             )
           }
         />
+        {/*
         <Route
           path="/finances"
           render={(props) =>

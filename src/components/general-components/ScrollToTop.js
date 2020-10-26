@@ -11,11 +11,6 @@ function ScrollToTop({ history, children }) {
     };
   }, [history]);
 
-  // Function for testing vertical scroll position
-  function checkPosition() {
-    return document.body.scrollY;
-  }
-
   return <Fragment>{children}</Fragment>;
 }
 

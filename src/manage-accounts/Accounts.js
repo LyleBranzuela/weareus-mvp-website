@@ -71,6 +71,7 @@ const authenticate = (Username, Password) => {
         });
 
         //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+        AWS.config.credentials.clearCachedId();
         AWS.config.credentials.refresh((error) => {
           if (error) {
             console.error(error);
@@ -81,6 +82,7 @@ const authenticate = (Username, Password) => {
       },
       onFailure: (err) => {
         // Problems in Authentication
+        swal.close();
         swal({
           title: "Authentication Error!",
           text: err.message,
@@ -90,7 +92,7 @@ const authenticate = (Username, Password) => {
         reject(err);
       },
       newPasswordRequired: (data) => {
-        console.log(data);
+        swal.close();
         swal({
           title: "New Password Required!",
           icon: "error",

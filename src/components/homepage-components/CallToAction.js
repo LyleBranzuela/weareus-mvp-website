@@ -50,7 +50,7 @@ class CallToAction extends React.Component {
                 </p>
               </div>
               <div>
-                <Button id="ctaButtonMobile">Tell me more</Button>
+                <Button id="ctaButtonMobile">Register today!</Button>
               </div>
             </Container>
           </div>
