@@ -11,6 +11,7 @@ import {
 import CustomButton from "../general-components/CustomButton";
 import { Link } from "react-router-dom";
 import api from "../../api/api";
+import strapi from "../../api/strapi.js";
 
 class SearchField extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class SearchField extends React.Component {
       services: [],
       regions: [],
       width: window.innerWidth,
+      imageURL: "",
     };
 
     // Prevents Memory Leaks
@@ -72,10 +74,23 @@ class SearchField extends React.Component {
     this.setState({ redirect: true });
   };
 
+  getPageContent = async () => {
+    let pageContent = {};
+ 
+    // Get requests to retrieve JSON information from Strapi
+    const getImage = await strapi.get("/images/3");
+ 
+    pageContent.searchImage = JSON.stringify(getImage.data.imageURL).replace(/"/g,"");
+ 
+    this.setState({ imageURL: pageContent.searchImage });
+  };
+
+
   componentDidMount() {
     this._isMounted = true;
     this.setState({ redirect: false });
     this._isMounted && this.setSearchKeywords();
+    this._isMounted && this.getPageContent();
     window.addEventListener("resize", this.handleWindowSizeChange);
   }
 
@@ -110,6 +125,7 @@ class SearchField extends React.Component {
       });
     }
 
+    const searchImage = strapi.defaults.baseURL + this.state.imageURL; 
     const { width } = this.state;
     const isMobile = width <= 600;
     if (isMobile) {
@@ -226,7 +242,9 @@ class SearchField extends React.Component {
       );
     }
     return (
-      <Container fluid className="searchFieldContainer">
+      <Container fluid className="searchFieldContainer" style={{
+        backgroundImage: "url(" + searchImage + ")",
+      }}>
         <Container>
           <Form className="searchFieldStyle" onSubmit={this.onSearchSubmit}>
             <Row>

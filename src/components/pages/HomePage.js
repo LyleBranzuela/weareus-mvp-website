@@ -5,6 +5,7 @@ import CallToAction from "../homepage-components/CallToAction";
 import NewPractitionerList from "../practitioner-components/NewPractitionerList";
 import PractitionerList from "../practitioner-components/PractitionerList";
 import SearchField from "../search-components/SearchField";
+import strapi from "../../api/strapi.js";
 import NavigationBar2 from "../general-components/NavigationBar2";
 import CustomButton from "../general-components/CustomButton";
 import { Link } from "react-router-dom";
@@ -17,6 +18,8 @@ class HomePage extends React.Component {
       width: window.innerWidth,
       practitioners: [],
       newPractitioners: [],
+      motdContent: "",
+      motdContentMobile: "",
     };
 
     // Prevents Memory Leaks
@@ -36,10 +39,29 @@ class HomePage extends React.Component {
       });
   };
 
+  getPageContent = async () => {
+    let pageContent = {};
+
+    // Get requests to retrieve JSON information from Strapi
+    const getMOTD = await strapi.get("/copies/3");
+
+    pageContent.homeMOTD = JSON.stringify(getMOTD.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.homeMOTDMobile = JSON.stringify(getMOTD.data.copyTextMobile)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    this.setState({ motdContent: pageContent.homeMOTD,
+                    motdContentMobile: pageContent.homeMOTDMobile});
+  };
+
   componentDidMount() {
     window.addEventListener("resize", this.handleWindowSizeChange);
     this._isMounted = true;
     this._isMounted && this.getAllPractitioners();
+    this._isMounted && this.getPageContent();
   }
 
   componentWillUnmount() {
@@ -74,11 +96,7 @@ class HomePage extends React.Component {
               <React.Fragment>
                 <br />
                 <br />
-                <strong>We are Us</strong> connects you with <br />
-                health, wellness, and self-
-                <br />
-                improvement practitioners <br />
-                throughout New Zealand.
+                <strong> We are Us </strong>{this.state.motdContentMobile}
                 <br />
                 <br />
               </React.Fragment>
@@ -109,9 +127,7 @@ class HomePage extends React.Component {
           <MessageOfTheDay
             motd={
               <React.Fragment>
-                <strong>We are Us</strong> connects you with health, wellness,
-                and self-improvement <br /> practitioners throughout New
-                Zealand.
+                <strong> We are Us </strong>{this.state.motdContent}
               </React.Fragment>
             }
           />

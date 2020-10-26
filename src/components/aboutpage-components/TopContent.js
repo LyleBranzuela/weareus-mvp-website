@@ -1,8 +1,39 @@
 import React from "react";
 import "./TopContent.css";
 import { Container, Row, Col } from "react-bootstrap";
+import strapi from "../../api/strapi.js";
 
 class TopContent extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      width: window.innerWidth,
+      sectionContent: "",
+    };
+  }
+
+  getPageContent = async () => {
+    let pageContent = {};
+ 
+    // Get requests to retrieve JSON information from Strapi
+    const getContent = await strapi.get("/copies/29");
+ 
+ 
+    pageContent.sectionContent = JSON.stringify(getContent.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+ 
+ 
+    this.setState({ sectionContent: pageContent.sectionContent});
+  };
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleWindowSizeChange);
+    this._isMounted = true;
+    this._isMounted && this.getPageContent();
+  }
+
+
   render() {
     return (
       <Container fluid>
@@ -10,15 +41,7 @@ class TopContent extends React.Component {
           <Col>
             <h2 id="aboutTitle">About us</h2>
             <p id="about-paragraph">
-              We're all on a journey. Having the right people with us on our
-              journey can ground <br />
-              us, grow us and help us be of service to others on their journey.
-              <br />
-              <br />
-              But choosing the right people to help us can be difficult. That's
-              why so many of us <br />
-              ask our friends and family for recommendations, or go online and
-              read reviews.
+              {this.state.sectionContent}
             </p>
             <hr style={{width: "1300px", marginTop: "100px"}}></hr>
           </Col>

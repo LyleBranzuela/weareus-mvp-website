@@ -1,16 +1,54 @@
 import "./TermsAndConditions.css";
 import React from "react";
+import strapi from "../../api/strapi.js";
 
+{/* When more Terms and Conditions is added, follow 
+the same template in other classes & refer to Strapi Guide to add more sections*/}
 class TermsAndConditions extends React.Component {
   constructor() {
     super();
     this.state = {
       width: window.innerWidth,
+      tncHeader: "",
+      tncSectionHeader: "",
+      tncContent: "",
     };
   }
 
+  getPageContent = async () => {
+    let pageContent = {};
+
+    // Get requests to retrieve JSON information from Strapi
+    const getTncHeader = await strapi.get("/copies/26");
+    const getTncSectionHeader = await strapi.get("/copies/27");
+    const getTncContent = await strapi.get("/copies/28");
+
+
+    pageContent.tncHeader = JSON.stringify(getTncHeader.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.tncSectionHeader = JSON.stringify(getTncSectionHeader.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+    pageContent.tncContent = JSON.stringify(getTncContent.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+
+
+
+    this.setState({
+      tncHeader: pageContent.tncHeader,
+      tncSectionHeader: pageContent.tncSectionHeader,
+      tncContent: pageContent.tncContent
+    });
+  };
+
   componentDidMount() {
     window.addEventListener("resize", this.handleWindowSizeChange);
+    this._isMounted = true;
+    this._isMounted && this.getPageContent();
   }
 
   componentWillUnmount() {
@@ -31,46 +69,11 @@ class TermsAndConditions extends React.Component {
         <div className="tacPageMobile">
           <p className="tacHeaderMobile">
             {" "}
-            <strong> Terms & Conditions </strong>{" "}
+            <strong> {this.state.tncHeader} </strong>{" "}
           </p>
           <p className="tacTextMobile">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim
-            diam. Turpis nunc eget lorem dolor sed viverra ipsum. Cursus risus
-            at ultrices mi tempus. Nibh mauris cursus mattis molestie a iaculis
-            at erat pellentesque.{" "}
-          </p>
-
-          <p className="tacTextMobile">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Turpis in eu mi
-            bibendum. Fringilla urna porttitor rhoncus dolor purus. Sed blandit
-            libero volutpat sed cras ornare arcu dui vivamus. Quam lacus
-            suspendisse faucibus interdum. Diam donec adipiscing tristique risus
-            nec feugiat in fermentum posuere. Lectus quam id leo in vitae turpis
-            massa. Id venenatis a condimentum vitae sapien pellentesque.{" "}
-          </p>
-
-          <p className="tacTextMobile">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim
-            diam. Turpis nunc eget lorem dolor sed viverra ipsum. Cursus risus
-            at ultrices mi tempus. Nibh mauris cursus mattis molestie a iaculis
-            at erat pellentesque.{" "}
-          </p>
-
-          <p className="tacTextMobile">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Turpis in eu mi
-            bibendum. Fringilla urna porttitor rhoncus dolor purus. Sed blandit
-            libero volutpat sed cras ornare arcu dui vivamus. Quam lacus
-            suspendisse faucibus interdum. Diam donec adipiscing tristique risus
-            nec feugiat in fermentum posuere. Lectus quam id leo in vitae turpis
-            massa. Id venenatis a condimentum vitae sapien pellentesque.{" "}
+            <strong> {this.state.tncSectionHeader} </strong> <br /> 
+            {this.state.tncContent}
           </p>
         </div>
       );
@@ -79,46 +82,11 @@ class TermsAndConditions extends React.Component {
         <div className="tacPage">
           <p className="tacHeader">
             {" "}
-            <strong> Terms & Conditions </strong>{" "}
+            <strong> {this.state.tncHeader} </strong>{" "}
           </p>
           <p className="tacText">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim
-            diam. Turpis nunc eget lorem dolor sed viverra ipsum. Cursus risus
-            at ultrices mi tempus. Nibh mauris cursus mattis molestie a iaculis
-            at erat pellentesque.{" "}
-          </p>
-
-          <p className="tacText">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Turpis in eu mi
-            bibendum. Fringilla urna porttitor rhoncus dolor purus. Sed blandit
-            libero volutpat sed cras ornare arcu dui vivamus. Quam lacus
-            suspendisse faucibus interdum. Diam donec adipiscing tristique risus
-            nec feugiat in fermentum posuere. Lectus quam id leo in vitae turpis
-            massa. Id venenatis a condimentum vitae sapien pellentesque.{" "}
-          </p>
-
-          <p className="tacText">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim
-            diam. Turpis nunc eget lorem dolor sed viverra ipsum. Cursus risus
-            at ultrices mi tempus. Nibh mauris cursus mattis molestie a iaculis
-            at erat pellentesque.{" "}
-          </p>
-
-          <p className="tacText">
-            {" "}
-            <strong> Heading Goes Here </strong> <br /> Turpis in eu mi
-            bibendum. Fringilla urna porttitor rhoncus dolor purus. Sed blandit
-            libero volutpat sed cras ornare arcu dui vivamus. Quam lacus
-            suspendisse faucibus interdum. Diam donec adipiscing tristique risus
-            nec feugiat in fermentum posuere. Lectus quam id leo in vitae turpis
-            massa. Id venenatis a condimentum vitae sapien pellentesque.{" "}
+            <strong> {this.state.tncSectionHeader} </strong> <br /> 
+            {this.state.tncContent}
           </p>
         </div>
       );

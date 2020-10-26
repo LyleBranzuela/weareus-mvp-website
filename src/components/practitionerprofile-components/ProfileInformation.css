@@ -22,11 +22,28 @@
   border: none;
 }
 
+#description-text{
+  font-size: 1em;
+}
+
 .practitioner-description-card .card-title {
   margin-top: -0px;
   margin-left: -20px;
   font-family: "AvenirLTPro-Heavy";
+  font-size: 1.125em;
   color: #5b5b5b;
+}
+
+.practitioner-title{
+  font-size: 1.5em;
+}
+
+.location{
+  font-size: 1em;
+}
+
+.practitioner-name{
+  font-size: 1em;
 }
 
 @media (max-width: 991px) {
@@ -89,7 +106,7 @@
 }
 
 .font-body {
-  font-size: 19px;
+  font-size: 1em;
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
 }
@@ -104,13 +121,13 @@
 
 #category-text {
   color: #79158f;
-  font-size: 19px;
+  font-size: 1em;
   font-family: "AvenirLTStd-Book";
 }
 
 #suburb-profile,
 #city-profile {
-  font-size: 19px;
+  font-size: 1em;
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
 }
@@ -140,11 +157,15 @@
   color: #79158f;
 }
 
+#services{
+  font-size: 16px;
+}
+
 .box {
   background-color: #f2e9f4;
   color: #79158f;
   font-family: "AvenirLTStd-Book";
-  font-size: 19px;
+  font-size: 1em;
   padding-top: 7px;
   padding-bottom: 7px;
   text-align: center;
@@ -223,11 +244,11 @@
 .accordion-section .card-header {
   font-family: "AvenirLTPro-Heavy";
   color: #5b5b5b;
-  font-size: 1.3em;
+  font-size: 1.125em;
 }
 
 .training-accordion-body-font {
-  font-size: 19px;
+  font-size: 1em;
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
   list-style-type: none;

@@ -6,8 +6,36 @@ import FeatureCarousel from "../for-practitioner-components/FeatureCarousel";
 import PractitionerCTA from "../for-practitioner-components/PractitionerCTA";
 import MessageOfTheDay from "../homepage-components/MessageOfTheDay";
 import CallToAction from "../homepage-components/CallToAction";
+import strapi from "../../api/strapi.js";
 
 class ForPractitionersPage extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      motdContent: "",
+    };
+  }
+
+  getPageContent = async () => {
+    let pageContent = {};
+ 
+    // Get requests to retrieve JSON information from Strapi
+    const forPractMOTD = await strapi.get("/copies/17");
+ 
+ 
+    pageContent.motdContent = JSON.stringify(forPractMOTD.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+ 
+ 
+    this.setState({ motdContent: pageContent.motdContent });
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+    this._isMounted && this.getPageContent();
+  }
+
   render() {
     return (
       <div>
@@ -16,15 +44,7 @@ class ForPractitionersPage extends React.Component {
         <MessageOfTheDay
           motd={
             <React.Fragment>
-              We know the key to growing your business is to have a regular flow
-              of clients <br /> through your door. But when most clients find
-              health, wellness & self-
-              <br />
-              improvement businesses through word-of-mouth it can be hard to get
-              the word <br /> out ot an abundance of clients who are looking for
-              help online. We are Us
-              <br /> provides you with a unique platform to attract a flow of
-              new clients.
+             {this.state.motdContent}
             </React.Fragment>
           }
         />

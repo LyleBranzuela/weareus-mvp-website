@@ -1,7 +1,6 @@
 /* DESKTOP STYLES */
 .ctaStyle {
   display: block;
-  background-image: url("../../assets/images/promotion_bg_nowhite.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,6 +11,7 @@
   text-align: center;
   position: relative;
   font-family: "AvenirLTStd-Book";
+  white-space: pre-line;
 }
 
 .ctaStyle-text {
@@ -38,6 +38,10 @@
   margin-top: 2%;
   padding: 20px 75px 20px 75px;
   font-size: 1em;
+}
+
+#signUpContainer {
+  background-color: #f5f5f5;
 }
 
 #ctaSignUp {
@@ -81,7 +85,6 @@
   align-content: center;
   justify-content: center;
 
-  background-image: url("../../assets/images/promotion_bg_vertical.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -90,6 +93,8 @@
   margin-right: auto;
   padding-top: 30%;
   padding-bottom: 30%;
+
+  white-space: pre-line;
 }
 
 .ctaStyleMobile-text {

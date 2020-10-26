@@ -32,15 +32,15 @@ test('For-Practitioners Page Renders properly', () => {
     expect(tree).toMatchSnapshot();
 });
 
-test('Home Page Renders properly', () => {
-    const tree = renderer.create(<Router><HomePage /></Router>).toJSON();
-    expect(tree).toMatchSnapshot();
-});
+// test('Home Page Renders properly', () => {
+//     const tree = renderer.create(<Router><HomePage /></Router>).toJSON();
+//     expect(tree).toMatchSnapshot();
+// });
 
-test('Login Page Renders properly', () => {
-    const tree = renderer.create(<Router><LoginPage /></Router>).toJSON();
-    expect(tree).toMatchSnapshot();
-});
+// test('Login Page Renders properly', () => {
+//     const tree = renderer.create(<Router><LoginPage /></Router>).toJSON();
+//     expect(tree).toMatchSnapshot();
+// });
 
 test('Practitioner List Page Renders properly', () => {
     const tree = renderer.create(<Router><PractitionerListPage /></Router>).toJSON();

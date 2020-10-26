@@ -19,22 +19,22 @@ class PracticeProfileInfo extends React.Component {
 
   componentDidMount() {
 
-    Geocode.setApiKey("AIzaSyCZh-PRfvNueE58KB6H1u8GN5QUxQ-Tt9s");
+    // Geocode.setApiKey("INSERT_GEOCODOING_API_HERE");  
 
-    const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010"; //Replace this with dynamic address
+    // const testAddress = "55 Wellesley Street East, Auckland CBD, Auckland 1010"; //Replace this with dynamic address
 
-    Geocode.fromAddress(testAddress).then(
-      response => {
-        const { latResult, lngResult } = response.results[0].geometry.location;
-        this.setState({
-          latitude: latResult,
-          longitude: lngResult
-        })
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    // Geocode.fromAddress(testAddress).then(
+    //   response => {
+    //     const { latResult, lngResult } = response.results[0].geometry.location;
+    //     this.setState({
+    //       latitude: latResult,
+    //       longitude: lngResult
+    //     })
+    //   },
+    //   error => {
+    //     console.error(error);
+    //   }
+    // );
   }
 
 
@@ -195,4 +195,5 @@ class PracticeProfileInfo extends React.Component {
   }
 }
 
-export default GoogleApiWrapper({ apiKey: 'AIzaSyDrL-6gCrk9OQ_3l1k7BxAOPXcUIfU2xFo' })(PracticeProfileInfo);
+// export default GoogleApiWrapper({ apiKey: 'INSERT GOOGLE MAPS API HERE' })(PracticeProfileInfo);
+export default PracticeProfileInfo;

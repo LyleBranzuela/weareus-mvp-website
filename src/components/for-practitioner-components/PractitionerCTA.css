@@ -5,14 +5,18 @@
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
+  white-space: pre-line;
+  
 }
 .practitionerCTAStyle h5 {
-    font-size: 1.4em;
+    font-size: 1.125em;
+    white-space: pre-line;
 }
 
 .practitionerCTAStyle .col-sm-6 {
     padding-top: 50px;
     padding-bottom: 50px;
+    white-space: pre-line;
 }
 
 .practitionerCTAStyle button {
@@ -21,13 +25,21 @@
   border-color: #79158f;
   color: #79158f;
   padding: 15px 80px 15px 80px;
+  white-space: pre-line;
 }
 
 .practitionerCTAStyle button:hover {
   background-color: #79158f;
   border-color: black;
+  white-space: pre-line;
 }
 
 #prac-CTA-1 {
   border-right: 1px solid #ccc;
+  white-space: pre-line;
+}
+
+#prac-CTA-1-mobile{
+  border-bottom: 1px solid #ccc;
+  white-space: pre-line;
 }

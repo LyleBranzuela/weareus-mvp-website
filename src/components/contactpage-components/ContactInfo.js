@@ -1,16 +1,40 @@
 import "./ContactInfo.css";
 import React from "react";
+import strapi from "../../api/strapi.js";
 
 class ContactInfo extends React.Component {
   constructor() {
     super();
     this.state = {
       width: window.innerWidth,
+      contactHeader: "",
+      contactContent: "", 
     };
   }
 
+  getPageContent = async () => {
+    let pageContent = {};
+ 
+    // Get requests to retrieve JSON information from Strapi
+    const getContactHeader = await strapi.get("/copies/24");
+    const getContactDetails = await strapi.get("/copies/25");
+ 
+    pageContent.contactHeader = JSON.stringify(getContactHeader.data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+ 
+    pageContent.contactContent = JSON.stringify(getContactDetails .data.copyText)
+      .replace(/\\n/g, "\n")
+      .replace(/"/g, "");
+ 
+    this.setState({ contactHeader: pageContent.contactHeader,
+                    contactContent: pageContent.contactContent});
+  };
+
   componentDidMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
+    this._isMounted = true;
+    this._isMounted && this.getPageContent();
   }
 
 
@@ -29,16 +53,16 @@ class ContactInfo extends React.Component {
     if (isMobile) {
       // Mobile version
       return (
-      <div className="contactUsPageMobile">
-        <p className="contactCTAMobile"> <strong> Contact Us </strong> </p>
-        <p className="contactTextMobile"> T +64 000 0000 <br /> info@weareus.co.nz</p>
+      <div className="contactUsPageMobile">     
+        <p className="contactCTAMobile"> <strong> {this.state.contactHeader} </strong> </p> 
+        <p className="contactTextMobile"> {this.state.contactContent} </p>
       </div>
       );
     }  else {
       return (
         <div className="contactUsPage">
-          <p className="contactCTA"> <strong> Contact Us </strong> </p>
-          <p className="contactText"> T +64 000 0000 <br /> info@weareus.co.nz</p>
+          <p className="contactCTA"> <strong> {this.state.contactHeader}</strong> </p>
+          <p className="contactText"> {this.state.contactContent}</p>
         </div>
       );
     }

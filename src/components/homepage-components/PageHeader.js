@@ -44,10 +44,7 @@ class PageHeader extends React.Component {
       .replace(/\\n/g, "\n")
       .replace(/"/g, "");
 
-    pageContent.headerImage = JSON.stringify(getImages.data.imageURL).replace(
-      /"/g,
-      ""
-    );
+    pageContent.headerImage = JSON.stringify(getImages.data.imageURL).replace(/"/g,"");
 
     pageContent.headerImageMobile = JSON.stringify(
       getImages.data.imageURLMobile
@@ -127,7 +124,7 @@ class PageHeader extends React.Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
-    const headerImage = strapi.defaults.baseURL + this.state.imageURL; //Change localhost to AWS generated path when deployed.
+    const headerImage = strapi.defaults.baseURL + this.state.imageURL;
     const headerImageMobile =
       strapi.defaults.baseURL + this.state.imageURLMobile;
     if (isMobile) {

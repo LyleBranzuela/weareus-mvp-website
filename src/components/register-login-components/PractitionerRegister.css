@@ -2,18 +2,21 @@
   margin-top: 160px;
   text-align: center;
   margin-bottom: 75px;
+  white-space: pre-line;
 }
 
 .practitionerRegisterStyle h2 {
   margin-bottom: 50px;
   color: #79158f;
   font-family: "AvenirLTPro-Heavy";
+  white-space: pre-line;
 }
 
 #pracRegisterHeader {
   margin-bottom: 30px;
   color: #5b5b5b;
   font-family: "AvenirLTPro-Heavy";
+  white-space: pre-line;
 }
 
 #pracRegisterDesc {
@@ -23,6 +26,7 @@
   font-family: "AvenirLTStd-Book";
   color: #5b5b5b;
   font-size: 1.3em;
+  white-space: pre-line;
 }
 
 #subscriptionCardsHeader {
@@ -31,6 +35,7 @@
   color: #79158f;
   font-family: "AvenirLTStd-Book";
   margin-bottom: 75px;
+  white-space: pre-line;
 }
 
 .subscriptionGroup {
@@ -39,11 +44,13 @@
   margin-top: 75px;
   margin-bottom: 75px;
   color: #5b5b5b;
+  white-space: pre-line;
 }
 
 .subscriptionGroup p {
   margin-top: 50px;
   text-align: left;
+  white-space: pre-line;
 }
 
 .faqSection {
@@ -51,12 +58,14 @@
   background-color: #f3f1f3;
   padding-top: 50px;
   padding-bottom: 100px;
+  white-space: pre-line;
 }
 
 .faqSection h2 {
   color: #79158f;
   text-align: center;
   padding-bottom: 50px;
+  white-space: pre-line;
 }
 
 .faqSection .card-header {
@@ -66,6 +75,7 @@
   padding-top: 25px;
   padding-bottom: 25px;
   background-color: rgba(0, 0, 0, 0);
+  white-space: pre-line;
 }
 
 .faqSection img {
@@ -88,4 +98,5 @@
   color: #79158f;
   font-family: "AvenirLTPro-Heavy";
   font-size: 1.3em;
+  white-space: pre-line;
 }

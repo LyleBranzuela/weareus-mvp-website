@@ -195,7 +195,7 @@ class NavigationBar2 extends React.Component {
               />
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={this.toggleNavbar} />
           <Navbar.Collapse
             className="justify-content-end"
             id="responsive-navbar-nav"

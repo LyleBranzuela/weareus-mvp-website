@@ -28,24 +28,25 @@
   color: #5b5b5b;
   font-family: "AvenirLTPro-Heavy";
   padding-bottom: 20px;
+  font-size: 1em;
 }
 
 .contact-card-box .card-subtitle {
   color: #5b5b5b;
   font-family: "AvenirLTPro-Heavy";
-  font-size: 17.8px;
+  font-size: 1em;
 }
 
 .contact-card-box .card-text {
   color: #5b5b5b;
   font-family: "AvenirLTStd-Book";
-  font-size: 17.8px;
+  font-size: 1em;
 }
 
 .contact-card-box #purple-card-heading {
   display: inline-block;
   color: #79158f;
-  font-family: "AvenirLTPro-Heavy";
+  font-family: "AvenirLTStd-Book";
 }
 
 .contact-card-box .horizontal-line-card {

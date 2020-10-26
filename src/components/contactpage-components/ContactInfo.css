@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
 
   height: 100%;
+  white-space: pre-line;
 }
 
 .contactCTA {
@@ -42,6 +43,7 @@
 
   height: 100vh;
   width: auto;
+  white-space: pre-line;
 
 }
 
