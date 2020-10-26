@@ -18,11 +18,12 @@ class EditProfile extends React.Component {
       regions: [],
       search_filter: "",
       coverImageLimit: 0,
-      generatedCompanyId: "",
       redirect: false,
-      registerFlag: false,
 
       // Company Details States
+      company_id: this.props?.location?.state?.company_id
+        ? this.props.location.state.company_id
+        : this.props.user_information.company_id,
       company_name: "",
       logo: "",
       email: this.props.user_information.email,
@@ -40,7 +41,9 @@ class EditProfile extends React.Component {
       cover_images: [],
 
       // Practitioner (First Specialist) States
-      user_id: this.props.user_information.user_id,
+      user_id: this.props?.location?.state?.user_id
+        ? this.props.location.state.user_id
+        : this.props.user_information.user_id,
       profile_picture: "",
       diplomas: [],
       certifications: [],
@@ -62,23 +65,6 @@ class EditProfile extends React.Component {
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.setCompanyData();
-
-    let limit = 0;
-    if (this.props?.user_information?.subscription_id) {
-      switch (this.props.user_information.subscription_id) {
-        case 1:
-          limit = 1;
-          break;
-
-        case 2:
-          limit = 5;
-          break;
-
-        default:
-          break;
-      }
-    }
-    this.setState({ coverImageLimit: limit });
   }
 
   componentWillUnmount() {
@@ -88,62 +74,114 @@ class EditProfile extends React.Component {
   // Function to Set the Checkboxes and Data for Accredations and Services
   setCompanyData = async () => {
     // Getting the Services and Regions JSON From the Server
-    // try {
-    const serviceResponse = await api.get("/lookup_services");
-    const accreditationResponse = await api.get("/lookup_accreditation");
-    const citiesResponse = await api.get("/cities");
-    const regionsResponse = await api.get("/regions");
-    const companyResponse = await api.get(
-      "/company/" + this.props.user_information.company_id
-    );
-    console.log(companyResponse);
+    try {
+      const serviceResponse = await api.get("/lookup_services");
+      const accreditationResponse = await api.get("/lookup_accreditation");
+      const citiesResponse = await api.get("/cities");
+      const regionsResponse = await api.get("/regions");
+      const companyResponse = await api.get(
+        "/company/" + this.state.company_id
+      );
+      const specialistResponse = await api.get(
+        "/specialist-profile/" + this.state.user_id
+      );
 
-    // Setting the Company, Services, and Regions States
-    let company_address1 = companyResponse.data.company_address1.split(", ");
-    let company_address2 = companyResponse.data.company_address2.split(", ");
-    console.log(company_address1);
-    console.log(company_address2);
-    this._isMounted &&
-      this.setState({
-        services: serviceResponse.data.rows,
-        accreditations: accreditationResponse.data.rows,
-        cities: citiesResponse.data.rows,
-        regions: regionsResponse.data.rows,
+      // Setting the Cover Image Limits
+      let limit = 0;
+      if (companyResponse.data.subscription_id) {
+        switch (companyResponse.data.subscription_id) {
+          case 1:
+            limit = 1;
+            break;
 
-        // Set Current Company Details States
-        company_name: companyResponse.data.company_name,
-        logo: companyResponse.data.logo,
-        about: companyResponse.data.about,
-        building_number:
-          company_address1[0] === "null" ? "" : company_address1[0],
-        street: company_address1[1] === "null" ? "" : company_address1[1],
-        suburb: company_address1[2] === "null" ? "" : company_address1[2],
-        city_name: company_address2[0] === "null" ? "" : company_address2[0],
-        region_name: company_address2[1] === "null" ? "" : company_address2[1],
-        postal_code: company_address2[2] === "null" ? "" : company_address2[2],
-        chosen_accreditation: companyResponse.data.accreditation
-          ? companyResponse.data.accreditation.map((accreditation) => {
-              return "" + accreditation.accreditation_id;
-            })
-          : [],
-        chosen_services: companyResponse.data.services
-          ? companyResponse.data.services.map((service) => {
-              return "" + service.service_id;
-            })
-          : [],
-        // cover_images: companyResponse.data.cover_images
-        //   ? companyResponse.data.cover_images
-        //   : [],
+          case 2:
+            limit = 5;
+            break;
+
+          default:
+            break;
+        }
+      }
+
+      // Setting the Company, Services, and Regions States
+      let company_address1 = companyResponse.data.company_address1.split(", ");
+      let company_address2 = companyResponse.data.company_address2.split(", ");
+      this._isMounted &&
+        this.setState({
+          // Setup the Dropdown Things
+          services: serviceResponse.data.rows,
+          accreditations: accreditationResponse.data.rows,
+          cities: citiesResponse.data.rows,
+          regions: regionsResponse.data.rows,
+
+          // Set Current Company Details States
+          company_id: this.state.company_id,
+          company_name: companyResponse.data.company_name,
+          subscription_id: companyResponse.data.subscription_id,
+          logo: companyResponse.data.logo,
+          about: companyResponse.data.about,
+          building_number:
+            company_address1[0] === "null" ? "" : company_address1[0],
+          street: company_address1[1] === "null" ? "" : company_address1[1],
+          suburb: company_address1[2] === "null" ? "" : company_address1[2],
+          city_name: company_address2[0] === "null" ? "" : company_address2[0],
+          region_name:
+            company_address2[1] === "null" ? "" : company_address2[1],
+          postal_code:
+            company_address2[2] === "null" ? "" : company_address2[2],
+          chosen_accreditation: companyResponse.data.accreditation
+            ? companyResponse.data.accreditation.map((accreditation) => {
+                return "" + accreditation.accreditation_id;
+              })
+            : [],
+          chosen_services: companyResponse.data.services
+            ? companyResponse.data.services.map((service) => {
+                return "" + service.service_id;
+              })
+            : [],
+          cover_images: companyResponse.data.cover_images
+            ? companyResponse.data.cover_images.map((cover_image) => {
+                return cover_image.image_url;
+              })
+            : [],
+          coverImageLimit: limit,
+
+          // Set Current Practitioner (First Specialist) States
+          profile_picture: specialistResponse.data.profile_image_url,
+          diplomas: specialistResponse.data.diplomas
+            ? specialistResponse.data.diplomas.map((diploma) => {
+                return {
+                  diploma_name: diploma.diploma_name,
+                  time_taken: diploma.time_taken ? diploma.time_taken : "",
+                };
+              })
+            : [],
+          certifications: specialistResponse.data.certification
+            ? specialistResponse.data.certification.map((cert) => {
+                return {
+                  certification_name: cert.certification_name,
+                  time_taken: cert.time_taken ? cert.time_taken : "",
+                };
+              })
+            : [],
+          memberships: specialistResponse.data.membership
+            ? specialistResponse.data.membership.map((memb) => {
+                return {
+                  membership_name: memb.membership_name,
+                  website: memb.website ? memb.website : "",
+                };
+              })
+            : [],
+          chosen_specialties: [],
+        });
+    } catch (error) {
+      swal({
+        title: "Database Error!",
+        text: error?.response?.data || "Unknown Setting up Error",
+        icon: "error",
+        buttons: [false, true],
       });
-    // } catch (error) {
-    //   swal({
-    //     title: "Database Error!",
-    //     text: error?.response?.data || "Unknown Setting up Error",
-    //     icon: "error",
-    //     buttons: [false, true],
-    //   });
-    // }
-    console.log(this.state);
+    }
   };
 
   // Handles Any Active Changes on the Form
@@ -302,7 +340,7 @@ class EditProfile extends React.Component {
     });
   };
 
-  // Function to Submit Register Form (Email, Password, First and Last name, Phone Number, Preferred Username)
+  // Function to Submit Edit Form
   onSubmit = async (event) => {
     event.preventDefault();
     this.setState({ registerFlag: true });
@@ -320,9 +358,9 @@ class EditProfile extends React.Component {
     }
 
     if (errorMessage !== "") {
-      // Close The Register Processing Modal
+      // Close The Edit Processing Modal
       swal({
-        title: "Unsuccessful Registration!",
+        title: "Unsuccessful Edit!",
         text: errorMessage,
         icon: "error",
         buttons: [false, true],
@@ -330,7 +368,7 @@ class EditProfile extends React.Component {
       this.setState({ registerFlag: false });
     } else {
       swal({
-        title: "Processing your Registration!",
+        title: "Processing your Edit!",
         content: (
           <div>
             <Spinner
@@ -350,8 +388,9 @@ class EditProfile extends React.Component {
       });
       let companyObject = {
         // Company Details States
+        company_id: this.state.company_id,
         company_name: this.state.company_name,
-        subscription_id: this.props.user_information.subscription_id,
+        subscription_id: this.state.subscription_id,
         logo: this.state.logo,
         email: this.state.email,
         phone: this.state.phone,
@@ -376,32 +415,31 @@ class EditProfile extends React.Component {
         chosen_specialties: this.state.chosen_specialties,
       };
 
-      // Generate a Company
+      // Edit the Company
       try {
-        const response = await api.post("/company", companyObject);
+        console.log(companyObject);
+        const response = await api.put("/company", companyObject);
 
         // Close The Register Processing Modal
         swal.close();
         swal({
-          title: "Profile Setup Successful!",
-          text: "Your Profile is now Setup! Redirecting you to your profile...",
+          title: "Profile Edit Successful!",
+          text:
+            "Your Profile has been Edited Successfully! Redirecting you to your profile...",
           icon: "success",
           timer: 5000,
           closeOnClickOutside: false,
           closeOnEsc: false,
           buttons: [false, true],
         }).then((value) => {
-          // Update Redux Object
-          this.props.profilesetup(response.data.company_id);
           // Redirect them to their generated company
           this.setState({
             redirect: true,
-            generatedCompanyId: response.data.company_id,
-            registerFlag: false,
+            responseCompanyId: response.data.company_id,
           });
         });
       } catch (error) {
-        // Close The Register Processing Modal
+        // Close The Edit Processing Modal
         swal.close();
         swal({
           title: "Database Error!",
@@ -409,7 +447,6 @@ class EditProfile extends React.Component {
           icon: "error",
           buttons: [false, true],
         });
-        this.setState({ registerFlag: false });
       }
     }
   };
@@ -456,8 +493,9 @@ class EditProfile extends React.Component {
     let accreditationBoxes = [];
     if (this.state.accreditations) {
       accreditationBoxes = this.state.accreditations.map((accreditation) => {
-        console.log("REUPDATED" + this.state.chosen_accreditation);
-        console.log(this.state.chosen_accreditation);
+        let check = this.state.chosen_accreditation.indexOf(
+          accreditation.accreditation_id.toString()
+        );
         return (
           <label
             id={`accreditation-${accreditation.accreditation_id}`}
@@ -469,6 +507,7 @@ class EditProfile extends React.Component {
               type="checkbox"
               name={accreditation.accreditation_name}
               value={accreditation.accreditation_id}
+              checked={check !== -1}
               onChange={(e) => {
                 this.checkboxOnChangeHandler(e, "chosen_accreditation");
               }}
@@ -506,9 +545,7 @@ class EditProfile extends React.Component {
     // Redirect to their generated Profile
     if (this.state.redirect) {
       return (
-        <Redirect
-          to={`practitioner-profile/${this.state.generatedCompanyId}`}
-        />
+        <Redirect to={`practitioner-profile/${this.state.responseCompanyId}`} />
       );
     }
     return (
@@ -553,36 +590,6 @@ class EditProfile extends React.Component {
           </Form.Group>
           <hr size="50" />
           <h5>Your Contact Details</h5>
-          <Row>
-            <Col>
-              {/** First Name Form Group */}
-              <Form.Group controlId="first_name">
-                <Form.Label>Your First Name:</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="Enter First Name"
-                  defaultValue={this.props.user_information.first_name}
-                  onChange={this.formOnChangeHandler}
-                  readOnly
-                />
-              </Form.Group>
-            </Col>
-            <Col>
-              {/** Last Name Form Group */}
-              <Form.Group controlId="last_name">
-                <Form.Label>Your Last Name:</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  placeholder="Enter Last Name"
-                  defaultValue={this.props.user_information.last_name}
-                  onChange={this.formOnChangeHandler}
-                  readOnly
-                />
-              </Form.Group>
-            </Col>
-          </Row>
           <Row>
             <Col>
               {/** Contact Number Form Group */}
@@ -646,7 +653,7 @@ class EditProfile extends React.Component {
                   required
                   as="select"
                   type="text"
-                  defaultValue={this.state.region_name}
+                  value={this.state.region_name}
                   placeholder="Enter Region"
                   onChange={this.formOnChangeHandler}
                 >
@@ -665,7 +672,7 @@ class EditProfile extends React.Component {
                   required
                   as="select"
                   type="text"
-                  defaultValue={this.state.city_name}
+                  value={this.state.city_name}
                   placeholder="Enter City"
                   onChange={this.formOnChangeHandler}
                 >
@@ -1037,7 +1044,7 @@ class EditProfile extends React.Component {
                       </Col>
                       <Col sm={1}>
                         <CustomButton
-                          text="-"
+                          text="x"
                           onClick={() => {
                             let splicedCertifications = this.state
                               .certifications;
@@ -1110,7 +1117,7 @@ class EditProfile extends React.Component {
                       </Col>
                       <Col sm={1}>
                         <CustomButton
-                          text="-"
+                          text="x"
                           onClick={() => {
                             let splicedMemberships = this.state.memberships;
                             splicedMemberships.splice(index, 1);

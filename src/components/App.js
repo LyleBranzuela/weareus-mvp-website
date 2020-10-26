@@ -118,10 +118,10 @@ function App() {
         <Route
           path="/edit-profile"
           render={(props) =>
-            isLoggedIn &&
-            ((user_information.company_id &&
+            (isLoggedIn &&
+              user_information.company_id &&
               user_information.user_type === "practitioner") ||
-              user_information.user_type === "admin") ? (
+            (isLoggedIn && user_information.user_type === "admin") ? (
               <EditProfile {...props} />
             ) : (
               <Redirect to="/home" />

@@ -46,7 +46,7 @@
 }
 
 #loginFormButton {
-  margin-top: 50px;
+  margin-top: 15px;
   padding: 20px 100px 20px 100px;
   font-size: 1vw;
 }
@@ -104,7 +104,7 @@
   margin-right: auto;
   margin-top: 2vh;
   background-color: #79158f;
-  padding-top: 1vh;
+  padding-top: 0.5vh;
   padding-bottom: 1vh;
   padding-left: 25%;
   padding-right: 25%;
@@ -112,7 +112,7 @@
   font-weight: 500;
 }
 .googleLogin {
-  margin-top: 50px;
+  margin-top: 0.5vh;
   height: 70px !important;
 }
 

@@ -40,23 +40,18 @@ class NavigationBar2 extends React.Component {
       this.setState({ scrolled: false });
     }
   }
-  
-  // Toggle fill color for navbar 2 on mobile. 
-  toggleNavbar(event){
+
+  // Toggle fill color for navbar 2 on mobile.
+  toggleNavbar(event) {
     const scrolledState = this.state.scrolled;
     const scroll_pos = document.body.scrollTop;
-    if(scrolledState === true && scroll_pos > 0)
-    {
-      this.setState({ scrolled: true});
-    }
-    else if (scrolledState === false && scroll_pos > 0) {
+    if (scrolledState === true && scroll_pos > 0) {
       this.setState({ scrolled: true });
-    }
-    else if (scrolledState === true && scroll_pos === 0) {
+    } else if (scrolledState === false && scroll_pos > 0) {
+      this.setState({ scrolled: true });
+    } else if (scrolledState === true && scroll_pos === 0) {
       this.setState({ scrolled: false });
-    }
-    else if (scrolledState === false && scroll_pos === 0)
-    {
+    } else if (scrolledState === false && scroll_pos === 0) {
       this.setState({ scrolled: true });
     }
   }
@@ -90,11 +85,14 @@ class NavigationBar2 extends React.Component {
                 src={require("../../assets/icons/we_are_us_logo_white.svg")}
                 className="d-inline-block align-top"
                 id="mobile_logo"
-                style= {{ height: '2em', width: '10.1em'}}
+                style={{ height: "2em", width: "10.1em" }}
               />
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={this.toggleNavbar}/>
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            onClick={this.toggleNavbar}
+          />
           <Navbar.Collapse
             className="justify-content-end"
             id="responsive-navbarMobile2-nav"

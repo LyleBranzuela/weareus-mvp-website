@@ -71,6 +71,7 @@ const authenticate = (Username, Password) => {
         });
 
         //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+        AWS.config.credentials.clearCachedId();
         AWS.config.credentials.refresh((error) => {
           if (error) {
             console.error(error);

@@ -1,6 +1,9 @@
 import React from "react";
 import "./ContactCard.css";
 import { Card } from "react-bootstrap";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import CustomButton from "../general-components/CustomButton";
 
 class ContactCard extends React.Component {
   render() {
@@ -36,6 +39,34 @@ class ContactCard extends React.Component {
             <a href="/#" id="purple-card-heading">
               {this.props.email}
             </a>
+
+            {this.props.isLoggedIn &&
+              this.props.user_information.company_id ===
+                this.props.company_id &&
+              this.props.user_information.user_type === "practitioner" && (
+                <Link to={`/edit-profile`} className="mb-2">
+                  <CustomButton id="editProfileButton" text="Edit Profile" />
+                </Link>
+              )}
+
+            {this.props.isLoggedIn &&
+              this.props.user_information.user_type === "admin" && (
+                <Link
+                  to={{
+                    pathname: `/edit-profile`,
+                    state: {
+                      user_id: this.props.user_id,
+                      company_id: this.props.company_id,
+                    },
+                  }}
+                  className="mb-2"
+                >
+                  <CustomButton
+                    id="editProfileButton"
+                    text="Edit Profile As Admin"
+                  />
+                </Link>
+              )}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -43,4 +74,13 @@ class ContactCard extends React.Component {
   }
 }
 
-export default ContactCard;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.userReducer.isLoggedIn,
+    user_information: state.userReducer.user_information,
+  };
+};
+
+const mapDispatchToProps = () => {};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ContactCard);
